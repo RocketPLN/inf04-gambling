@@ -69,7 +69,7 @@ export function ScoringCounter({ exam, onHighlight }) {
   const gradeColor = pct >= 75 ? "#059669" : pct >= 50 ? "#d97706" : "#dc2626";
 
   return (
-    <aside className="sticky top-[84px] overflow-hidden border-[6px] border-ugly-pink bg-win95 shadow-[8px_8px_0_#000] [border-style:ridge]">
+    <aside className="w-full min-w-0 self-start overflow-hidden border-[6px] border-ugly-pink bg-win95 shadow-[8px_8px_0_#000] [border-style:ridge] lg:sticky lg:top-[84px]">
       <div className="border-b-[6px] border-ugly-yellow bg-ugly-yellow p-3.5 [border-bottom-style:ridge]">
         <div className="flex items-center gap-2">
           <h3 className="m-0 font-display text-lg font-black uppercase text-ugly-pink [text-shadow:2px_2px_0_#000]">Licznik CKE</h3>
