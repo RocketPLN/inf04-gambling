@@ -1,0 +1,27 @@
+{
+  "name": "inf04",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "download": "node scripts/download-pdfs.js",
+    "convert": "python3 scripts/transform_pdfs.py",
+    "convert:legacy": "python3 scripts/pdf_to_html.py",
+    "setup": "npm run download && python3 scripts/transform_pdfs.py && npm run build"
+  },
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^6.1.0",
+    "oxlint": "^1.79.0",
+    "vite": "^8.2.2"
+  }
+}

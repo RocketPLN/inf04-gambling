@@ -1,0 +1,188 @@
+<div class="transformed-content">
+<p><strong>Nazwa kwalifikacji: Projektowanie, programowanie i testowanie aplikacji</strong></p>
+<p><strong>Symbol kwalifikacji: INF.04</strong></p>
+<p><strong>Numer zadania: 01</strong></p>
+<p><strong>Wersja arkusza: SG</strong></p>
+<p>Wypełnia zdający</p>
+<p>Numer PESEL zdającego*</p>
+<p><strong>Czas trwania egzaminu: 180 minut.</strong></p>
+<p>INF.04-01-24.01-SG</p>
+<h2>EGZAMIN ZAWODOWY</h2>
+<p><strong>Rok 2024</strong></p>
+<h2>CZĘŚĆ PRAKTYCZNA</h2>
+<h2>Instrukcja dla zdającego</h2>
+<ol>
+<li>Na pierwszej stronie arkusza egzaminacyjnego wpisz w oznaczonym miejscu swój numer PESEL i naklej naklejkę z numerem PESEL i z kodem ośrodka.</li>
+<li>Na KARCIE OCENY w oznaczonym miejscu przyklej naklejkę z numerem PESEL oraz wpisz:</li>
+</ol>
+<ul>
+<li>swój numer PESEL*,</li>
+<li>oznaczenie kwalifikacji,</li>
+<li>numer zadania,</li>
+<li>numer stanowiska.</li>
+</ul>
+<ol>
+<li>Sprawdź, czy arkusz egzaminacyjny zawiera 5 stron i nie zawiera błędów. Ewentualny brak stron lub inne usterki zgłoś przez podniesienie ręki przewodniczącemu zespołu nadzorującego.</li>
+<li>Zapoznaj się z treścią zadania oraz stanowiskiem egzaminacyjnym. Masz na to 10 minut. Czas ten nie jest wliczany do czasu trwania egzaminu.</li>
+<li>Czas rozpoczęcia i zakończenia pracy zapisze w widocznym miejscu przewodniczący zespołu nadzorującego.</li>
+<li>Wykonaj samodzielnie zadanie egzaminacyjne. Przestrzegaj zasad bezpieczeństwa i organizacji pracy.</li>
+<li>Po zakończeniu wykonania zadania pozostaw arkusz egzaminacyjny z rezultatami oraz KARTĘ OCENY na swoim stanowisku lub w miejscu wskazanym przez przewodniczącego zespołu nadzorującego.</li>
+<li>Po uzyskaniu zgody zespołu nadzorującego możesz opuścić salę/miejsce przeprowadzania egzaminu. Powodzenia! * w przypadku braku numeru PESEL – seria i numer paszportu lub innego dokumentu potwierdzającego tożsamość Układ graficzny © CKE 2023 Arkusz zawiera informacje prawnie chronione do momentu rozpoczęcia egzaminu Miejsce na naklejkę z numerem PESEL i z kodem ośrodka</li>
+</ol>
+<h4>PODSTAWA PROGRAMOWA</h4>
+<p><strong>2019</strong></p>
+<figure><img src="/plans/img/inf04-2024-styczen_p0_img0.png" alt="Obraz z arkusza – strona 1" loading="lazy" /><figcaption>Obraz z arkusza – strona 1 (konwersja PDF → HTML, oryginał w PDF)</figcaption></figure>
+<hr class="page-break" data-page="Strona 2" />
+<h2>Zadanie egzaminacyjne</h2>
+<div class="alert"><strong>UWAGA:</strong> katalog z rezultatami pracy oraz płytę należy opisać numerem zdającego, którym został podpisany</div>
+<p><em>arkusz, czyli numerem PESEL lub w przypadku jego braku numerem paszportu. Dalej w zadaniu numer ten</em></p>
+<p><em>jest nazwany numerem zdającego.</em></p>
+<p><strong>Wykonaj aplikację konsolową oraz desktopową według wskazań. Wykonaj dokumentację do aplikacji</strong></p>
+<p>konsolowej, zgodnie z opisem w części III instrukcji do zadania. Do pracy w systemie operacyjnym</p>
+<p><strong>wykorzystaj konto Egzamin bez hasła.</strong></p>
+<p>Utwórz folder i nazwij go numerem zdającego. W folderze utwórz podfoldery: konsola, desktopowa,</p>
+<p><strong>dokumentacja. Po wykonaniu każdej aplikacji, jej pełny kod (cały folder projektu) spakuj do archiwum.</strong></p>
+<p>Następnie pozostaw w podfolderze jedynie pliki źródłowe, których treść była modyfikowana, plik</p>
+<p>uruchomieniowy, jeśli jest to możliwe oraz spakowane archiwum.</p>
+<h3>Część I. Aplikacja konsolowa</h3>
+<p>Za pomocą narzędzi do tworzenia aplikacji konsolowych zaimplementuj program sprawdzający poprawność</p>
+<p>numeru PESEL. Program powinien sprawdzać płeć i sumę kontrolną według opisu:</p>
+<p>Numer PESEL jest to 11-cyfrowy identyfikator numeryczny.</p>
+<p><strong>Płeć</strong></p>
+<p>Informacja o płci osoby zawarta jest na 10. (przedostatniej) pozycji numeru PESEL.</p>
+<ul>
+<li> cyfry 0, 2, 4, 6, 8 (parzyste) – oznaczają płeć żeńską</li>
+<li> cyfry 1, 3, 5, 7, 9 (nieparzyste) – oznaczają płeć męską Cyfra kontrolna i sprawdzanie poprawności numeru Jedenastą cyfrą numeru PESEL jest cyfra kontrolna umożliwiająca kontrolę poprawności identyfikatora. Jest ona wynikiem działania na pierwszych dziesięciu cyfrach. Algorytm obliczania cyfry kontrolnej na podstawie kolejnych cyfr numeru:</li>
+</ul>
+<ol>
+<li>Dla kolejnych 10 cyfr numeru PESEL oblicz iloczyn każdej cyfry i jej wagi na podstawie tabeli: Pozycja cyfry od lewej 1 2 3 4 5 6 7 8 9 10 Waga cyfry 1 3 7 9 1 3 7 9 1 3 Oznacza to, że pierwszą cyfrę numeru PESEL należy pomnożyć przez 1, drugą cyfrę przez 3, trzecią przez 7 itd.</li>
+<li>Wszystkie iloczyny zsumuj ze sobą i zapisz w zmiennej S</li>
+<li>Wykonaj operację modulo 10 na sumie S i zapisz w zmiennej M</li>
+<li>Gdy wartość zmiennej M jest równa 0, to zmiennej R przypisz wartość 0. W przeciwnym przypadku zmiennej R przypisz wartość różnicy 10 i M (R=10-M)</li>
+<li>Zmienna R stanowi sumę kontrolną numeru PESEL i musi być równa jedenastej cyfrze numeru PESEL</li>
+</ol>
+<h4>Założenia aplikacji:</h4>
+<ul>
+<li> Zastosowany obiektowy język programowania zgodny z zainstalowanym na stanowisku egzaminacyjnym: C++ lub C#, lub Java, lub Python</li>
+<li> Numer PESEL może być przechowywany jako zmienna tekstowa albo tablica 11 liczb całkowitych lub znaków</li>
+<li> Zmienna ta jest zainicjowana numerem PESEL zdającego lub w przypadku jego braku numerem 55030101193</li>
+<li> Sprawdzanie płci należy zaimplementować w osobnej funkcji zwracającej typ znakowy o wartości &#x27;K&#x27; dla kobiety oraz &#x27;M&#x27; dla mężczyzny</li>
+<li> Sprawdzanie sumy kontrolnej należy zaimplementować w osobnej funkcji zwracającej wartość logiczną true w przypadku zgodności sumy lub false w przeciwnym przypadku</li>
+<li> Parametrem wejściowym obu funkcji jest zmienna przechowująca numer PESEL</li>
+<hr class="page-break" data-page="Strona 3" />
+<li> Program główny testuje działanie funkcji i zawiera następujące operacje wejścia – wyjścia</li>
+<li> Wczytanie z klawiatury numeru PESEL</li>
+<li> Wypisanie płci (ustalonej przez funkcję) w postaci napisu: „Kobieta” lub „Mężczyzna” w oparciu o wczytany numer PESEL</li>
+<li> Wypisanie informacji o zgodności lub niezgodności sumy kontrolnej w oparciu o wczytany numer PESEL</li>
+<li> Program powinien podejmować zrozumiałą komunikację z użytkownikiem</li>
+<li> W programie może być zastosowane angielskie lub polskie nazewnictwo zmiennych i funkcji</li>
+<li> Program powinien być zapisany czytelnie, z zachowaniem zasad czystego formatowania kodu, należy stosować nazwy zmiennych znaczące oraz zgodne z przedstawionym algorytmem</li>
+<li> Do kodu należy dołączyć dokumentację, która została opisana w części III zadania egzaminacyjnego. Kod aplikacji przygotuj do nagrania na płytę. W folderze konsola zapisz archiwum całego projektu o nazwie konsola.zip, plik z kodem źródłowym programu oraz plik uruchomieniowy, jeżeli istnieje.</li>
+</ul>
+<h3>Część II. Aplikacja desktopowa</h3>
+<p>Za pomocą dostępnego na stanowisku egzaminacyjnym środowiska programistycznego wykonaj aplikację</p>
+<p>desktopową do wprowadzania danych paszportowych. Do wykonania zadania wykorzystaj znajdujące się na</p>
+<p><strong>pulpicie archiwum 7-Zip o nazwie materialy.7z zabezpieczone hasłem: p@szporTy%</strong></p>
+<h4>Obraz 1. Stan początkowy aplikacji</h4>
+<h4>Obraz 2. Fragment okna po wybraniu</h4>
+<p>przycisku „OK”</p>
+<h4>Obraz 3. Po opuszczeniu pola edycyjnego „Numer”</h4>
+<p>Na obrazie 1 przedstawiono ideę aplikacji desktopowej. W zależności od użytego środowiska</p>
+<p>programistycznego wygląd może nieznacznie się różnić.</p>
+<p>Opis wyglądu aplikacji</p>
+<ul>
+<li> Okno o nazwie „Wprowadzenie danych do paszportu. Wykonał: ” następnie wstawiony numer zdającego</li>
+<li> Kontrolki rozmieszczone zgodnie z obrazem 1:</li>
+<li> Pole edycyjne poprzedzone etykietą o treści „Numer”</li>
+<li> Pole edycyjne poprzedzone etykietą o treści „Imię”</li>
+<li> Pole edycyjne poprzedzone etykietą o treści „Nazwisko”</li>
+</ul>
+<figure><img src="/plans/img/inf04-2024-styczen_p2_img0.png" alt="Obraz z arkusza – strona 3" loading="lazy" /><figcaption>Obraz z arkusza – strona 3 (konwersja PDF → HTML, oryginał w PDF)</figcaption></figure>
+<figure><img src="/plans/img/inf04-2024-styczen_p2_img1.png" alt="Obraz z arkusza – strona 3" loading="lazy" /><figcaption>Obraz z arkusza – strona 3 (konwersja PDF → HTML, oryginał w PDF)</figcaption></figure>
+<figure><img src="/plans/img/inf04-2024-styczen_p2_img2.png" alt="Obraz z arkusza – strona 3" loading="lazy" /><figcaption>Obraz z arkusza – strona 3 (konwersja PDF → HTML, oryginał w PDF)</figcaption></figure>
+<hr class="page-break" data-page="Strona 4" />
+<ul>
+<li> Grupa „Kolor oczu” zawierająca trzy pola wyboru: „niebieskie”, „zielone”, „piwne”. Pierwsze pole jest domyślnie zaznaczone</li>
+<li> W grupie może być jednocześnie zaznaczone jedno pole</li>
+<li> Przycisk o treści „OK”</li>
+<li> Dwa obrazy: 000-zdjecie.jpg oraz 000-odcisk.jpg. Obrazy mają tę samą wysokość. W aplikacji, której okno przedstawiono na obrazie 1 zastosowano wysokość równą 180</li>
+<li> Okno ma tło koloru CadetBlue (#5F9EA0)</li>
+<li> Pola edycyjne i przycisk mają tło koloru Azure (#F0FFFF)</li>
+</ul>
+<h4>Działanie aplikacji po opuszczeniu pola edycyjnego „Numer”</h4>
+<ul>
+<li> Aktualizowane są oba zdjęcia w oknie. Nazwy plików graficznych są utworzone na podstawie wpisanego numeru do pola edycyjnego „Numer”</li>
+<li></li>
+</ul>
+<h4>Obraz osoby ma nazwę &lt;numer&gt;-zdjecie.jpg, gdzie &lt;numer&gt; został pobrany z pola edycyjnego, np.</h4>
+<p><em>po wpisaniu do pola edycyjnego „333” ustawiona nazwa zdjęcia to 333-zdjecie.jpg</em></p>
+<ul>
+<li> Podobnie, obraz odcisku palca ma nazwę &lt;numer&gt;-odcisk.jpg, gdzie &lt;numer&gt; został pobrany z pola edycyjnego, np. 333-odcisk.jpg (Obraz 3)</li>
+<li> Do testów aplikacji należy wykorzystać wszystkie obrazy z wypakowanego archiwum. W przypadku wpisania numeru (np. 444), który nie odpowiada żadnemu plikowi graficznemu, obraz nie jest wyświetlany.</li>
+</ul>
+<h4>Działanie aplikacji po wybraniu przycisku „OK”</h4>
+<ul>
+<li> Jeżeli dane zostały wprowadzone do wszystkich pól edycyjnych, wyświetlany jest komunikat zgodny z obrazem 2, o treści: „&lt;imie&gt; &lt;nazwisko&gt; kolor oczu &lt;kolor&gt;&quot;, gdzie pola w nawiasach &lt;&gt; zostały pobrane z kontrolek</li>
+<li> Jeżeli nie wpisano imienia lub nazwiska, wyświetlany jest komunikat „Wprowadź dane” Aplikacja powinna być zapisana czytelnie, z zasadami czystego formatowania kodu, należy stosować znaczące nazwy zmiennych i funkcji. Podejmij próbę kompilacji i uruchomienia aplikacji. Informacje dotyczące dokumentacji i zrzutu ekranowego umieszczono w części III zadania egzaminacyjnego. Kod aplikacji przygotuj do nagrania na płytę. W folderze desktopowa zapisz archiwum całego projektu o nazwie desktopowa.zip, pliki źródłowe, które były modyfikowane (interfejs użytkownika i logika aplikacji) oraz plik uruchomieniowy, jeżeli istnieje.</li>
+</ul>
+<h3>Część III. Dokumentacja aplikacji</h3>
+<p><strong>Wykonaj dokumentację do aplikacji utworzonych na egzaminie. W kodzie źródłowym aplikacji konsolowej</strong></p>
+<p>utwórz komentarz do dowolnej funkcji, według wzoru z listingu 1. Komentarz powinien znaleźć się nad</p>
+<p>funkcją lub pod jej nagłówkiem. W miejscu nawiasów &lt;&gt; należy podać odpowiednie opisy. W miejscu autor</p>
+<p>należy podać numer zdającego.</p>
+<div class="alert"><strong>UWAGA:</strong> Dokumentację należy umieścić w komentarzu (wieloliniowym lub kilku jednoliniowych). Znajdujący</div>
+<p><em>się w listingu 1 wzór dokumentacji jest bez znaków początku i końca komentarza, gdyż te są różne dla</em></p>
+<p><em>różnych języków programowania</em></p>
+<p>Listing 1. Wzór dokumentacji funkcji (liczba gwiazdek dowolna)</p>
+<p>**********************************************</p>
+<p>nazwa funkcji:</p>
+<p>&lt;nazwa&gt;</p>
+<p>opis funkcji:</p>
+<p>&lt;krótki opis co robi funkcja&gt;</p>
+<p>parametry:</p>
+<p>&lt;nazwa parametru - opis &gt;</p>
+<p>zwracany typ i opis: &lt;nazwa typu i opis co jest zwracane&gt;</p>
+<p>autor: &lt;numer zdającego&gt;</p>
+<p>***********************************************</p>
+<hr class="page-break" data-page="Strona 5" />
+<p>Wykonaj zrzuty ekranu dokumentujące uruchomienie aplikacji utworzonych podczas egzaminu. Zrzuty</p>
+<p>powinny obejmować cały obszar ekranu monitora z widocznym paskiem zadań. Jeżeli aplikacja uruchamia</p>
+<p>się, na zrzucie należy umieścić okno z wynikiem działania programu oraz otwarte środowisko</p>
+<p>programistyczne z projektem lub okno terminala z kompilacją projektu. Jeżeli aplikacja nie uruchamia się</p>
+<p>z powodu błędów kompilacji, należy na zrzucie umieścić okno ze spisem błędów i widocznym otwartym</p>
+<p>środowiskiem programistycznym. Należy wykonać tyle zrzutów, ile interakcji podejmuje aplikacja (np. stan</p>
+<p>początkowy, po wpisaniu numeru i opuszczeniu kontrolki, po wciśnięciu przycisku OK itd.) Wymagane zrzuty</p>
+<p>ekranu:</p>
+<ul>
+<li> Aplikacja konsolowa – dokumentująca interakcje dowolna liczba zrzutów o nazwach konsola1, konsola2, ...</li>
+<li> Aplikacja desktopowa – dokumentująca interakcje dowolna liczba zrzutów o nazwach desktop1, desktop2, ... W edytorze tekstu pakietu biurowego utwórz plik z dokumentacją i nazwij go egzamin. Dokument powinien zawierać podpisane zrzuty ekranu oraz zapisane informacje dotyczące narzędzi, z których korzystał zdający podczas egzaminu:</li>
+<li> Nazwę systemu operacyjnego</li>
+<li> Nazwy środowisk programistycznych</li>
+<li> Nazwy języków programowania Zrzuty ekranu i dokument umieść w podfolderze dokumentacja.</li>
+</ul>
+<div class="alert"><strong>UWAGA:</strong> Nagraj płytę z rezultatami pracy. W folderze z numerem zdającego powinny się znajdować</div>
+<p><em>podfoldery desktopowa, dokumentacja, konsola. W folderze desktopowa: spakowany cały projekt aplikacji</em></p>
+<p><em>desktopowej, pliki ze źródłami interfejsu i logiki, opcjonalnie plik uruchomieniowy. W folderze dokumentacja:</em></p>
+<p><em>pliki ze zrzutami oraz plik egzamin. W folderze konsola: spakowany cały projekt aplikacji konsolowej, pliki</em></p>
+<p><em>źródłowe, opcjonalnie plik uruchomieniowy. Opisz płytę swoim numerem zdającego i pozostaw na</em></p>
+<p><em>stanowisku, zapakowaną w pudełku wraz z arkuszem egzaminacyjnym.</em></p>
+<p>Czas przeznaczony na wykonanie zadania wynosi 180 minut.</p>
+<p>Ocenie będą podlegać 4 rezultaty</p>
+<ul>
+<li> implementacja, kompilacja, uruchomienie programu,</li>
+<li> aplikacja konsolowa,</li>
+<li> aplikacja desktopowa,</li>
+<li> dokumentacja aplikacji.</li>
+<hr class="page-break" data-page="Strona 6" />
+<hr class="page-break" data-page="Strona 7" />
+<hr class="page-break" data-page="Strona 8" />
+</ul>
+<p>Wypełnia zdający</p>
+<p>Do arkusza egzaminacyjnego dołączam płytę CD opisaną numerem PESEL</p>
+<p><strong>której jakość nagrania została przeze mnie sprawdzona.</strong></p>
+<p><em>Wypełnia Przewodniczący ZN</em></p>
+<p><strong>Potwierdzam, że do arkusza egzaminacyjnego dołączona jest płyta CD, opisana numerem PESEL zdającego.</strong></p>
+<p><em>……………………………........…</em></p>
+<p><em>Czytelny podpis Przewodniczącego ZN</em></p>
+<p><strong>,</strong></p>
+</div>

@@ -1,0 +1,52 @@
+:root{
+  --ink:#000000;
+  --paper:#ffff00;
+  --cream:#00ff00;
+  --solar:#ff00ff;
+  --pop:#00ffff;
+  --electric:#ff0000;
+  --mint:#ffff00;
+  --tangerine:#ff8000;
+  --lav:#c0c0c0;
+  --border:#ff00ff;
+  --text:#0000ff;
+  --muted:#ff00ff;
+  --ugly1:#ff00ff;
+  --ugly2:#00ff00;
+  --ugly3:#ffff00;
+  --ugly4:#00ffff;
+  --ugly5:#ff0000;
+  --mono:'Courier New', monospace;
+  --sans:'Comic Sans MS', 'Comic Neue', cursive;
+  --display:'Impact', 'Arial Black', fantasy;
+}
+*{box-sizing:border-box; cursor: crosshair !important}
+html,body{
+  margin:0; padding:0;
+  background: repeating-linear-gradient(45deg, #ffff00 0 12px, #ff00ff 12px 24px, #00ffff 24px 36px, #00ff00 36px 48px) !important;
+  background-attachment: fixed !important;
+  color:#000;
+  font-family:'Comic Sans MS','Comic Neue',cursive !important;
+  -webkit-font-smoothing:none;
+  image-rendering:pixelated;
+  overflow-x:hidden;
+}
+a{color:#ff0000 !important; text-decoration: underline wavy #00ffff 3px !important}
+a:visited{color:#800080 !important}
+button{font-family:'Comic Sans MS',cursive !important; cursor: progress !important}
+#root{
+  min-height:100vh; display:flex; flex-direction:column;
+  background: repeating-conic-gradient(from 0deg at 50% 50%, #ffff00 0deg 30deg, #ff00ff 30deg 60deg, #00ffff 60deg 90deg, #00ff00 90deg 120deg);
+  border:8px ridge #ff00ff;
+  filter: contrast(1.15) saturate(1.8);
+}
+::selection{background:#ff0000; color:#ffff00; text-shadow:2px 2px 0 #00ffff}
+/* forced ugly scrollbar */
+::-webkit-scrollbar{width:18px; background:#00ffff; border:3px ridge #ff00ff}
+::-webkit-scrollbar-thumb{background: linear-gradient(#ff0000,#ffff00,#00ff00); border:3px outset #fff}
+/* blink */
+@keyframes ugly-blink{0%,49%{opacity:1} 50%,100%{opacity:0}}
+@keyframes ugly-wiggle{0%{transform:rotate(-1deg) scale(1)} 50%{transform:rotate(1deg) scale(1.02)} 100%{transform:rotate(-1deg) scale(1)}}
+@keyframes ugly-rainbow{0%{filter:hue-rotate(0deg)} 100%{filter:hue-rotate(360deg)}}
+@keyframes ugly-marquee{from{transform:translateX(100%)} to{transform:translateX(-100%)}}
+@keyframes ugly-shake{0%,100%{transform:translateX(0)} 25%{transform:translateX(-3px) rotate(-1deg)} 75%{transform:translateX(3px) rotate(1deg)}}

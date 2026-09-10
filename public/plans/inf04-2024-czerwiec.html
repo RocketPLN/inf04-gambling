@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INF.04 – czerwiec 2024 – egzamin praktyczny – HTML</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0; font-family:Inter,system-ui,sans-serif; background:#f8fafc; color:#0f172a; line-height:1.6}
+a{color:#4f46e5}
+.header{position:sticky; top:0; z-index:10; background:rgba(255,255,255,.92); backdrop-filter:blur(10px); border-bottom:1px solid #e2e8f0; padding:14px 20px; display:flex; justify-content:space-between; align-items:center; gap:16px}
+.header h1{margin:0; font-size:17px}
+.header p{margin:2px 0 0; font-size:13px; color:#64748b}
+.badge{background:#eef2ff; color:#4338ca; padding:4px 10px; border-radius:999px; font-size:12px; font-weight:700}
+.layout{max-width:1280px; margin:0 auto; padding:18px 20px 40px; display:grid; grid-template-columns:1fr 360px; gap:18px; align-items:start}
+@media(max-width:980px){.layout{grid-template-columns:1fr}}
+.main{background:white; border:1px solid #e2e8f0; border-radius:14px; overflow:hidden}
+.main-head{padding:18px 20px; border-bottom:1px solid #e2e8f0; background:linear-gradient(180deg,#fff,#f8fafc)}
+.main-head h2{margin:0; font-size:21px}
+.meta{font-size:13px; color:#64748b; margin-top:6px}
+.actions{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px}
+.actions a{font-size:13px; font-weight:700; padding:8px 12px; border-radius:10px; text-decoration:none; border:1px solid #e2e8f0; background:white; color:#0f172a}
+.actions a.primary{background:#0f172a; color:white; border-color:#0f172a}
+.content{padding:24px}
+.content h2{margin:32px 0 14px; font-size:20px; font-weight:800; letter-spacing:-.4px; color:#0f172a; background:linear-gradient(90deg,#eef2ff,#f8fafc); border:1px solid #e0e7ff; border-left:4px solid #6366f1; padding:10px 14px; border-radius:10px}
+.content h2:first-child{margin-top:6px}
+.content h3{margin:26px 0 12px; font-size:16px; font-weight:700; color:#1e293b; background:#f8fafc; border:1px solid #e2e8f0; border-left:4px solid #06b6d4; padding:10px 12px; border-radius:10px}
+.content h4{margin:18px 0 8px; font-size:14px; font-weight:700; color:#334155; text-transform:uppercase; letter-spacing:.04em; border-bottom:1px solid #f1f5f9; padding-bottom:6px}
+.content p{margin:10px 0; font-size:14.5px; line-height:1.68; color:#1e293b}
+.content .alert{background:#fffbeb; border:1px solid #fde68a; border-left:4px solid #f59e0b; padding:14px 16px; border-radius:12px; font-size:13.5px; margin:18px 0; box-shadow:0 1px 3px rgba(245,158,11,.08)}
+.content ol, .content ul{margin:12px 0; padding-left:24px; background:white; border:1px solid #f1f5f9; border-radius:10px; padding-top:10px; padding-bottom:10px}
+.content li{margin:6px 0; font-size:14px; line-height:1.6; color:#1e293b}
+.content li::marker{color:#6366f1; font-weight:700}
+.content figure{margin:18px 0; border:1px solid #e2e8f0; border-radius:14px; overflow:hidden; background:#f8fafc; box-shadow:0 4px 12px rgba(0,0,0,.06)}
+.content figure img{width:100%; height:auto; display:block; background:white}
+.content figcaption{padding:12px 16px; font-size:13px; color:#475569; background:#f8fafc; border-top:1px solid #e2e8f0; text-align:center; font-style:italic}
+.content code{background:#f1f5f9; padding:2px 6px; border-radius:6px; font-size:13px; border:1px solid #e2e8f0}
+.content .page-break{margin:32px 0; border:none; border-top:2px dashed #cbd5e1; position:relative}
+.content .page-break::after{content:attr(data-page); position:absolute; top:-10px; left:50%; transform:translateX(-50%); background:#f8fafc; padding:2px 10px; font-size:11px; font-weight:700; color:#64748b; letter-spacing:.06em; border:1px solid #e2e8f0; border-radius:999px}
+.scoring{position:sticky; top:76px; background:white; border:1px solid #e2e8f0; border-radius:14px; overflow:hidden}
+.scoring-head{padding:16px; border-bottom:1px solid #e2e8f0}
+.scoring-head h3{margin:0; font-size:16px}
+.scoring-head p{margin:4px 0 0; font-size:13px; color:#64748b}
+.score-group{border:1px solid #e2e8f0; border-radius:12px; margin-bottom:10px; overflow:hidden}
+.score-group summary{list-style:none; display:flex; justify-content:space-between; align-items:center; padding:11px 12px; cursor:pointer; font-weight:700; font-size:13px; background:#f8fafc}
+.score-group[open] summary{background:#eef2ff}
+.criteria{padding:8px 10px; display:flex; flex-direction:column; gap:8px}
+.criterion{display:flex; gap:10px; align-items:flex-start; padding:10px; border-radius:10px; border:1px solid #f1f5f9}
+.criterion .code{font-family:monospace; font-size:11px; font-weight:700; color:#4338ca; background:#eef2ff; padding:2px 6px; border-radius:6px}
+.criterion p{margin:0; font-size:13px; line-height:1.45}
+.pts{font-size:12px; font-weight:700; color:#059669; background:#ecfdf5; padding:3px 8px; border-radius:999px; border:1px solid #a7f3d0; white-space:nowrap}
+.scoring-foot{padding:12px; background:#f8fafc; border-top:1px solid #e2e8f0; display:flex; flex-direction:column; gap:8px}
+.footer{text-align:center; padding:20px; font-size:13px; color:#64748b}
+</style>
+</head>
+<body>
+<div class="header">
+  <div>
+    <h1>INF.04 – czerwiec 2024 – egzamin praktyczny <span class="badge">PDF → HTML</span></h1>
+    <p>Gra w kości – konsola + mobilna (rzeczywisty arkusz) • 2024 • czerwiec • Python / C++ / C#, MAUI / Android • 180 min</p>
+  </div>
+  <a href="/" style="font-size:13px; font-weight:700; color:#4f46e5; text-decoration:none">← Portal INF.04</a>
+</div>
+<div class="layout">
+  <div class="main">
+    <div class="main-head">
+      <h2>Treść arkusza – transformacja PDF na semantyczny HTML</h2>
+      <div class="meta">Oryginał: <a href="https://arkusze.pl/zawodowy/inf04-2024-czerwiec-egzamin-zawodowy-praktyczny.pdf" target="_blank">PDF arkusz</a> • Zasady: <a href="https://arkusze.pl/zawodowy/inf04-2024-czerwiec-egzamin-zawodowy-praktyczny-zasady-oceniania.pdf" target="_blank">PDF zasady</a> • Obrazy wyciągnięte z PDF i osadzone jako &lt;img&gt; • Nie jest to 1:1 dump, tylko transformacja na odpowiedni HTML</div>
+      <div class="actions">
+        <a class="primary" href="https://arkusze.pl/zawodowy/inf04-2024-czerwiec-egzamin-zawodowy-praktyczny.pdf" target="_blank">Otwórz oryginalny PDF</a>
+        <a href="https://arkusze.pl/zawodowy/inf04-2024-czerwiec-egzamin-zawodowy-praktyczny-zasady-oceniania.pdf" target="_blank">Zasady PDF</a>
+        <span style="color:#64748b; font-size:13px">Brak dodatkowych ZIP</span>
+        <a href="inf04-2024-czerwiec.fragment.html" target="_blank">Fragment HTML</a>
+      </div>
+    </div>
+    <div class="content">
+<div class="transformed-content">
+<p><strong>Nazwa kwalifikacji: Projektowanie, programowanie i testowanie aplikacji</strong></p>
+<p><strong>Symbol kwalifikacji: INF.04</strong></p>
+<p><strong>Numer zadania: 01</strong></p>
+<p><strong>Wersja arkusza: SG</strong></p>
+<p>Wypełnia zdający</p>
+<p>Numer PESEL zdającego*</p>
+<p><strong>Czas trwania egzaminu: 180 minut.</strong></p>
+<p>INF.04-01-24.06-SG</p>
+<h2>EGZAMIN ZAWODOWY</h2>
+<p><strong>Rok 2024</strong></p>
+<h2>CZĘŚĆ PRAKTYCZNA</h2>
+<h2>Instrukcja dla zdającego</h2>
+<ol>
+<li>Na pierwszej stronie arkusza egzaminacyjnego wpisz w oznaczonym miejscu swój numer PESEL i naklej naklejkę z numerem PESEL i z kodem ośrodka.</li>
+<li>Na KARCIE OCENY w oznaczonym miejscu przyklej naklejkę z numerem PESEL oraz wpisz:</li>
+</ol>
+<ul>
+<li>swój numer PESEL*,</li>
+<li>oznaczenie kwalifikacji,</li>
+<li>numer zadania,</li>
+<li>numer stanowiska.</li>
+</ul>
+<ol>
+<li>Sprawdź, czy arkusz egzaminacyjny zawiera 7 stron i nie zawiera błędów. Ewentualny brak stron lub inne usterki zgłoś przez podniesienie ręki przewodniczącemu zespołu nadzorującego.</li>
+<li>Zapoznaj się z treścią zadania oraz stanowiskiem egzaminacyjnym. Masz na to 10 minut. Czas ten nie jest wliczany do czasu trwania egzaminu.</li>
+<li>Czas rozpoczęcia i zakończenia pracy zapisze w widocznym miejscu przewodniczący zespołu nadzorującego.</li>
+<li>Wykonaj samodzielnie zadanie egzaminacyjne. Przestrzegaj zasad bezpieczeństwa i organizacji pracy.</li>
+<li>Po zakończeniu wykonania zadania pozostaw arkusz egzaminacyjny z rezultatami oraz KARTĘ OCENY na swoim stanowisku lub w miejscu wskazanym przez przewodniczącego zespołu nadzorującego.</li>
+<li>Po uzyskaniu zgody zespołu nadzorującego możesz opuścić salę/miejsce przeprowadzania egzaminu. Powodzenia! * w przypadku braku numeru PESEL – seria i numer paszportu lub innego dokumentu potwierdzającego tożsamość Układ graficzny © CKE 2023 Arkusz zawiera informacje prawnie chronione do momentu rozpoczęcia egzaminu Miejsce na naklejkę z numerem PESEL i z kodem ośrodka</li>
+</ol>
+<h4>PODSTAWA PROGRAMOWA</h4>
+<p><strong>2019</strong></p>
+<figure><img src="/plans/img/inf04-2024-czerwiec_p0_img0.png" alt="Obraz z arkusza – strona 1" loading="lazy" /><figcaption>Obraz z arkusza – strona 1 (konwersja PDF → HTML, oryginał w PDF)</figcaption></figure>
+<hr class="page-break" data-page="Strona 2" />
+<h2>Zadanie egzaminacyjne</h2>
+<div class="alert"><strong>UWAGA:</strong> katalog z rezultatami pracy oraz płytę należy opisać numerem zdającego, którym został podpisany</div>
+<p><em>arkusz, czyli numerem PESEL, lub w przypadku jego braku, numerem paszportu. Dalej w zadaniu numer ten</em></p>
+<p><strong>jest nazwany numerem zdającego.</strong></p>
+<p><strong>Wykonaj aplikację konsolową oraz mobilną według wskazań. Wykonaj dokumentację zgodnie z opisem</strong></p>
+<p><strong>w części III instrukcji do zadania. Wykorzystaj konto Egzamin bez hasła.</strong></p>
+<p>Utwórz folder i nazwij go numerem zdającego. W folderze utwórz podfoldery: konsolowa, mobilna,</p>
+<p><strong>dokumentacja. Po wykonaniu każdej aplikacji, jej pełny kod (cały folder projektu) spakuj do archiwum.</strong></p>
+<p>Następnie pozostaw w podfolderze jedynie spakowane archiwum, skopiowane z projektu pliki źródłowe,</p>
+<p>których treść była modyfikowana oraz, jeżeli istnieje, plik wykonywalny.</p>
+<h3>Część I. Aplikacja konsolowa</h3>
+<p>Napisz program implementujący logikę gry w kości. Do gry</p>
+<p>stosowane są sześcienne kostki z oczkami od 1 do 6. Działanie</p>
+<p>programu przedstawia obraz 1.</p>
+<h4>Działanie programu:</h4>
+<ol>
+<li>Pobiera z klawiatury liczbę kostek do rzucenia z przedziału od 3 do 10. Punkt 1 jest powtarzany dopóki podana liczba nie należy do przedziału &lt;3, 10&gt; - obraz 2.</li>
+<li>Losuje tyle liczb całkowitych z przedziału od 1 do 6, ile podano z klawiatury, co odpowiada rzutom kośćmi</li>
+<li>Wypisuje ile wyrzucono oczek na każdej kostce w formacie „Kostka &lt;numer-kostki&gt;: &lt;liczba-oczek&gt;”</li>
+<li>Liczy punkty i je wyświetla zgodnie z obrazem 1.</li>
+<li>Pyta grającego czy powtórzyć grę, gdy podano:</li>
+</ol>
+<ul>
+<li> ‘t’: idź do punktu 2</li>
+<li> ‘n’: skończ działanie programu.</li>
+</ul>
+<h4>Zasada liczenia punktów za rzuty kostką:</h4>
+<ul>
+<li> Punkty są sumą oczek, gdy dana liczba została wylosowana dwa razy lub więcej.</li>
+<li> Przykład 1 z obrazu 1: dla wylosowanych oczek: 1, 5, 2, 2, 5 uzyskano 14 punktów. Liczba 1 jest pomijana, została tylko raz wylosowana. Liczby 2 oraz 5 zostały dwa razy wylosowane zatem suma 2 + 2 i 5 + 5 wynosi 14 punktów.</li>
+<li> Przykład 2: wylosowano 2, 1, 2, 3, 2. Oczka 1, 3 zostały wylosowane tylko raz, więc są pomijane, 2 zostało wylosowane trzy razy, zatem 2 + 2 + 2 jest równe 6 punktom.</li>
+</ul>
+<h4>Obraz 1. Działanie aplikacji konsolowej</h4>
+<figure><img src="/plans/img/inf04-2024-czerwiec_p1_img0.png" alt="Obraz z arkusza – strona 2" loading="lazy" /><figcaption>Obraz z arkusza – strona 2 (konwersja PDF → HTML, oryginał w PDF)</figcaption></figure>
+<hr class="page-break" data-page="Strona 3" />
+<h4>Założenia do programu:</h4>
+<ul>
+<li> Program wykonywany w konsoli</li>
+<li> Zastosowany obiektowy język programowania zgodny z zainstalowanym na stanowisku egzaminacyjnym: C++ lub C#, lub Java, lub Python</li>
+<li> Dowolne podejście: strukturalne lub obiektowe</li>
+<li> Wynik pojedynczego losowania kostek jest zapisywany do tablicy lub kolekcji. Dla przykładu 1 z obrazu 1 do tablicy zostały zapisane liczby 1, 5, 2, 2, 5</li>
+<li> Program zawiera funkcję / metodę losującą liczby z przedziału od 1 do 6 (rzucającą wszystkimi kośćmi). W przypadku podejścia strukturalnego funkcja nie może korzystać ze zmiennych globalnych</li>
+<li> Program zawiera funkcję / metodę liczącą punkty. Suma punktów jest zwracana z funkcji / metody. W przypadku podejścia strukturalnego funkcja nie może korzystać ze zmiennych globalnych</li>
+<li> Program powinien podejmować zrozumiałą komunikację z użytkownikiem</li>
+<li> W programie może być zastosowane angielskie lub polskie nazewnictwo zmiennych i funkcji / metod</li>
+<li> Program powinien być zapisany czytelnie, z zachowaniem zasad czystego formatowania kodu, należy stosować znaczące nazwy zmiennych, funkcji / metod</li>
+<li> Dokumentację aplikacji należy utworzyć zgodnie z opisem w części III treści zadania. Kod aplikacji przygotuj do nagrania na płytę. W podfolderze konsolowa powinno znaleźć się archiwum całego projektu o nazwie konsola.zip, skopiowany z projektu plik z kodem źródłowym programu oraz plik wykonywalny, jeżeli istnieje.</li>
+</ul>
+<h4>Obraz 2. Niepoprawna i poprawna</h4>
+<p>liczba kostek</p>
+<figure><img src="/plans/img/inf04-2024-czerwiec_p2_img0.png" alt="Obraz z arkusza – strona 3" loading="lazy" /><figcaption>Obraz z arkusza – strona 3 (konwersja PDF → HTML, oryginał w PDF)</figcaption></figure>
+<hr class="page-break" data-page="Strona 4" />
+<h3>Część II. Aplikacja mobilna</h3>
+<p>Za pomocą środowiska programistycznego dostępnego na stanowisku egzaminacyjnym wykonaj aplikację</p>
+<p><em>mobilną do gry w kości. Do zbudowania aplikacji zastosuj obrazy z archiwum pliki1.zip zabezpieczonego</em></p>
+<p><strong>hasłem Gra^Kosci5</strong></p>
+<h4>Obraz 3.</h4>
+<p>Środowisko .NET MAUI, stan początkowy.</p>
+<p>Emulacja Pixel 5</p>
+<h4>Obraz 4.</h4>
+<p>Środowisko Android Studio, stan początkowy.</p>
+<p>Emulacja Pixel 5</p>
+<h4>Obraz 5.</h4>
+<p>Po wciśnięciu przycisku RZUĆ KOŚĆMI</p>
+<h4>Obraz 6.</h4>
+<p>Po wciśnięciu przycisku</p>
+<p>RESETUJ WYNIK</p>
+<p>Stan początkowy aplikacji został przedstawiony na obrazach 3 i 4. Interakcje w aplikacji zostały</p>
+<p>przedstawione na obrazach 5 i 6. W zależności od zastosowanego środowiska programistycznego oraz</p>
+<p>emulowanego systemu widok może nieznacznie różnić się od przedstawionego.</p>
+<figure><img src="/plans/img/inf04-2024-czerwiec_p3_img0.png" alt="Obraz z arkusza – strona 4" loading="lazy" /><figcaption>Obraz z arkusza – strona 4 (konwersja PDF → HTML, oryginał w PDF)</figcaption></figure>
+<figure><img src="/plans/img/inf04-2024-czerwiec_p3_img1.png" alt="Obraz z arkusza – strona 4" loading="lazy" /><figcaption>Obraz z arkusza – strona 4 (konwersja PDF → HTML, oryginał w PDF)</figcaption></figure>
+<figure><img src="/plans/img/inf04-2024-czerwiec_p3_img2.png" alt="Obraz z arkusza – strona 4" loading="lazy" /><figcaption>Obraz z arkusza – strona 4 (konwersja PDF → HTML, oryginał w PDF)</figcaption></figure>
+<figure><img src="/plans/img/inf04-2024-czerwiec_p3_img3.png" alt="Obraz z arkusza – strona 4" loading="lazy" /><figcaption>Obraz z arkusza – strona 4 (konwersja PDF → HTML, oryginał w PDF)</figcaption></figure>
+<hr class="page-break" data-page="Strona 5" />
+<h4>Elementy aplikacji:</h4>
+<ul>
+<li> Napis (etykieta) z tytułem gry: „Gra w kości. Autor ”, dalej wstawiony numer zdającego</li>
+<li> Przycisk o treści „RZUĆ KOŚĆMI”</li>
+<li> Pięć obrazów w stanie początkowym wypełnionych grafiką question.jpg</li>
+<li> Napis „Wynik tego losowania: ”</li>
+<li> Napis „Wynik gry: ”</li>
+<li> Przycisk o treści „RESETUJ WYNIK”</li>
+<li> Rozmieszczenie elementów zgodne z obrazami 3 i 4</li>
+</ul>
+<h4>Działanie aplikacji:</h4>
+<ul>
+<li> Do wykonania aplikacji można wykorzystać fragmenty kodu z aplikacji konsolowej. Dla uproszczenia aplikacji, gra odbywa się zawsze na pięciu kościach</li>
+<li> Po wciśnięciu przycisku „RZUĆ KOŚĆMI” (obraz 5):</li>
+<li> Losowanych jest 5 liczb z zakresu od 1 do 6, które są wyświetlone w postaci pięciu obrazów kości</li>
+<li> Obliczana jest suma punktów dla rzutu kośćmi zgodnie z algorytmem podanym w opisie aplikacji konsolowej oraz wynik wyświetlany jest w napisie z wynikiem losowania</li>
+<li> Wynik gry jest powiększany o obliczony wynik rzutu i wyświetlany w napisie z wynikiem gry</li>
+<li> Po wciśnięciu przycisku „RESETUJ WYNIK” (obraz 6):</li>
+<li> Pięć obrazów kości wypełnione zostaje grafiką question.jpg</li>
+<li> Wynik całej gry jest resetowany do wartości 0</li>
+<li> W napisach dotyczących wyniku losowania i wyniku gry jest zapisana wartość 0</li>
+</ul>
+<h4>Założenia aplikacji:</h4>
+<ul>
+<li> Interfejs użytkownika zapisany za pomocą języka znaczników wspieranego w danym środowisku (np. XAML, XML)</li>
+<li> Zastosowany rozkład liniowy wertykalny (Linear / Stack lub inny o tej idei), z zagłębionym rozkładem liniowym horyzontalnym dla pięciu obrazów</li>
+<li> Kolory tła</li>
+<li> Rozkład wertykalny lub strona: Beige (#F5F5DC)</li>
+<li> Napis z tytułem strony: Brown (#A52A2A)</li>
+<li> Oba przyciski: Chocolate (#D2691E)</li>
+<li> Rozkład horyzontalny: biały</li>
+<li> Biały kolor czcionki dla napisu z tytułem gry</li>
+<li> Rozmiar i marginesy dla pięciu obrazów należy dobrać tak, aby wszystkie obrazy były widoczne w całości, nie stykały się ze sobą oraz wypełniały całą szerokość rozkładu. Dla emulacji Pixel5 z obrazu 3 zastosowano wysokość obrazu 60 i marginesy 9</li>
+<li> Marginesy dla pozostałych kontrolek i elementów strony należy dobrać tak, aby kontrolki nie przylegały do siebie w pionie i w poziomie. Dla emulacji Pixel5 z obrazu 3 zastosowano marginesy górny i dolny 10</li>
+<li> Rozmiar czcionki napisu z tytułem gry jest największy względem innych napisów</li>
+<li> Napisy z wynikami oraz przyciski są wyśrodkowane, napis z tytułem oraz rozkład horyzontalny wypełniają w poziomie całą szerokość strony</li>
+<li> Aplikacja powinna być zapisana czytelnie, z zachowaniem zasad czystego formatowania kodu, należy stosować znaczące nazwy zmiennych i funkcji. Podejmij próbę kompilacji i emulacji aplikacji. Informacje dotyczące dokumentacji i zrzutów ekranowych umieszczono w części III zadania.</li>
+<hr class="page-break" data-page="Strona 6" />
+</ul>
+<p>Kod aplikacji przygotuj do nagrania na płytę. W podfolderze mobilna powinno znaleźć się archiwum całego</p>
+<p><em>projektu o nazwie mobilna.zip, skopiowane z projektu plik (lub pliki) z kodem źródłowym interfejsu</em></p>
+<p>użytkownika (XAML lub XML) oraz plik źródłowy kodu skojarzonego z interfejsem użytkownika.</p>
+<h3>Część III. Dokumentacja aplikacji konsolowej</h3>
+<p><strong>Wykonaj dokumentację do aplikacji utworzonych na egzaminie. W kodzie źródłowym aplikacji konsolowej za</strong></p>
+<p>pomocą komentarza utwórz nagłówek wybranej funkcji (metody) według wzoru z listingu 1. Komentarz</p>
+<p>powinien znaleźć się nad lub pod nazwą funkcji. W miejscu nawiasów &lt;&gt; należy podać odpowiednie opisy.</p>
+<div class="alert"><strong>UWAGA:</strong> Dokumentację należy umieścić w komentarzu (wieloliniowym lub kilku jednoliniowych). Znajdujący</div>
+<p><em>się w listingu 1 wzór dokumentacji jest bez znaków początku i końca komentarza, gdyż te są różne dla</em></p>
+<p><em>różnych języków programowania.</em></p>
+<p>Listing 1. Wzór dokumentacji funkcji (liczba gwiazdek dowolna)</p>
+<p>************************************************</p>
+<p>nazwa:</p>
+<p>&lt;tu wstaw nazwę funkcji / metody&gt;</p>
+<p>opis:</p>
+<p>&lt;co wykonuje funkcja / metoda?&gt;</p>
+<p>parametry:</p>
+<p>&lt;opis parametru1, lub „brak”&gt;</p>
+<p>&lt;opis parametru2&gt;</p>
+<p>...</p>
+<p>zwracany typ i opis:&lt;nazwa typu i opis co jest zwracane lub „brak”&gt;</p>
+<p>autor:</p>
+<p>&lt;numer zdającego&gt;</p>
+<p>************************************************</p>
+<p>Wykonaj zrzuty ekranu dokumentujące uruchomienie aplikacji utworzonych podczas egzaminu. Zrzuty</p>
+<p>powinny obejmować cały obszar ekranu monitora z widocznym paskiem zadań. Jeżeli aplikacja uruchamia</p>
+<p>się, na zrzucie należy umieścić okno z wynikiem działania programu oraz otwarte środowisko</p>
+<p>programistyczne z projektem lub okno terminala z kompilacją projektu. Jeżeli aplikacja nie uruchamia się</p>
+<p>z powodu błędów kompilacji, należy na zrzucie umieścić okno ze spisem błędów i widocznym otwartym</p>
+<p>środowiskiem programistycznym. Wykonać należy tyle zrzutów, ile interakcji podejmuje aplikacja.</p>
+<p>Wymagane zrzuty ekranu:</p>
+<ul>
+<li> Aplikacja konsolowa – dowolna liczba zrzutów nazwanych konsola1, konsola2, ... (np. stan początkowy, błędnie i poprawnie podana liczba kostek, kilka losowań, opcje ‘t’ oraz na końcu opcja ‘n’)</li>
+<li> Aplikacja mobilna – dowolna liczba zrzutów nazwanych mobile1, mobile2, ... (np. stan początkowy, po wciśnięciu przycisku RZUĆ KOŚĆMI, po wciśnięciu przycisku „RESETUJ WYNIK”) W edytorze tekstu pakietu biurowego utwórz plik z dokumentacją i nazwij go egzamin. Dokument powinien zawierać informacje:</li>
+<li> Nazwę systemu operacyjnego, na którym pracował zdający</li>
+<li> Nazwy środowisk programistycznych, z których zdający korzystał na egzaminie</li>
+<li> Nazwę emulatora dla aplikacji mobilnej</li>
+<li> Nazwy użytych języków programowania Zrzuty ekranu i dokument umieść w podfolderze dokumentacja.</li>
+</ul>
+<div class="alert"><strong>UWAGA:</strong> Nagraj płytę z rezultatami pracy. W folderze z numerem zdającego powinny się znajdować</div>
+<p><em>podfoldery: dokumentacja, konsolowa, mobilna. W folderze dokumentacja: pliki ze zrzutami oraz plik</em></p>
+<p><em>egzamin. W folderze konsolowa: spakowany cały projekt aplikacji konsolowej, pliki źródłowe, opcjonalnie plik</em></p>
+<p><em>wykonywalny. W folderze mobilna: spakowany cały projekt aplikacji mobilnej, pliki z kodem źródłowym</em></p>
+<p><em>interfejsu i logiki. Po nagraniu płyty sprawdź poprawność nagrania. Opisz płytę numerem zdającego</em></p>
+<p><em>i pozostaw na stanowisku, zapakowaną w pudełku wraz z arkuszem egzaminacyjnym.</em></p>
+<hr class="page-break" data-page="Strona 7" />
+<p>Czas przeznaczony na wykonanie zadania wynosi 180 minut.</p>
+<p>Ocenie będą podlegać 4 rezultaty</p>
+<ul>
+<li> Implementacja, kompilacja, uruchomienie programu,</li>
+<li> Aplikacja konsolowa,</li>
+<li> Aplikacja mobilna,</li>
+<li> Dokumentacja aplikacji.</li>
+<hr class="page-break" data-page="Strona 8" />
+</ul>
+<p>Wypełnia zdający</p>
+<p>Do arkusza egzaminacyjnego dołączam płytę CD opisaną numerem PESEL</p>
+<p><strong>której jakość nagrania została przeze mnie sprawdzona.</strong></p>
+<p><em>Wypełnia Przewodniczący ZN</em></p>
+<p><strong>Potwierdzam, że do arkusza egzaminacyjnego dołączona jest płyta CD, opisana numerem PESEL zdającego.</strong></p>
+<p><em>……………………………........…</em></p>
+<p><em>Czytelny podpis Przewodniczącego ZN</em></p>
+<p><strong>,</strong></p>
+</div>
+      <div style="margin-top:18px; padding:12px; background:#f8fafc; border:1px dashed #cbd5e1; border-radius:10px; font-size:13px; color:#475569">
+        <strong>Transformacja:</strong> PDF sparsowano przez <code>PyMuPDF dict</code> (detekcja bold/italic jako nagłówki) + <code>get_images</code> → PNG w <code>img/</code> → semantyczny HTML (<code>h2/h3/ol/ul/figure</code>), nie surowy dump tekstu.
+      </div>
+    </div>
+  </div>
+  <aside class="scoring">
+    <div class="scoring-head">
+      <h3>Punktacja CKE – na boku</h3>
+      <p>Razem 35 pkt. Sticky, widoczna przy scrollu.</p>
+    </div>
+    <div style="padding:10px"><details class="score-group" open><summary><span>R1 – Rezultat 1: Implementacja, kompilacja, uruchomienie (7 pkt)</span><span style="color:#64748b">7 pkt</span></summary><div class="criteria"><div class="criterion"><span class="code">R1.1</span><p>Instrukcje w osobnych liniach, spacje, konwencja klamer</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R1.2</span><p>Wcięcia dla zagnieżdżeń</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R1.3</span><p>Znaczące nazwy funkcji/metod (PL/EN)</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R1.4</span><p>Znaczące nazwy zmiennych (nie x/foo/tab)</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R1.5</span><p>Typy pasujące do problemu / konwersja w Python</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R1.6</span><p>Próba kompilacji / interpretacji – zrzut</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R1.7</span><p>Komunikacja z użytkownikiem: monity, opisy</p><span class="pts">1 pkt</span></div></div></details><details class="score-group" open><summary><span>R2 – Rezultat 2: Aplikacja konsolowa (10 pkt)</span><span style="color:#64748b">10 pkt</span></summary><div class="criteria"><div class="criterion"><span class="code">R2.1</span><p>Program główny + 2 funkcje + tablica int 1..6</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R2.2</span><p>Funkcja licząca typu int z return</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R2.3</span><p>Pętla do wyświetlania i losowania</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R2.4</span><p>Pętla walidująca liczbę kostek / zgodę</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R2.5</span><p>Losowanie 1..6 tyle razy ile kostek</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R2.6</span><p>Punkty = suma oczek powtórzonych ≥2 razy</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R2.7</span><p>Kompiluje/uruchamia, walidacja 3..10</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R2.8</span><p>Wyświetla tyle liczb ile podał user</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R2.9</span><p>Wyświetla sumę punktów</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R2.10</span><p>&#x27;t&#x27; kontynuuje, &#x27;n&#x27; przerywa</p><span class="pts">1 pkt</span></div></div></details><details class="score-group" open><summary><span>R3 – Rezultat 3: Aplikacja mobilna (10 pkt)</span><span style="color:#64748b">10 pkt</span></summary><div class="criteria"><div class="criterion"><span class="code">R3.1</span><p>XML/XAML + Linear wertykalny + horyzontalny</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R3.2</span><p>Napis &#x27;Gra w kości. Autor &lt;nr&gt;&#x27;, 2 przyciski, 5x question.jpg</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R3.3</span><p>Kolory: Beige #F5F5DC, Brown #A52A2A, Chocolate #D2691E</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R3.4</span><p>Marginesy, wyśrodkowanie, fill/match_parent</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R3.5</span><p>Obsługa kliknięcia</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R3.6</span><p>Odwołania do kontrolek</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R3.7</span><p>RZUĆ KOŚĆMI – 5 obrazów</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R3.8</span><p>Punkty + wynik powiększony</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R3.9</span><p>RESET – zerowanie</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R3.10</span><p>Kompiluje w emulatorze, układ wg obr.3</p><span class="pts">1 pkt</span></div></div></details><details class="score-group" open><summary><span>R4 – Rezultat 4: Dokumentacja (8 pkt)</span><span style="color:#64748b">8 pkt</span></summary><div class="criteria"><div class="criterion"><span class="code">R4.1</span><p>Nagłówek funkcji: nazwa, parametry</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R4.2</span><p>Opis działania</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R4.3</span><p>Opis wartości zwracanej / void</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R4.4</span><p>Numer zdającego</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R4.5</span><p>Zrzut konsoli z paskiem zadań</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R4.6</span><p>Zrzut mobile z emulatora</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R4.7</span><p>Dokumentacja: OS, środowiska, języki</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R4.8</span><p>Plik egzamin.txt</p><span class="pts">1 pkt</span></div></div></details></div>
+    <div class="scoring-foot">
+      <a href="https://arkusze.pl/zawodowy/inf04-2024-czerwiec-egzamin-zawodowy-praktyczny.pdf" target="_blank" style="text-align:center; font-weight:700; padding:10px; background:#0f172a; color:white; border-radius:10px; text-decoration:none">PDF arkusz</a>
+      <a href="https://arkusze.pl/zawodowy/inf04-2024-czerwiec-egzamin-zawodowy-praktyczny-zasady-oceniania.pdf" target="_blank" style="text-align:center; font-weight:700; padding:10px; background:white; border:1px solid #e2e8f0; border-radius:10px; text-decoration:none; color:#0f172a">Zasady</a>
+      <span style="text-align:center; font-size:12px; color:#64748b">Brak ZIP dla tej sesji</span>
+    </div>
+  </aside>
+</div>
+<div class="footer">INF.04 Portal • Transformacja PDF → HTML (PyMuPDF) • Obrazy widoczne • Punktacja na boku</div>
+</body>
+</html>

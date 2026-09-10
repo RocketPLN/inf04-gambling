@@ -1,0 +1,185 @@
+<div class="transformed-content">
+<p><strong>Nazwa kwalifikacji: Projektowanie, programowanie i testowanie aplikacji</strong></p>
+<p><strong>Symbol kwalifikacji: INF.04</strong></p>
+<p><strong>Numer zadania: 01</strong></p>
+<p><strong>Wersja arkusza: SG</strong></p>
+<p>Wypełnia zdający</p>
+<p>Numer PESEL zdającego*</p>
+<p>Numer stanowiska</p>
+<p><strong>Czas trwania egzaminu: 180 minut</strong></p>
+<p>INF.04-01-26.01-SG</p>
+<h2>EGZAMIN ZAWODOWY</h2>
+<p><strong>Rok 2026</strong></p>
+<h2>CZĘŚĆ PRAKTYCZNA</h2>
+<h2>Instrukcja dla zdającego</h2>
+<ol>
+<li>Na pierwszej stronie arkusza egzaminacyjnego wpisz w oznaczonym miejscu swój numer PESEL*, numer stanowiska i naklej naklejkę** z numerem PESEL i z kodem ośrodka.</li>
+<li>Sprawdź, czy arkusz egzaminacyjny zawiera 6 stron i nie zawiera błędów. Ewentualny brak stron lub inne usterki zgłoś przez podniesienie ręki przewodniczącemu zespołu nadzorującego.</li>
+<li>Zapoznaj się z treścią zadania oraz stanowiskiem egzaminacyjnym. Masz na to 10 minut. Czas ten nie jest wliczany do czasu trwania egzaminu.</li>
+<li>Czas rozpoczęcia i zakończenia pracy zapisze w widocznym miejscu przewodniczący zespołu nadzorującego.</li>
+<li>Wykonaj samodzielnie zadanie egzaminacyjne. Przestrzegaj zasad bezpieczeństwa i organizacji pracy.</li>
+<li>Po zakończeniu wykonania zadania pozostaw arkusz egzaminacyjny z rezultatami wykonania zadania na swoim stanowisku lub w miejscu wskazanym przez przewodniczącego zespołu nadzorującego.</li>
+<li>Po uzyskaniu zgody zespołu nadzorującego możesz opuścić salę/miejsce przeprowadzania egzaminu. Powodzenia! * w przypadku braku numeru PESEL – seria i numer paszportu lub innego dokumentu potwierdzającego tożsamość ** w przypadku otrzymania naklejki Układ graficzny © CKE 2025 Arkusz zawiera informacje prawnie chronione do momentu rozpoczęcia egzaminu Miejsce na naklejkę z numerem PESEL i z kodem ośrodka</li>
+</ol>
+<h4>PODSTAWA PROGRAMOWA</h4>
+<p><strong>2019</strong></p>
+<figure><img src="/plans/img/inf04-2026-styczen_p0_img0.png" alt="Obraz z arkusza – strona 1" loading="lazy" /><figcaption>Obraz z arkusza – strona 1 (konwersja PDF → HTML, oryginał w PDF)</figcaption></figure>
+<hr class="page-break" data-page="Strona 2" />
+<h2>Zadanie egzaminacyjne</h2>
+<div class="alert"><strong>UWAGA:</strong> numer, którym został podpisany arkusz egzaminacyjny (PESEL lub w przypadku jego braku, numer</div>
+<p><strong>paszportu) jest w zadaniu nazywany numerem zdającego.</strong></p>
+<p><strong>Wykonaj aplikację konsolową oraz mobilną według wskazań. Wykonaj testy jednostkowe aplikacji</strong></p>
+<p><strong>konsolowej. Wykorzystaj konto Egzamin bez hasła. Do wykonania aplikacji mobilnej wykorzystaj</strong></p>
+<p><strong>umieszczone na pulpicie konta Egzamin obrazy z archiwum zad1.7z z hasłem: @Kosc6</strong></p>
+<p>Utwórz folder i nazwij go numerem zdającego. W folderze utwórz podfoldery: konsolowa, mobilna, testy.</p>
+<h3>Część I. Aplikacja konsolowa</h3>
+<p><em>Zaprogramuj klasę o nazwie Kosc implementującą logikę działania pojedynczej kości, wykorzystywanej</em></p>
+<p>później w grze w kości. Każda ściana kości zawiera unikatową liczbę oczek równą wartości wyrzuconej z</p>
+<p>zakresu 1 ÷ 6.</p>
+<h4>Założenia do programu:</h4>
+<ul>
+<li> Wykonywany w konsoli</li>
+<li> Zastosowany obiektowy język programowania zgodny z zainstalowanym na stanowisku egzaminacyjnym: C++ lub C#, lub Java, lub Python</li>
+<li> Zastosowane znaczące, angielskie lub polskie nazewnictwo zmiennych i funkcji</li>
+<li> Zapisany czytelnie, z zachowaniem zasad czystego formatowania kodu Klasa Kosc powinna zawierać:</li>
+<li> Pole ogólnodostępne, statyczne, przechowujące liczbę instancji klasy Kosc</li>
+<li> Pola ogólnodostępne, przechowujące:</li>
+<li> Nazwy plików przechowujących obrazy (kosc0.png, kosc1.png, kosc2.png, kosc3.png, kosc4.png, kosc5.png, kosc6.png) umieszczone w tablicy lub innej kolekcji typu napisowego</li>
+<li> Liczba oczek wyrzucona kością, typu liczbowego całkowitego (3 dla obrazu 1)</li>
+<li> Identyfikator pliku graficznego odpowiadającego wyrzuconej liczbie oczek, typu całkowitego (3 dla obrazu 1, jest to indeks tablicy wskazujący na nazwę kosc3.png)</li>
+<li> Informacja czy kość jest dostępna, typu logicznego</li>
+<li> Konstruktory klasy:</li>
+<li> Jednoargumentowy, którego argument jest wartością wyrzuconej kości.</li>
+<li> W przypadku, gdy wartość argumentu jest inna niż 1, 2, 3, 4, 5 lub 6, ustawia wartość na 0.</li>
+<li> Przypisuje liczbie oczek i identyfikatorowi pliku wartość argumentu</li>
+<li> Przypisuje wartość polu logicznemu: kość jest dostępna</li>
+<li> Inkrementuje zmienną statyczną zliczającą instancje klasy</li>
+<li> Bezargumentowy:</li>
+<li> Losuje liczbę pseudolosową z zakresu od 1 do 6</li>
+<li> Przypisuje liczbie oczek i identyfikatorowi pliku wylosowaną liczbę</li>
+<li> Przypisuje wartość polu logicznemu: kość jest dostępna</li>
+<li> Inkrementuje zmienną statyczną zliczającą instancje klasy Uwaga: W języku Python należy utworzyć jeden konstruktor z domyślną wartością argumentu None</li>
+</ul>
+<h4>Obraz 1.</h4>
+<p><em>kosc3.png</em></p>
+<figure><img src="/plans/img/inf04-2026-styczen_p1_img0.png" alt="Obraz z arkusza – strona 2" loading="lazy" /><figcaption>Obraz z arkusza – strona 2 (konwersja PDF → HTML, oryginał w PDF)</figcaption></figure>
+<hr class="page-break" data-page="Strona 3" />
+<ul>
+<li> Metoda ogólnodostępna, bezparametrowa, niezwracająca wartości, która realizuje rzut kością tylko, gdy kość jest dostępna:</li>
+<li> Losuje wartość z zakresu od 1 do 6</li>
+<li> Przypisuje wylosowaną wartość do pola liczby oczek i identyfikatora pliku graficznego</li>
+<li> Metoda ogólnodostępna, bezparametrowa, niezwracająca wartości, która blokuje kość:</li>
+<li> Ustawiana jest informacja, że kość jest niedostępna</li>
+<li> Metoda ogólnodostępna, bezparametrowa, zwracająca wartość wyrzuconą na kości w postaci tekstu (np. gdy wartość jest równa 3, zwracane jest „trzy”) Sprawdź działanie klasy w programie głównym:</li>
+<li> Należy utworzyć dwa obiekty klasy Kosc, każdy za pomocą innego konstruktora</li>
+<li> W przypadku konstruktora jednoargumentowego liczba przekazana jako argument ma być pobrana z klawiatury</li>
+<li> Po utworzeniu każdego obiektu należy wyświetlić: o Liczbę utworzonych instancji klasy o Informację o liczbie oczek wyrzuconych kością (w postaci liczbowej i napisowej) o Nazwę pliku odpowiadającego wyrzuconej liczbie oczek</li>
+<li> Informacja powinna być zrozumiała dla użytkownika Wykonaj zrzuty ekranu dokumentujące wykonanie programu w konsoli. Zrzuty ekranu powinny obejmować cały obszar ekranu, z widocznym paskiem zadań oraz środowiskiem programistycznym. Liczba zrzutów ekranu powinna odpowiadać wszystkim możliwym interakcjom użytkownika z programem. Zrzuty ekranu zapisz w folderze konsolowa pod nazwami konsola1.png, konsola2.png, itd. Kod aplikacji przygotuj do nagrania na płytę. W folderze konsolowa powinno znaleźć się archiwum całego projektu o nazwie konsola.zip, skopiowany z projektu plik z kodem źródłowym programu, plik wykonywalny, jeżeli istnieje oraz zrzuty ekranu.</li>
+<hr class="page-break" data-page="Strona 4" />
+</ul>
+<h3>Część II. Aplikacja mobilna</h3>
+<p>Za pomocą środowiska programistycznego dostępnego na stanowisku egzaminacyjnym wykonaj aplikację</p>
+<p>mobilną do gry w kości oraz uruchom ją w dostępnym emulatorze systemu mobilnego. Gra polega na rzutach</p>
+<p>pięcioma sześciennymi kośćmi. Stany aplikacji zostały przedstawione na obrazach 2 i 3. W zależności od</p>
+<p>zastosowanego środowiska programistycznego oraz emulowanego systemu, widok może nieznacznie się</p>
+<p><em>różnić. W programie można wykorzystać klasę Kosc z aplikacji konsolowej.</em></p>
+<p>Stan 1</p>
+<p>Stan 2</p>
+<p>Stan 3</p>
+<h4>Obraz 2. Stany aplikacji mobilnej w Android Studio</h4>
+<p>Stan 1</p>
+<p>Stan 2</p>
+<p>Stan 3</p>
+<h4>Obraz 3. Stany aplikacji mobilnej w .NET MAUI lub XAMARIN</h4>
+<h4>Elementy aplikacji w stanie początkowym (stan 1 obrazu 2 lub 3):</h4>
+<ul>
+<li> Pięć obrazów kosc0.png bez przezroczystości (wszystkie kości są dostępne)</li>
+<li> Przycisk z napisem „RZUT”</li>
+<li> Pole tekstowe z wynikiem rzutu z wartością 0, zawierające sumę oczek pięciu kości</li>
+<li> Rozmieszczenie elementów zgodne z obrazami 2 lub 3</li>
+</ul>
+<figure><img src="/plans/img/inf04-2026-styczen_p3_img0.png" alt="Obraz z arkusza – strona 4" loading="lazy" /><figcaption>Obraz z arkusza – strona 4 (konwersja PDF → HTML, oryginał w PDF)</figcaption></figure>
+<figure><img src="/plans/img/inf04-2026-styczen_p3_img1.png" alt="Obraz z arkusza – strona 4" loading="lazy" /><figcaption>Obraz z arkusza – strona 4 (konwersja PDF → HTML, oryginał w PDF)</figcaption></figure>
+<figure><img src="/plans/img/inf04-2026-styczen_p3_img2.png" alt="Obraz z arkusza – strona 4" loading="lazy" /><figcaption>Obraz z arkusza – strona 4 (konwersja PDF → HTML, oryginał w PDF)</figcaption></figure>
+<figure><img src="/plans/img/inf04-2026-styczen_p3_img3.png" alt="Obraz z arkusza – strona 4" loading="lazy" /><figcaption>Obraz z arkusza – strona 4 (konwersja PDF → HTML, oryginał w PDF)</figcaption></figure>
+<figure><img src="/plans/img/inf04-2026-styczen_p3_img4.png" alt="Obraz z arkusza – strona 4" loading="lazy" /><figcaption>Obraz z arkusza – strona 4 (konwersja PDF → HTML, oryginał w PDF)</figcaption></figure>
+<figure><img src="/plans/img/inf04-2026-styczen_p3_img5.png" alt="Obraz z arkusza – strona 4" loading="lazy" /><figcaption>Obraz z arkusza – strona 4 (konwersja PDF → HTML, oryginał w PDF)</figcaption></figure>
+<hr class="page-break" data-page="Strona 5" />
+<p>Założenia dotyczące widoku:</p>
+<ul>
+<li> Interfejs użytkownika zapisany za pomocą języka znaczników wspieranego w danym środowisku (np. XAML, XML)</li>
+<li> Zastosowany dowolny układ pozwalający na rozmieszczenie wszystkich elementów tak jak na obrazie 2 lub 3</li>
+<li> Tło okna / rozkładu: #ED27C121, tło przycisku: #ED275021</li>
+<li> Rozmiar czcionki pola tekstowego 40</li>
+<li> Wielkość obrazów wyświetlających kości dopasowana do widoku z obrazu 2 lub 3</li>
+<li> Marginesy zewnętrzne dla obrazów i przycisku 10</li>
+<li> Wszystkie elementy widoku są wyśrodkowane</li>
+</ul>
+<h4>Działanie aplikacji po wciśnięciu przycisku RZUT:</h4>
+<ul>
+<li> Dla dostępnych kości losowana jest liczba oczek każdej z nich</li>
+<li> W kontrolkach obrazu wyświetlana jest grafika odpowiadająca liczbie oczek na każdej kości</li>
+<li> Liczona jest suma oczek z wszystkich kości i wyświetlana w polu tekstowym</li>
+</ul>
+<h4>Działanie aplikacji po kliknięciu na dowolny obraz kości:</h4>
+<ul>
+<li> Jeżeli kość jest dostępna: jest ustawiana na niedostępną i przezroczystość obrazu jest ustawiana na 50%</li>
+<li> Jeżeli kość jest niedostępna: jest ustawiana na dostępną i obraz jest wyświetlany bez przezroczystości Przykłady interakcji:</li>
+<li></li>
+</ul>
+<h4>Obraz 3, stan 2: ponieważ wszystkie kości są dostępne, jest losowanych 5 wartości (4, 4, 1, 4, 2),</h4>
+<p><em>wyświetlane są odpowiadające im grafiki (kosc4.png, kosc4.png, kosc1.png, kosc4.png, kosc2.png) oraz</em></p>
+<p>liczona jest suma oczek równa 15 (4 + 4 + 1 + 4 + 2 = 15)</p>
+<ul>
+<li></li>
+</ul>
+<h4>Obraz 3, stan 3: zostały kliknięte kości: pierwsza, druga i czwarta (4, 4, 4); została zmieniona ich</h4>
+<p>przezroczystość, są niedostępne</p>
+<p>Aplikacja powinna być zapisana czytelnie, z zasadami czystego formatowania kodu, należy stosować</p>
+<p>znaczące nazwy zmiennych i funkcji.</p>
+<p>Podejmij próbę kompilacji i emulacji aplikacji. Wykonaj zrzuty ekranowe dokumentujące wszystkie stany</p>
+<p><em>aplikacji. Zrzuty zapisz w folderze mobilna pod nazwami mobilna1.png, mobilna2.png, itd. Wszystkie zrzuty</em></p>
+<p>muszą zawierać cały obszar ekranu z paskiem zadań i środowiskiem programistycznym.</p>
+<p>Kod aplikacji przygotuj do nagrania na płytę. W folderze mobilna powinno znaleźć się archiwum całego</p>
+<p>folderu projektu oraz skopiowane pliki z kodem źródłowym, które były modyfikowane oraz pliki z zrzutami.</p>
+<hr class="page-break" data-page="Strona 6" />
+<h3>Część III. Testy jednostkowe</h3>
+<p>Wykonaj testy jednostkowe aplikacji konsolowej, metody realizującej rzut kością. Do napisania testów</p>
+<p>wykorzystaj bibliotekę do testów jednostkowych dostępną na stanowisku egzaminacyjnym dla języka</p>
+<p><em>programowania, w którym została napisana klasa Kosc. W testach jednostkowych należy rozważyć</em></p>
+<p>następujące przypadki testowe:</p>
+<ul>
+<li> Czy wyrzucona wartość jest w zakresie od 1 do 6</li>
+<li> Czy wartość na kości pozostaje bez zmian jeżeli kość nie jest dostępna W testach nazwy metod testujących należy dobrać tak, aby wyrażały cel danego testu. Nazwy metod należy zapisać zgodnie z konwencją nazewnictwa w danym języku programowania. Każdy przypadek testowy powinien być sprawdzany oddzielną metodą. Po napisaniu metod testujących uruchom wszystkie metody. Wykonaj zrzuty ekranu dokumentujące uruchomienie testów, zrzuty zapisz w katalogu testy pod nazwami test1.png, test2.png, itd. Na zrzutach powinny być widoczne wyniki działania metod testujących. Zrzuty ekranu powinny obejmować cały obszar ekranu, z widocznym paskiem zadań oraz środowiskiem programistycznym. Projekt testów przygotuj do nagrania na płytę. W folderze testy powinno znaleźć się archiwum całego folderu projektu oraz skopiowane pliki z kodem źródłowym, które były modyfikowane oraz zrzuty ekranu. Utwórz plik tekstowy z dokumentacją i nazwij go egzamin. Dokument powinien zawierać informacje o narzędziach wykorzystanych na egzaminie:</li>
+<li> Nazwę systemu operacyjnego</li>
+<li> Nazwy środowisk programistycznych</li>
+<li> Nazwę emulatora dla aplikacji mobilnej</li>
+<li> Nazwy języków programowania Dokument egzamin zapisz w folderze z numerem zdającego.</li>
+</ul>
+<div class="alert"><strong>UWAGA:</strong> Nagraj płytę z rezultatami pracy. W folderze z numerem zdającego powinny się znajdować foldery:</div>
+<p><em>konsolowa, mobilna, testy oraz plik egzamin. W folderze konsolowa: spakowany cały projekt aplikacji</em></p>
+<p><em>konsolowej, pliki źródłowe, plik wykonywalny jeśli istnieje, zrzuty ekranu. W folderze mobilna: spakowany</em></p>
+<p><em>cały projekt aplikacji mobilnej, pliki z kodem źródłowym interfejsu i logiki, zrzuty ekranu. W folderze testy:</em></p>
+<p><em>spakowany projekt z testami jednostkowymi, pliki z zapisem metod testujących, zrzuty ekranu. Po nagraniu</em></p>
+<p><em>płyty sprawdź poprawność nagrania. Opisz płytę numerem zdającego i pozostaw na stanowisku,</em></p>
+<p><em>zapakowaną w pudełku wraz z arkuszem egzaminacyjnym.</em></p>
+<p>Czas przeznaczony na wykonanie zadania wynosi 180 minut.</p>
+<p><strong>Ocenie podlegać będą 4 rezultaty:</strong></p>
+<ul>
+<li> implementacja, kompilacja, uruchomienie programów,</li>
+<li> aplikacja konsolowa,</li>
+<li> aplikacja mobilna,</li>
+<li> testy aplikacji.</li>
+<hr class="page-break" data-page="Strona 7" />
+<hr class="page-break" data-page="Strona 8" />
+</ul>
+<p>Wypełnia zdający</p>
+<p>Do arkusza egzaminacyjnego dołączam płytę CD/DVD opisaną numerem</p>
+<p><strong>PESEL której jakość nagrania została przeze mnie sprawdzona.</strong></p>
+<p><em>Wypełnia Przewodniczący ZN</em></p>
+<p><strong>Potwierdzam, że do arkusza egzaminacyjnego dołączona jest płyta CD/DVD, opisana numerem PESEL</strong></p>
+<p><strong>zdającego.</strong></p>
+<p>……………………………........…</p>
+<p><em>Czytelny podpis Przewodniczącego ZN</em></p>
+<p><strong>,</strong></p>
+</div>

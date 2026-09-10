@@ -1,0 +1,185 @@
+<div class="transformed-content">
+<p><strong>Nazwa kwalifikacji: Projektowanie, programowanie i testowanie aplikacji</strong></p>
+<p><strong>Oznaczenie kwalifikacji: INF.04</strong></p>
+<p><strong>Numer zadania: 01</strong></p>
+<p><strong>Wersja arkusza: SG</strong></p>
+<p>Wypełnia zdający</p>
+<p>Numer PESEL zdającego*</p>
+<p><strong>Czas trwania egzaminu: 180 minut.</strong></p>
+<p>INF.04-01-23.06-SG</p>
+<h2>EGZAMIN ZAWODOWY</h2>
+<p><strong>Rok 2023</strong></p>
+<h2>CZĘŚĆ PRAKTYCZNA</h2>
+<h2>Instrukcja dla zdającego</h2>
+<ol>
+<li>Na pierwszej stronie arkusza egzaminacyjnego wpisz w oznaczonym miejscu swój numer PESEL i naklej naklejkę z numerem PESEL i z kodem ośrodka.</li>
+<li>Na KARCIE OCENY w oznaczonym miejscu przyklej naklejkę z numerem PESEL oraz wpisz:</li>
+</ol>
+<ul>
+<li>swój numer PESEL*,</li>
+<li>oznaczenie kwalifikacji,</li>
+<li>numer zadania,</li>
+<li>numer stanowiska.</li>
+</ul>
+<ol>
+<li>Sprawdź, czy arkusz egzaminacyjny zawiera 5 stron i nie zawiera błędów. Ewentualny brak stron lub inne usterki zgłoś przez podniesienie ręki przewodniczącemu zespołu nadzorującego.</li>
+<li>Zapoznaj się z treścią zadania oraz stanowiskiem egzaminacyjnym. Masz na to 10 minut. Czas ten nie jest wliczany do czasu trwania egzaminu.</li>
+<li>Czas rozpoczęcia i zakończenia pracy zapisze w widocznym miejscu przewodniczący zespołu nadzorującego.</li>
+<li>Wykonaj samodzielnie zadanie egzaminacyjne. Przestrzegaj zasad bezpieczeństwa i organizacji pracy.</li>
+<li>Po zakończeniu wykonania zadania pozostaw arkusz egzaminacyjny z rezultatami oraz KARTĘ OCENY na swoim stanowisku lub w miejscu wskazanym przez przewodniczącego zespołu nadzorującego.</li>
+<li>Po uzyskaniu zgody zespołu nadzorującego możesz opuścić salę/miejsce przeprowadzania egzaminu. Powodzenia! * w przypadku braku numeru PESEL – seria i numer paszportu lub innego dokumentu potwierdzającego tożsamość Układ graficzny © CKE 2020 Arkusz zawiera informacje prawnie chronione do momentu rozpoczęcia egzaminu Miejsce na naklejkę z numerem PESEL i z kodem ośrodka</li>
+</ol>
+<h4>PODSTAWA PROGRAMOWA</h4>
+<p><strong>2019</strong></p>
+<figure><img src="/plans/img/inf04-2023-czerwiec_p0_img0.png" alt="Obraz z arkusza – strona 1" loading="lazy" /><figcaption>Obraz z arkusza – strona 1 (konwersja PDF → HTML, oryginał w PDF)</figcaption></figure>
+<hr class="page-break" data-page="Strona 2" />
+<h2>Zadanie egzaminacyjne</h2>
+<div class="alert"><strong>UWAGA:</strong> katalog z rezultatami pracy oraz płytę należy opisać numerem zdającego, którym został podpisany</div>
+<p><em>arkusz, czyli numerem PESEL lub w przypadku jego braku numerem paszportu. Dalej w zadaniu numer ten</em></p>
+<p><em>jest nazwany numerem zdającego.</em></p>
+<p><strong>Wykonaj aplikację konsolową oraz desktopową według wskazań. Udokumentuj obie aplikacje zrzutami</strong></p>
+<p><strong>ekranu i komentarzami zgodnie z opisem w części III instrukcji do zadania. Wykorzystaj konto Egzamin bez</strong></p>
+<p>hasła.</p>
+<p>Utwórz folder i nazwij go numerem zdającego. W folderze utwórz podfoldery: konsola, desktop,</p>
+<p><em>dokumentacja. Po wykonaniu każdej aplikacji, jej pełny kod (cały folder projektu) spakuj do archiwum.</em></p>
+<p>Następnie pozostaw w podfolderze jedynie pliki źródłowe, których treść była modyfikowana, plik</p>
+<p>wykonywalny, jeśli jest to możliwe oraz spakowane archiwum. Dokumentację obu aplikacji w postaci zrzutów</p>
+<p><em>ekranu i dokumentu umieść w folderze dokumentacja.</em></p>
+<h3>Część I. Aplikacja konsolowa</h3>
+<p>Korzystając z opisu algorytmu sita Eratostenesa, przekształć pseudokod algorytmu do aplikacji konsolowej</p>
+<p>szukającej liczb pierwszych w przedziale 2..n, gdzie n = 100.</p>
+<p><em>Ze zbioru liczb naturalnych z przedziału [2, n], tj. {2,3,4,... ,n} wybieramy najmniejszą, czyli 2, i wykreślamy</em></p>
+<p><em>wszystkie jej wielokrotności większe od niej samej, to jest 4, 6, 8, ... . Z pozostałych liczb wybieramy</em></p>
+<p><em>najmniejszą niewykreśloną liczbę (3) i wykreślamy wszystkie jej wielokrotności większe od niej samej: 6,</em></p>
+<p><em>9, 12, ... . Według tej samej procedury postępujemy dla liczby 5. Następnie dla 7 aż do sprawdzenia</em></p>
+<p><em>wszystkich niewykreślonych wcześniej liczb. Wykreślanie powtarzamy do momentu, gdy liczba i, której</em></p>
+<p><em>wielokrotność wykreślamy, będzie większa niż √𝑛.</em></p>
+<p><strong>Pseudokod</strong></p>
+<p>Niech A będzie tablicą wartości typu logicznego indeksowaną liczbami</p>
+<p>całkowitymi od 2 do n (indeksy 0 i 1 nie są brane pod uwagę w czasie</p>
+<p>działania algorytmu), początkowo wypełniona wartościami true</p>
+<p>for i := 2, 3, 4, ..., nie więcej niż √𝑛:</p>
+<p>if A[i] = true:</p>
+<p>for j := 2*i, 3*i, 4*i, ..., nie więcej niż n :</p>
+<p>A[j] := false</p>
+<p>Wyjście: wartości i takie, że A[i] zawiera wartość true.</p>
+<p><em>Źródło: https://pl.wikipedia.org/wiki/Sito_Eratostenesa; dostęp: 04.08.2020</em></p>
+<p>Założenia programu</p>
+<ul>
+<li> Program wykonywany w konsoli.</li>
+<li> Język programowania zgodny z zainstalowanym na stanowisku egzaminacyjnym, jeden z: C++, C#, Java, Python.</li>
+<li> Program szuka liczb w przedziale 2..100 (n = 100)</li>
+<li></li>
+</ul>
+<p>Wypełnianie tablicy odbywa się w osobnej funkcji przyjmującej tablicę jako argument i nie zwracającej</p>
+<p>żadnej wartości.</p>
+<ul>
+<li> Liczby pierwsze są wyświetlane na ekranie, rozdzielone dowolnym separatorem oraz poprzedzone znaczącym komunikatem.</li>
+<li> Program powinien być zapisany czytelnie, z zachowaniem zasad czystego formatowania kodu, należy stosować znaczące nazwy zmiennych i funkcji.</li>
+<li> Dokumentacja do programu wykonana zgodnie z wytycznymi z części III zadania egzaminacyjnego.</li>
+<hr class="page-break" data-page="Strona 3" />
+</ul>
+<p>Kod aplikacji przygotuj do nagrania na płytę. W podfolderze konsola powinno znaleźć się archiwum całego</p>
+<p><em>projektu o nazwie konsola.zip, plik z kodem źródłowym programu oraz plik wykonywalny, jeżeli istnieje.</em></p>
+<h3>Część II. Aplikacja desktopowa</h3>
+<p>Za pomocą środowiska programistycznego dostępnego na stanowisku egzaminacyjnym, wykonaj aplikację</p>
+<p>desktopową będącą fragmentem aplikacji do obsługi poczty. Wykorzystaj umieszczone na pulpicie materiały</p>
+<p><strong>o nazwie materialy.zip zabezpieczone hasłem: %Twoj@Paczka&amp;</strong></p>
+<h4>Obraz 1. Aplikacja desktopowa, zaznaczono pole radio „List” i wybrano przycisk „Sprawdź Cenę”</h4>
+<p>Na obrazie 1 przedstawiono ideę aplikacji. W zależności od zastosowanego środowiska programistycznego</p>
+<p>wygląd może nieznacznie się różnić.</p>
+<p>Opis wyglądu aplikacji</p>
+<ul>
+<li> Okno dialogowe o nazwie „Nadaj Przesyłkę” i szerokości dopasowanej do kontrolek wewnątrz. W nazwie okna należy wstawić także numerem zdającego.</li>
+<li> Okno zawiera kontrolki rozmieszczone zgodnie z obrazem 1. Są to:</li>
+<li> grupa pól radio: Pocztówka, List, Paczka; pola są zgrupowane w dowolny dostępny element grupujący (np. GroupBox), w stanie początkowym zaznaczone jest pole Pocztówka</li>
+<li> trzy pola edycyjne poprzedzone etykietami o treści „Ulica z numerem”, „Kod pocztowy”, „Miasto”; zgrupowane w dowolny dostępny element grupujący</li>
+<li> przycisk o treści „Sprawdź Cenę”</li>
+<li> obraz w stanie początkowym wyświetlający obraz pocztowka.png</li>
+<li> etykieta o treści „Cena: ”, o cechach: napis pogrubiony i czcionka widocznie większa względem pozostałych napisów</li>
+<li> przycisk o treści: „Zatwierdź”</li>
+</ul>
+<h4>Działanie aplikacji</h4>
+<ul>
+<li> pola radio działają w grupie, jednocześnie może być wybrane tylko jedno pole</li>
+<li> po wybraniu przycisku „Sprawdź cenę” aplikacja sprawdza, które pole radio jest zaznaczone i zależnie od wyboru wyświetla odpowiedni dla pola obraz oraz cenę, odpowiednio:</li>
+<li> pole radio Pocztówka: obraz pocztowka.png, „Cena: 1 zł”</li>
+<li> pole radio List: obraz list.png, „Cena: 1,5 zł”</li>
+<li> pole radio Paczka: obraz paczka.png, „Cena: 10 zł”</li>
+<li> po wybraniu przycisku „Zatwierdź” jest walidowane pole kodu pocztowego oraz wyświetlany komunikat. Dla uproszczenia zadania należy przyjąć, że kod składa się tylko z 5 cyfr (bez znaku &#x27;-&#x27;).</li>
+<li> komunikat dla poprawnego kodu pocztowego: „Dane przesyłki zostały wprowadzone”</li>
+<li> komunikat, gdy jest mniej lub więcej niż 5 znaków: „Nieprawidłowa liczba cyfr w kodzie pocztowym”</li>
+</ul>
+<figure><img src="/plans/img/inf04-2023-czerwiec_p2_img0.png" alt="Obraz z arkusza – strona 3" loading="lazy" /><figcaption>Obraz z arkusza – strona 3 (konwersja PDF → HTML, oryginał w PDF)</figcaption></figure>
+<hr class="page-break" data-page="Strona 4" />
+<ul>
+<li> komunikat, gdy przynajmniej jeden znak nie jest cyfrą: „Kod pocztowy powinien się składać z samych cyfr”</li>
+</ul>
+<h4>Założenia aplikacji</h4>
+<ul>
+<li> Pliki obrazów zapisane w zasobach aplikacji</li>
+<li> Aplikacja obsługuje dwa zdarzenia: kliknięcie dla każdego z przycisków</li>
+<li> Po wybraniu przycisku Zatwierdź aplikacja jedynie wyświetla komunikat. Nie jest wymagane, aby dane z okna zostały zapisane do struktury w programie.</li>
+<li> Aplikacja powinna być zapisana czytelnie, z zachowaniem zasad czystego formatowania kodu, należy stosować znaczące nazwy zmiennych i funkcji Podejmij próbę kompilacji i uruchomienia aplikacji. Wykonaj zrzut ekranowy zgodnie z wytycznymi z III części zadania. Kod aplikacji przygotuj do nagrania na płytę. W podfolderze desktop powinno znaleźć się archiwum całego projektu o nazwie desktop.zip oraz plik (lub pliki) z kodem źródłowym modyfikowanym w czasie egzaminu.</li>
+</ul>
+<h3>Część III. Dokumentacja utworzonych aplikacji</h3>
+<p><strong>Wykonaj dokumentację do aplikacji utworzonych na egzaminie. W kodzie źródłowym aplikacji konsolowej</strong></p>
+<p>utwórz nagłówek funkcji wypełniającej tablicę, według wzoru. Nagłówek powinien znaleźć się w kodzie</p>
+<p>źródłowym nad funkcją. W miejscu nawiasów &lt;&gt; należy podać nazwę funkcji, nazwy parametrów (lub słowo</p>
+<p>„brak”) oraz zwięzłe informacje (co realizuje funkcja?) – zgodnie z listingiem 1. W miejscu autor należy podać</p>
+<p>numer zdającego</p>
+<div class="alert"><strong>UWAGA:</strong> Dokumentację umieścić w komentarzu (wieloliniowym lub kilku jednoliniowych). Znajdujący się</div>
+<p><em>w listingu 1 wzór dokumentacji jest bez znaków początku i końca komentarza, gdyż te są różne dla różnych</em></p>
+<p><em>języków programowania</em></p>
+<p>Listing 1. Wzór dokumentacji funkcji</p>
+<p>*******************************************************</p>
+<p>nazwa funkcji: &lt;tu wstaw nazwę funkcji&gt;</p>
+<p>parametry wejściowe: &lt;nazwa parametru&gt; - &lt;co przechowuje&gt;</p>
+<p>wartość zwracana: &lt;co zwraca funkcja – opis&gt;</p>
+<p>informacje: &lt;opis&gt;</p>
+<p>autor: &lt;numer zdającego&gt;</p>
+<p>****************************************************</p>
+<p>Wykonaj zrzuty ekranu dokumentujące uruchomienie aplikacji utworzonych podczas egzaminu. Zrzuty</p>
+<p>powinny obejmować cały obszar ekranu z widocznym paskiem zadań. Jeżeli aplikacja uruchamia się, na</p>
+<p>zrzucie należy umieścić okno z wynikiem działania programu oraz otwarte środowisko programistyczne</p>
+<p>z projektem lub okno z kompilacją projektu. Jeżeli aplikacja nie uruchamia się z powodu błędów kompilacji,</p>
+<p>należy na zrzucie umieścić okno ze spisem błędów i widocznym otwartym środowiskiem programistycznym.</p>
+<p>Nazwy zrzutów ekranu:</p>
+<ul>
+<li> dowolna liczba zrzutów ekranowych z aplikacji konsolowej nazwane konsola1, konsola2 itd.</li>
+<li> dowolna liczba zrzutów ekranowych z aplikacji desktopowej nazwane desktop1, desktop2 itd.</li>
+<hr class="page-break" data-page="Strona 5" />
+</ul>
+<p><em>W edytorze tekstu pakietu biurowego utwórz plik z dokumentacją i nazwij go egzamin. Dokument powinien</em></p>
+<p>zawierać podpisane zrzuty ekranu, a następnie zapisane informacje:</p>
+<ul>
+<li> nazwę systemu operacyjnego, na którym pracował zdający,</li>
+<li> nazwy środowisk programistycznych, z których zdający korzystał na egzaminie,</li>
+<li> nazwy języków programowania użytych podczas tworzenia aplikacji,</li>
+<li> opcjonalnie komentarz do wykonanej pracy. Zrzuty ekranu i dokument umieść w folderze o nazwie dokumentacja.</li>
+</ul>
+<div class="alert"><strong>UWAGA:</strong> Nagraj płytę z rezultatami pracy. W folderze z numerem zdającego powinny się znajdować</div>
+<p><em>podfoldery: konsola, desktop, dokumentacja. W folderze dokumentacja: pliki ze zrzutami oraz plik egzamin.</em></p>
+<p><em>W folderze konsola: cały projekt aplikacji konsolowej. W folderze desktop: cały projekt aplikacji desktopowej,</em></p>
+<p><em>ewentualnie inne przygotowane pliki. Po nagraniu płyty sprawdź poprawność nagrania. Opisz płytę numerem</em></p>
+<p><em>zdającego i pozostaw na stanowisku, zapakowaną w pudełku wraz z arkuszem egzaminacyjnym.</em></p>
+<p>Czas przeznaczony na wykonanie zadania wynosi 180 minut.</p>
+<p>Ocenie będą podlegać 4 rezultaty:</p>
+<ul>
+<li> implementacja, kompilacja, uruchomienie programu,</li>
+<li> aplikacja konsolowa,</li>
+<li> aplikacja desktopowa,</li>
+<li> dokumentacja aplikacji.</li>
+<hr class="page-break" data-page="Strona 6" />
+<hr class="page-break" data-page="Strona 7" />
+<hr class="page-break" data-page="Strona 8" />
+</ul>
+<p>Wypełnia zdający</p>
+<p>Do arkusza egzaminacyjnego dołączam płytę CD opisaną numerem PESEL</p>
+<p><strong>której jakość nagrania została przeze mnie sprawdzona.</strong></p>
+<p><em>Wypełnia Przewodniczący ZN</em></p>
+<p><strong>Potwierdzam, że do arkusza egzaminacyjnego dołączona jest płyta CD, opisana numerem PESEL zdającego.</strong></p>
+<p>………………………………</p>
+<p><em>Czytelny podpis Przewodniczącego ZN</em></p>
+<p><strong>,</strong></p>
+</div>

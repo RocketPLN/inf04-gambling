@@ -1,0 +1,652 @@
+/* ===== UGLY OVERRIDE - INTENTIONALLY HIDEOUS ===== */
+
+/* TICKER - seizure */
+.ticker{
+  background: linear-gradient(90deg, #ff0000, #ffff00, #00ff00, #00ffff, #ff00ff, #ff0000);
+  background-size: 300% 100%;
+  animation: ugly-rainbow 2s linear infinite;
+  color:#000 !important;
+  overflow:hidden; white-space:nowrap;
+  border-top:6px ridge #ffff00;
+  border-bottom:6px groove #00ffff;
+  font-family:'Impact',fantasy !important;
+  font-size:16px !important;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  padding:10px 0;
+  text-shadow: 2px 2px 0 #fff, -2px -2px 0 #ff00ff;
+  box-shadow: 0 0 20px #ff00ff, inset 0 0 20px #ffff00;
+}
+.ticker-track{ display:inline-flex; animation: ugly-marquee 8s linear infinite; font-weight:900 }
+.ticker-track span{padding-right:1rem; animation: ugly-blink 0.6s steps(1) infinite}
+.ticker-track span:nth-child(2){animation-delay:0.3s}
+
+/* HEADER - clashing bevel */
+.header{
+  position:sticky; top:0; z-index:30;
+  background: linear-gradient(180deg, #c0c0c0, #808080) !important;
+  border:6px outset #c0c0c0 !important;
+  border-bottom:8px ridge #ff00ff !important;
+  box-shadow: 6px 6px 0 #000, 0 0 30px #ffff00;
+}
+.header-inner{
+  max-width:1320px; margin:0 auto; padding:14px 20px;
+  display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><rect width="10" height="10" fill="%23ff00ff"/><rect x="10" y="10" width="10" height="10" fill="%2300ffff"/></svg>');
+}
+.brand{display:flex; align-items:center; gap:14px; transform:rotate(-1deg)}
+.brand-mark{
+  width:68px; height:68px; border:5px outset #fff !important; border-radius:0 !important;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  background: linear-gradient(135deg, #ff0000, #ffff00, #00ff00) !important;
+  box-shadow: 4px 4px 0 #000, inset 2px 2px 0 #fff;
+  line-height:1; font-family:'Impact',fantasy !important; font-weight:900;
+  animation: ugly-wiggle 0.4s infinite;
+  text-shadow: 2px 2px 0 #00ffff;
+}
+.bm-a{font-size:16px; letter-spacing:2px; color:#000; transform:rotate(3deg)}
+.bm-b{font-size:26px; margin-top:-2px; color:#ff00ff; -webkit-text-stroke:2px #000; transform:rotate(-3deg)}
+.brand-text h1{
+  margin:0; font-family:'Comic Sans MS',cursive !important; font-size:28px !important; font-weight:900 !important;
+  letter-spacing:-1px; line-height:1; color:#ff00ff !important;
+  text-shadow: 3px 3px 0 #ffff00, -2px -2px 0 #00ffff, 0 0 10px #fff;
+  transform:rotate(1deg);
+  background: linear-gradient(90deg, #ff00ff, #00ffff);
+  -webkit-background-clip:text; -webkit-text-fill-color: transparent;
+  background-clip:text;
+  filter: drop-shadow(2px 2px 0 #000);
+}
+.brand-text p{
+  margin:2px 0 0; font-size:11px !important; font-weight:900 !important; color:#000 !important;
+  letter-spacing:1px; text-transform:uppercase; background:#ffff00; border:2px dotted #ff00ff; padding:2px 6px; transform:rotate(-0.5deg)
+}
+.header-nav{display:flex; gap:8px; align-items:center; flex-wrap:wrap}
+.nav-link{
+  border:4px outset #c0c0c0 !important; border-radius:0 !important; padding:8px 12px !important;
+  font-weight:900 !important; font-size:12px !important; font-family:'Courier New',monospace !important;
+  text-decoration:none !important; background: linear-gradient(#fff, #c0c0c0) !important; color:#000 !important;
+  box-shadow: 3px 3px 0 #000 !important; text-transform:uppercase;
+}
+.nav-link:hover{border-style:inset !important; transform:translate(2px,2px); color:#ff00ff !important}
+.nav-pill{
+  border:4px ridge #ff00ff !important; border-radius:0 !important; padding:8px 12px !important;
+  font-size:12px !important; font-weight:900 !important; font-family:'Comic Sans MS',cursive !important;
+  background: #00ffff !important; color:#000 !important; box-shadow: 3px 3px 0 #000 !important;
+  transform:rotate(1deg); animation: ugly-blink 1s steps(1) infinite;
+}
+.nav-pill--yellow{background:#ffff00 !important; animation-delay:0.5s; transform:rotate(-1deg)}
+
+/* CONTAINER - ugly paper */
+.container{
+  max-width:1320px; margin:0 auto; padding:0 14px 40px; width:100%;
+  background: #fff url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><text x="2" y="14" font-size="12">✦</text><text x="20" y="30" font-size="10">★</text></svg>');
+  border-left:8px ridge #ff00ff; border-right:8px groove #00ffff;
+  box-shadow: inset 0 0 40px #ffff00, 8px 8px 0 #000;
+}
+
+/* HERO - maximum clash */
+.hero{
+  display:grid; grid-template-columns: 1.15fr .85fr; gap:16px;
+  padding:20px 16px 20px;
+  align-items:center;
+  background: linear-gradient(45deg, #ff00ff 0%, #ffff00 25%, #00ff00 50%, #00ffff 75%, #ff00ff 100%);
+  border:6px ridge #ff0000;
+  margin-top:12px;
+  box-shadow: 8px 8px 0 #000, inset 0 0 30px #fff;
+  position:relative;
+}
+.hero::before{
+  content:"UNDER CONSTRUCTION 🚧 UNDER CONSTRUCTION 🚧";
+  position:absolute; top:-14px; left:50%; transform:translateX(-50%) rotate(-1deg);
+  background:#ff0000; color:#ffff00; font-family:'Impact',fantasy; font-size:12px; letter-spacing:2px;
+  border:3px outset #fff; padding:4px 12px; white-space:nowrap; z-index:10;
+  animation: ugly-blink 0.5s steps(1) infinite;
+}
+@media(max-width:980px){.hero{grid-template-columns:1fr}}
+
+.eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  border:4px dotted #000 !important; border-radius:0 !important; padding:8px 12px !important;
+  background: #00ffff !important; font-weight:900 !important; font-size:11px !important;
+  letter-spacing:1px; text-transform:uppercase; font-family:'Courier New',monospace !important;
+  box-shadow: 4px 4px 0 #000; transform:rotate(-1deg);
+  color:#000 !important;
+}
+.eyebrow-dot{width:14px; height:14px; border-radius:0 !important; background:#ff0000 !important; border:2px solid #000 !important; display:inline-block; animation: ugly-blink 0.3s infinite}
+.eyebrow-dot--pink{background:#ffff00 !important; animation-delay:0.15s}
+.hero-title{
+  margin:16px 0 0; font-family:'Impact',fantasy !important; font-weight:900 !important; line-height:0.9 !important; letter-spacing:2px !important;
+  font-size:clamp(44px, 8vw, 86px) !important;
+  transform:rotate(-1deg);
+}
+.ht-line{display:block; text-transform:uppercase}
+.ht-line--1{color:#0000ff !important; text-shadow: 4px 4px 0 #ffff00, -3px -3px 0 #ff00ff, 0 0 15px #fff !important; transform:rotate(1deg)}
+.ht-line--outline{
+  color:#ffff00 !important; -webkit-text-stroke:4px #ff0000 !important;
+  text-shadow: 6px 6px 0 #000, 0 0 20px #ff00ff !important; transform:rotate(-1.5deg);
+  background: linear-gradient(90deg, #ff00ff, #00ffff); -webkit-background-clip:text;
+}
+.ht-line--accent{
+  color:#ff0000 !important; position:relative; display:inline-block;
+  background:#ffff00; border:4px ridge #000; padding:4px 10px; transform:rotate(2deg);
+  text-shadow: 2px 2px 0 #00ffff !important;
+  animation: ugly-shake 0.3s infinite;
+}
+.hero-star{
+  display:inline-grid !important; place-items:center !important;
+  width:52px !important; height:52px !important; border-radius:0 !important; background: #00ff00 !important; color:#ff00ff !important;
+  border:4px ridge #000 !important;
+  font-size:28px !important; vertical-align:middle; margin-left:8px; transform:rotate(18deg) !important;
+  box-shadow: 4px 4px 0 #000 !important; animation: ugly-rainbow 1s linear infinite;
+}
+.hero-desc{
+  margin:16px 0 0 !important; font-size:15px !important; line-height:1.4 !important; color:#000 !important; max-width:56ch;
+  background: #fff !important; border:3px dashed #ff00ff !important; padding:10px !important;
+  font-family:'Comic Sans MS',cursive !important; font-weight:700 !important;
+  box-shadow: 5px 5px 0 #000; transform:rotate(0.5deg);
+}
+.hl{padding:2px 6px !important; border-radius:0 !important; border:3px outset #000 !important; font-weight:900 !important; text-transform:uppercase; font-size:12px}
+.hl--yellow{background:#ffff00 !important; color:#ff0000 !important; animation: ugly-blink 0.8s infinite}
+.hl--pink{background:#ff00ff !important; color:#ffff00 !important; animation: ugly-blink 0.8s infinite 0.4s}
+
+.hero-meta{display:flex; gap:10px; margin-top:16px; flex-wrap:wrap}
+.hero-stat{
+  border:5px outset #c0c0c0 !important; border-radius:0 !important; padding:10px 14px !important; background: linear-gradient(#fff, #c0c0c0) !important;
+  box-shadow: 4px 4px 0 #000 !important; display:flex; gap:10px; align-items:center; min-width:130px;
+  transform:rotate(1deg); font-family:'Courier New',monospace !important;
+}
+.hero-stat--blue{background: #0000ff !important; color:#ffff00 !important; transform:rotate(-1deg); border-color:#ffff00 !important}
+.hero-stat--blue .hs-label{color:#00ffff !important}
+.hero-stat--pink{background: #ff00ff !important; color:#ffff00 !important; transform:rotate(1.5deg); border-color:#00ff00 !important}
+.hero-stat--pink .hs-label{color:#fff !important}
+.hs-num{font-family:'Impact',fantasy !important; font-size:30px !important; font-weight:900 !important; line-height:1; text-shadow:2px 2px 0 #000}
+.hs-label{font-size:10px !important; font-weight:900 !important; line-height:1.1 !important; text-transform:uppercase; letter-spacing:1px; color:#ff00ff !important}
+.hero-actions{display:flex; gap:10px; align-items:center; margin-top:16px; flex-wrap:wrap}
+.hero-hint{
+  font-size:11px !important; font-weight:900 !important; color:#000 !important;
+  border:3px dotted #ff0000 !important; padding:8px 10px !important; border-radius:0 !important;
+  background: #00ffff !important; font-family:'Comic Sans MS',cursive !important;
+  animation: ugly-blink 0.7s steps(1) infinite; transform:rotate(-1deg);
+}
+
+/* HERO COLLAGE - chaotic */
+.hero-right{display:grid; place-items:center}
+.collage{ position:relative; width:100%; max-width:420px; height:440px; background: repeating-linear-gradient(0deg, #fff 0 8px, #ffff00 8px 16px); border:6px groove #ff00ff; box-shadow: 6px 6px 0 #000; overflow:hidden }
+.collage-card{
+  position:absolute; width:220px; border:5px outset #fff !important; border-radius:0 !important; padding:12px !important;
+  box-shadow: 6px 6px 0 #000 !important; font-family:'Comic Sans MS',cursive !important;
+}
+.collage-card--yellow{background: #ffff00 !important; left:10px !important; top:10px !important; transform:rotate(-6deg) !important; z-index:3; border-color:#ff00ff !important}
+.collage-card--blue{background: #0000ff !important; color:#ffff00 !important; left:80px !important; top:110px !important; transform:rotate(5deg) !important; z-index:2; border-color:#00ffff !important}
+.collage-card--blue .cc-tags span{background:#ffff00 !important; color:#000 !important; border:2px solid #000 !important}
+.collage-card--pink{background: #ff00ff !important; color:#ffff00 !important; left:5px !important; top:220px !important; transform:rotate(-4deg) !important; z-index:1; border-color:#00ff00 !important}
+.collage-card--pink .cc-tags span{background:#00ffff !important; color:#000 !important}
+.cc-top{font-family:'Courier New',monospace !important; font-size:10px !important; font-weight:900 !important; letter-spacing:1px !important; text-transform:uppercase; background:#000; color:#0f0; padding:2px 6px; display:inline-block}
+.cc-title{font-family:'Impact',fantasy !important; font-size:16px !important; font-weight:900 !important; line-height:1 !important; margin-top:8px !important; text-shadow:2px 2px 0 #000; text-transform:uppercase}
+.cc-tags{display:flex; gap:6px; margin-top:8px; flex-wrap:wrap}
+.cc-tags span{font-size:10px !important; font-weight:900 !important; border:3px outset #fff !important; border-radius:0 !important; padding:3px 6px !important; background:#c0c0c0 !important; color:#000 !important; font-family:'Courier New',monospace !important}
+.cc-bar{height:10px !important; border-radius:0 !important; margin-top:10px !important; background: repeating-linear-gradient(90deg, #ff0000 0 6px, #ffff00 6px 12px) !important; border:2px inset #000; opacity:1 !important}
+.blob{position:absolute; border:4px ridge #000 !important; border-radius:0 !important; animation: ugly-wiggle 0.5s infinite}
+.blob--yellow{width:80px !important; height:80px !important; background: #ffff00 !important; right:10px !important; top:5px !important; z-index:0; transform:rotate(45deg)}
+.blob--pink{width:60px !important; height:60px !important; background: #ff00ff !important; right:-5px !important; top:170px !important; z-index:0; border-radius:50% !important}
+.blob--mint{width:48px !important; height:48px !important; background: #00ff00 !important; left:190px !important; top:330px !important; z-index:4; transform:rotate(12deg)}
+.squiggle{position:absolute; right:20px; bottom:10px; font-size:20px !important; font-weight:900 !important; letter-spacing:2px; transform:rotate(-8deg); color:#ff0000; text-shadow:2px 2px 0 #ffff00; animation: ugly-blink 0.4s infinite}
+.collage-badge{
+  position:absolute; left:140px !important; top:350px !important; z-index:5;
+  background: #ff0000 !important; color:#ffff00 !important; border:4px ridge #ffff00 !important; border-radius:0 !important; padding:8px 12px !important;
+  font-weight:900 !important; font-size:11px !important; letter-spacing:1px !important; text-transform:uppercase; font-family:'Impact',fantasy !important;
+  box-shadow: 4px 4px 0 #000 !important; transform:rotate(5deg) !important; animation: ugly-blink 0.5s infinite;
+}
+
+/* FILTERS - 90s form hell */
+.filters-bar{
+  display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;
+  border:6px ridge #c0c0c0 !important; border-radius:0 !important; padding:12px !important;
+  background: #c0c0c0 !important; box-shadow: 6px 6px 0 #000 !important; margin-top:12px !important;
+}
+.search-wrap{ position:relative; flex:1; min-width:220px; display:flex; align-items:center }
+.search-wrap input{
+  width:100%; border:4px inset #fff !important; border-radius:0 !important; padding:10px 40px 10px 36px !important;
+  font-size:13px !important; font-weight:900 !important; outline:none !important; background:#fff !important;
+  font-family:'Courier New',monospace !important; color:#0000ff !important;
+  box-shadow: inset 3px 3px 0 #808080 !important;
+}
+.search-wrap input:focus{background:#ffff00 !important; color:#ff00ff !important}
+.search-icon{position:absolute; left:10px; font-size:18px !important; font-weight:900 !important; color:#ff00ff !important; z-index:2}
+.search-clear{
+  position:absolute; right:6px; width:28px; height:28px; border-radius:0 !important; border:3px outset #c0c0c0 !important;
+  background:#c0c0c0 !important; color:#000 !important; font-weight:900 !important; cursor:pointer !important; display:grid; place-items:center;
+}
+.filters-bar select{
+  border:4px outset #c0c0c0 !important; border-radius:0 !important; padding:10px 12px !important;
+  font-size:12px !important; font-weight:900 !important; font-family:'Comic Sans MS',cursive !important;
+  background:#fff !important; outline:none !important; cursor:pointer !important;
+  box-shadow: 2px 2px 0 #000 !important; color:#ff00ff !important;
+}
+.filter-tags{display:flex; gap:6px; flex-wrap:wrap; margin-top:12px; align-items:center; background:#000; padding:10px; border:4px ridge #ff00ff}
+.tag-btn{
+  border:4px outset #c0c0c0 !important; border-radius:0 !important; padding:8px 12px !important;
+  font-size:12px !important; font-weight:900 !important; font-family:'Comic Sans MS',cursive !important;
+  background: linear-gradient(#fff, #c0c0c0) !important; cursor:pointer !important;
+  box-shadow: 2px 2px 0 #000 !important; color:#000 !important; text-transform:uppercase;
+}
+.tag-btn:hover{border-style:inset !important; background:#ffff00 !important}
+.tag-btn.active{
+  background: #ff00ff !important; color:#ffff00 !important; border-style:inset !important;
+  transform:translate(2px,2px) !important; box-shadow:none !important; animation: ugly-blink 0.6s infinite;
+}
+.tag-btn:nth-child(2).active{background:#00ffff !important; color:#000 !important}
+.tag-btn:nth-child(3).active{background:#00ff00 !important; color:#ff0000 !important}
+.tag-btn:nth-child(4).active{background:#ff0000 !important; color:#fff !important}
+.tag-hint{
+  font-size:11px !important; font-weight:900 !important; color:#00ff00 !important; margin-left:6px;
+  font-family:'Courier New',monospace !important; text-transform:uppercase; background:#000; padding:4px 8px; border:2px dotted #00ff00;
+  animation: ugly-blink 0.9s infinite;
+}
+.results-info{
+  font-size:12px !important; color:#000 !important; margin-top:10px !important;
+  background: #ffff00 !important; border:3px dotted #ff00ff !important; padding:8px !important;
+  font-family:'Courier New',monospace !important; font-weight:900 !important; text-align:center;
+  transform:rotate(-0.5deg); box-shadow: 4px 4px 0 #000;
+}
+.results-info b{color:#ff00ff !important; text-decoration:underline wavy #00ffff 2px; font-size:14px}
+
+/* BUTTONS - bevel hell */
+.btn-hard{
+  border:4px outset #c0c0c0 !important; border-radius:0 !important; padding:10px 16px !important;
+  font-weight:900 !important; font-size:12px !important; font-family:'Comic Sans MS',cursive !important;
+  cursor:pointer !important; text-decoration:none !important; display:inline-flex; align-items:center; justify-content:center; gap:6px;
+  box-shadow: 4px 4px 0 #000 !important; transition:none !important;
+  background: linear-gradient(180deg, #fff 0%, #c0c0c0 50%, #808080 100%) !important; color:#000 !important;
+  text-transform:uppercase !important; letter-spacing:1px;
+}
+.btn-hard:hover{border-style:inset !important; transform:translate(2px,2px); box-shadow:2px 2px 0 #000 !important; filter:hue-rotate(90deg)}
+.btn-hard--solar{background: linear-gradient(90deg, #ffff00, #ff8000) !important; color:#000 !important; border-color:#ff0000 !important}
+.btn-hard--yellow{background: #ffff00 !important; border:4px ridge #ff00ff !important; color:#ff00ff !important}
+.btn-hard--pop{background: #ff00ff !important; color:#ffff00 !important; border:4px ridge #ffff00 !important}
+.btn-hard--ink{background: #000 !important; color:#00ff00 !important; border:4px ridge #00ff00 !important; font-family:'Courier New',monospace !important}
+.btn-hard--ghost{background: #fff !important; border-style:dotted !important}
+.btn-hard--big{padding:14px 18px !important; font-size:14px !important; animation: ugly-wiggle 0.6s infinite}
+.btn-hard--small{padding:6px 10px !important; font-size:11px !important}
+
+/* GRID - misaligned ugly cards */
+.grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:14px}
+@media(max-width:1100px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.grid{grid-template-columns:1fr}}
+
+.card{
+  position:relative; border:5px ridge #ff00ff !important; border-radius:0 !important; overflow:hidden;
+  background: #fff !important; box-shadow: 6px 6px 0 #000, inset 0 0 20px #ffff00 !important;
+  display:flex; flex-direction:column; cursor:pointer !important;
+  transform:rotate(-0.7deg);
+}
+.card:nth-child(2n){transform:rotate(0.9deg); border-color:#00ffff !important}
+.card:nth-child(3n){transform:rotate(-1.2deg); border-color:#ffff00 !important; background: #ffffe0 !important}
+.card:nth-child(4n){transform:rotate(0.5deg); border-color:#00ff00 !important}
+.card:hover{transform:rotate(0deg) scale(1.02) !important; z-index:5; box-shadow: 8px 8px 0 #000, 0 0 30px #ff00ff !important; filter:hue-rotate(30deg)}
+.card-stripe{height:14px !important; border-bottom:4px ridge #000 !important; background: repeating-linear-gradient(90deg, #ff0000 0 8px, #ffff00 8px 16px, #00ff00 16px 24px) !important}
+.card--solar .card-stripe{background: #ffff00 !important}
+.card--pop .card-stripe{background: #ff00ff !important}
+.card--electric .card-stripe{background: #0000ff !important}
+.card--mint .card-stripe{background: #00ff00 !important}
+.card--tangerine .card-stripe{background: #ff8000 !important}
+.card-top{padding:14px 14px 12px !important; flex:1; background: repeating-linear-gradient(0deg, transparent 0 20px, rgba(255,255,0,0.08) 20px 21px)}
+.card-badge-row{display:flex; gap:6px; align-items:center; flex-wrap:wrap}
+.card-badge{
+  font-family:'Courier New',monospace !important; font-size:10px !important; font-weight:900 !important;
+  letter-spacing:1px !important; text-transform:uppercase; border:3px outset #c0c0c0 !important; border-radius:0 !important;
+  padding:4px 8px !important; background:#c0c0c0 !important; color:#000 !important;
+}
+.card-pkt{
+  font-family:'Impact',fantasy !important; font-size:11px !important; font-weight:900 !important;
+  background:#ff0000 !important; color:#ffff00 !important; border:3px ridge #ffff00 !important; border-radius:0 !important; padding:4px 8px !important;
+  animation: ugly-blink 0.8s infinite;
+}
+.card h3{
+  margin:10px 0 6px !important; font-family:'Impact',fantasy !important; font-size:17px !important; font-weight:900 !important;
+  line-height:1.05 !important; letter-spacing:1px !important; color:#ff00ff !important;
+  text-shadow: 2px 2px 0 #ffff00, -1px -1px 0 #00ffff !important; text-transform:uppercase;
+  transform:rotate(-0.5deg);
+}
+.card-subtitle{margin:0 !important; font-size:11px !important; font-weight:900 !important; color:#0000ff !important; line-height:1.3 !important; background:#00ffff; border:2px dotted #000; padding:3px 6px; display:inline-block; transform:rotate(0.5deg)}
+.card-desc{margin:8px 0 0 !important; font-size:11px !important; color:#000 !important; line-height:1.4 !important; font-family:'Comic Sans MS',cursive !important; background:#fff; border:2px inset #c0c0c0; padding:6px; font-weight:700}
+.card-meta{display:flex; gap:4px; flex-wrap:wrap; margin-top:10px}
+.pill{ font-size:10px !important; font-weight:900 !important; border:3px outset #c0c0c0 !important; border-radius:0 !important; padding:4px 8px !important; background:#c0c0c0 !important; font-family:'Courier New',monospace !important; text-transform:uppercase }
+.tech-pill{background:#00ffff !important; color:#000 !important}
+.pill--zip{background:#ffff00 !important; color:#ff0000 !important; animation: ugly-blink 0.5s infinite}
+.card-footer{ display:flex; gap:6px; padding:10px 12px !important; border-top:5px ridge #c0c0c0 !important; background: #c0c0c0 !important; }
+.card-footer button{flex:1}
+.card-blob{position:absolute; right:-10px; top:-10px; width:40px; height:40px; border:3px ridge #000 !important; opacity:1 !important; pointer-events:none; animation: ugly-rainbow 1.5s linear infinite}
+.card--solar .card-blob{background: #ffff00 !important; border-radius:0 !important; transform:rotate(45deg)}
+.card--pop .card-blob{background: #ff00ff !important; border-radius:50% !important}
+.card--electric .card-blob{background: #0000ff !important}
+.card--mint .card-blob{background: #00ff00 !important; border-radius:0 !important}
+.card--tangerine .card-blob{background: #ff8000 !important}
+
+.empty-state{
+  text-align:center; padding:28px 16px !important; border:6px ridge #ff00ff !important; border-radius:0 !important;
+  background: #ffff00 !important; margin-top:14px !important; font-weight:900 !important; color:#ff00ff !important;
+  font-family:'Impact',fantasy !important; font-size:18px !important; text-transform:uppercase; text-shadow:2px 2px 0 #000;
+  animation: ugly-blink 0.7s infinite; box-shadow: 6px 6px 0 #000;
+}
+
+/* ZIP & SETUP */
+.zip-block{
+  margin-top:16px !important; border:6px ridge #ff00ff !important; border-radius:0 !important; padding:14px !important;
+  background: #00ffff !important; box-shadow: 6px 6px 0 #000 !important;
+}
+.zip-head{display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:center; font-size:13px !important; font-family:'Impact',fantasy !important; text-transform:uppercase; color:#000 !important}
+.zip-head span{font-size:10px !important; font-weight:900 !important; color:#000 !important; border:3px outset #fff !important; border-radius:0 !important; padding:6px 8px !important; background:#ffff00 !important; font-family:'Courier New',monospace !important}
+.zip-grid{display:flex; gap:6px; flex-wrap:wrap; margin-top:12px}
+.zip-item{
+  border:4px outset #c0c0c0 !important; border-radius:0 !important; padding:8px 12px !important;
+  font-weight:900 !important; font-size:11px !important; font-family:'Comic Sans MS',cursive !important;
+  background: #ffff00 !important; text-decoration:none !important; color:#000 !important; box-shadow: 3px 3px 0 #000 !important; text-transform:uppercase;
+}
+.zip-item:nth-child(3n+2){background: #ff00ff !important; color:#ffff00 !important}
+.zip-item:nth-child(3n){background: #00ff00 !important; color:#ff0000 !important}
+.zip-item:nth-child(4n){background: #0000ff !important; color:#ffff00 !important}
+
+.setup-block{
+  margin-top:14px !important; border:6px groove #ffff00 !important; border-radius:0 !important; padding:14px !important;
+  background: #000 !important; color:#00ff00 !important; font-family:'Courier New',monospace !important;
+  display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; box-shadow: 6px 6px 0 #000 !important;
+}
+.setup-block strong{font-family:'Impact',fantasy !important; font-size:14px !important; color:#ffff00 !important; text-transform:uppercase; text-shadow:1px 1px 0 #ff00ff}
+.setup-block p{margin:6px 0 0 !important; font-size:11px !important; color:#00ffff !important}
+.setup-block code{background:#ff00ff !important; color:#ffff00 !important; padding:3px 6px !important; border-radius:0 !important; font-family:'Courier New',monospace !important; font-size:11px !important; border:2px outset #fff !important}
+.setup-cmd{background: #00ff00 !important; color:#000 !important; padding:10px 14px !important; border-radius:0 !important; border:4px outset #fff !important; font-weight:900 !important; font-size:12px !important; animation: ugly-blink 0.6s infinite}
+
+/* DETAIL */
+.detail-wrap{padding-top:12px}
+.back-btn{
+  border:4px outset #c0c0c0 !important; border-radius:0 !important; padding:8px 14px !important;
+  background: #c0c0c0 !important; font-weight:900 !important; font-family:'Comic Sans MS',cursive !important;
+  cursor:pointer !important; box-shadow: 4px 4px 0 #000 !important; display:inline-flex; gap:8px; align-items:center;
+  text-transform:uppercase; font-size:12px !important;
+}
+.back-btn span{width:26px; height:26px; border-radius:0 !important; background:#000 !important; color:#00ff00 !important; display:grid; place-items:center; font-size:14px; border:2px outset #fff}
+.detail{ display:grid; grid-template-columns:1fr 380px; gap:14px; margin-top:14px; align-items:start }
+@media(max-width:980px){.detail{grid-template-columns:1fr}}
+.plan{ border:6px ridge #ff00ff !important; border-radius:0 !important; overflow:hidden; background:#fff !important; box-shadow: 8px 8px 0 #000 !important; }
+.plan-header{
+  padding:18px !important; border-bottom:6px ridge #00ffff !important;
+  background: linear-gradient(90deg, #ffff00, #00ffff, #ff00ff) !important; position:relative;
+}
+.plan-header::before{ content:"✦ ★ ✦ ★ ✦"; position:absolute; inset:auto 10px 6px auto; font-size:14px; letter-spacing:6px; color:#000; animation: ugly-blink 0.5s infinite }
+.plan-badge-row{display:flex; gap:6px; flex-wrap:wrap}
+.plan-year{
+  font-family:'Courier New',monospace !important; font-size:11px !important; font-weight:900 !important;
+  letter-spacing:1px !important; text-transform:uppercase; background:#ff0000 !important; color:#ffff00 !important;
+  border:3px outset #fff !important; border-radius:0 !important; padding:6px 10px !important; box-shadow: 3px 3px 0 #000 !important;
+  animation: ugly-blink 0.7s infinite;
+}
+.plan-pkt{background:#000 !important; color:#00ff00 !important; border:3px ridge #00ff00 !important; border-radius:0 !important; padding:6px 10px !important; font-family:'Courier New',monospace !important; font-size:11px !important; font-weight:900 !important}
+.plan-tech-mini{background:#00ffff !important; border:3px outset #fff !important; border-radius:0 !important; padding:6px 10px !important; font-weight:900 !important; font-size:11px !important; color:#000 !important}
+.plan-header h2{margin:12px 0 6px !important; font-family:'Impact',fantasy !important; font-size:24px !important; font-weight:900 !important; letter-spacing:1px !important; line-height:1 !important; color:#000 !important; text-shadow: 3px 3px 0 #ffff00, -2px -2px 0 #ff00ff !important; text-transform:uppercase; background:#fff; border:4px ridge #000; padding:8px; transform:rotate(-0.5deg)}
+.plan-sub{margin:0 !important; color:#000 !important; font-weight:900 !important; font-size:12px !important; line-height:1.3 !important; background:#ffff00; border:2px dotted #ff00ff; padding:6px; font-family:'Comic Sans MS',cursive !important}
+.plan-meta-line{margin:6px 0 0 !important; color:#fff !important; font-weight:900 !important; font-size:11px !important; background:#0000ff; padding:4px 8px; display:inline-block; border:2px outset #fff; font-family:'Courier New',monospace !important}
+.task-anchors{display:flex; gap:6px; flex-wrap:wrap; margin-top:12px}
+.anchor-btn{
+  border:4px outset #c0c0c0 !important; border-radius:0 !important; padding:7px 10px !important;
+  font-weight:900 !important; font-size:11px !important; cursor:pointer !important; box-shadow: 3px 3px 0 #000 !important;
+  font-family:'Courier New',monospace !important; text-transform:uppercase;
+}
+.anchor-yellow{background:#ffff00 !important; color:#ff00ff !important}
+.anchor-pink{background:#ff00ff !important; color:#ffff00 !important}
+.anchor-blue{background:#0000ff !important; color:#ffff00 !important}
+.anchor-mint{background:#00ff00 !important; color:#ff0000 !important}
+.plan-actions{display:flex; gap:6px; flex-wrap:wrap; margin-top:12px}
+.pdf-viewer{margin-top:12px; border:6px ridge #ff00ff !important; border-radius:0 !important; overflow:hidden; background:#000 !important; box-shadow: 6px 6px 0 #000 !important}
+.pdf-viewer iframe{width:100%; height:560px; border:0; display:block; filter: contrast(1.2) saturate(1.5)}
+.plan-body{padding:16px !important; background: #fff url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"><text x="5" y="15" font-size="10" fill="%23ff00ff">✦</text></svg>')}
+.callout{
+  display:flex; gap:10px; align-items:flex-start; border:5px ridge #ff0000 !important; border-radius:0 !important; padding:12px !important;
+  background: #ffff00 !important; box-shadow: 5px 5px 0 #000 !important; font-size:12px !important; line-height:1.4 !important; margin-bottom:14px !important;
+  font-family:'Comic Sans MS',cursive !important; font-weight:900 !important; color:#ff00ff !important;
+  animation: ugly-shake 0.5s infinite;
+}
+.callout-icon{width:34px !important; height:34px !important; border-radius:0 !important; background:#ff00ff !important; color:#ffff00 !important; display:grid; place-items:center; font-weight:900 !important; flex-shrink:0; border:3px outset #fff !important; animation: ugly-blink 0.4s infinite}
+.callout-sub{color:#0000ff !important; font-weight:900 !important; text-decoration:underline wavy #ff0000}
+.html-fallback{border:5px ridge #00ffff !important; border-radius:0 !important; overflow:hidden; box-shadow: 6px 6px 0 #000 !important}
+.plan-tasks{margin-top:16px; display:flex; flex-direction:column; gap:10px}
+.plan-task{display:flex; gap:10px; align-items:flex-start; border:4px ridge #00ffff !important; border-radius:0 !important; padding:12px !important; background: #fff !important; box-shadow: 4px 4px 0 #000 !important; transform:rotate(0.3deg)}
+.plan-task:nth-child(2n){transform:rotate(-0.4deg); background:#ffffe0 !important}
+.plan-task .task-num{width:34px !important; height:34px !important; border-radius:0 !important; background:#ff00ff !important; color:#ffff00 !important; display:grid; place-items:center; font-weight:900 !important; font-size:14px !important; flex-shrink:0; border:3px outset #fff !important; font-family:'Impact',fantasy !important}
+.plan-task p{margin:4px 0 0 !important; font-size:12px !important; color:#000 !important; line-height:1.4 !important; font-weight:700 !important; font-family:'Comic Sans MS',cursive !important}
+.plan-task .task-ref{font-size:10px !important; font-weight:900 !important; background:#00ffff !important; border:3px outset #fff !important; padding:4px 8px !important; border-radius:0 !important; display:inline-block; margin-top:6px; color:#000 !important; font-family:'Courier New',monospace !important}
+.files-block{ margin-top:16px !important; border:5px ridge #ffff00 !important; border-radius:0 !important; padding:14px !important; background: #c0c0c0 !important; box-shadow: 5px 5px 0 #000 !important; }
+.files-block h3{margin:0 0 10px !important; font-family:'Impact',fantasy !important; font-size:16px !important; font-weight:900 !important; color:#ff00ff !important; text-shadow:2px 2px 0 #ffff00; text-transform:uppercase}
+.files{display:flex; gap:6px; flex-wrap:wrap}
+.file-pill{font-family:'Courier New',monospace !important; font-size:11px !important; font-weight:900 !important; background:#000 !important; color:#00ff00 !important; padding:6px 10px !important; border-radius:0 !important; border:3px outset #00ff00 !important}
+.files-actions{display:flex; gap:6px; flex-wrap:wrap; align-items:center; margin-top:10px}
+.muted-link{font-size:11px !important; font-weight:900 !important; color:#ff00ff !important; text-decoration:underline wavy #00ffff !important; font-family:'Courier New',monospace !important}
+.muted-small{font-size:11px !important; font-weight:900 !important; color:#000 !important; background:#ffff00; border:2px dotted #ff00ff; padding:4px 6px; font-family:'Comic Sans MS',cursive !important}
+
+/* CONVERTED PDF */
+.converted-pdf .transformed-content{max-width:100%; font-family:'Comic Sans MS',cursive !important}
+.converted-pdf .transformed-content h2{
+  margin:22px 0 12px !important; font-family:'Impact',fantasy !important; font-size:18px !important; font-weight:900 !important;
+  letter-spacing:1px !important; color:#ffff00 !important; background: #ff00ff !important;
+  border:4px ridge #ffff00 !important; border-radius:0 !important; padding:10px 12px !important;
+  box-shadow: 5px 5px 0 #000 !important; text-transform:uppercase; text-shadow:2px 2px 0 #000; transform:rotate(-0.5deg);
+}
+.converted-pdf .transformed-content h3{
+  margin:18px 0 10px !important; font-family:'Impact',fantasy !important; font-size:15px !important; font-weight:900 !important; color:#ffff00 !important;
+  background: #0000ff !important; border:4px ridge #00ffff !important; border-radius:0 !important; padding:10px 12px !important;
+  box-shadow: 4px 4px 0 #000 !important; text-transform:uppercase; transform:rotate(0.5deg);
+}
+.converted-pdf .transformed-content h4{
+  margin:16px 0 8px !important; font-size:11px !important; font-weight:900 !important; color:#000 !important;
+  text-transform:uppercase; letter-spacing:1px !important; border:4px ridge #ff00ff !important; border-radius:0 !important;
+  display:inline-block; padding:6px 10px !important; background:#00ff00 !important; font-family:'Courier New',monospace !important;
+}
+.converted-pdf .transformed-content p{margin:8px 0 !important; font-size:13px !important; line-height:1.5 !important; color:#000 !important; background:#fff; border-left:4px solid #ff00ff; padding:6px 8px}
+.converted-pdf .transformed-content .alert{
+  background: #ffff00 !important; border:5px ridge #ff0000 !important; border-radius:0 !important; padding:12px !important;
+  font-size:12px !important; margin:14px 0 !important; box-shadow: 5px 5px 0 #000 !important; font-weight:900 !important; color:#ff0000 !important;
+  font-family:'Impact',fantasy !important; text-transform:uppercase; animation: ugly-blink 0.8s infinite;
+}
+.converted-pdf .transformed-content ol, .converted-pdf .transformed-content ul{
+  margin:10px 0 !important; padding-left:20px !important; background:#fff !important; border:4px ridge #00ffff !important; border-radius:0 !important;
+  padding-top:10px !important; padding-bottom:10px !important; box-shadow: 4px 4px 0 #000 !important;
+}
+.converted-pdf .transformed-content li{margin:5px 0 !important; font-size:12px !important; line-height:1.4 !important; font-weight:700 !important}
+.converted-pdf .transformed-content li::marker{color:#ff00ff !important; font-weight:900 !important; content:"★ "}
+.converted-pdf .transformed-content figure{
+  margin:16px 0 !important; border:5px ridge #ff00ff !important; border-radius:0 !important; overflow:hidden; background:#fff !important; box-shadow: 6px 6px 0 #000 !important;
+  transform:rotate(-0.5deg);
+}
+.converted-pdf .transformed-content figure img{width:100%; height:auto; display:block; filter: contrast(1.3) saturate(1.5) hue-rotate(15deg)}
+.converted-pdf .transformed-content figcaption{
+  padding:8px 12px !important; font-size:11px !important; font-weight:900 !important; background: #000 !important; color:#00ff00 !important;
+  border-top:4px ridge #00ff00 !important; text-align:center; font-family:'Courier New',monospace !important; text-transform:uppercase;
+}
+.converted-pdf .transformed-content .page-break{ margin:22px 0 !important; border:none !important; border-top:5px dashed #ff00ff !important; position:relative }
+.converted-pdf .transformed-content .page-break::after{
+  content:attr(data-page) " ✦ PAGE ✦"; position:absolute; top:-12px; left:50%; transform:translateX(-50%);
+  background:#ff00ff !important; color:#ffff00 !important; padding:4px 10px !important; font-family:'Impact',fantasy !important; font-size:10px !important; font-weight:900 !important; border:3px ridge #ffff00; transform:translateX(-50%) rotate(-1deg);
+}
+.converted-pdf .transformed-content code{background:#000 !important; color:#00ff00 !important; padding:2px 6px !important; border-radius:0 !important; font-family:'Courier New',monospace !important; font-size:11px !important; border:2px outset #00ff00 !important}
+.highlight-pulse{animation: ugly-shake 0.3s 6 !important; background:#ffff00 !important; outline:4px ridge #ff00ff !important}
+
+/* FOOTER - hit counter style */
+.footer{margin-top:auto; border-top:8px ridge #ffff00 !important; background: #000 !important; color:#00ff00 !important; padding:16px !important; font-family:'Courier New',monospace !important}
+.footer-inner{max-width:1320px; margin:0 auto; display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between; align-items:center; font-size:11px !important; font-weight:900 !important; color:#00ff00 !important; text-transform:uppercase}
+.footer-inner::before{content:"HIT COUNTER: 0041337 ✦ BEST VIEWED IN NETSCAPE NAVIGATOR ✦ 800x600 ✦"; background:#ffff00; color:#ff00ff; border:3px outset #fff; padding:4px 8px; font-size:10px; animation: ugly-blink 0.6s infinite}
+.footer-brand{font-family:'Impact',fantasy !important; font-weight:900 !important; color:#ff00ff !important; font-size:14px !important; text-shadow:2px 2px 0 #ffff00; background:#000; border:3px ridge #ff00ff; padding:4px 8px}
+
+/* SCORING - ugly */
+.scoring-v2{position:sticky; top:84px; border:6px ridge #ff00ff !important; border-radius:0 !important; overflow:hidden; background: #c0c0c0 !important; box-shadow: 8px 8px 0 #000 !important}
+.scoring-v2-head{padding:14px !important; border-bottom:6px ridge #ffff00 !important; background: #ffff00 !important}
+.scoring-title-row{display:flex; align-items:center; gap:8px}
+.scoring-title-row h3{margin:0 !important; font-family:'Impact',fantasy !important; font-size:18px !important; font-weight:900 !important; color:#ff00ff !important; text-shadow:2px 2px 0 #000; text-transform:uppercase}
+.badge-live{font-family:'Courier New',monospace !important; font-size:10px !important; font-weight:900 !important; letter-spacing:1px !important; background:#ff0000 !important; color:#ffff00 !important; padding:4px 8px !important; border-radius:0 !important; border:3px outset #fff !important; animation: ugly-blink 0.4s infinite}
+.scoring-v2-head p{margin:8px 0 0 !important; font-size:11px !important; color:#000 !important; line-height:1.4 !important; font-weight:900 !important; font-family:'Comic Sans MS',cursive !important; background:#fff; border:2px inset #c0c0c0; padding:6px}
+.exam-meta-chips{display:flex; gap:5px; flex-wrap:wrap; margin-top:10px}
+.chip{font-size:10px !important; font-weight:900 !important; background:#c0c0c0 !important; border:4px outset #fff !important; padding:5px 8px !important; border-radius:0 !important; box-shadow:2px 2px 0 #000 !important; font-family:'Courier New',monospace !important}
+.chip-tech{background:#00ffff !important}
+.pill-pkt{background:#000 !important; color:#00ff00 !important; border-color:#00ff00 !important}
+.progress-wrap-v2{margin-top:10px}
+.progress-bar-v2{height:22px !important; background:#fff !important; border-radius:0 !important; overflow:hidden; border:4px inset #c0c0c0 !important; box-shadow: inset 2px 2px 0 #808080}
+.progress-fill-v2{height:100% !important; transition:none !important; border-radius:0 !important; background: repeating-linear-gradient(90deg, #ff0000 0 12px, #ffff00 12px 24px, #00ff00 24px 36px) !important; animation: ugly-marquee 1s linear infinite; background-size: 48px 100%}
+.progress-meta-v2{display:flex; justify-content:space-between; font-size:11px !important; font-weight:900 !important; margin-top:6px; font-family:'Courier New',monospace !important; color:#000 !important; background:#fff; border:2px inset #c0c0c0; padding:4px}
+.threshold-row{display:flex; justify-content:space-between; margin-top:4px; font-family:'Courier New',monospace !important; font-size:10px !important; font-weight:900 !important; color:#ff00ff !important}
+.scoring-controls{margin-top:10px; display:flex; flex-direction:column; gap:6px}
+.scoring-search{border:4px inset #fff !important; border-radius:0 !important; padding:8px 12px !important; font-size:12px !important; font-weight:900 !important; outline:none !important; background:#fff !important; font-family:'Courier New',monospace !important; box-shadow: inset 2px 2px 0 #808080 !important}
+.filter-row{display:flex; gap:5px}
+.mini-tab{flex:1; border:4px outset #c0c0c0 !important; background: #c0c0c0 !important; border-radius:0 !important; padding:8px 8px !important; font-size:11px !important; font-weight:900 !important; cursor:pointer !important; box-shadow: 2px 2px 0 #000 !important; font-family:'Comic Sans MS',cursive !important}
+.mini-tab.active{background:#000080 !important; color:#ffff00 !important; border-style:inset !important}
+.scoring-v2-body{padding:10px !important; max-height:62vh; overflow:auto; background: #fff url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><text x="0" y="12" font-size="10">✦</text></svg>') !important}
+.score-group-v2{border:4px ridge #ff00ff !important; border-radius:0 !important; margin-bottom:10px !important; overflow:hidden; background:#fff !important; box-shadow: 4px 4px 0 #000 !important}
+.score-group-v2.done{border-color:#00ff00 !important; background:#c0ffca !important}
+.score-group-v2 summary{list-style:none; display:flex; justify-content:space-between; align-items:center; gap:10px; padding:10px !important; cursor:pointer !important; background: #c0c0c0 !important; font-family:'Comic Sans MS',cursive !important; border-bottom:4px ridge #fff}
+.sg-title{display:flex; gap:8px; align-items:center; flex:1; min-width:0}
+.sg-icon{width:30px !important; height:30px !important; border-radius:0 !important; display:grid; place-items:center; color:#ffff00 !important; font-weight:900 !important; font-size:14px !important; flex-shrink:0; border:3px outset #fff !important; font-family:'Impact',fantasy !important}
+.sg-name{font-size:12px !important; font-weight:900 !important; line-height:1.1 !important; color:#000 !important; font-family:'Comic Sans MS',cursive !important; text-transform:uppercase}
+.sg-sub{font-size:10px !important; color:#0000ff !important; margin-top:2px; line-height:1.2; font-weight:700 !important; font-family:'Courier New',monospace !important}
+.sg-sub em{color:#ff00ff !important; font-style:normal; font-weight:900 !important; background:#ffff00; padding:1px 4px; border:1px dotted #000}
+.sg-meta{display:flex; flex-direction:column; align-items:flex-end; gap:5px; flex-shrink:0}
+.sg-pct{font-family:'Courier New',monospace !important; font-size:12px !important; font-weight:900 !important; background:#000; color:#00ff00; padding:2px 6px; border:2px outset #00ff00}
+.sg-pct-bar{width:68px !important; height:12px !important; background:#fff !important; border-radius:0 !important; overflow:hidden; border:3px inset #c0c0c0 !important}
+.sg-pct-bar span{display:block; height:100%; border-radius:0 !important; background: linear-gradient(90deg, #ff0000, #ffff00) !important}
+.sg-actions{display:flex; gap:5px; padding:8px 10px !important; background: #c0c0c0 !important; border-top:4px ridge #fff !important; border-bottom:4px groove #808080 !important; flex-wrap:wrap}
+.link-btn{font-size:10px !important; font-weight:900 !important; background: #c0c0c0 !important; border:3px outset #fff !important; border-radius:0 !important; padding:6px 8px !important; cursor:pointer !important; box-shadow: 2px 2px 0 #000 !important; font-family:'Comic Sans MS',cursive !important; text-transform:uppercase}
+.criteria-v2{padding:8px !important; display:flex; flex-direction:column; gap:6px; background:#fff}
+.criterion-v2{display:flex; gap:8px; align-items:flex-start; padding:8px !important; border-radius:0 !important; border:3px outset #c0c0c0 !important; cursor:pointer !important; background: #fff !important; box-shadow: 2px 2px 0 #000 !important; font-family:'Comic Sans MS',cursive !important}
+.criterion-v2.checked{background: #00ff00 !important; border-style:inset !important; box-shadow:none !important}
+.criterion-v2 input{margin-top:2px; width:16px; height:16px; flex-shrink:0; accent-color:#ff00ff !important}
+.criterion-v2 label{flex:1; cursor:pointer; display:block}
+.code-v2{font-family:'Courier New',monospace !important; font-size:10px !important; font-weight:900 !important; color:#ffff00 !important; background:#ff00ff !important; border:2px outset #fff !important; padding:2px 6px !important; border-radius:0 !important; display:inline-block; margin-bottom:3px}
+.criterion-v2 p{margin:0 !important; font-size:11px !important; line-height:1.3 !important; color:#000 !important; font-weight:700 !important}
+.pts-v2{font-family:'Impact',fantasy !important; font-size:11px !important; font-weight:900 !important; color:#000 !important; background: #ffff00 !important; border:3px outset #fff !important; padding:3px 6px !important; border-radius:0 !important; white-space:nowrap; height:fit-content; box-shadow: 2px 2px 0 #000 !important}
+.criterion-v2.checked .pts-v2{background:#ff0000 !important; color:#ffff00 !important; border-color:#ffff00 !important}
+.scoring-v2-foot{padding:10px !important; background: #c0c0c0 !important; border-top:6px ridge #fff !important; display:flex; flex-direction:column; gap:6px}
+.foot-grid{display:flex; gap:6px}
+.foot-btn{flex:1; text-align:center; font-size:11px !important; font-weight:900 !important; padding:10px !important; border-radius:0 !important; border:4px outset #fff !important; background: #c0c0c0 !important; color:#000 !important; text-decoration:none !important; cursor:pointer !important; display:grid; place-items:center; box-shadow: 3px 3px 0 #000 !important; font-family:'Comic Sans MS',cursive !important; text-transform:uppercase}
+.foot-btn:hover{border-style:inset !important; filter:hue-rotate(180deg)}
+.foot-btn.primary{background:#000080 !important; color:#ffff00 !important; border-color:#00ffff !important}
+.foot-btn.full{width:100%; background:#ff00ff !important; color:#ffff00 !important; animation: ugly-blink 0.5s infinite}
+.foot-hint{margin:4px 0 0 !important; font-family:'Courier New',monospace !important; font-size:9px !important; color:#000 !important; text-align:center; line-height:1.3; font-weight:900 !important; background:#ffff00; border:2px dotted #ff00ff; padding:4px}
+
+/* ===== CASINO SCAM OVERLAY (ugly gold + red felt) ===== */
+.casino-jackpot{
+  background: linear-gradient(180deg, #3a0a0a, #7a1010 50%, #3a0a0a) !important;
+  border-top:5px ridge #ffd700 !important; border-bottom:5px ridge #ffd700 !important;
+  color:#ffd700 !important; text-align:center; padding:8px 10px !important;
+  font-family:'Impact',fantasy !important; letter-spacing:2px; display:flex; gap:10px; align-items:center; justify-content:center; flex-wrap:wrap;
+  text-shadow: 0 0 12px #ff0000, 2px 2px 0 #000 !important;
+  box-shadow: inset 0 0 30px #000, 0 0 20px #ffd700 !important;
+}
+.jackpot-light{ color:#ff0000 !important; font-size:20px !important; animation: ugly-blink 0.4s infinite; text-shadow:0 0 10px #ff0000 }
+.jackpot-label{ font-size:13px !important; text-transform:uppercase; background:#ffd700; color:#7a1010 !important; padding:3px 8px; border:3px outset #fff59d; text-shadow:none !important }
+.jackpot-num{ font-size:22px !important; color:#fff59d !important; border:3px ridge #ffd700; padding:2px 10px; background:#000; animation: ugly-wiggle 0.8s infinite }
+.jackpot-sub{ font-family:'Courier New',monospace !important; font-size:10px !important; color:#fff !important; font-weight:900; text-shadow:none !important }
+.wins-ticker{
+  margin-top:10px; background:#000 !important; border:4px ridge #00ff00 !important; color:#00ff00 !important;
+  font-family:'Courier New',monospace !important; font-size:11px !important; font-weight:900 !important;
+  padding:8px 10px !important; display:flex; gap:10px; align-items:center; flex-wrap:wrap; box-shadow:4px 4px 0 #000 !important;
+}
+.wins-live{ background:#ff0000; color:#fff !important; padding:2px 6px; border:2px outset #fff; animation: ugly-blink 0.5s infinite }
+.wins-proof{ margin-left:auto; color:#808080 !important; font-size:10px !important }
+.casino-row{ display:grid; grid-template-columns: 1fr 1fr; gap:14px; margin-top:14px }
+@media(max-width:900px){ .casino-row{ grid-template-columns:1fr } }
+.slot-box{
+  border:6px ridge #ffd700 !important; background: radial-gradient(circle at 50% 0%, #5a0a0a, #1a0505 70%) !important;
+  padding:14px !important; box-shadow: 8px 8px 0 #000, inset 0 0 40px #000 !important; text-align:center; position:relative; overflow:hidden;
+}
+.slot-box::before{ content:"★★★ ★★★ ★★★"; position:absolute; top:4px; left:0; right:0; color:#ffd700; font-size:10px; letter-spacing:8px; opacity:.6 }
+.slot-head{ font-family:'Impact',fantasy !important; color:#ffd700 !important; font-size:18px !important; letter-spacing:2px; text-shadow:0 0 10px #ff0000, 2px 2px 0 #000 !important; margin-top:8px }
+.slot-hot{ background:#ff0000; color:#ffff00 !important; font-size:11px !important; padding:2px 6px; border:2px ridge #ffff00; animation: ugly-blink 0.4s infinite; vertical-align:middle }
+.slot-sub{ color:#fff !important; font-family:'Comic Sans MS',cursive !important; font-size:11px !important; font-weight:900 !important; margin-top:6px }
+.slot-sub u{ color:#ffd700 !important }
+.slot-reels{ display:flex; gap:8px; justify-content:center; margin:12px 0 !important }
+.slot-reel{
+  width:64px; height:64px; display:grid; place-items:center; font-size:34px !important;
+  background: linear-gradient(#fff, #c0c0c0) !important; border:5px inset #fff !important; box-shadow: 3px 3px 0 #000 !important;
+}
+.slot-reels.spinning .slot-reel{ animation: ugly-shake 0.1s infinite; filter: hue-rotate(90deg) saturate(2) }
+.btn-hard--slot{ background: linear-gradient(180deg, #ff3b3b, #a31212) !important; color:#ffe27a !important; border:4px ridge #ffd700 !important; font-size:13px !important; animation: ugly-wiggle 0.7s infinite }
+.btn-hard--claim{ background: linear-gradient(180deg, #ffe27a, #ffb300) !important; color:#7a1010 !important; border:4px ridge #fff59d !important; font-size:14px !important; width:100%; margin-top:10px; animation: ugly-blink 0.6s steps(2) infinite }
+.slot-msg{ margin-top:10px; background:#ffff00 !important; border:3px dotted #ff0000 !important; padding:8px !important; font-family:'Comic Sans MS',cursive !important; font-size:12px !important; font-weight:900 !important; color:#000 !important; min-height:38px }
+.slot-fine{ margin-top:8px; font-family:'Courier New',monospace !important; font-size:9px !important; color:#c0c0c0 !important; line-height:1.4 }
+.scam-side .scam-offer{
+  border:6px ridge #ff0000 !important; background: linear-gradient(180deg, #ffff00, #ff8000) !important;
+  padding:14px !important; box-shadow: 8px 8px 0 #000 !important; transform:rotate(0.6deg); height:100%;
+}
+.scam-offer-top{ font-family:'Impact',fantasy !important; background:#ff0000; color:#ffff00 !important; text-align:center; padding:4px; letter-spacing:2px; border:3px outset #fff; animation: ugly-blink 0.5s infinite }
+.scam-offer-big{ font-family:'Impact',fantasy !important; font-size:30px !important; line-height:0.95 !important; color:#7a1010 !important; text-shadow:3px 3px 0 #fff, -1px -1px 0 #ff00ff !important; margin-top:10px; text-transform:uppercase }
+.scam-offer-code{ margin-top:8px; font-family:'Courier New',monospace !important; font-weight:900; background:#000; color:#00ff00 !important; padding:6px 8px; border:3px outset #00ff00; display:inline-block }
+.scam-claimed{ background:#00ff00; color:#000 !important; padding:1px 6px; margin-left:6px }
+.scam-offer-list{ margin:10px 0 !important; padding-left:18px !important; font-family:'Comic Sans MS',cursive !important; font-size:12px !important; font-weight:900 !important; color:#000 !important; background:#fff !important; border:3px inset #c0c0c0 !important; padding-top:8px !important; padding-bottom:8px !important }
+.scam-urgency{ margin-top:8px; font-family:'Courier New',monospace !important; font-size:10px !important; font-weight:900 !important; background:#000; color:#ffff00 !important; padding:5px; border:2px dotted #ffff00; animation: ugly-blink 0.9s infinite }
+/* popup */
+.scam-overlay{ position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,.72) !important; display:grid; place-items:center; padding:16px }
+.scam-modal{
+  width:min(480px, 94vw); background: linear-gradient(180deg, #fff59d, #ffb300) !important;
+  border:8px ridge #ff0000 !important; box-shadow: 12px 12px 0 #000, 0 0 60px #ffd700 !important; padding:0 0 12px !important;
+  animation: ugly-wiggle 0.5s 3; font-family:'Comic Sans MS',cursive !important; max-height:90vh; overflow:auto;
+}
+.scam-topbar{ background: linear-gradient(90deg, #ff0000, #ff8000) !important; color:#ffff00 !important; font-family:'Impact',fantasy !important; letter-spacing:1px; padding:8px 10px !important; display:flex; justify-content:space-between; align-items:center; border-bottom:5px ridge #ffd700; position:sticky; top:0 }
+.scam-x{ background:#000 !important; color:#fff !important; border:3px outset #fff !important; width:30px; height:30px; font-weight:900; cursor:pointer !important }
+.scam-big{ font-family:'Impact',fantasy !important; font-size:20px !important; text-align:center; margin:12px 10px 0 !important; color:#7a1010 !important; text-shadow:2px 2px 0 #fff !important; text-transform:uppercase }
+.scam-win{ margin:10px 12px 0 !important; background:#000 !important; color:#fff !important; border:4px ridge #ffd700 !important; padding:10px !important; font-weight:900 !important; font-size:13px !important; text-align:center }
+.scam-win span{ color:#ffd700 !important; text-decoration: underline wavy #ff0000 !important }
+.scam-count{ margin:10px 12px 0 !important; background:#ff0000 !important; color:#ffff00 !important; font-family:'Courier New',monospace !important; font-weight:900 !important; padding:8px !important; border:3px outset #fff !important; text-align:center; animation: ugly-blink 0.7s infinite }
+.scam-list{ margin:10px 12px 0 !important; background:#fff !important; border:3px inset #c0c0c0 !important; padding:8px 8px 8px 26px !important; font-size:12px !important; font-weight:900 !important }
+.scam-modal .btn-hard--claim{ margin:10px 12px 0 !important; width:calc(100% - 24px) !important }
+.scam-no{ display:block; margin:8px auto 0; background:none !important; border:none !important; box-shadow:none !important; color:#5a0a0a !important; font-size:11px !important; text-decoration:underline; cursor:pointer !important; font-weight:700 }
+.scam-fine{ margin:10px 12px 0 !important; font-family:'Courier New',monospace !important; font-size:9px !important; color:#5a4a00 !important; text-align:center }
+/* sticky bar */
+.bonus-bar{
+  position:fixed; left:0; right:0; bottom:0; z-index:9000;
+  background: linear-gradient(90deg, #7a1010, #ff0000, #7a1010) !important; border-top:5px ridge #ffd700 !important;
+  color:#ffe27a !important; display:flex; gap:10px; align-items:center; justify-content:center; flex-wrap:wrap;
+  padding:10px 12px calc(10px + env(safe-area-inset-bottom)) !important; font-family:'Comic Sans MS',cursive !important; font-weight:900 !important; font-size:12px !important;
+  box-shadow: 0 -6px 0 #000, 0 0 30px #ffd700 !important;
+}
+.bonus-fire{ font-size:18px; animation: ugly-wiggle 0.4s infinite }
+.bonus-text code{ background:#000; color:#00ff00 !important; border:2px outset #00ff00; padding:1px 6px; font-family:'Courier New',monospace !important }
+.bonus-cta{ background:#ffd700 !important; color:#7a1010 !important; border:4px outset #fff59d !important; font-family:'Impact',fantasy !important; letter-spacing:1px; padding:8px 14px !important; cursor:pointer !important; box-shadow:3px 3px 0 #000 !important; animation: ugly-blink 0.6s infinite }
+.bonus-timer{ background:#000; color:#ffff00 !important; border:2px ridge #ffd700; padding:4px 8px; font-family:'Courier New',monospace !important; animation: ugly-blink 0.5s infinite }
+/* cards casino bits */
+.nav-pill--casino{ background:#7a1010 !important; color:#ffd700 !important; border-color:#ffd700 !important; animation:none !important; text-shadow:0 0 8px #ff0000 }
+.card-ribbon{
+  position:absolute; top:14px; right:-34px; transform:rotate(35deg); z-index:6;
+  background:#ff0000 !important; color:#ffff00 !important; font-family:'Impact',fantasy !important; font-size:10px !important; letter-spacing:1px;
+  padding:4px 36px !important; border-top:2px ridge #ffd700; border-bottom:2px ridge #ffd700; box-shadow:2px 2px 0 #000; animation: ugly-blink 0.7s infinite;
+}
+.card-odds{ font-family:'Courier New',monospace !important; font-size:10px !important; font-weight:900 !important; background:#000 !important; color:#ffd700 !important; border:2px ridge #ffd700 !important; padding:4px 8px !important }
+.pill--rtp{ background:#000 !important; color:#00ff00 !important; border-color:#00ff00 !important; animation: ugly-blink 1.2s infinite }
+.card-scamline{ margin-top:8px; font-family:'Courier New',monospace !important; font-size:10px !important; font-weight:900 !important; color:#7a1010 !important; background:#fff59d; border:2px dotted #ff0000; padding:4px 6px }
+/* bet widget */
+.bet-box{ margin-bottom:14px; border:5px ridge #ffd700 !important; background: radial-gradient(circle, #1a0505, #000) !important; padding:12px !important; box-shadow:5px 5px 0 #000 !important; color:#ffe27a !important }
+.bet-head{ font-family:'Impact',fantasy !important; letter-spacing:1px; color:#ffd700 !important; text-shadow:0 0 8px #ff0000 !important; margin-bottom:8px }
+.bet-row{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; font-family:'Courier New',monospace !important; font-size:11px !important; font-weight:900 }
+.bet-row input{ width:70px; border:3px inset #fff !important; background:#fff !important; font-family:'Courier New',monospace !important; font-weight:900; padding:6px; color:#000 !important }
+.bet-result{ margin-top:8px; background:#ffff00 !important; color:#000 !important; border:3px dotted #ff0000 !important; padding:8px; font-family:'Comic Sans MS',cursive !important; font-weight:900; font-size:12px !important }
+/* testimonials */
+.scam-testimonials{
+  margin-top:14px; background:#000 !important; border:4px ridge #ffd700 !important; color:#ffe27a !important;
+  font-family:'Comic Sans MS',cursive !important; font-size:11px !important; font-weight:700 !important;
+  padding:10px !important; display:flex; gap:14px; flex-wrap:wrap; align-items:center; box-shadow:4px 4px 0 #000 !important;
+}
+.scam-testimonials strong{ color:#ffd700 !important; font-family:'Impact',fantasy !important; letter-spacing:1px }
+/* ===== VERY SLIGHT FUNGUS (0.3%) ===== */
+.fungus-whisper{ font-size:9px !important; opacity:.38; filter:saturate(.7) hue-rotate(-15deg); margin-left:4px; vertical-align:super; cursor:help }
+.fungus-corner{ position:absolute; left:6px; bottom:6px; z-index:5; font-size:11px !important; opacity:.30; transform:rotate(-14deg); margin:0 }
+.mycelium-trace{
+  position:absolute; inset:auto 0 0 0; height:14px; pointer-events:none; opacity:.16;
+  background: radial-gradient(circle at 8px 8px, #e8e4d8 1.2px, transparent 1.6px) 0 0/14px 14px,
+              radial-gradient(circle at 20px 4px, #d8d2c0 1px, transparent 1.4px) 0 0/22px 14px;
+}
+.container{ padding-bottom:90px !important }
+/* extra ugly global touches */
+*::selection{ background:#ff00ff !important; color:#ffff00 !important }
+html{ scrollbar-color: #ff00ff #00ffff }
+:focus-visible{outline: 4px dotted #ff00ff !important; outline-offset:2px}
+@media(max-width:640px){
+  .hero-title{letter-spacing:1px !important}
+  .collage{height:360px}
+  .collage-card{width:190px}
+}

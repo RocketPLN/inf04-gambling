@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INF.04 – czerwiec 2026 – egzamin praktyczny – HTML</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0; font-family:Inter,system-ui,sans-serif; background:#f8fafc; color:#0f172a; line-height:1.6}
+a{color:#4f46e5}
+.header{position:sticky; top:0; z-index:10; background:rgba(255,255,255,.92); backdrop-filter:blur(10px); border-bottom:1px solid #e2e8f0; padding:14px 20px; display:flex; justify-content:space-between; align-items:center; gap:16px}
+.header h1{margin:0; font-size:17px}
+.header p{margin:2px 0 0; font-size:13px; color:#64748b}
+.badge{background:#eef2ff; color:#4338ca; padding:4px 10px; border-radius:999px; font-size:12px; font-weight:700}
+.layout{max-width:1280px; margin:0 auto; padding:18px 20px 40px; display:grid; grid-template-columns:1fr 360px; gap:18px; align-items:start}
+@media(max-width:980px){.layout{grid-template-columns:1fr}}
+.main{background:white; border:1px solid #e2e8f0; border-radius:14px; overflow:hidden}
+.main-head{padding:18px 20px; border-bottom:1px solid #e2e8f0; background:linear-gradient(180deg,#fff,#f8fafc)}
+.main-head h2{margin:0; font-size:21px}
+.meta{font-size:13px; color:#64748b; margin-top:6px}
+.actions{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px}
+.actions a{font-size:13px; font-weight:700; padding:8px 12px; border-radius:10px; text-decoration:none; border:1px solid #e2e8f0; background:white; color:#0f172a}
+.actions a.primary{background:#0f172a; color:white; border-color:#0f172a}
+.content{padding:24px}
+.content h2{margin:32px 0 14px; font-size:20px; font-weight:800; letter-spacing:-.4px; color:#0f172a; background:linear-gradient(90deg,#eef2ff,#f8fafc); border:1px solid #e0e7ff; border-left:4px solid #6366f1; padding:10px 14px; border-radius:10px}
+.content h2:first-child{margin-top:6px}
+.content h3{margin:26px 0 12px; font-size:16px; font-weight:700; color:#1e293b; background:#f8fafc; border:1px solid #e2e8f0; border-left:4px solid #06b6d4; padding:10px 12px; border-radius:10px}
+.content h4{margin:18px 0 8px; font-size:14px; font-weight:700; color:#334155; text-transform:uppercase; letter-spacing:.04em; border-bottom:1px solid #f1f5f9; padding-bottom:6px}
+.content p{margin:10px 0; font-size:14.5px; line-height:1.68; color:#1e293b}
+.content .alert{background:#fffbeb; border:1px solid #fde68a; border-left:4px solid #f59e0b; padding:14px 16px; border-radius:12px; font-size:13.5px; margin:18px 0; box-shadow:0 1px 3px rgba(245,158,11,.08)}
+.content ol, .content ul{margin:12px 0; padding-left:24px; background:white; border:1px solid #f1f5f9; border-radius:10px; padding-top:10px; padding-bottom:10px}
+.content li{margin:6px 0; font-size:14px; line-height:1.6; color:#1e293b}
+.content li::marker{color:#6366f1; font-weight:700}
+.content figure{margin:18px 0; border:1px solid #e2e8f0; border-radius:14px; overflow:hidden; background:#f8fafc; box-shadow:0 4px 12px rgba(0,0,0,.06)}
+.content figure img{width:100%; height:auto; display:block; background:white}
+.content figcaption{padding:12px 16px; font-size:13px; color:#475569; background:#f8fafc; border-top:1px solid #e2e8f0; text-align:center; font-style:italic}
+.content code{background:#f1f5f9; padding:2px 6px; border-radius:6px; font-size:13px; border:1px solid #e2e8f0}
+.content .page-break{margin:32px 0; border:none; border-top:2px dashed #cbd5e1; position:relative}
+.content .page-break::after{content:attr(data-page); position:absolute; top:-10px; left:50%; transform:translateX(-50%); background:#f8fafc; padding:2px 10px; font-size:11px; font-weight:700; color:#64748b; letter-spacing:.06em; border:1px solid #e2e8f0; border-radius:999px}
+.scoring{position:sticky; top:76px; background:white; border:1px solid #e2e8f0; border-radius:14px; overflow:hidden}
+.scoring-head{padding:16px; border-bottom:1px solid #e2e8f0}
+.scoring-head h3{margin:0; font-size:16px}
+.scoring-head p{margin:4px 0 0; font-size:13px; color:#64748b}
+.score-group{border:1px solid #e2e8f0; border-radius:12px; margin-bottom:10px; overflow:hidden}
+.score-group summary{list-style:none; display:flex; justify-content:space-between; align-items:center; padding:11px 12px; cursor:pointer; font-weight:700; font-size:13px; background:#f8fafc}
+.score-group[open] summary{background:#eef2ff}
+.criteria{padding:8px 10px; display:flex; flex-direction:column; gap:8px}
+.criterion{display:flex; gap:10px; align-items:flex-start; padding:10px; border-radius:10px; border:1px solid #f1f5f9}
+.criterion .code{font-family:monospace; font-size:11px; font-weight:700; color:#4338ca; background:#eef2ff; padding:2px 6px; border-radius:6px}
+.criterion p{margin:0; font-size:13px; line-height:1.45}
+.pts{font-size:12px; font-weight:700; color:#059669; background:#ecfdf5; padding:3px 8px; border-radius:999px; border:1px solid #a7f3d0; white-space:nowrap}
+.scoring-foot{padding:12px; background:#f8fafc; border-top:1px solid #e2e8f0; display:flex; flex-direction:column; gap:8px}
+.footer{text-align:center; padding:20px; font-size:13px; color:#64748b}
+</style>
+</head>
+<body>
+<div class="header">
+  <div>
+    <h1>INF.04 – czerwiec 2026 – egzamin praktyczny <span class="badge">PDF → HTML</span></h1>
+    <p>Projektowanie, programowanie i testowanie aplikacji • 2026 • czerwiec • React, PHP, MySQL • 150 min</p>
+  </div>
+  <a href="/" style="font-size:13px; font-weight:700; color:#4f46e5; text-decoration:none">← Portal INF.04</a>
+</div>
+<div class="layout">
+  <div class="main">
+    <div class="main-head">
+      <h2>Treść arkusza – transformacja PDF na semantyczny HTML</h2>
+      <div class="meta">Oryginał: <a href="https://arkusze.pl/zawodowy/inf04-2026-czerwiec-egzamin-zawodowy-praktyczny.pdf" target="_blank">PDF arkusz</a> • Zasady: <a href="https://arkusze.pl/zawodowy/inf04-2026-czerwiec-egzamin-zawodowy-praktyczny-zasady-oceniania.pdf" target="_blank">PDF zasady</a> • Obrazy wyciągnięte z PDF i osadzone jako &lt;img&gt; • Nie jest to 1:1 dump, tylko transformacja na odpowiedni HTML</div>
+      <div class="actions">
+        <a class="primary" href="https://arkusze.pl/zawodowy/inf04-2026-czerwiec-egzamin-zawodowy-praktyczny.pdf" target="_blank">Otwórz oryginalny PDF</a>
+        <a href="https://arkusze.pl/zawodowy/inf04-2026-czerwiec-egzamin-zawodowy-praktyczny-zasady-oceniania.pdf" target="_blank">Zasady PDF</a>
+        <span style="color:#64748b; font-size:13px">Brak dodatkowych ZIP</span>
+        <a href="inf04-2026-czerwiec.fragment.html" target="_blank">Fragment HTML</a>
+      </div>
+    </div>
+    <div class="content">
+<div class="transformed-content">
+<p><strong>Nazwa kwalifikacji: Projektowanie, programowanie i testowanie aplikacji</strong></p>
+<p><strong>Symbol kwalifikacji: INF.04</strong></p>
+<p><strong>Numer zadania: 01</strong></p>
+<p><strong>Wersja arkusza: SG</strong></p>
+<p>Wypełnia zdający</p>
+<p>Numer PESEL zdającego*</p>
+<p>Numer stanowiska</p>
+<p><strong>Czas trwania egzaminu: 180 minut</strong></p>
+<p>INF.04-01-26.06-SG</p>
+<h2>EGZAMIN ZAWODOWY</h2>
+<p><strong>Rok 2026</strong></p>
+<h2>CZĘŚĆ PRAKTYCZNA</h2>
+<h2>Instrukcja dla zdającego</h2>
+<ol>
+<li>Na pierwszej stronie arkusza egzaminacyjnego wpisz w oznaczonym miejscu swój numer PESEL*, numer stanowiska i naklej naklejkę** z numerem PESEL i z kodem ośrodka.</li>
+<li>Sprawdź, czy arkusz egzaminacyjny zawiera 6 stron i nie zawiera błędów. Ewentualny brak stron lub inne usterki zgłoś przez podniesienie ręki przewodniczącemu zespołu nadzorującego.</li>
+<li>Zapoznaj się z treścią zadania oraz stanowiskiem egzaminacyjnym. Masz na to 10 minut. Czas ten nie jest wliczany do czasu trwania egzaminu.</li>
+<li>Czas rozpoczęcia i zakończenia pracy zapisze w widocznym miejscu przewodniczący zespołu nadzorującego.</li>
+<li>Wykonaj samodzielnie zadanie egzaminacyjne. Przestrzegaj zasad bezpieczeństwa i organizacji pracy.</li>
+<li>Po zakończeniu wykonania zadania pozostaw arkusz egzaminacyjny z rezultatami wykonania zadania na swoim stanowisku lub w miejscu wskazanym przez przewodniczącego zespołu nadzorującego.</li>
+<li>Po uzyskaniu zgody zespołu nadzorującego możesz opuścić salę/miejsce przeprowadzania egzaminu. Powodzenia! * w przypadku braku numeru PESEL – seria i numer paszportu lub innego dokumentu potwierdzającego tożsamość ** w przypadku otrzymania naklejki Układ graficzny © CKE 2025 Arkusz zawiera informacje prawnie chronione do momentu rozpoczęcia egzaminu Miejsce na naklejkę z numerem PESEL i z kodem ośrodka</li>
+</ol>
+<h4>PODSTAWA PROGRAMOWA</h4>
+<p><strong>2019</strong></p>
+<figure><img src="/plans/img/inf04-2026-czerwiec_p0_img0.png" alt="Obraz z arkusza – strona 1" loading="lazy" /><figcaption>Obraz z arkusza – strona 1 (konwersja PDF → HTML, oryginał w PDF)</figcaption></figure>
+<hr class="page-break" data-page="Strona 2" />
+<h2>Zadanie egzaminacyjne</h2>
+<div class="alert"><strong>UWAGA:</strong> numerem zdającego jest w zadaniu nazywany numer, którym został podpisany arkusz</div>
+<p><em>egzaminacyjny (PESEL lub, w przypadku jego braku, numer paszportu).</em></p>
+<p>Wykonaj aplikacje konsolową i webową oraz ich dokumentację. Aplikacje wykonaj według wskazań podanych</p>
+<p><strong>w części I i II zadania, a dokumentację zgodnie z opisem w części III. Wykorzystaj konto Egzamin bez hasła.</strong></p>
+<p>Utwórz folder i nazwij go numerem zdającego. W folderze utwórz trzy podfoldery o nazwach: konsolowa,</p>
+<p><em>webowa, dokumentacja. Po wykonaniu zadania umieścisz w nich rezultaty swojej pracy.</em></p>
+<p><em>Do wykonania aplikacji należy wykorzystać materiały z archiwum Web1.7z znajdującego się na pulpicie konta</em></p>
+<p><strong>Egzamin i zabezpieczonego hasłem: *LoGiny&amp;H@sla8</strong></p>
+<h3>Część I. Aplikacja konsolowa</h3>
+<p>Za pomocą narzędzi do tworzenia aplikacji konsolowych zaimplementuj program do tworzenia bezpiecznych</p>
+<p>haseł.</p>
+<h4>Założenia aplikacji:</h4>
+<ul>
+<li> Zastosowany obiektowy język programowania zgodny z zainstalowanym na stanowisku egzaminacyjnym: C++ lub C#, lub Java, lub Python</li>
+<li> Dowolne podejście: strukturalne lub obiektowe</li>
+<li> Zastosowane znaczące nazewnictwo, polskie albo angielskie</li>
+<li> Kod zapisany czytelnie, z zachowaniem zasad czystego formatowania</li>
+<li> Komunikacja z użytkownikiem jest prowadzona w sposób zrozumiały</li>
+<li> Nie można zastosować metody wbudowanej lub z funkcji bibliotecznych do generowania gotowego hasła</li>
+<li> Hasło przechowywane w zmiennej / polu typu napisowego</li>
+<li> Funkcja / metoda zwracająca wygenerowane 12-znakowe hasło według zasad:</li>
+<li> Losowane są:</li>
+<li> 3 małe litery z alfabetu łacińskiego (26 znaków: a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z)</li>
+<li> 3 wielkie litery z alfabetu łacińskiego (26 znaków: A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z)</li>
+<li> 2 litery ze znakami diakrytycznymi ze zbioru: ą, ę, ł, ń, ó, ś, ż, ź, Ą, Ę, Ł, Ń, Ó, Ś, Ż, Ź (patrz plik znaki.txt)</li>
+<li> 2 cyfry z zakresu 0 – 9</li>
+<li> 2 znaki specjalne z zestawu: !@#$%^&amp;*()_+</li>
+<li> Każdy z wylosowanych 12 znaków jest umieszczany w losowym miejscu w haśle</li>
+<li> Hasło jest zapisane w zmiennej napisowej i zwracane z funkcji</li>
+<li> Aplikacja w programie głównym generuje 5 haseł i wyświetla je ze znaczącym komunikatem</li>
+<li> Do kodu należy dołączyć dokumentację, która została opisana w części III zadania egzaminacyjnego Kod aplikacji przygotuj do nagrania na płytę. W folderze konsolowa należy umieścić archiwum całego projektu o nazwie konsola.zip, i skopiowany z projektu plik z kodem źródłowym programu (modyfikowane pliki) oraz plik wykonywalny, jeżeli istnieje.</li>
+<hr class="page-break" data-page="Strona 3" />
+</ul>
+<h3>Część II. Aplikacja webowa</h3>
+<p>Z zastosowaniem dostępnego na stanowisku egzaminacyjnym frameworka Angular lub biblioteki React.js</p>
+<p>wykonaj aplikację internetową typu front-end obsługującą logowanie. Aplikacja jest uproszczoną wersją</p>
+<h4>menedżera haseł, dlatego hasło jest zapisywane w sposób jawny. Działanie aplikacji przedstawiono na</h4>
+<p>ilustracjach 1, 2, 3. W zależności od zastosowanego narzędzia wygląd aplikacji może nieznacznie się różnić.</p>
+<p>Ilustracja 1. Stan początkowy aplikacji Angular</p>
+<p>Ilustracja 2. Zapisanie danych, gdy pole wyboru jest zaznaczone</p>
+<figure><img src="/plans/img/inf04-2026-czerwiec_p2_img0.png" alt="Obraz z arkusza – strona 3" loading="lazy" /><figcaption>Obraz z arkusza – strona 3 (konwersja PDF → HTML, oryginał w PDF)</figcaption></figure>
+<figure><img src="/plans/img/inf04-2026-czerwiec_p2_img1.png" alt="Obraz z arkusza – strona 3" loading="lazy" /><figcaption>Obraz z arkusza – strona 3 (konwersja PDF → HTML, oryginał w PDF)</figcaption></figure>
+<hr class="page-break" data-page="Strona 4" />
+<p>Ilustracja 3. Zapisanie danych, gdy pole wyboru nie jest zaznaczone</p>
+<h4>Założenia aplikacji:</h4>
+<ul>
+<li> Aplikacja składa się z jednego komponentu, w którym znajdują się formularz i podsumowanie danych z formularza</li>
+<li> Do utworzenia formularza ostylowanego biblioteką Bootstrap należy posłużyć się przykładem z pliku szablon.html wypakowanego z archiwum. Fragmenty kodu HTML należy zmodyfikować zgodnie ze składnią Angular lub React.js</li>
+<li> Komponent składa się z dwóch bloków</li>
+<li></li>
+</ul>
+<p>Elementy bloku pierwszego:</p>
+<ul>
+<li> Nagłówek pierwszego stopnia o treści „Menedżer haseł - wykonał”, dalej wstawiony numer zdającego</li>
+<li> Formularz z trzema polami edycyjnymi, polem wyboru i przyciskiem „Zapisz”, wykonany zgodnie z ilustracją 1, stosujący bibliotekę Bootstrap</li>
+<li> Pola edycyjne są powiązane z etykietami: „Adres WWW:”, „Login:”, „Hasło:”</li>
+<li> Pola do wprowadzenia adresu WWW i loginu zawierają tekst podpowiedzi: &quot;Adres strony WWW&quot;, &quot;Twój login&quot;</li>
+<li> Pole wyboru jest domyślnie zaznaczone i pole do wpisania hasła jest nieaktywne</li>
+<li> Pole do wpisania hasła umożliwia ukrywanie wpisywanych znaków</li>
+<li> Gdy pole wyboru jest zaznaczone to pole do wpisania hasła jest nieaktywne (ilustracja 2), w przeciwnym wypadku jest aktywne (ilustracja 3)</li>
+<li> Przycisk „Zapisz” jest koloru niebieskiego za sprawą odpowiedniej klasy Bootstrap</li>
+<li></li>
+</ul>
+<p>Elementy bloku drugiego:</p>
+<ul>
+<li></li>
+</ul>
+<p>Elementy są wypełniane po zatwierdzeniu formularza przyciskiem</p>
+<ul>
+<li> Trzy paragrafy ze stylem nadanym odpowiednimi klasami Bootstrap: margines wewnętrzny 0,5 rem. Dodatkowo tekst pierwszego paragrafu koloru niebieskiego, tekst jest wiodący (tabela 1)</li>
+<li> Paragraf pierwszy zawiera napis: „Adres: &lt;adres&gt;”</li>
+<li> Paragraf drugi zawiera napis: „Login: &lt;login&gt;”</li>
+<li> Paragraf trzeci, gdy pole wyboru jest zaznaczone, zawiera napis „Hasło automatycznie generowane” (ilustracja 2), w przeciwnym wypadku napis „Hasło: &lt;hasło&gt;” (ilustracja 3)</li>
+<li> W opisanych paragrafach nawiasy &lt; &gt;, np. &lt;adres&gt;, oznaczają dane pobrane z formularza Kod aplikacji powinien być zapisany czytelnie, z zachowaniem zasad czystego formatowania, należy stosować znaczące nazewnictwo, polskie albo angielskie.</li>
+</ul>
+<figure><img src="/plans/img/inf04-2026-czerwiec_p3_img0.png" alt="Obraz z arkusza – strona 4" loading="lazy" /><figcaption>Obraz z arkusza – strona 4 (konwersja PDF → HTML, oryginał w PDF)</figcaption></figure>
+<hr class="page-break" data-page="Strona 5" />
+<p>Podejmij próbę uruchomienia aplikacji w przeglądarce. Informacje dotyczące zrzutów ekranu znajdują się</p>
+<p>w części III zadania egzaminacyjnego.</p>
+<p>Kod aplikacji przygotuj do nagrania na płytę. W folderze webowa powinno znaleźć się archiwum całego</p>
+<p><em>folderu projektu o nazwie web.zip oraz skopiowane pliki z kodem źródłowym, które były modyfikowane.</em></p>
+<h3>Część III. Dokumentacja aplikacji</h3>
+<p><strong>Wykonaj dokumentację do aplikacji utworzonych na egzaminie.</strong></p>
+<p>W kodzie źródłowym aplikacji konsolowej za pomocą komentarza utwórz jeden nagłówek do dowolnej funkcji</p>
+<p>/ metody według wzoru z listingu 1. Komentarz powinien znaleźć się nad lub pod nazwą funkcji. W miejscu</p>
+<p>nawiasów &lt;&gt; należy podać odpowiednie opisy. W miejscu autor należy podać numer zdającego.</p>
+<div class="alert"><strong>UWAGA:</strong> Dokumentację funkcji należy umieścić w komentarzu (wieloliniowym lub kilku jednoliniowych).</div>
+<p><em>Znajdujący się w listingu 1 wzór dokumentacji jest bez znaków początku i końca komentarza, gdyż te są</em></p>
+<p><em>różne dla różnych języków programowania. W przypadku podejścia obiektowego zamiast słowa „funkcji”</em></p>
+<p><em>można napisać „metody”</em></p>
+<p><strong>Listing 1. Wzór dokumentacji funkcji</strong></p>
+<p>nazwa funkcji:</p>
+<p>&lt;nazwa&gt;</p>
+<p>opis funkcji:</p>
+<p>&lt;opis co robi funkcja&gt;</p>
+<p>parametry:</p>
+<p>&lt;nazwa i opis parametru1, lub „brak”&gt;</p>
+<p>&lt;nazwa i opis parametru2&gt;</p>
+<p>zwracany typ i opis: &lt;nazwa typu i opis co jest zwracane lub „brak”&gt;</p>
+<p>autor: &lt;numer zdającego&gt;</p>
+<p>Wykonaj zrzuty ekranu dokumentujące uruchomienie aplikacji utworzonych podczas egzaminu. Zrzuty</p>
+<p>powinny obejmować cały obszar ekranu monitora z widocznym paskiem zadań. Jeżeli aplikacja uruchamia</p>
+<p>się, na zrzucie należy umieścić okno z wynikiem działania programu oraz otwarte środowisko</p>
+<p>programistyczne z projektem lub okno terminala z kompilacją projektu. Jeżeli aplikacja nie uruchamia się</p>
+<p>z powodu błędów kompilacji, należy na zrzucie należy umieścić okno ze spisem błędów i widocznym</p>
+<p>otwartym środowiskiem programistycznym. Wykonać należy tyle zrzutów, ile interakcji podejmuje aplikacja.</p>
+<p>Wymagane zrzuty ekranu:</p>
+<ul>
+<li> Aplikacja konsolowa – dowolna liczba zrzutów nazwanych konsola1, konsola2, ...</li>
+<li> Aplikacja webowa – dowolna liczba zrzutów nazwanych web1, web2, ... (stan początkowy, interakcje z zaznaczonym i odznaczonym polem wyboru) Utwórz plik tekstowy i nazwij go egzamin. Dokument powinien zawierać informacje o narzędziach wykorzystanych na egzaminie:</li>
+<li> Nazwę systemu operacyjnego</li>
+<li> Nazwy środowisk programistycznych</li>
+<li> Nazwy języków programowania Zrzuty ekranu i dokument umieść w folderze dokumentacja.</li>
+<hr class="page-break" data-page="Strona 6" />
+</ul>
+<div class="alert"><strong>UWAGA:</strong> Nagraj płytę z rezultatami pracy. W folderze z numerem zdającego powinny się znajdować trzy</div>
+<p><em>foldery: dokumentacja, konsolowa i webowa.</em></p>
+<p><em>W folderze dokumentacja: pliki ze zrzutami oraz plik egzamin.</em></p>
+<p><em>W folderze konsolowa: spakowany cały projekt aplikacji konsolowej, modyfikowane pliki źródłowe, plik</em></p>
+<p><em>wykonywalny, jeżeli istnieje.</em></p>
+<p><em>W folderze webowa: spakowany cały projekt aplikacji webowej, modyfikowane pliki źródłowe.</em></p>
+<p><em>Opisz nagraną płytę numerem zdającego i zapakuj w pudełko. Pozostaw ją na stanowisku wraz z arkuszem</em></p>
+<p><em>egzaminacyjnym.</em></p>
+<p>Czas przeznaczony na wykonanie zadania wynosi 180 minut.</p>
+<p>Ocenie będą podlegać 4 rezultaty:</p>
+<ul>
+<li> implementacja, kompilacja, uruchomienie programu,</li>
+<li> aplikacja konsolowa,</li>
+<li> aplikacja webowa,</li>
+<li> dokumentacja aplikacji. Tabela 1. Wybrane elementy frameworka Angular, biblioteki React.js i biblioteki Bootstrap Angular To use ngModel i ngForm add: import { FormsModule } from &#x27;@angular/forms&#x27;; in app.module.ts file. Add FormsModule to imports table To use Bootstrap add to styles.css: @import &quot;~bootstrap/dist/css/bootstrap.css&quot;; React.js To use Bootstrap add: import &#x27;bootstrap/dist/css/bootstrap.css&#x27;; Bootstrap forms Textual form controls—like &lt;input&gt;s, &lt;select&gt;s, and &lt;textarea&gt;s—are styled with the .form-control class. &lt;input type=&quot;email&quot; class=&quot;form-control&quot; id=&quot;exampleInputEmail1&quot; /&gt; Important! In React render method use className instead of class Bootstrap buttons Bootstrap includes several predefined button styles, each serving its own semantic purpose, with a few extras thrown in for more control. The btn classes are designed to be used with the &lt;button&gt; element. Add modifier classes as: btn-primary, btn-secondary, btn-success to btn class in order to add background colors. e.g. &lt;button type=&quot;button&quot; class=&quot;btn btn-success&quot;&gt;Success&lt;/button&gt; Bootstrap utilities – padding and margin, colors, paragraph formatting The classes are used in the format: {property}-{size}. Where property is one of: m - sets margin, p - sets padding Where size is one of: 0 - sets margin or padding to 0 1 - sets margin or padding to .25rem 2 - sets margin or padding to .5rem 3 - sets margin or padding to 1rem 4 - sets margin or padding to 1.5rem 5 - sets margin or padding to 3rem Bootstrap 5 has some contextual classes that can be used to provide &quot;meaning through colors&quot;. The classes for text colors are e.g.: .text-primary, .text-success, .text-danger The Bootstrap 5 classes below can be added to style HTML elements: .text-start, .text-nowrap, .lead, .text- capitalize</li>
+<hr class="page-break" data-page="Strona 7" />
+<hr class="page-break" data-page="Strona 8" />
+</ul>
+<p>Wypełnia zdający w przypadku nagranej płyty</p>
+<p>Do arkusza egzaminacyjnego dołączam płytę CD/DVD z rezultatami wykonania zadania egzaminacyjnego</p>
+<p><strong>opisaną przeze mnie numerem PESEL i oświadczam, że jakość nagrania</strong></p>
+<p><strong>została przeze mnie sprawdzona.</strong></p>
+<p>Wypełnia zdający w przypadku nienagranej (pustej) płyty</p>
+<p><strong>Poświadczam numerem PESEL , że do arkusza nie dołączam płyty</strong></p>
+<p><strong>CD/DVD z rezultatami wykonania zadania egzaminacyjnego.</strong></p>
+<p><em>Wypełnia Przewodniczący ZN</em></p>
+<p><strong>□ Potwierdzam, że do arkusza egzaminacyjnego dołączona jest płyta CD/DVD, opisana numerem</strong></p>
+<p><strong>PESEL zdającego.</strong></p>
+<p><strong>□ Potwierdzam, że do arkusza egzaminacyjnego nie została dołączona płyta CD/DVD.</strong></p>
+<p>……………………………………………..</p>
+<p><em>Czytelny podpis Przewodniczącego ZN</em></p>
+</div>
+      <div style="margin-top:18px; padding:12px; background:#f8fafc; border:1px dashed #cbd5e1; border-radius:10px; font-size:13px; color:#475569">
+        <strong>Transformacja:</strong> PDF sparsowano przez <code>PyMuPDF dict</code> (detekcja bold/italic jako nagłówki) + <code>get_images</code> → PNG w <code>img/</code> → semantyczny HTML (<code>h2/h3/ol/ul/figure</code>), nie surowy dump tekstu.
+      </div>
+    </div>
+  </div>
+  <aside class="scoring">
+    <div class="scoring-head">
+      <h3>Punktacja CKE – na boku</h3>
+      <p>Razem 30 pkt. Sticky, widoczna przy scrollu.</p>
+    </div>
+    <div style="padding:10px"><details class="score-group" open><summary><span>R1 – Baza / Jakość kodu (6 pkt)</span><span style="color:#64748b">6 pkt</span></summary><div class="criteria"><div class="criterion"><span class="code">R1.1</span><p>Struktura / formatowanie</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R1.2</span><p>Typy / klucze</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R1.3</span><p>Dane</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R1.4</span><p>SELECT / JOIN</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R1.5</span><p>Agregacja / typy</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R1.6</span><p>Kompilacja / zrzut</p><span class="pts">1 pkt</span></div></div></details><details class="score-group" open><summary><span>R2 – Frontend / Konsola (8 pkt)</span><span style="color:#64748b">8 pkt</span></summary><div class="criteria"><div class="criterion"><span class="code">R2.1</span><p>HTML / funkcje</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R2.2</span><p>CSS / wcięcia</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R2.3</span><p>Formularz / pętle</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R2.4</span><p>Walidacja / filtry</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R2.5</span><p>Eventy / losowanie</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R2.6</span><p>Wyświetlanie danych</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R2.7</span><p>Komunikaty / uruchomienie</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R2.8</span><p>Zgodność z projektem</p><span class="pts">1 pkt</span></div></div></details><details class="score-group" open><summary><span>R3 – Backend / Mobile (10 pkt)</span><span style="color:#64748b">10 pkt</span></summary><div class="criteria"><div class="criterion"><span class="code">R3.1</span><p>Połączenie z bazą / layout</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R3.2</span><p>Logowanie / kontrolki</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R3.3</span><p>CRUD / kolory</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R3.4</span><p>Walidacja / marginesy</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R3.5</span><p>Zabezpieczenia / eventy</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R3.6</span><p>Czytelny kod / binding</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R3.7</span><p>Raport / obrazy</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R3.8</span><p>Punkty / suma</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R3.9</span><p>Reset / zerowanie</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R3.10</span><p>Emulator / zrzut</p><span class="pts">1 pkt</span></div></div></details><details class="score-group" open><summary><span>R4 – Dokumentacja (6 pkt)</span><span style="color:#64748b">6 pkt</span></summary><div class="criteria"><div class="criterion"><span class="code">R4.1</span><p>Komentarze / nagłówki</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R4.2</span><p>Opis funkcji</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R4.3</span><p>Zrzut aplikacji</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R4.4</span><p>Zrzut bazy</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R4.5</span><p>Środowisko / OS</p><span class="pts">1 pkt</span></div><div class="criterion"><span class="code">R4.6</span><p>Numer zdającego</p><span class="pts">1 pkt</span></div></div></details></div>
+    <div class="scoring-foot">
+      <a href="https://arkusze.pl/zawodowy/inf04-2026-czerwiec-egzamin-zawodowy-praktyczny.pdf" target="_blank" style="text-align:center; font-weight:700; padding:10px; background:#0f172a; color:white; border-radius:10px; text-decoration:none">PDF arkusz</a>
+      <a href="https://arkusze.pl/zawodowy/inf04-2026-czerwiec-egzamin-zawodowy-praktyczny-zasady-oceniania.pdf" target="_blank" style="text-align:center; font-weight:700; padding:10px; background:white; border:1px solid #e2e8f0; border-radius:10px; text-decoration:none; color:#0f172a">Zasady</a>
+      <span style="text-align:center; font-size:12px; color:#64748b">Brak ZIP dla tej sesji</span>
+    </div>
+  </aside>
+</div>
+<div class="footer">INF.04 Portal • Transformacja PDF → HTML (PyMuPDF) • Obrazy widoczne • Punktacja na boku</div>
+</body>
+</html>
