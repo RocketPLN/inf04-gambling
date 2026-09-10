@@ -1,6 +1,7 @@
 import { useEffect, useMemo } from "react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { exams } from "../data/exams.js";
+import { validateSearch } from "../lib/search.js";
 import { BonusOfferCard, FakeWinsTicker, SlotScam } from "../components/app/casino.jsx";
 import { Hero } from "../components/app/hero.jsx";
 import { ExamCard } from "../components/app/exam-card.jsx";
@@ -13,7 +14,7 @@ const CARD_COLORS = ["solar", "pop", "electric", "mint", "tangerine"];
 
 function HomePage() {
   const { q, year, session } = Route.useSearch();
-  const navigate = useNavigate({ from: "/" });
+  const navigate = useNavigate({ from: Route.fullPath });
 
   useEffect(() => {
     document.title = "INF.04 Portal – Arkusze, Plany HTML i Punktacja CKE";
@@ -22,7 +23,6 @@ function HomePage() {
   const setSearch = (patch) => {
     navigate({
       search: (prev) => ({ ...prev, ...patch }),
-      replace: false,
     });
   };
 
@@ -102,4 +102,5 @@ function HomePage() {
 
 export const Route = createFileRoute("/")({
   component: HomePage,
+  validateSearch,
 });
