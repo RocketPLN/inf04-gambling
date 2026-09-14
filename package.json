@@ -9,6 +9,7 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "download": "node scripts/download-pdfs.js",
+    "teoria": "python3 scripts/scrape-teoria.py && python3 scripts/build-teoria.py",
     "setup": "npm run download && npm run build"
   },
   "dependencies": {

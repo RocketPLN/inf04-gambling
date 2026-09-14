@@ -26,6 +26,14 @@ export function SiteHeader({ count }) {
         <nav className="flex flex-wrap items-center gap-2">
           <Tooltip>
             <TooltipTrigger asChild>
+              <Button variant="slot" size="sm" asChild>
+                <Link to="/teoria">🎡 TEORIA: KOŁO FORTUNY</Link>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>Mockup losowania pytań teoretycznych</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
               <Button variant="default" size="sm" asChild>
                 <a href="https://arkusze.pl/egzamin-zawodowy-kwalifikacja-inf-04" target="_blank" rel="noreferrer">
                   arkusze.pl <ExternalLink />

@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TeoriaRouteImport } from './routes/teoria'
 import { Route as EgzaminExamIdRouteImport } from './routes/egzamin.$examId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeoriaRoute = TeoriaRouteImport.update({
+  id: '/teoria',
+  path: '/teoria',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EgzaminExamIdRoute = EgzaminExamIdRouteImport.update({
@@ -25,27 +31,31 @@ const EgzaminExamIdRoute = EgzaminExamIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/teoria': typeof TeoriaRoute
   '/egzamin/$examId': typeof EgzaminExamIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/teoria': typeof TeoriaRoute
   '/egzamin/$examId': typeof EgzaminExamIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/teoria': typeof TeoriaRoute
   '/egzamin/$examId': typeof EgzaminExamIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/egzamin/$examId'
+  fullPaths: '/' | '/teoria' | '/egzamin/$examId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/egzamin/$examId'
-  id: '__root__' | '/' | '/egzamin/$examId'
+  to: '/' | '/teoria' | '/egzamin/$examId'
+  id: '__root__' | '/' | '/teoria' | '/egzamin/$examId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  TeoriaRoute: typeof TeoriaRoute
   EgzaminExamIdRoute: typeof EgzaminExamIdRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/teoria': {
+      id: '/teoria'
+      path: '/teoria'
+      fullPath: '/teoria'
+      preLoaderRoute: typeof TeoriaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/egzamin/$examId': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  TeoriaRoute: TeoriaRoute,
   EgzaminExamIdRoute: EgzaminExamIdRoute,
 }
 export const routeTree = rootRouteImport
