@@ -17,7 +17,7 @@ function Tabs(props) {
 }
 
 function TabsList({ className, ...props }) {
-  return <div data-slot="tabs-list" className={cn("flex gap-1.5", className)} {...props} />;
+  return <TabsPrimitive.List data-slot="tabs-list" className={cn("flex gap-1.5", className)} {...props} />;
 }
 
 function TabsTrigger({ className, tone, ...props }) {

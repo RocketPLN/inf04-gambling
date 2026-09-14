@@ -31,7 +31,10 @@ function useExamHtml(examId) {
         try {
           const doc = new DOMParser().parseFromString(text, "text/html");
           const el = doc.querySelector(".transformed-content") || doc.body;
-          setHtmlPages(el.innerHTML);
+          // Zachowaj wrapper .transformed-content (outerHTML) — style w App.css
+          // celują w `.converted-pdf .transformed-content ...`, bez niego treść
+          // traci całe formatowanie.
+          setHtmlPages(el === doc.body ? el.innerHTML : el.outerHTML);
         } catch {
           setHtmlPages(text);
         }
@@ -44,7 +47,7 @@ function useExamHtml(examId) {
             try {
               const doc = new DOMParser().parseFromString(text, "text/html");
               const el = doc.querySelector(".content") || doc.querySelector(".pdf-pages") || doc.body;
-              setHtmlPages(el.innerHTML);
+              setHtmlPages(el === doc.body ? el.innerHTML : el.outerHTML);
             } catch {
               setHtmlError("full");
             }
@@ -106,8 +109,8 @@ export function PlanDetail({ exam, onBack }) {
         <span className="grid size-[26px] place-items-center border-2 border-white bg-black text-sm text-cke-green [border-style:outset]">←</span>
         Wróć do listy
       </Button>
-      <div className="mt-3.5 grid grid-cols-1 items-start gap-3.5 lg:grid-cols-[1fr_380px]">
-        <article ref={planRef} className="overflow-hidden border-[6px] border-ugly-pink bg-white shadow-[8px_8px_0_#000] [border-style:ridge]">
+      <div className="mt-3.5 grid w-full min-w-0 grid-cols-1 items-start gap-3.5 lg:grid-cols-[minmax(0,1fr)_380px]">
+        <article ref={planRef} className="w-full min-w-0 overflow-hidden border-[6px] border-ugly-pink bg-white shadow-[8px_8px_0_#000] [border-style:ridge]">
           <div className="relative border-b-[6px] border-ugly-cyan bg-gradient-to-r from-ugly-yellow via-ugly-cyan to-ugly-pink p-[18px] [border-bottom-style:ridge]">
             <div className="flex flex-wrap gap-1.5">
               <Badge variant="year">{exam.year} · {exam.session}</Badge>
@@ -184,7 +187,7 @@ export function PlanDetail({ exam, onBack }) {
                 <iframe title="html" src={`/plans/${exam.id}.html`} style={{ width: "100%", height: "820px", border: 0 }} />
               </div>
             ) : htmlPages ? (
-              <div className="converted-pdf" dangerouslySetInnerHTML={{ __html: htmlPages }} />
+              <div className="converted-pdf min-w-0 max-w-full" dangerouslySetInnerHTML={{ __html: htmlPages }} />
             ) : htmlError ? (
               <div className="mt-3 animate-ugly-blink border-[6px] border-ugly-pink bg-ugly-yellow p-7 text-center font-display text-lg uppercase text-ugly-pink shadow-[6px_6px_0_#000] [border-style:ridge] [text-shadow:2px_2px_0_#000]">
                 Nie udało się wczytać HTML. Otwórz <a href={`/plans/${exam.id}.html`} target="_blank" rel="noreferrer">/plans/{exam.id}.html</a>. Info: {exam.plan.opis}
