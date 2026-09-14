@@ -15,5 +15,8 @@ export default defineConfig({
     alias: {
       "@": path.resolve(import.meta.dirname, "./src"),
     },
+    // Jedna kopia Reacta w całym bundlu — chroni przed "Invalid hook call"
+    // od bibliotek bundlujących własnego Reacta.
+    dedupe: ["react", "react-dom"],
   },
 })

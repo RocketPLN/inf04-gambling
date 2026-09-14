@@ -5,7 +5,6 @@ import "./index.css";
 
 // Import the generated route tree
 import { routeTree } from "./routeTree.gen";
-import { DEFAULT_SEARCH } from "./lib/search.js";
 
 const router = createRouter({
   routeTree,
@@ -15,7 +14,7 @@ const router = createRouter({
   defaultNotFoundComponent: () => (
     <div style={{ padding: 24, textAlign: "center" }}>
       <p>Nie znaleziono strony.</p>
-      <Link to="/" search={{ ...DEFAULT_SEARCH }}>
+      <Link to="/" search={{}}>
         ← Wróć do listy
       </Link>
     </div>

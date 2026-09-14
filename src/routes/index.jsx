@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from "react";
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, stripSearchParams, useNavigate } from "@tanstack/react-router";
 import { exams } from "../data/exams.js";
-import { validateSearch } from "../lib/search.js";
+import { DEFAULT_SEARCH, cleanSearch, validateSearch } from "../lib/search.js";
 import { BonusOfferCard, FakeWinsTicker, SlotScam } from "../components/app/casino.jsx";
 import { Hero } from "../components/app/hero.jsx";
 import { ExamCard } from "../components/app/exam-card.jsx";
@@ -14,7 +14,7 @@ const CARD_COLORS = ["solar", "pop", "electric", "mint", "tangerine"];
 
 function HomePage() {
   const { q, year, session } = Route.useSearch();
-  const navigate = useNavigate({ from: Route.fullPath });
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.title = "INF.04 Portal – Arkusze, Plany HTML i Punktacja CKE";
@@ -22,7 +22,7 @@ function HomePage() {
 
   const setSearch = (patch) => {
     navigate({
-      search: (prev) => ({ ...prev, ...patch }),
+      search: (prev) => cleanSearch({ ...prev, ...patch }),
     });
   };
 
@@ -61,7 +61,7 @@ function HomePage() {
         session={session}
         years={years}
         onPatch={setSearch}
-        onClear={() => setSearch({ q: "", year: "all", session: "all" })}
+        onClear={() => navigate({ search: {} })}
       />
 
       <TechTags active={q} onToggle={(t) => setSearch({ q: q === t ? "" : t })} />
@@ -73,13 +73,13 @@ function HomePage() {
         &nbsp;✦ INF.04 UGLY EDITION ✦ COMIC SANS ONLY ✦ RAINBOW POWER ✦ NIE DOTYKAĆ EKRANU ✦ 800x600 OPTIMAL ✦ SHADCN INSIDE ✦ &nbsp;
       </Ticker>
       <ResultsInfo>
-        Znaleziono <b>{filtered.length}</b> arkuszy {year !== "all" || session !== "all" || q ? "(filtrowane)" : ""} · Kliknij kartę aby zobaczyć <b>PDF przerobiony na HTML</b> z punktacją na boku —{" "}
+        Znaleziono <b>{filtered.length}</b> arkuszy {year !== "all" || session !== "all" || q ? "(filtrowane)" : ""} · Kliknij kartę aby zobaczyć <b>podgląd PDF</b> z punktacją na boku —{" "}
         <span className="border-2 border-white bg-ugly-pink px-1.5 py-0.5 text-ugly-yellow [border-style:outset]">BRZYDKO ALE DZIAŁA!!!</span>
       </ResultsInfo>
 
       <div className="mt-3.5 grid grid-cols-1 gap-3.5 md:grid-cols-2 xl:grid-cols-3" id="grid">
         {filtered.map((e, idx) => (
-          <ExamCard key={e.id} exam={e} index={idx} color={CARD_COLORS[idx % CARD_COLORS.length]} search={{ q, year, session }} />
+          <ExamCard key={e.id} exam={e} index={idx} color={CARD_COLORS[idx % CARD_COLORS.length]} search={cleanSearch({ q, year, session })} />
         ))}
       </div>
 
@@ -87,7 +87,7 @@ function HomePage() {
         <Alert className="mt-3.5 justify-center text-center">
           <AlertDescription className="font-display text-lg uppercase [text-shadow:2px_2px_0_#000]">
             Brak wyników. Spróbuj wyczyścić filtry.{" "}
-            <Link to="/" search={{ q: "", year: "all", session: "all" }} className="underline">
+            <Link to="/" search={{}} className="underline">
               Wyczyść
             </Link>
           </AlertDescription>
@@ -103,4 +103,7 @@ function HomePage() {
 export const Route = createFileRoute("/")({
   component: HomePage,
   validateSearch,
+  search: {
+    middlewares: [stripSearchParams(DEFAULT_SEARCH)],
+  },
 });

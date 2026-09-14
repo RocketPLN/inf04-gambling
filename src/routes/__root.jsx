@@ -1,6 +1,6 @@
-import { createRootRoute, Outlet } from "@tanstack/react-router";
+import { createRootRoute, Outlet, stripSearchParams } from "@tanstack/react-router";
 import { exams } from "../data/exams.js";
-import { validateSearch } from "../lib/search.js";
+import { DEFAULT_SEARCH, validateSearch } from "../lib/search.js";
 import { JackpotBar, WinnerPopup, StickyBonusBar } from "../components/app/casino.jsx";
 import { SiteHeader } from "../components/app/site-header.jsx";
 import { GuestStrip, Testimonials, SiteFooter } from "../components/app/site-footer.jsx";
@@ -35,4 +35,7 @@ function RootComponent() {
 export const Route = createRootRoute({
   component: RootComponent,
   validateSearch,
+  search: {
+    middlewares: [stripSearchParams(DEFAULT_SEARCH)],
+  },
 });

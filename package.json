@@ -9,9 +9,7 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "download": "node scripts/download-pdfs.js",
-    "convert": "python3 scripts/transform_pdfs.py",
-    "convert:legacy": "python3 scripts/pdf_to_html.py",
-    "setup": "npm run download && python3 scripts/transform_pdfs.py && npm run build"
+    "setup": "npm run download && npm run build"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.20",

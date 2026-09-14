@@ -64,10 +64,10 @@ export function ExamCard({ exam, index, color, search }) {
           onClick={(ev) => {
             ev.preventDefault();
             ev.stopPropagation();
-            window.open(`/plans/${exam.id}.html`, "_blank");
+            window.open(exam.pdfArkusz, "_blank");
           }}
         >
-          HTML
+          PDF
         </Button>
       </CardFooter>
       <span className={cn("pointer-events-none absolute -right-2.5 -top-2.5 size-10 animate-ugly-rainbow border-[3px] border-black [border-style:ridge]", color === "pop" && "rounded-full")} style={{ background: "var(--card)" }} />

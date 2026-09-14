@@ -226,22 +226,3 @@
   filter: contrast(1.15) saturate(1.8);
 }
 
-/* Strona egzaminu: skonwertowany HTML z PDF nie może rozwalać grida.
- * Długie linie bez spacji, szerokie tabele/pre i obrazki z PDF
- * muszą się zawijać/skalować w kolumnie 1fr zamiast ją rozpychac. */
-.converted-pdf {
-  min-width: 0;
-  max-width: 100%;
-  overflow-wrap: anywhere;
-  word-break: break-word;
-}
-.converted-pdf img {
-  max-width: 100%;
-  height: auto;
-}
-.converted-pdf table,
-.converted-pdf pre {
-  display: block;
-  max-width: 100%;
-  overflow-x: auto;
-}

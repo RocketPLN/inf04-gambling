@@ -12,6 +12,15 @@ dist
 dist-ssr
 *.local
 
+# PDF-y i załączniki CKE mieszkają w R2 (publiczny bucket), nie w gicie.
+# Lokalnie odtwarza je `npm run download`. Katalog musi istnieć dla deva.
+public/pdfs/*
+!public/pdfs/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -5,8 +5,8 @@ import { cn } from "@/lib/utils";
 const alertVariants = cva("flex items-start gap-2.5 border-5 p-3 text-xs leading-[1.4] font-black shadow-[5px_5px_0_#000]", {
   variants: {
     variant: {
-      default: "border-ugly-red bg-ugly-yellow text-ugly-pink animate-ugly-shake [border-style:ridge] [border-width:5px]",
-      casino: "border-casino-gold bg-casino-feltdark text-casino-goldsoft [border-style:ridge] [border-width:5px]",
+      default: "border-ugly-red bg-ugly-yellow text-ugly-pink animate-ugly-shake [border-style:ridge]",
+      casino: "border-casino-gold bg-casino-feltdark text-casino-goldsoft [border-style:ridge]",
       info: "border-ugly-cyan bg-white text-black [border-style:ridge] [border-width:4px]",
     },
   },

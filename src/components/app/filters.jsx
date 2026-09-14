@@ -114,13 +114,13 @@ export function SetupBlock() {
   return (
     <div className="mt-3.5 flex flex-wrap items-center justify-between gap-3 border-[6px] border-ugly-yellow bg-black p-3.5 font-mono text-cke-green shadow-[6px_6px_0_#000] [border-style:groove]">
       <div>
-        <strong className="font-display text-sm uppercase text-ugly-yellow [text-shadow:1px_1px_0_#ff00ff]">PDF → HTML: pełna konwersja + obrazy</strong>
+        <strong className="font-display text-sm uppercase text-ugly-yellow [text-shadow:1px_1px_0_#ff00ff]">PDF prosto z CKE + customowy podgląd</strong>
         <p className="mt-1.5 text-[11px] text-ugly-cyan">
           <code className="border-2 border-white bg-ugly-pink px-1.5 py-0.5 text-[11px] text-ugly-yellow [border-style:outset]">download-pdfs.js</code>
           {" → "}
-          <code className="border-2 border-white bg-ugly-pink px-1.5 py-0.5 text-[11px] text-ugly-yellow [border-style:outset]">transform_pdfs.py</code>
-          {" (PyMuPDF) → "}
-          <code className="border-2 border-white bg-ugly-pink px-1.5 py-0.5 text-[11px] text-ugly-yellow [border-style:outset]">public/plans/*.html + img/</code>
+          <code className="border-2 border-white bg-ugly-pink px-1.5 py-0.5 text-[11px] text-ugly-yellow [border-style:outset]">public/pdfs/*.pdf</code>
+          {" → "}
+          <code className="border-2 border-white bg-ugly-pink px-1.5 py-0.5 text-[11px] text-ugly-yellow [border-style:outset]">podgląd PDF w przeglądarce</code>
         </p>
       </div>
       <code className="animate-ugly-blink border-4 border-white bg-ugly-lime px-3.5 py-2.5 text-xs font-black text-black [border-style:outset]">npm run setup</code>
