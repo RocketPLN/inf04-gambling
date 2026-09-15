@@ -4,21 +4,21 @@ INF.04 Portal. Polish study app for the INF.04 technik programista practical exa
 
 ## Stack
 
-React 19, Vite 8, TanStack Start (SSR, Nitro server) with TanStack Router file-based routes, TypeScript in strict mode (`npm run typecheck`, chained into `npm run build`), oxlint for lint. The exam PDF renders in the browser's native viewer (`<iframe>`, never `react-pdf` — it ships its own React copy and crashes with invalid hook call). There is no test runner. Direct URLs (e.g. `/egzamin/<id>`) are server-rendered by Node — no SPA 404.
+React 19, Vite 8, TanStack Start (SSR, Nitro server) with TanStack Router file-based routes, TypeScript in strict mode (`pnpm typecheck`, chained into `pnpm build`), oxlint for lint. The exam PDF renders in the browser's native viewer (`<iframe>`, never `react-pdf` — it ships its own React copy and crashes with invalid hook call). There is no test runner. Direct URLs (e.g. `/egzamin/<id>`) are server-rendered by Node — no SPA 404.
 
-Environment I saw: Node v24, npm 11.
+Environment I saw: Node v24, pnpm 11.
 
 ## Commands
 
-All from repo root. The repo has both `package-lock.json` and `pnpm-lock.yaml`, but scripts and docs assume npm, so use npm.
+All from repo root. The repo has both `package-lock.json` and `pnpm-lock.yaml`, but scripts and docs assume pnpm, so use pnpm.
 
-- `npm run dev` starts Vite locally (`vite dev`, SSR on :3000).
-- `npm run build` builds the Nitro server to `.output/`.
-- `npm run start` runs the production server (`node .output/server/index.mjs`).
-- `npm run preview` serves the production build.
-- `npm run lint` runs `oxlint`.
-- `npm run download` runs `scripts/download-pdfs.js`, fetches PDFs and ZIPs from arkusze.pl plus extra CKE task versions (zad 02/03) into local `public/pdfs/` (dev cache, gitignored).
-- `npm run setup` chains download and build. It hits the network and takes a while, so prefer `dev` for normal work.
+- `pnpm dev` starts Vite locally (`vite dev`, SSR on :3000).
+- `pnpm build` builds the Nitro server to `.output/`.
+- `pnpm start` runs the production server (`node .output/server/index.mjs`).
+- `pnpm preview` serves the production build.
+- `pnpm lint` runs `oxlint`.
+- `pnpm download` runs `scripts/download-pdfs.js`, fetches PDFs and ZIPs from arkusze.pl plus extra CKE task versions (zad 02/03) into local `public/pdfs/` (dev cache, gitignored).
+- `pnpm setup` chains download and build. It hits the network and takes a while, so prefer `dev` for normal work.
 
 ## Layout
 
@@ -76,6 +76,6 @@ Write TSX in the existing style: function components, hooks at top, double quote
 
 There are no unit tests, so verification is lint plus build plus a manual pass.
 
-1. `npm run lint` must be clean.
-2. `npm run build` must pass (vite + `tsc --noEmit`), which also regenerates the route tree.
-3. `npm run dev`, open `/`, filter by a tech tag and a session, open an exam, check the PDF preview loads, check back navigation restores filters.
+1. `pnpm lint` must be clean.
+2. `pnpm build` must pass (vite + `tsc --noEmit`), which also regenerates the route tree.
+3. `pnpm dev`, open `/`, filter by a tech tag and a session, open an exam, check the PDF preview loads, check back navigation restores filters.
