@@ -6,3 +6,6 @@ minimumReleaseAgeExclude:
   - '@tanstack/router-plugin@1.168.37'
   - '@tanstack/router-utils@1.162.3'
   - lucide-react@1.44.0
+  - '@tanstack/react-start-rsc@0.1.53'
+  - '@tanstack/react-start@1.168.54'
+  - '@tanstack/start-plugin-core@1.171.44'
