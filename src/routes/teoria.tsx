@@ -23,6 +23,9 @@ function TheoryPage() {
   const [removedOrig, setRemovedOrig] = useState<number[]>([]);
   const [halfArmed, setHalfArmed] = useState(false);
   const [bonusArmed, setBonusArmed] = useState(false);
+  // lastAward = DOKŁADNIE tyle, ile wpadło do portfela za ostatnią dobrą
+  // odpowiedź (jedno źródło prawdy — karta pokazuje TO, nie przeliczone).
+  const [lastAward, setLastAward] = useState<number | null>(null);
   const [dogrywkaOffer, setDogrywkaOffer] = useState(false);
   const [flash, setFlash] = useState<string | null>(null);
   const [confettiKey, setConfettiKey] = useState(0);
@@ -50,6 +53,7 @@ function TheoryPage() {
     setDrawn((d) => d + 1);
     setRemovedOrig([]);
     setDogrywkaOffer(false);
+    setLastAward(null);
     setTimeout(() => document.getElementById("pytanie")?.scrollIntoView({ behavior: "smooth", block: "start" }), 100);
   };
 
@@ -62,6 +66,7 @@ function TheoryPage() {
       if (halfArmed) award = Math.max(1, Math.floor(award / 2));
       if (bonusArmed) award += 5;
       earn(award, streak + 1);
+      setLastAward(award);
       if (examRunning) setExamEarned((e) => e + award);
       setHalfArmed(false);
       setBonusArmed(false);
@@ -220,6 +225,7 @@ function TheoryPage() {
           onResult={handleResult}
           total={THEORY_QUESTIONS.length}
           nextAward={displayAward}
+          earnedAward={lastAward}
           removedOrig={removedOrig}
           fiftyCount={fiftyCount}
           onUse5050={use5050}

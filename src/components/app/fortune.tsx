@@ -146,8 +146,10 @@ export interface TheoryQuestionCardProps {
   question: TheoryQuestion | null;
   onResult?: (ok: boolean) => void;
   total?: number;
-  /** Nagroda za dobrą odpowiedź przy aktualnym streaku. */
+  /** Nagroda za dobrą odpowiedź przy aktualnym streaku (hint przed klikiem). */
   nextAward?: number;
+  /** DOKŁADNIE tyle wpadło za to pytanie (visited po odpowiedzi, jedno źródło prawdy). */
+  earnedAward?: number | null;
   /** origIdx odpowiedzi wykreślonych przez 50/50. */
   removedOrig?: number[];
   /** Sztuki 50/50 w plecaku (do labelki przycisku). */
@@ -184,7 +186,7 @@ export function ConfettiBurst() {
   );
 }
 
-export function TheoryQuestionCard({ question, onResult, total, nextAward, removedOrig, fiftyCount, onUse5050, hideAwards }: TheoryQuestionCardProps) {
+export function TheoryQuestionCard({ question, onResult, total, nextAward, earnedAward, removedOrig, fiftyCount, onUse5050, hideAwards }: TheoryQuestionCardProps) {
   const [selected, setSelected] = useState<number | null>(null);
   const [revealed, setRevealed] = useState(false);
   const [imgOk, setImgOk] = useState(true);
@@ -294,6 +296,11 @@ export function TheoryQuestionCard({ question, onResult, total, nextAward, remov
             );
           })}
         </div>
+        {!revealed && !hideAwards && (
+          <div className="mt-3 text-center font-mono text-[11px] font-black">
+            💰 TA ODPOWIEDŹ WARTA <span className="border-2 border-black bg-ugly-yellow px-1.5 py-0.5">+{nextAward ?? "?"} PKT</span>
+          </div>
+        )}
         {!revealed && (fiftyCount ?? 0) > 0 && onUse5050 && (
           <div className="mt-3 text-center">
             <Button variant="solar" size="sm" onClick={onUse5050}>
@@ -304,7 +311,7 @@ export function TheoryQuestionCard({ question, onResult, total, nextAward, remov
         {revealed && (
           <div className={`mt-5 border-[4px] p-3 text-sm font-black sm:text-base ${correct ? "border-cke-green bg-green-100 text-black" : "border-ugly-red bg-ugly-yellow text-black"} [border-style:inset]`}>
             {correct
-              ? (hideAwards ? "🎉 DOBRZE!!! (wynik ukryty — tryb egzaminacyjny) 🎉" : `🎉 DOBRZE!!! +${nextAward ?? "?"} PKT DO SKLEPU ARCADE + STREAK ROŚNIE!!! 🎉`)
+              ? (hideAwards ? "🎉 DOBRZE!!! (wynik ukryty — tryb egzaminacyjny) 🎉" : `🎉 DOBRZE!!! +${earnedAward ?? nextAward ?? "?"} PKT WPADŁO DO SKLEPU ARCADE + STREAK ROŚNIE!!! 🎉`)
               : (hideAwards ? "💸 PUDŁO. (tryb egzaminacyjny, bez podpowiedzi)" : "💸 PUDŁO!!! KASYNO ZABIERA PUNKTY, ALE NAUKA ZOSTAJE!!! 💸")}
             {question.wyjasnienie && <div className="mt-2 border-t-2 border-dashed border-current pt-2 font-bold">💡 {question.wyjasnienie}</div>}
           </div>
