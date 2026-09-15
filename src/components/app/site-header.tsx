@@ -42,6 +42,14 @@ export function SiteHeader({ count }: { count: number }) {
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
+              <Button variant="slot" size="sm" asChild>
+                <Link to="/rogue" search={DEFAULT_SEARCH}>🏚️ LOCH: ROGUE-LIKE</Link>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>Zejdź albo zgiń — endless z mutatorami CKE</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
               <Button variant="claim" size="sm" asChild>
                 <Link to="/sklep" search={DEFAULT_SEARCH}>🕹️ SKLEP</Link>
               </Button>

@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as RogueRouteImport } from './routes/rogue'
 import { Route as SklepRouteImport } from './routes/sklep'
 import { Route as TeoriaRouteImport } from './routes/teoria'
 import { Route as EgzaminExamIdRouteImport } from './routes/egzamin.$examId'
@@ -17,6 +18,11 @@ import { Route as EgzaminExamIdRouteImport } from './routes/egzamin.$examId'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RogueRoute = RogueRouteImport.update({
+  id: '/rogue',
+  path: '/rogue',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SklepRoute = SklepRouteImport.update({
@@ -37,12 +43,14 @@ const EgzaminExamIdRoute = EgzaminExamIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/rogue': typeof RogueRoute
   '/sklep': typeof SklepRoute
   '/teoria': typeof TeoriaRoute
   '/egzamin/$examId': typeof EgzaminExamIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/rogue': typeof RogueRoute
   '/sklep': typeof SklepRoute
   '/teoria': typeof TeoriaRoute
   '/egzamin/$examId': typeof EgzaminExamIdRoute
@@ -50,20 +58,22 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/rogue': typeof RogueRoute
   '/sklep': typeof SklepRoute
   '/teoria': typeof TeoriaRoute
   '/egzamin/$examId': typeof EgzaminExamIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/sklep' | '/teoria' | '/egzamin/$examId'
+  fullPaths: '/' | '/rogue' | '/sklep' | '/teoria' | '/egzamin/$examId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/sklep' | '/teoria' | '/egzamin/$examId'
-  id: '__root__' | '/' | '/sklep' | '/teoria' | '/egzamin/$examId'
+  to: '/' | '/rogue' | '/sklep' | '/teoria' | '/egzamin/$examId'
+  id: '__root__' | '/' | '/rogue' | '/sklep' | '/teoria' | '/egzamin/$examId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  RogueRoute: typeof RogueRoute
   SklepRoute: typeof SklepRoute
   TeoriaRoute: typeof TeoriaRoute
   EgzaminExamIdRoute: typeof EgzaminExamIdRoute
@@ -76,6 +86,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rogue': {
+      id: '/rogue'
+      path: '/rogue'
+      fullPath: '/rogue'
+      preLoaderRoute: typeof RogueRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sklep': {
@@ -104,6 +121,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  RogueRoute: RogueRoute,
   SklepRoute: SklepRoute,
   TeoriaRoute: TeoriaRoute,
   EgzaminExamIdRoute: EgzaminExamIdRoute,

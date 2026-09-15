@@ -611,6 +611,8 @@ html{ scrollbar-color: #ff00ff #00ffff }
 body.no-anim *, body.no-anim *::before, body.no-anim *::after{ animation:none !important; transition:none !important }
 /* TRYB SKUPIENIA: na stronie arkusza chowa całe kasyno (elementy z .hide-in-focus) */
 body.focus-mode .hide-in-focus{ display:none !important }
+/* LOCH (/rogue zawsze w focus-mode): chowa też backdrop popupa kasyna — ma być skupienie, nie migotanie */
+body.focus-mode [data-slot="dialog-overlay"]{ display:none !important }
 /* MOTYW CRT: nakładka kineskopowa + celownik zamiast kursora */
 body.fx-crt::after{
   content:""; position:fixed; inset:0; z-index:9500; pointer-events:none;
