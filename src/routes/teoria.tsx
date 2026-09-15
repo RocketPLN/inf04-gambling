@@ -169,6 +169,9 @@ function TheoryPage() {
           <Button variant="slot" size="sm" asChild>
             <Link to="/sklep" search={DEFAULT_SEARCH}>🕹️ SKLEP ARCADE</Link>
           </Button>
+          <Button variant="claim" size="sm" asChild>
+            <Link to="/rogue" search={DEFAULT_SEARCH}>🏚️ LOCH ROGUE-LIKE</Link>
+          </Button>
           <Badge variant="casino" className="p-2 text-xs">PULA: {poolLabel}</Badge>
         </div>
       </div>

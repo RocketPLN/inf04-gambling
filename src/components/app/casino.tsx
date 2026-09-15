@@ -250,7 +250,8 @@ export function WinnerPopup({ onClaim }: { onClaim?: () => void }) {
 
   return (
     <Dialog open={visible} onOpenChange={setVisible}>
-      <DialogContent>
+      {/* hide-in-focus: w lochu (/rogue) i trybie skupienia popup kasyna znika (focus-mode). */}
+      <DialogContent className="hide-in-focus">
         <DialogHeader>
           <DialogTitle>🎉🎉🎉 GRATULACJE!!! 🎉🎉🎉</DialogTitle>
         </DialogHeader>
