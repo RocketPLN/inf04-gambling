@@ -20,13 +20,13 @@ export interface LootboxRevealProps {
 }
 
 export function LootboxReveal({ drop, stock, onAgain, onClose }: LootboxRevealProps) {
-  const [shown, setShown] = useState<string>("❓❓❓");
+  const [shown, setShown] = useState<string>("[?][?][?]");
   const [revealed, setRevealed] = useState(false);
   const [reveals, setReveals] = useState(0);
 
   useEffect(() => {
     setRevealed(false);
-    setShown("❓❓❓");
+    setShown("[?][?][?]");
     const iv = setInterval(() => {
       const d = LOOT_TABLE[Math.floor(Math.random() * LOOT_TABLE.length)];
       setShown(d.label);
@@ -48,12 +48,12 @@ export function LootboxReveal({ drop, stock, onAgain, onClose }: LootboxRevealPr
       {revealed && reveals > 0 && <ConfettiBurst key={reveals} />}
       <div className="w-full max-w-[440px] border-[6px] border-casino-gold bg-[radial-gradient(circle_at_50%_0%,#5a0a0a,#1a0505_70%)] p-4 text-center shadow-[8px_8px_0_#000,inset_0_0_40px_#000] [border-style:ridge]">
         <div className="font-display text-lg tracking-[2px] text-casino-gold [text-shadow:0_0_10px_#ff0000,2px_2px_0_#000]">
-          ❓ NIESPODZIANKA ❓
+          [?] NIESPODZIANKA [?]
         </div>
         <div
           className={`mx-auto mt-3 grid size-28 place-items-center border-[5px] border-white bg-gradient-to-b from-white to-win95 text-5xl shadow-[4px_4px_0_#000] [border-style:inset] ${revealed ? "" : "animate-ugly-shake"}`}
         >
-          {revealed ? "🎉" : "❓"}
+          {revealed ? "[!!!]" : "[?]"}
         </div>
         <div
           className={`mx-auto mt-3 min-h-[52px] w-fit border-[4px] p-2 font-mono text-sm font-black ${revealed ? "animate-ugly-wiggle border-casino-gold bg-black text-casino-gold [border-style:ridge]" : "border-dotted border-ugly-red bg-ugly-yellow text-black"}`}
@@ -62,13 +62,13 @@ export function LootboxReveal({ drop, stock, onAgain, onClose }: LootboxRevealPr
         </div>
         {!revealed && (
           <div className="mt-2 animate-ugly-blink font-mono text-[11px] font-black text-casino-goldsoft">
-            MIELIMY... TRZYMAJ KCIUKI!!! 🍀
+            MIELIMY... TRZYMAJ KCIUKI!!! [+]
           </div>
         )}
         {revealed && (
           <>
             <div className="mx-auto mt-3 max-w-[320px] border-[3px] border-dashed border-casino-gold bg-black p-2 text-left font-mono text-[10px] font-black text-casino-goldsoft">
-              <div className="text-center text-ugly-yellow">🎰 SZANSE DROPÓW (uczciwe, sprawdź):</div>
+              <div className="text-center text-ugly-yellow">[=] SZANSE DROPÓW (uczciwe, sprawdź):</div>
               {LOOT_TABLE.map((d) => (
                 <div key={d.label} className="flex justify-between gap-2">
                   <span>{d.label}</span>
@@ -79,7 +79,7 @@ export function LootboxReveal({ drop, stock, onAgain, onClose }: LootboxRevealPr
             <div className="mt-3 flex flex-wrap justify-center gap-2">
               {stock > 0 && (
                 <Button variant="slot" size="sm" onClick={onAgain}>
-                  ❓ JESZCZE JEDNA ({stock}) ❓
+                  [?] JESZCZE JEDNA ({stock}) [?]
                 </Button>
               )}
               <Button variant="claim" size="sm" onClick={onClose}>

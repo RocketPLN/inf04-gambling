@@ -96,7 +96,7 @@ export function ZipBlock({ exams }: { exams: Exam[] }) {
   return (
     <div className="mt-4 border-[6px] border-ugly-pink bg-ugly-cyan p-3.5 shadow-[6px_6px_0_#000] [border-style:ridge]">
       <div className="flex flex-wrap items-center justify-between gap-2.5 font-display text-[13px] uppercase text-black">
-        <strong>📦 Załączniki ZIP do pobrania</strong>
+        <strong>[P] Załączniki ZIP do pobrania</strong>
         <Badge variant="default" className="border-[3px] border-white bg-ugly-yellow font-mono text-[10px] [border-style:outset]">
           {withZip.length} zestawów · hostowane lokalnie /pdfs/
         </Badge>
@@ -113,7 +113,7 @@ export function ZipBlock({ exams }: { exams: Exam[] }) {
             )}
             style={{ textDecoration: "none" }}
           >
-            ⬇ {e.year} {e.session}
+            [v] {e.year} {e.session}
           </a>
         ))}
       </div>

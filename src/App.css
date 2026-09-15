@@ -96,7 +96,7 @@
   position:relative;
 }
 .hero::before{
-  content:"UNDER CONSTRUCTION 🚧 UNDER CONSTRUCTION 🚧";
+  content:"[!] UNDER CONSTRUCTION [!] UNDER CONSTRUCTION [!]";
   position:absolute; top:-14px; left:50%; transform:translateX(-50%) rotate(-1deg);
   background:#ff0000; color:#ffff00; font-family:'Impact',fantasy; font-size:12px; letter-spacing:2px;
   border:3px outset #fff; padding:4px 12px; white-space:nowrap; z-index:10;
@@ -632,3 +632,72 @@ body.fx-neon .site-logo{
 }
 /* SKIN CABINETU: niebieski cabinet w barwach CKE na slocie */
 .cabinet-cke{ border-color:#3b82f6 !important; background:radial-gradient(circle at 50% 0%, #1e3fae, #000814 70%) !important }
+
+/* ===== Y2K PACK (2000s web chrome + zamiennik emoji) ===== */
+/* Znaczek Y2K: ostre pudełko outset, krótki kod ASCII, zero fontów emoji. */
+.y2k-ico{
+  display:inline-grid; place-items:center; min-width:22px; height:22px; padding:0 5px;
+  border:3px outset #c0c0c0 !important; background:#c0c0c0 !important; color:#000 !important;
+  font-family:'Courier New',monospace !important; font-size:11px !important; font-weight:900 !important;
+  line-height:1; vertical-align:middle; box-shadow:2px 2px 0 #000 !important;
+}
+.y2k-ico--red{background:#ff0000 !important; color:#ffff00 !important; border-color:#fff !important}
+.y2k-ico--yellow{background:#ffff00 !important; color:#000 !important}
+.y2k-ico--green{background:#00ff00 !important; color:#000 !important}
+.y2k-ico--cyan{background:#00ffff !important; color:#000 !important}
+.y2k-ico--blue{background:#000080 !important; color:#fff !important; border-color:#fff !important}
+.y2k-ico--pink{background:#ff00ff !important; color:#ffff00 !important; border-color:#fff !important}
+.y2k-ico--gold{background:#ffd700 !important; color:#7a1010 !important}
+.y2k-ico--gray{background:linear-gradient(#fff,#c0c0c0) !important; color:#000 !important}
+.y2k-ico--big{min-width:44px; height:44px; font-size:16px !important; border-width:4px !important}
+/* Pasek okna Win98: jeden element strukturalny, kolor koduje typ bloku. */
+.win98-bar{
+  display:flex; align-items:center; justify-content:space-between; gap:8px;
+  padding:3px 4px 3px 8px; font-family:'Courier New',monospace !important;
+  font-size:11px !important; font-weight:900 !important; letter-spacing:1px; text-transform:uppercase;
+  border-bottom:3px ridge #fff; user-select:none;
+}
+.win98-bar--navy{background:linear-gradient(90deg,#000080,#0a5cc2) !important; color:#fff !important}
+.win98-bar--red{background:linear-gradient(90deg,#7a1010,#ff0000) !important; color:#ffff00 !important}
+.win98-bar--green{background:linear-gradient(90deg,#003300,#00aa00) !important; color:#fff !important}
+.win98-bar-btns{display:flex; gap:3px}
+.win98-btn{
+  width:20px; height:18px; display:grid; place-items:center;
+  background:linear-gradient(#fff,#c0c0c0) !important; color:#000 !important;
+  border:2px outset #fff !important; font-size:11px; line-height:1;
+}
+/* Odometr: cyferki jak w liczniku odwiedzin z 2001. */
+.odo{display:inline-flex; gap:2px; vertical-align:middle}
+.odo-digit{
+  min-width:16px; height:20px; display:grid; place-items:center;
+  background:#000 !important; color:#00ff00 !important; border:2px inset #808080 !important;
+  font-family:'Courier New',monospace !important; font-size:12px !important; font-weight:900 !important;
+}
+/* Przerywnik Y2K: podwójna listwa groove jak <hr> z Geocities. */
+.y2k-divider{height:10px; border-top:4px groove #c0c0c0; border-bottom:4px groove #c0c0c0; background:#000; margin:12px 0}
+.y2k-statusbar{
+  display:flex; gap:8px; flex-wrap:wrap; align-items:center;
+  background:#c0c0c0 !important; border-top:3px groove #fff !important;
+  font-family:'Courier New',monospace !important; font-size:10px !important; font-weight:900 !important;
+  padding:3px 6px; color:#000 !important; text-transform:uppercase;
+}
+.y2k-statusbar .cell{border:2px inset #fff !important; background:#fff !important; padding:1px 6px}
+/* Bęben slota w wersji Y2K: wielki znak, zero emoji. */
+.slot-reel-y2k{font-family:'Impact',fantasy !important; font-weight:900 !important; letter-spacing:0}
+/* Grzybnia bez emoji: znacznik [G] w rogu karty. */
+.fungus-y2k{
+  position:absolute; left:6px; bottom:6px; z-index:5; transform:rotate(-14deg);
+  font-family:'Courier New',monospace !important; font-size:10px !important; font-weight:900 !important;
+  background:#003300 !important; color:#00ff00 !important; border:2px outset #00ff00 !important;
+  padding:1px 4px; opacity:.55;
+}
+/* Jakościowy floor: szanuj reduced motion + STOP-KLATKĘ (body.no-anim już zeruje animacje). */
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important }
+}
+/* Tailwind `.grid` koliduje z nielayerowanym `.grid` wyżej (3 tory, pusty trzeci).
+   Te dwie klasy przywracają zamierzony układ 1 → 2 kolumn. */
+.casino-duo{grid-template-columns:1fr !important}
+@media(min-width:1024px){.casino-duo{grid-template-columns:1fr 1fr !important}}
+.hero-duo{grid-template-columns:1fr !important}
+@media(min-width:1024px){.hero-duo{grid-template-columns:1.15fr .85fr !important}}

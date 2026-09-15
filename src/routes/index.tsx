@@ -49,7 +49,8 @@ function HomePage() {
     <>
       <Hero count={exams.length} totalPkt={totalPkt} />
 
-      <div className="mt-3.5 grid w-full grid-cols-1 items-stretch gap-3.5 lg:grid-cols-2">
+      <div className="y2k-divider" aria-hidden="true" />
+      <div className="casino-duo mt-3.5 grid w-full grid-cols-1 items-stretch gap-3.5 lg:grid-cols-2">
         <div className="w-full min-w-0">
           <SlotScam />
         </div>
@@ -72,6 +73,7 @@ function HomePage() {
 
       <TechTags active={q} onToggle={(t) => setSearch({ q: q === t ? "" : t })} />
 
+      <div className="y2k-divider" aria-hidden="true" />
       <UglyBanner>
         ★★★ UWAGA !!! WSZYSTKO JEST TERAZ BRZYDKIE !!! ★★★ KLIKAJ SZYBKO ZANIM SIĘ ROZSYPie ★★★
       </UglyBanner>
@@ -103,6 +105,7 @@ function HomePage() {
       )}
 
       <ZipBlock exams={exams} />
+      <div className="y2k-statusbar mt-3"><span className="cell">GOTOWE</span><span className="cell">{filtered.length} ARKUSZY</span><span className="cell">56K</span><span className="cell">BEST VIEWED 800x600</span></div>
       <SetupBlock />
     </>
   );

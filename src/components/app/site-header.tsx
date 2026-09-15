@@ -7,6 +7,7 @@ import { DEFAULT_SEARCH } from "@/lib/search.js";
 import { SHOP_ITEMS } from "@/data/shop.js";
 import { useWallet } from "@/hooks/use-wallet.js";
 import { useBodyClass } from "@/hooks/use-body-class.js";
+import { Y2k } from "@/components/app/y2k-icons";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader({ count }: { count: number }) {
@@ -35,7 +36,7 @@ export function SiteHeader({ count }: { count: number }) {
           <Tooltip>
             <TooltipTrigger asChild>
               <Button variant="slot" size="sm" asChild>
-                <Link to="/teoria" search={DEFAULT_SEARCH}>🎡 TEORIA: KOŁO FORTUNY</Link>
+                <Link to="/teoria" search={DEFAULT_SEARCH}><Y2k code="O" tone="yellow" /> TEORIA: KOŁO FORTUNY</Link>
               </Button>
             </TooltipTrigger>
             <TooltipContent>Mockup losowania pytań teoretycznych</TooltipContent>
@@ -43,7 +44,7 @@ export function SiteHeader({ count }: { count: number }) {
           <Tooltip>
             <TooltipTrigger asChild>
               <Button variant="slot" size="sm" asChild>
-                <Link to="/rogue" search={DEFAULT_SEARCH}>🏚️ LOCH: ROGUE-LIKE</Link>
+                <Link to="/rogue" search={DEFAULT_SEARCH}><Y2k code="D" tone="red" /> LOCH: ROGUE-LIKE</Link>
               </Button>
             </TooltipTrigger>
             <TooltipContent>Zejdź albo zgiń — endless z mutatorami CKE</TooltipContent>
@@ -51,7 +52,7 @@ export function SiteHeader({ count }: { count: number }) {
           <Tooltip>
             <TooltipTrigger asChild>
               <Button variant="claim" size="sm" asChild>
-                <Link to="/sklep" search={DEFAULT_SEARCH}>🕹️ SKLEP</Link>
+                <Link to="/sklep" search={DEFAULT_SEARCH}><Y2k code=">>" tone="green" /> SKLEP</Link>
               </Button>
             </TooltipTrigger>
             <TooltipContent>Mockup sklepu arcade — wydaj punkty z koła fortuny</TooltipContent>
@@ -67,7 +68,7 @@ export function SiteHeader({ count }: { count: number }) {
             <TooltipContent>Źródło PDF-ów i zasad CKE</TooltipContent>
           </Tooltip>
           <Badge variant="casino" className={cn("p-1 text-[11px]")}>
-            {title ? `🏆 ${title} • ` : ""}💰 {balance} pkt
+            {title ? `[M] ${title} • ` : ""}[$] {balance} pkt
           </Badge>
           <Badge variant="secondary" className="rotate-1 animate-ugly-blink border-[3px] border-ugly-pink bg-ugly-cyan p-1 text-[11px] shadow-[2px_2px_0_#000] [border-style:ridge]">
             <b>{count}</b>&nbsp;arkuszy
@@ -76,7 +77,7 @@ export function SiteHeader({ count }: { count: number }) {
             2021–2026
           </Badge>
           <Badge variant="casino" className={cn("p-1 text-[11px]")}>
-            🎰 RTP 98.7%
+            [=] RTP 98.7%
           </Badge>
         </nav>
       </div>

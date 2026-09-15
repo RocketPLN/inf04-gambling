@@ -24,8 +24,8 @@ export interface ToastProps extends Omit<React.ComponentProps<"div">, "title">, 
 function Toast({ className, tone, title, description, ...props }: ToastProps) {
   return (
     <div data-slot="toast" role="status" className={cn(toasterVariants({ tone }), className)} {...props}>
-      <span aria-hidden className="grid size-8 shrink-0 place-items-center border-[3px] border-white bg-ugly-pink font-display text-sm text-ugly-yellow [border-style:outset]">
-        {tone === "bonus" ? "💰" : tone === "info" ? "◈" : "🎰"}
+      <span aria-hidden className="grid size-8 shrink-0 place-items-center border-[3px] border-white bg-ugly-pink font-mono text-[11px] font-black text-ugly-yellow [border-style:outset]">
+        {tone === "bonus" ? "$" : tone === "info" ? "?" : "7"}
       </span>
       <div className="min-w-0">
         {title && <div className="font-display uppercase tracking-wider">{title}</div>}

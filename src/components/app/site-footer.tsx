@@ -1,15 +1,16 @@
 import type { ReactNode } from "react";
+import { Odo } from "@/components/app/y2k-icons";
 
 export function GuestStrip() {
   return (
     <div className="border-y-[6px] border-ugly-pink border-b-ugly-cyan bg-ugly-yellow p-2.5 text-center font-bold text-xs text-ugly-pink [border-top-style:ridge] [border-bottom-style:ridge]">
       <span className="border-[3px] border-white bg-black px-2 py-1 font-mono text-cke-green [border-style:outset]">
-        GOŚCI: 001337 | ONLINE: 13 | OSTATNIO: DZIŚ 04:20
+        GOŚCI: <Odo value="001337" /> | ONLINE: <Odo value="013" /> | OSTATNIO: DZIŚ 04:20
       </span>
       <span className="ml-3 animate-ugly-blink border-[3px] border-ugly-yellow bg-ugly-pink px-2 py-1 text-ugly-yellow [border-style:ridge]">
         ✦ STRONA BRZYDKA CELowo ✦
       </span>
-      <span className="ml-3 hidden sm:inline">💾 Pobierz Netscape Navigator 💾</span>
+      <span className="ml-3 hidden sm:inline">[DSK] Pobierz Netscape Navigator [DSK]</span>
     </div>
   );
 }
@@ -17,7 +18,7 @@ export function GuestStrip() {
 export function Testimonials() {
   return (
     <div className="hide-in-focus mt-3.5 flex flex-wrap items-center gap-3.5 border-4 border-casino-gold bg-black p-2.5 text-[11px] font-bold text-casino-goldsoft shadow-[4px_4px_0_#000] [border-style:ridge]">
-      <strong className="font-display tracking-wider text-casino-gold">⭐ OPINIE WYGRANYCH (100% prawdziwe*):</strong>
+      <strong className="font-display tracking-wider text-casino-gold">[*] OPINIE WYGRANYCH (100% prawdziwe*):</strong>
       <span>“Postawiłem wszystko na R2 i zdałem!!!” — Marek, Radom ⭐⭐⭐⭐⭐</span>
       <span>“Grzybnia? Nie widziałam. Bonus? Dostałam.” — Kasia ⭐⭐⭐⭐⭐</span>
       <span>“Kurs 4.41 na WPF siadł jak złoto” — Sebix ⭐⭐⭐⭐☆</span>
@@ -35,7 +36,7 @@ export function SiteFooter() {
         </span>
         <span>
           Dane z arkusze.pl / CKE · HTML generowane z PDF · Punktacja CKE na boku · {new Date().getFullYear()} ·{" "}
-          <span className="underline decoration-ugly-pink decoration-wavy">BRZYDKO = PIĘKNIE</span> · 18+ graj (w naukę) odpowiedzialnie · zawiera śladowe ilości grzybni (0.3%) 🍄
+          <span className="underline decoration-ugly-pink decoration-wavy">BRZYDKO = PIĘKNIE</span> · 18+ graj (w naukę) odpowiedzialnie · zawiera śladowe ilości grzybni (0.3%) [G]
         </span>
       </div>
     </footer>

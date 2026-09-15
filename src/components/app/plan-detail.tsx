@@ -82,7 +82,7 @@ export function PlanDetail({ exam, onBack }: { exam: Exam; onBack: () => void })
               </Button>
               {exam.zipZalaczniki && (
                 <Button variant="yellow" size="sm" asChild>
-                  <a href={exam.zipZalaczniki} download>⬇ ZIP załączniki</a>
+                  <a href={exam.zipZalaczniki} download>[v] ZIP załączniki</a>
                 </Button>
               )}
             </div>
@@ -151,7 +151,7 @@ export function PlanDetail({ exam, onBack }: { exam: Exam; onBack: () => void })
                 {exam.zipZalaczniki ? (
                   <>
                     <Button variant="yellow" size="sm" asChild>
-                      <a href={exam.zipZalaczniki} download>⬇ Pobierz ZIP</a>
+                      <a href={exam.zipZalaczniki} download>[v] Pobierz ZIP</a>
                     </Button>
                     <a href={exam.zipZalaczniki} target="_blank" rel="noreferrer" className="text-[11px] font-black text-ugly-pink underline decoration-ugly-cyan decoration-wavy">
                       podgląd
