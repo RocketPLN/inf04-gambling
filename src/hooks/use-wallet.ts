@@ -1,22 +1,25 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useSyncExternalStore } from "react";
 import {
-  DEFAULT_WALLET,
-  STORAGE_KEY,
-  clearWalletStorage,
+  commitStore,
+  getStoreServerSnapshot,
+  getStoreSnapshot,
+  hydrateStore,
+  resetStore,
+  subscribeStore,
+} from "@/lib/wallet-store.js";
+import {
   consumeWallet,
   earnWallet,
   grantWallet,
   isFlagActive,
   itemCount,
-  loadWallet,
   recordAnswerWallet,
-  saveWallet,
   setFlagWallet,
   spendWallet,
   type Grant,
   type ShopKind,
-  type WalletState,
 } from "@/lib/wallet.js";
+import type { WalletState } from "@/lib/wallet.js";
 
 export interface UseWallet {
   wallet: WalletState;
@@ -45,105 +48,69 @@ export interface UseWallet {
 
 /*
  * useWallet — portfel punktów w szyfrowanym localStorage.
- * SSR-safe: pierwszy render to DEFAULT_WALLET (0 pkt), prawdziwy stan
- * doczytuje się w useEffect po hydratacji. Synchronizacja między
- * kartami przez zdarzenie "storage".
+ * Wszystkie instancje w karcie dzielą jeden store (wallet-store.ts),
+ * więc zarobek na /teoria od razu rusza badge w headerze i saldo w /sklep.
+ * Akcje czytają zawsze aktualny stan modułu — brak nieświeżych domknięć.
  */
 export function useWallet(): UseWallet {
-  const [wallet, setWallet] = useState<WalletState>(DEFAULT_WALLET);
-  const [tampered, setTampered] = useState(false);
+  const snap = useSyncExternalStore(subscribeStore, getStoreSnapshot, getStoreServerSnapshot);
+  const { state: wallet, tampered } = snap;
 
   useEffect(() => {
-    const loaded = loadWallet();
-    setWallet(loaded.state);
-    setTampered(loaded.tampered);
-
-    const onStorage = (e: StorageEvent) => {
-      if (e.key === STORAGE_KEY || e.key === null) {
-        const next = loadWallet();
-        setWallet(next.state);
-        setTampered(next.tampered);
-      }
-    };
-    window.addEventListener("storage", onStorage);
-    return () => window.removeEventListener("storage", onStorage);
+    hydrateStore();
   }, []);
 
-  const update = useCallback((next: WalletState) => {
-    saveWallet(next);
-    setWallet(next);
+  const earn = useCallback((amount: number, streak?: number) => {
+    const cur = getStoreSnapshot().state;
+    const next = earnWallet(cur, amount, streak);
+    if (next !== cur) commitStore(next);
   }, []);
 
-  const earn = useCallback(
-    (amount: number, streak?: number) => {
-      setWallet((prev) => {
-        const next = earnWallet(prev, amount, streak);
-        if (next !== prev) saveWallet(next);
-        return next;
-      });
-    },
-    [],
-  );
+  const spend = useCallback((price: number, itemId?: string, kind?: ShopKind): boolean => {
+    const cur = getStoreSnapshot().state;
+    const res = spendWallet(cur, price, itemId, kind);
+    if (res.ok) commitStore(res.state);
+    return res.ok;
+  }, []);
 
-  const spend = useCallback(
-    (price: number, itemId?: string, kind?: ShopKind): boolean => {
-      const res = spendWallet(wallet, price, itemId, kind);
-      if (res.ok) update(res.state);
-      return res.ok;
-    },
-    [wallet, update],
-  );
+  const consume = useCallback((itemId: string): boolean => {
+    const cur = getStoreSnapshot().state;
+    const res = consumeWallet(cur, itemId);
+    if (res.ok) commitStore(res.state);
+    return res.ok;
+  }, []);
 
-  const consume = useCallback(
-    (itemId: string): boolean => {
-      const res = consumeWallet(wallet, itemId);
-      if (res.ok) update(res.state);
-      return res.ok;
-    },
-    [wallet, update],
-  );
+  const grant = useCallback((g: Grant) => {
+    const cur = getStoreSnapshot().state;
+    commitStore(grantWallet(cur, g));
+  }, []);
 
-  const grant = useCallback(
-    (g: Grant) => update(grantWallet(wallet, g)),
-    [wallet, update],
-  );
+  const recordAnswer = useCallback((ok: boolean) => {
+    const cur = getStoreSnapshot().state;
+    commitStore(recordAnswerWallet(cur, ok));
+  }, []);
 
-  const recordAnswer = useCallback(
-    (ok: boolean) => {
-      setWallet((prev) => {
-        const next = recordAnswerWallet(prev, ok);
-        saveWallet(next);
-        return next;
-      });
-    },
-    [],
-  );
+  const setFlag = useCallback((itemId: string, enabled: boolean) => {
+    const cur = getStoreSnapshot().state;
+    commitStore(setFlagWallet(cur, itemId, enabled));
+  }, []);
 
-  const setFlag = useCallback(
-    (itemId: string, enabled: boolean) => update(setFlagWallet(wallet, itemId, enabled)),
-    [wallet, update],
-  );
+  const setTitle = useCallback((title: string | null) => {
+    const cur = getStoreSnapshot().state;
+    commitStore({ ...cur, title });
+  }, []);
 
-  const flagActive = useCallback((itemId: string) => isFlagActive(wallet, itemId), [wallet]);
-
-  const count = useCallback((itemId: string) => itemCount(wallet, itemId), [wallet]);
-
-  const setTitle = useCallback(
-    (title: string | null) => update({ ...wallet, title }),
-    [wallet, update],
-  );
-
-  const setTicker = useCallback(
-    (ticker: string | null) => update({ ...wallet, ticker }),
-    [wallet, update],
-  );
+  const setTicker = useCallback((ticker: string | null) => {
+    const cur = getStoreSnapshot().state;
+    commitStore({ ...cur, ticker });
+  }, []);
 
   const reset = useCallback(() => {
-    clearWalletStorage();
-    setWallet({ ...DEFAULT_WALLET });
-    setTampered(false);
+    resetStore();
   }, []);
 
+  const flagActive = useCallback((itemId: string) => isFlagActive(wallet, itemId), [wallet]);
+  const count = useCallback((itemId: string) => itemCount(wallet, itemId), [wallet]);
   const owns = useCallback((itemId: string) => wallet.owned.includes(itemId), [wallet.owned]);
 
   return {
