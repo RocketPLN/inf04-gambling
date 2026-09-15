@@ -15,9 +15,8 @@ function ExamPage() {
   const exam = exams.find((e) => e.id === examId);
 
   useEffect(() => {
-    document.title = exam ? `${exam.title} – INF.04 Portal` : "Nie znaleziono arkusza – INF.04 Portal";
     window.scrollTo({ top: 0 });
-  }, [examId, exam]);
+  }, [examId]);
 
   if (!exam) {
     return (
@@ -51,6 +50,22 @@ function ExamPage() {
 export const Route = createFileRoute("/egzamin/$examId")({
   component: ExamPage,
   validateSearch,
+  head: ({ params }) => {
+    const exam = exams.find((e) => e.id === params.examId);
+    return {
+      meta: [
+        {
+          title: exam ? `${exam.title} – INF.04 Portal` : "Nie znaleziono arkusza – INF.04 Portal",
+        },
+        exam
+          ? {
+              name: "description",
+              content: `${exam.title} (${exam.year}, ${exam.session}) – podgląd arkusza PDF i punktacja CKE. ${exam.subtitle}`,
+            }
+          : null,
+      ].filter(Boolean),
+    };
+  },
   search: {
     middlewares: [stripSearchParams(DEFAULT_SEARCH)],
   },

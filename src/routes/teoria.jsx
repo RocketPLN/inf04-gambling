@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { FortuneWheel, ScoreBar, TheoryQuestionCard } from "../components/app/fortune.jsx";
 import { THEORY_CATEGORIES, THEORY_QUESTIONS, THEORY_SOURCES } from "../data/theory.js";
@@ -12,10 +12,6 @@ function TheoryPage() {
   const [drawn, setDrawn] = useState(0);
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);
-
-  useEffect(() => {
-    document.title = "TEORIA INF.04 — Koło Fortuny (630 pytań)";
-  }, []);
 
   const poolLabel = useMemo(() => {
     if (!category) return "wszystkie";
@@ -124,4 +120,7 @@ function TheoryPage() {
 
 export const Route = createFileRoute("/teoria")({
   component: TheoryPage,
+  head: () => ({
+    meta: [{ title: "TEORIA INF.04 — Koło Fortuny (630 pytań)" }],
+  }),
 });

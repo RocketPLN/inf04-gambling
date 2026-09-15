@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { createFileRoute, Link, stripSearchParams, useNavigate } from "@tanstack/react-router";
 import { exams } from "../data/exams.js";
 import { DEFAULT_SEARCH, cleanSearch, validateSearch } from "../lib/search.js";
@@ -15,10 +15,6 @@ const CARD_COLORS = ["solar", "pop", "electric", "mint", "tangerine"];
 function HomePage() {
   const { q, year, session } = Route.useSearch();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    document.title = "INF.04 Portal – Arkusze, Plany HTML i Punktacja CKE";
-  }, []);
 
   const setSearch = (patch) => {
     navigate({
@@ -103,6 +99,9 @@ function HomePage() {
 export const Route = createFileRoute("/")({
   component: HomePage,
   validateSearch,
+  head: () => ({
+    meta: [{ title: "INF.04 Portal – Arkusze, Plany HTML i Punktacja CKE" }],
+  }),
   search: {
     middlewares: [stripSearchParams(DEFAULT_SEARCH)],
   },

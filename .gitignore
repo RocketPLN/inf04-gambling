@@ -10,6 +10,8 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+.output
+.nitro
 *.local
 
 # PDF-y i załączniki CKE mieszkają w R2 (publiczny bucket), nie w gicie.

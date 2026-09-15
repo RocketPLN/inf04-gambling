@@ -1,15 +1,22 @@
 import path from "path";
 import tailwindcss from "@tailwindcss/vite";
-import react from '@vitejs/plugin-react'
-import { TanStackRouterVite } from '@tanstack/router-plugin/vite'
-import { defineConfig } from 'vite'
+import react from "@vitejs/plugin-react";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import { nitro } from "nitro/vite";
+import { defineConfig } from "vite";
 
-// https://vite.dev/config/
+// TanStack Start (SSR): document shell renderuje __root.jsx (RootDocument),
+// index.html nie jest już używany. Bezpośrednie wejścia na /egzamin/:id
+// serwuje Node (.output/server/index.mjs) — koniec 404 ze statycznego SPA.
 export default defineConfig({
+  server: {
+    port: 3000,
+  },
   plugins: [
-    TanStackRouterVite({ target: 'react', autoCodeSplitting: true }),
-    react(),
     tailwindcss(),
+    tanstackStart({ srcDirectory: "src" }),
+    react(),
+    nitro(),
   ],
   resolve: {
     alias: {
@@ -19,4 +26,4 @@ export default defineConfig({
     // od bibliotek bundlujących własnego Reacta.
     dedupe: ["react", "react-dom"],
   },
-})
+});
