@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useWallet } from "../hooks/use-wallet.js";
+import { LootboxReveal } from "../components/app/lootbox.jsx";
 import { BASE_POINTS, MAX_AWARD, STREAK_BONUS_CAP, STREAK_STEP } from "../lib/wallet.js";
 import {
   LOOT_TABLE,
@@ -9,6 +10,7 @@ import {
   SHOP_SCOPE_LABEL,
   TICKER_PRESETS,
   rollLoot,
+  type LootDrop,
   type ShopItem,
   type ShopRarity,
   type ShopScope,
@@ -88,8 +90,10 @@ function ItemCard({ item, onBuy, onOpenLoot }: { item: ShopItem; onBuy: (item: S
 }
 
 function ShopPage() {
-  const { wallet, balance, tampered, spend, consume, grant, setFlag, flagActive, setTitle, setTicker, reset } = useWallet();
+  const { wallet, balance, tampered, spend, consume, grant, count, setFlag, flagActive, setTitle, setTicker, reset } = useWallet();
   const [flash, setFlash] = useState<string | null>(null);
+  // Overlay otwierania lootboxa (animacja + reveal, grant od razu przy losie).
+  const [lootDrop, setLootDrop] = useState<LootDrop | null>(null);
 
   const buy = (item: ShopItem) => {
     const ok = spend(item.price, item.id, item.kind);
@@ -107,7 +111,7 @@ function ShopPage() {
     }
     const drop = rollLoot(Math.random());
     grant({ points: drop.points, items: drop.items });
-    setFlash(`❓ LOOTBOX: ${drop.label}!!! HAZARD SIĘ OPŁACIŁ* (*tym razem)`);
+    setLootDrop(drop);
   };
 
   const flagsOwned = SHOP_ITEMS.filter((i) => i.kind === "flaga" && wallet.owned.includes(i.id));
@@ -120,6 +124,14 @@ function ShopPage() {
 
   return (
     <>
+      {lootDrop && (
+        <LootboxReveal
+          drop={lootDrop}
+          stock={count("niespodzianka")}
+          onAgain={openLoot}
+          onClose={() => setLootDrop(null)}
+        />
+      )}
       <div className="mt-3.5 border-[6px] border-casino-gold bg-[radial-gradient(circle_at_50%_0%,#5a0a0a,#1a0505_70%)] p-4 text-center shadow-[8px_8px_0_#000,inset_0_0_40px_#000] [border-style:ridge]">
         <span className="inline-block -rotate-1 animate-ugly-blink border-[3px] border-white bg-ugly-red px-2 py-1 font-mono text-[11px] font-black uppercase text-ugly-yellow [border-style:outset]">
           ★ INSERT COIN ★ BAZAR ★
