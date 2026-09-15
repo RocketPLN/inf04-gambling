@@ -36,166 +36,166 @@ export const SHOP_RARITY_LABEL: Record<ShopRarity, string> = {
 };
 
 export const SHOP_SCOPE_LABEL: Record<ShopScope, string> = {
-  global: "🌍 GLOBALNE",
-  teoria: "🎡 TEORIA",
-  arkusze: "📄 ARKUSZE",
+  global: "[*] GLOBALNE",
+  teoria: "[O] TEORIA",
+  arkusze: "[=] ARKUSZE",
 };
 
 export const SHOP_ITEMS: ShopItem[] = [
   // ——— GLOBALNE: blokery syfu ———
   {
-    id: "adblock-popup", name: "ADBLOCK: POPUP", price: 60, icon: "🚫",
+    id: "adblock-popup", name: "ADBLOCK: POPUP", price: 60, icon: "[X]",
     desc: "Ubija wyskakujące GRATULACJE JESTEŚ MILIONOWYM. Cisza. Spokój.",
     rarity: "rare", tag: "BLOKER", kind: "flaga", scope: "global",
   },
   {
-    id: "adblock-sticky", name: "ADBLOCK: DOLNY BAR", price: 60, icon: "🧹",
+    id: "adblock-sticky", name: "ADBLOCK: DOLNY BAR", price: 60, icon: "[>>]",
     desc: "Zmiata przyklejony pasek 500% BONUSU z dołu ekranu.",
     rarity: "rare", tag: "BLOKER", kind: "flaga", scope: "global",
   },
   {
-    id: "adblock-oferta", name: "ADBLOCK: OFERTA", price: 40, icon: "✋",
+    id: "adblock-oferta", name: "ADBLOCK: OFERTA", price: 40, icon: "[!]",
     desc: "Wykreśla kartę OFERTA NIE DO ODRZUCENIA. Dało się odrzucić.",
     rarity: "common", tag: "BLOKER", kind: "flaga", scope: "global",
   },
   {
-    id: "cisza-kasyno", name: "CISZA W KASYNIE", price: 80, icon: "🤫",
+    id: "cisza-kasyno", name: "CISZA W KASYNIE", price: 80, icon: "[---]",
     desc: "Wycisza ticker fałszywych wygranych i górne marquee. Marek z Radomia znika.",
     rarity: "rare", tag: "BLOKER", kind: "flaga", scope: "global",
   },
   {
-    id: "stop-klatka", name: "STOP-KLATKA", price: 120, icon: "⏸️",
+    id: "stop-klatka", name: "STOP-KLATKA", price: 120, icon: "[II]",
     desc: "Zatrzymuje WSZYSTKIE migotania i trzęsienia. Tryb dla wrażliwych i zmęczonych.",
     rarity: "epic", tag: "BLOKER", kind: "flaga", scope: "global",
   },
   {
-    id: "jackpot-off", name: "JACKPOT OFF", price: 50, icon: "📉",
+    id: "jackpot-off", name: "JACKPOT OFF", price: 50, icon: "[v]",
     desc: "Zwija MEGA JACKPOT do jednej skromnej linijki. Pokora wraca.",
     rarity: "common", tag: "BLOKER", kind: "flaga", scope: "global",
   },
   // ——— GLOBALNE: gagi i skórki ———
   {
-    id: "odgrzybiacz", name: "ODGRZYBIACZ", price: 77, icon: "🍄",
+    id: "odgrzybiacz", name: "ODGRZYBIACZ", price: 77, icon: "[G]",
     desc: "Spray grzybobójczy. Usuwa wszystkie ślady grzybni ze strony.",
     rarity: "rare", tag: "GAG", kind: "flaga", scope: "global",
   },
   {
-    id: "zloty-deszcz", name: "ZŁOTY DESZCZ", price: 150, icon: "🌟",
+    id: "zloty-deszcz", name: "ZŁOTY DESZCZ", price: 150, icon: "[*]",
     desc: "Konfetti za każdą dobrą odpowiedź w kole fortuny. Pada złoto.",
     rarity: "epic", tag: "GAG", kind: "flaga", scope: "global",
   },
   {
-    id: "high-roller", name: "HIGH-ROLLER", price: 200, icon: "💎",
+    id: "high-roller", name: "HIGH-ROLLER", price: 200, icon: "<>",
     desc: "Jackpot pokazuje Twoje saldo ×1000. Tylko wizualnie, portfel bez zmian, ego +1000.",
     rarity: "epic", tag: "GAG", kind: "flaga", scope: "global",
   },
   {
-    id: "okrzyk-tickera", name: "WŁASNY OKRZYK", price: 90, icon: "📢",
+    id: "okrzyk-tickera", name: "WŁASNY OKRZYK", price: 90, icon: "[!]",
     desc: "Odblokowuje 3 presety okrzyków do tickera. Wybór w szafie.",
     rarity: "rare", tag: "GAG", kind: "flaga", scope: "global",
   },
   {
-    id: "motyw-crt", name: "MOTYW CRT", price: 130, icon: "📺",
+    id: "motyw-crt", name: "MOTYW CRT", price: 130, icon: "[TV]",
     desc: "Nakładka kineskopowa + celownik zamiast kursora. 800x600 OPTIMAL.",
     rarity: "epic", tag: "SKÓRKA", kind: "flaga", scope: "global",
   },
   {
-    id: "statystyki", name: "STATYSTYKI GRACZA", price: 80, icon: "📊",
+    id: "statystyki", name: "STATYSTYKI GRACZA", price: 80, icon: "[=]",
     desc: "Odblokowuje panel statystyk w sklepie: accuracy, saldo, historia kasy.",
     rarity: "rare", tag: "TRYB", kind: "flaga", scope: "global",
   },
   // ——— GLOBALNE: tytuły (jeden aktywny) ———
   {
-    id: "pasek-mistrza", name: "PASEK MISTRZA INF.04", price: 500, icon: "🏆",
+    id: "pasek-mistrza", name: "PASEK MISTRZA INF.04", price: 500, icon: "[M]",
     desc: "Złoty pasek pod nickiem. Dowód, że koło fortuny Cię kocha.",
     rarity: "legendary", tag: "TYTUŁ", kind: "flaga", scope: "global", titleLabel: "MISTRZ INF.04",
   },
   {
-    id: "farciarz-777", name: "FARCIARZ 7️⃣7️⃣7️⃣", price: 300, icon: "🎰",
+    id: "farciarz-777", name: "FARCIARZ 7-7-7", price: 300, icon: "[=]",
     desc: "Tytuł dla tych, co trafili jackpot na slocie. Czyli prawie nikogo.",
-    rarity: "epic", tag: "TYTUŁ", kind: "flaga", scope: "global", titleLabel: "FARCIARZ 7️⃣7️⃣7️⃣",
+    rarity: "epic", tag: "TYTUŁ", kind: "flaga", scope: "global", titleLabel: "FARCIARZ 7-7-7",
   },
   {
-    id: "pogromca-r3", name: "POGROMCA R3", price: 300, icon: "⚔️",
+    id: "pogromca-r3", name: "POGROMCA R3", price: 300, icon: "[X]",
     desc: "Tytuł dla katów graficznych interfejsów. R3 się chowa.",
     rarity: "epic", tag: "TYTUŁ", kind: "flaga", scope: "global", titleLabel: "POGROMCA R3",
   },
   {
-    id: "nocny-zdawacz", name: "NOCNY ZDAWACZ", price: 250, icon: "🦉",
+    id: "nocny-zdawacz", name: "NOCNY ZDAWACZ", price: 250, icon: "[N]",
     desc: "Tytuł dla kujących po 23:00. Sowa Cię szanuje.",
     rarity: "epic", tag: "TYTUŁ", kind: "flaga", scope: "global", titleLabel: "NOCNY ZDAWACZ",
   },
   // ——— TEORIA: zużywalne ———
   {
-    id: "losowanie-kola", name: "SZCZĘŚLIWE LOSOWANIE", price: 25, icon: "🎡",
+    id: "losowanie-kola", name: "SZCZĘŚLIWE LOSOWANIE", price: 25, icon: "[O]",
     desc: "Losuje pytanie i dokleja +5 pkt do następnej dobrej odpowiedzi.",
     rarity: "common", tag: "ZUŻYWALNE", kind: "sztuki", scope: "teoria",
   },
   {
-    id: "podpowiedz-5050", name: "PODPOWIEDŹ 50/50", price: 40, icon: "💡",
+    id: "podpowiedz-5050", name: "PODPOWIEDŹ 50/50", price: 40, icon: "[!]",
     desc: "Wykreśla 2 złe odpowiedzi w aktualnym pytaniu teorii.",
     rarity: "common", tag: "ZUŻYWALNE", kind: "sztuki", scope: "teoria",
   },
   {
-    id: "spin-slot", name: "+1 SPIN NA SLOTA", price: 50, icon: "🎰",
+    id: "spin-slot", name: "+1 SPIN NA SLOTA", price: 50, icon: "[=]",
     desc: "Dokup kręcenie w INF.04 CASINO ROYALE. Na pewno siądzie* (*nie).",
     rarity: "rare", tag: "ZUŻYWALNE", kind: "sztuki", scope: "teoria",
   },
   {
-    id: "streak-freeze", name: "STREAK FREEZE ❄", price: 100, icon: "❄️",
+    id: "streak-freeze", name: "STREAK FREEZE", price: 100, icon: "[*]",
     desc: "Jedna wtopa nie zeruje serii. Zużywa się samo, w krytycznym momencie.",
     rarity: "rare", tag: "ZUŻYWALNE", kind: "sztuki", scope: "teoria",
   },
   {
-    id: "dogrywka", name: "DOGRYWKA", price: 60, icon: "🔁",
+    id: "dogrywka", name: "DOGRYWKA", price: 60, icon: "[R]",
     desc: "Po wtopie: następne pytanie z tej kategorii za PÓŁ nagrody. Honor ratowany.",
     rarity: "rare", tag: "ZUŻYWALNE", kind: "sztuki", scope: "teoria",
   },
   {
-    id: "niespodzianka", name: "NIESPODZIANKA ❓", price: 25, icon: "❓",
+    id: "niespodzianka", name: "NIESPODZIANKA", price: 25, icon: "[?]",
     desc: "Lootbox: losowy drop (sztuki albo punkty). Hazard w hazardzie. Klasyk.",
     rarity: "rare", tag: "LOTERIA", kind: "sztuki", scope: "teoria",
   },
   // ——— TEORIA: tryb ———
   {
-    id: "tryb-egzamin", name: "TRYB EGZAMINACYJNY", price: 110, icon: "⏱️",
+    id: "tryb-egzamin", name: "TRYB EGZAMINACYJNY", price: 110, icon: "[...]",
     desc: "10 minut, ukryty wynik i streak. Samo-test jak u CKE, tylko bez stresu* (*ze stresem).",
     rarity: "epic", tag: "TRYB", kind: "flaga", scope: "teoria",
   },
   // ——— ARKUSZE: flaga otoczki (treść zawsze free) ———
   {
-    id: "tryb-skupienia", name: "TRYB SKUPIENIA", price: 150, icon: "🧘",
+    id: "tryb-skupienia", name: "TRYB SKUPIENIA", price: 150, icon: "[Z]",
     desc: "Na stronie arkusza znika całe kasyno: jackpot, tickery, popupy. Zostaje PDF + punktacja.",
     rarity: "epic", tag: "TRYB", kind: "flaga", scope: "arkusze",
   },
   {
-    id: "timer-egzamin", name: "TIMER EGZAMINACYJNY", price: 120, icon: "⌛",
+    id: "timer-egzamin", name: "TIMER EGZAMINACYJNY", price: 120, icon: "[...]",
     desc: "Zegar odliczający prawdziwy czas arkusza (z bazy CKE) na stronie egzaminu.",
     rarity: "epic", tag: "WIDGET", kind: "flaga", scope: "arkusze",
   },
   {
-    id: "zaznaczacz", name: "ZAZNACZACZ R1–R4", price: 100, icon: "🖍️",
+    id: "zaznaczacz", name: "ZAZNACZACZ R1–R4", price: 100, icon: "[Z]",
     desc: "Paleta 4 zakreślaczy do zadań i wymagań na stronie arkusza. Zapis lokalny.",
     rarity: "rare", tag: "WIDGET", kind: "flaga", scope: "arkusze",
   },
   {
-    id: "notatnik", name: "NOTATNIK ZDAWACZA", price: 90, icon: "📝",
+    id: "notatnik", name: "NOTATNIK ZDAWACZA", price: 90, icon: "[N]",
     desc: "Boczny notatnik na stronie arkusza. Kartka, długopis, zero chmury.",
     rarity: "rare", tag: "WIDGET", kind: "flaga", scope: "arkusze",
   },
   {
-    id: "ekspert-cke", name: "EKSPERT CKE", price: 130, icon: "🧠",
+    id: "ekspert-cke", name: "EKSPERT CKE", price: 130, icon: "[E]",
     desc: "Pieczątka werdyktu na stronie arkusza — ale dopiero jak zakreślisz min. 3 rzeczy.",
     rarity: "epic", tag: "GAG", kind: "flaga", scope: "arkusze",
   },
   // ——— ARKUSZE: skórki (stare, zostają) ———
   {
-    id: "ramka-neon", name: "RAMKA NEONOWA", price: 150, icon: "🎨",
+    id: "ramka-neon", name: "RAMKA NEONOWA", price: 150, icon: "[K]",
     desc: "Różowy neon wokół logo portalu. +0 do wiedzy, +100 do stylu.",
     rarity: "epic", tag: "SKÓRKA", kind: "flaga", scope: "arkusze",
   },
   {
-    id: "skin-cabinet", name: "SKIN CABINETU 👾", price: 200, icon: "👾",
+    id: "skin-cabinet", name: "SKIN CABINETU", price: 200, icon: "[M]",
     desc: "Niebieski cabinet w barwach CKE na slocie. Słychać monety (w głowie).",
     rarity: "epic", tag: "SKÓRKA", kind: "flaga", scope: "arkusze",
   },
@@ -260,7 +260,7 @@ export const TICKER_PRESETS: TickerPreset[] = [
     lines: [
       "Egzaminator patrzy. Zawsze patrzy.",
       "Czas leci. 150 minut to mało.",
-      "Grzybnia czuwa nad Twoimi odpowiedziami... 🍄",
+      "Grzybnia czuwa nad Twoimi odpowiedziami... [G]",
     ],
   },
 ];

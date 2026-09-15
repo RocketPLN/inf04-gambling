@@ -39,15 +39,15 @@ export function RogueHud(props: {
     <div className="border-[5px] border-casino-gold bg-black p-2.5 shadow-[5px_5px_0_#000] [border-style:ridge]">
       <div className="flex flex-wrap items-center gap-2 font-mono text-[11px] font-black">
         <span className="border-2 border-ugly-red bg-ugly-yellow px-2 py-1 text-black">
-          🏚️ PIĘTRO {floor}
+          [D] PIĘTRO {floor}
         </span>
         <span className="border-2 border-ugly-red bg-white px-2 py-1 text-black" aria-label={`${hp} punktów życia`}>
-          {hp > 0 ? "❤️".repeat(hp) : "💀"} {hp <= 1 && hp > 0 ? "OSTATNIE HP!!!" : ""}
+          {hp > 0 ? "[+1]".repeat(hp) : "[X]"} {hp <= 1 && hp > 0 ? "OSTATNIE HP!!!" : ""}
           {hp <= 0 ? "ZGON" : ""}
         </span>
-        <span className="border-2 border-ugly-red bg-ugly-yellow px-2 py-1 text-black">🔥 STREAK {streak}</span>
+        <span className="border-2 border-ugly-red bg-ugly-yellow px-2 py-1 text-black">[!] STREAK {streak}</span>
         <span className="border-2 border-casino-gold bg-casino-felt px-2 py-1 text-casino-goldsoft">
-          💰 BRUTTO {gross} (do kasy wpada POŁOWA na końcu)
+          [$] BRUTTO {gross} (do kasy wpada POŁOWA na końcu)
         </span>
         {inFight && (
           <span
@@ -55,7 +55,7 @@ export function RogueHud(props: {
             aria-atomic="true"
             className={`ml-auto border-[3px] px-2 py-1 font-mono text-sm [border-style:outset] ${urgent ? "animate-ugly-blink border-white bg-ugly-red text-ugly-yellow" : "border-cke-green bg-white text-black"}`}
           >
-            ⏱️ {fmtTime(timeLeft)}
+            [...] {fmtTime(timeLeft)}
           </span>
         )}
       </div>
@@ -75,7 +75,7 @@ export function RogueHud(props: {
               className="inline-block -rotate-2 border-[4px] border-ugly-red bg-ugly-yellow px-2 py-1 font-display text-xs font-black uppercase text-ugly-red shadow-[3px_3px_0_#000] [border-style:double]"
               title={m.desc}
             >
-              ☣️ {m.name} ×{m.mult}
+              [!!] {m.name} ×{m.mult}
             </span>
           ))}
         </div>
@@ -95,10 +95,10 @@ export function RogueDoors(props: {
   return (
     <div className="mt-3.5 border-[6px] border-ugly-pink bg-white p-3.5 shadow-[8px_8px_0_#000] [border-style:ridge]">
       <h3 className="m-0 font-display text-2xl font-black uppercase">
-        🚪 WYBIERZ DRZWI <span className="bg-black px-2 text-casino-gold">{doors.length} OPCJE</span>
+        [D] WYBIERZ DRZWI <span className="bg-black px-2 text-casino-gold">{doors.length} OPCJE</span>
       </h3>
       <p className="mt-1 border-[3px] border-dashed border-black bg-ugly-yellow p-2 text-xs font-black">
-        ŁATWE płacą ×1, RYZYKOWNE ×2, ELITA 📦 ×2 (2 PYTANIA BEZ BŁĘDU), BOSS 👑 ×3 (3 PYTANIA BEZ BŁĘDU) I LECZY 1 HP ZA CZYSTY POKÓJ. Zła odpowiedź = −1 HP. Patrz na stemple mutatorów!!!
+        ŁATWE płacą ×1, RYZYKOWNE ×2, ELITA [P] ×2 (2 PYTANIA BEZ BŁĘDU), BOSS [K] ×3 (3 PYTANIA BEZ BŁĘDU) I LECZY 1 HP ZA CZYSTY POKÓJ. Zła odpowiedź = −1 HP. Patrz na stemple mutatorów!!!
       </p>
       <div className={`mt-3 grid grid-cols-1 gap-2.5 ${doors.length > 2 ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
         {doors.map((d, i) => (
@@ -116,7 +116,7 @@ export function RogueDoors(props: {
             }`}
           >
             <div className="font-display text-lg font-black uppercase">
-              {i + 1}. {d.kind === "boss" ? "👑 BOSS" : d.kind === "elite" ? "📦 ELITA" : "👹 MOB"} — {d.label}
+              {i + 1}. {d.kind === "boss" ? "[K] BOSS" : d.kind === "elite" ? "[P] ELITA" : "[MOB] MOB"} — {d.label}
             </div>
             <div className="mt-1.5 inline-block border-2 border-current px-1.5 py-0.5 font-mono text-[11px] font-black">
               {d.risk}
@@ -128,7 +128,7 @@ export function RogueDoors(props: {
         ))}
       </div>
       <div className="mt-2.5 border-[3px] border-dotted border-ugly-pink bg-black p-2 text-center font-mono text-[11px] font-black text-cke-green">
-        {stressed ? "☣️ STRES CKE: PODGLĄD KOLEJNYCH DRZWI ZABLOKOWANY. NAGRODA ×2. IDZIESZ W CIEMNO!!!" : "🔮 Za tymi drzwiami kolejne piętro. Im głębiej, tym ciaśniejszy timer i twardsze kategorie."}
+        {stressed ? "[!!] STRES CKE: PODGLĄD KOLEJNYCH DRZWI ZABLOKOWANY. NAGRODA ×2. IDZIESZ W CIEMNO!!!" : "[?] Za tymi drzwiami kolejne piętro. Im głębiej, tym ciaśniejszy timer i twardsze kategorie."}
       </div>
       <KeyboardDoors count={doors.length} onPick={(i) => doors[i] && onPick(doors[i])} />
     </div>
@@ -233,10 +233,10 @@ export function RogueMobFight(props: MobFightProps) {
     <div className="mt-3.5 border-[6px] border-ugly-red bg-white p-4 shadow-[8px_8px_0_#000] [border-style:ridge]">
       <div className="flex flex-wrap items-center gap-2 border-b-[4px] border-black pb-3">
         <span className={`border-[3px] border-black px-2.5 py-1 font-display text-sm tracking-wider [border-style:outset] ${isBoss ? "bg-black text-casino-gold" : isElite ? "bg-ugly-yellow text-black" : "bg-black text-ugly-red"}`}>
-          {isBoss ? `👑 BOSS • PYTANIE ${step + 1}/${totalSteps}` : isElite ? `📦 ELITA • PYTANIE ${step + 1}/${totalSteps}` : `👹 MOB • ${question.kat.toUpperCase()}`}
+          {isBoss ? `[K] BOSS • PYTANIE ${step + 1}/${totalSteps}` : isElite ? `[P] ELITA • PYTANIE ${step + 1}/${totalSteps}` : `[MOB] MOB • ${question.kat.toUpperCase()}`}
         </span>
         {isBoss && (
-          <Badge variant="casino" className="p-2 text-xs">CZYSTY BOSS LECZY 1 HP 💚</Badge>
+          <Badge variant="casino" className="p-2 text-xs">CZYSTY BOSS LECZY 1 HP [+1]</Badge>
         )}
         {(isElite || isBoss) && (
           <Badge variant="secondary" className="border-[3px] border-black text-[11px]">
@@ -249,16 +249,16 @@ export function RogueMobFight(props: MobFightProps) {
           </Badge>
         )}
         {halfArmed && (
-          <Badge variant="casino" className="p-2 text-xs">🔁 DOGRYWKA: PÓŁ NAGRODY</Badge>
+          <Badge variant="casino" className="p-2 text-xs">[R] DOGRYWKA: PÓŁ NAGRODY</Badge>
         )}
         {bonusArmed && (
-          <Badge variant="casino" className="p-2 text-xs">🍀 +5 PKT UZBROJONE</Badge>
+          <Badge variant="casino" className="p-2 text-xs">[+] +5 PKT UZBROJONE</Badge>
         )}
       </div>
 
       <h3 className="mt-4 font-display text-2xl font-black uppercase leading-tight">{text}</h3>
       {hasGrzybnia && (
-        <div className="mt-1 font-mono text-[10px] font-black text-ugly-pink">🍄 GRZYBNIA POMIESZAŁA SŁOWA. SENS TEN SAM, KOLEJNOŚĆ NIE. (+5 s GRATISU)</div>
+        <div className="mt-1 font-mono text-[10px] font-black text-ugly-pink">[G] GRZYBNIA POMIESZAŁA SŁOWA. SENS TEN SAM, KOLEJNOŚĆ NIE. (+5 s GRATISU)</div>
       )}
       {question.img && imgOk && (
         <div className="mt-4 border-[4px] border-black bg-win95 p-2 shadow-[4px_4px_0_#000] [border-style:inset]">
@@ -274,7 +274,7 @@ export function RogueMobFight(props: MobFightProps) {
       )}
       {question.img && !imgOk && (
         <div className="mt-4 border-[3px] border-dashed border-ugly-pink bg-white p-2 font-mono text-[10px] font-black text-gray-600">
-          🖼️ Grafika do pytania nie ładuje się (hotlink zablokowany) — BEZ NIEJ NIE ZGADNIESZ, UCIEKAJ ALBO STRZELAJ
+          [IMG] Grafika do pytania nie ładuje się (hotlink zablokowany) — BEZ NIEJ NIE ZGADNIESZ, UCIEKAJ ALBO STRZELAJ
         </div>
       )}
 
@@ -302,12 +302,12 @@ export function RogueMobFight(props: MobFightProps) {
       </div>
       {blurred && (
         <div className="mt-2 text-center font-mono text-[11px] font-black text-ugly-pink">
-          🌫️ MGŁA: ODPOWIEDZI ODKRYWAJĄ SIĘ ZA {Math.max(0, 5 - elapsed)} s. PATRZ I CZEKAJ!!!
+          [~] MGŁA: ODPOWIEDZI ODKRYWAJĄ SIĘ ZA {Math.max(0, 5 - elapsed)} s. PATRZ I CZEKAJ!!!
         </div>
       )}
 
       <div className="mt-3 text-center font-mono text-[11px] font-black">
-        💰 TEN POKÓJ WART <span className="border-2 border-black bg-ugly-yellow px-1.5 py-0.5">+{nextAward} PKT BRUTTO</span>
+        [$] TEN POKÓJ WART <span className="border-2 border-black bg-ugly-yellow px-1.5 py-0.5">+{nextAward} PKT BRUTTO</span>
         <span className="text-gray-600"> (do kasy wpada połowa na końcu runu)</span>
       </div>
 
@@ -315,16 +315,16 @@ export function RogueMobFight(props: MobFightProps) {
         <div className="mt-3 flex flex-wrap justify-center gap-2">
           {fiftyCount > 0 && (
             <Button variant="solar" size="sm" onClick={onUse5050}>
-              💡 50/50 ({fiftyCount})
+              [!] 50/50 ({fiftyCount})
             </Button>
           )}
           {losCount > 0 && !bonusArmed && (
             <Button variant="solar" size="sm" onClick={onUseLos}>
-              🍀 LOSOWANIE +5 ({losCount})
+              [+] LOSOWANIE +5 ({losCount})
             </Button>
           )}
           <Button variant="ghost" size="sm" onClick={onEscape}>
-            🏳️ UCIEKAJ Z LOCHU (wypłata połowy)
+            {'[<<] UCIEKAJ Z LOCHU (wypłata połowy)'}
           </Button>
         </div>
       )}
@@ -362,7 +362,7 @@ export function RogueSummary(props: RogueSummaryProps) {
   return (
     <div className="mt-3.5 border-[6px] border-ugly-red bg-black p-4 text-center shadow-[8px_8px_0_#000] [border-style:ridge]">
       <div className="font-display text-4xl font-black uppercase text-ugly-red [text-shadow:3px_3px_0_#ffff00]">
-        {reason === "dead" ? "💀 ZGINĄŁEŚ W LOCHU 💀" : "🏳️ UCIEKŁEŚ Z LOCHU 🏳️"}
+        {reason === "dead" ? "[X] ZGINĄŁEŚ W LOCHU [X]" : "[<<] UCIEKŁEŚ Z LOCHU [<<]"}
       </div>
       <p className="mx-auto mt-2 max-w-[60ch] border-[3px] border-dotted border-ugly-yellow bg-white p-2 text-xs font-black text-black">
         {reason === "dead"
@@ -380,18 +380,18 @@ export function RogueSummary(props: RogueSummaryProps) {
           WTOPY<div className="font-display text-2xl text-ugly-red">{bad}</div>
         </div>
         <div className="border-[3px] border-ugly-yellow bg-ugly-yellow p-2 text-black [border-style:outset]">
-          MUTATORY<div className="font-display text-2xl">☣️{mutators}</div>
+          MUTATORY<div className="font-display text-2xl">[!!]{mutators}</div>
         </div>
       </div>
       <div className="mx-auto mt-2 max-w-[560px] border-[4px] border-casino-gold bg-white p-2.5 font-mono text-sm font-black text-black [border-style:ridge]">
         BRUTTO {gross} PKT → <span className="bg-black px-2 py-0.5 text-casino-gold">NETTO +{net} PKT DO PORTFELA</span>
       </div>
       <div className="mt-2 font-mono text-[11px] font-black text-casino-goldsoft">
-        🏆 REKORD: PIĘTRO {bestFloor} • {bestPoints} PKT {newBest && <span className="animate-ugly-blink bg-ugly-red px-2 py-0.5 text-ugly-yellow">★ NOWY REKORD!!! ★</span>}
+        [M] REKORD: PIĘTRO {bestFloor} • {bestPoints} PKT {newBest && <span className="animate-ugly-blink bg-ugly-red px-2 py-0.5 text-ugly-yellow">★ NOWY REKORD!!! ★</span>}
       </div>
       <div className="mt-3 flex flex-wrap justify-center gap-2">
         <Button variant="slot" size="lg" onClick={onRestart}>
-          🔄 JESZCZE RAZ DO LOCHU 🔄
+          [R] JESZCZE RAZ DO LOCHU [R]
         </Button>
         <Button variant="default" size="lg" onClick={onLobby}>
           LOBBY

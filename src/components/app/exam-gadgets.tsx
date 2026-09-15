@@ -66,7 +66,7 @@ export function useMarkers(examId: string) {
 export function MarkerPalette({ activeColor, onPick }: { activeColor: string | null; onPick: (c: string | null) => void }) {
   return (
     <div className="flex flex-wrap items-center gap-1.5 border-[3px] border-dashed border-black bg-white p-2">
-      <span className="font-mono text-[10px] font-black uppercase">🖍️ Zaznaczacz:</span>
+      <span className="font-mono text-[10px] font-black uppercase">[Z] Zaznaczacz:</span>
       {MARKER_COLORS.map((c) => (
         <button
           key={c}
@@ -105,7 +105,7 @@ export function ExamTimer({ minutes }: { minutes: number }) {
 
   return (
     <div className="border-[5px] border-ugly-red bg-black p-3 text-center shadow-[5px_5px_0_#000] [border-style:ridge]">
-      <div className="font-display text-sm tracking-[2px] text-ugly-yellow">⌛ TIMER EGZAMINACYJNY ⌛</div>
+      <div className="font-display text-sm tracking-[2px] text-ugly-yellow">[...] TIMER EGZAMINACYJNY [...]</div>
       <div className={`mt-1 font-mono text-4xl font-black ${left <= 0 ? "animate-ugly-blink text-ugly-red" : "text-cke-green"}`}>
         {mm}:{ss}
       </div>
@@ -151,7 +151,7 @@ export function Notepad({ examId }: { examId: string }) {
 
   return (
     <div className="border-[5px] border-cke-blue bg-ugly-yellow p-3 shadow-[5px_5px_0_#000] [border-style:ridge]">
-      <div className="font-display text-sm font-black uppercase">📝 Notatnik zdawacza</div>
+      <div className="font-display text-sm font-black uppercase">[N] Notatnik zdawacza</div>
       <textarea
         value={text}
         onChange={(e) => save(e.target.value)}
@@ -168,7 +168,7 @@ export function Notepad({ examId }: { examId: string }) {
 
 const VERDICTS = [
   "ZDANE ⭐⭐⭐⭐⭐",
-  "CKE: SZACUN 💪",
+  "CKE: SZACUN [+]",
   "5/5, POLECAMY",
   "R4 DO ROZBUDOWY (żart)",
   "DO POPRAWY (też żart)",
@@ -182,14 +182,14 @@ export function ExpertVerdict({ markedCount }: { markedCount: number }) {
   if (markedCount < 3) {
     return (
       <div className="border-[3px] border-dashed border-ugly-pink bg-white p-2 text-center font-mono text-[11px] font-black text-gray-600">
-        🧠 EKSPERT CKE milczy... Zakreśl min. {3 - markedCount} rzeczy zaznaczaczem, to się wypowie. (ma {markedCount}/3)
+        [E] EKSPERT CKE milczy... Zakreśl min. {3 - markedCount} rzeczy zaznaczaczem, to się wypowie. (ma {markedCount}/3)
       </div>
     );
   }
   return (
     <div className="border-[5px] border-ugly-pink bg-white p-3 text-center shadow-[5px_5px_0_#000] [border-style:ridge]">
       <Button variant="claim" size="sm" onClick={() => setVerdict(VERDICTS[Math.floor(Math.random() * VERDICTS.length)])}>
-        🧠 WEZWIJ EKSPERTA CKE 🧠
+        [E] WEZWIJ EKSPERTA CKE [E]
       </Button>
       {verdict && (
         <div className="mx-auto mt-2 inline-block -rotate-6 border-[5px] border-ugly-red bg-ugly-yellow px-4 py-2 font-display text-2xl font-black uppercase text-ugly-red shadow-[4px_4px_0_#000] [border-style:double]">

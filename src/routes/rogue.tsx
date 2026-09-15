@@ -95,32 +95,32 @@ function RoguePage() {
       const ok = origIdx === current.question.poprawna;
       const last = fight.index >= fight.questions.length - 1;
       if (ok && !last) {
-        setFlash(`✅ TRAFIONE (${fight.index + 1}/${fight.questions.length})!!! JAZDA DALEJ, ZERO BŁĘDÓW!!!`);
+        setFlash(`[OK] TRAFIONE (${fight.index + 1}/${fight.questions.length})!!! JAZDA DALEJ, ZERO BŁĘDÓW!!!`);
         run.nextQuestion();
         return;
       }
       if (ok) {
-        setFlash(`✅ CZYSTO!!! +${roomAward} BRUTTO. STREAK ${streak + 1}.${fight.door.kind === "boss" ? " BOSS LECZY 1 HP. 💚" : ""}`);
+        setFlash(`[OK] CZYSTO!!! +${roomAward} BRUTTO. STREAK ${streak + 1}.${fight.door.kind === "boss" ? " BOSS LECZY 1 HP. [+1]" : ""}`);
         run.resolveGood(roomAward);
         return;
       }
       // Wtopa: freeze (raz na run) ratuje HP automatycznie.
       if (!freezeUsed && count("streak-freeze") > 0 && consume("streak-freeze")) {
         run.registerMiss(true);
-        setFlash("❄️ FREEZE ZADZIAŁAŁ!!! HP URATOWANE, 1 SZTUKA ZUŻYTA. STREAK ZEROWY, IDZIESZ DALEJ.");
+        setFlash("[*] FREEZE ZADZIAŁAŁ!!! HP URATOWANE, 1 SZTUKA ZUŻYTA. STREAK ZEROWY, IDZIESZ DALEJ.");
         run.advanceFloor();
         return;
       }
       const alive = run.registerMiss(false);
       if (!alive) {
-        setFlash("💀 KONIEC. LOCH ZAMYKA SIĘ NAD TOBĄ...");
+        setFlash("[X] KONIEC. LOCH ZAMYKA SIĘ NAD TOBĄ...");
         return;
       }
       if (count("dogrywka") > 0) {
         setDogrywkaOffer(true);
-        setFlash("💸 WTOPA (−1 HP)... ALE MASZ DOGRYWKĘ W PLECAKU. HONOR DO URATOWANIA?");
+        setFlash("[$] WTOPA (−1 HP)... ALE MASZ DOGRYWKĘ W PLECAKU. HONOR DO URATOWANIA?");
       } else {
-        setFlash("💸 WTOPA (−1 HP, STREAK ZEROWY). IDZIESZ GŁĘBIEJ...");
+        setFlash("[$] WTOPA (−1 HP, STREAK ZEROWY). IDZIESZ GŁĘBIEJ...");
         run.advanceFloor();
       }
     },
@@ -136,13 +136,13 @@ function RoguePage() {
     timeoutGuard.current = key;
     if (!freezeUsed && count("streak-freeze") > 0 && consume("streak-freeze")) {
       run.registerMiss(true);
-      setFlash("❄️ FREEZE ZADZIAŁAŁ PO CZASIE!!! HP URATOWANE.");
+      setFlash("[*] FREEZE ZADZIAŁAŁ PO CZASIE!!! HP URATOWANE.");
       run.advanceFloor();
       return;
     }
     const alive = run.registerMiss(false);
     if (!alive) {
-      setFlash("💀 CZAS CIĘ ZABIŁ. DOSŁOWNIE. KONIEC RUNU.");
+      setFlash("[X] CZAS CIĘ ZABIŁ. DOSŁOWNIE. KONIEC RUNU.");
       return;
     }
     if (count("dogrywka") > 0) {
@@ -163,14 +163,14 @@ function RoguePage() {
       [wrong[i], wrong[j]] = [wrong[j], wrong[i]];
     }
     setFiftyRemoved((r) => [...r, ...wrong.slice(0, 2)]);
-    setFlash("💡 50/50!!! DWA ŚMIECI WYKREŚLONE. DZIAŁA NA KAŻDE PYTANIE W LOCHU.");
+    setFlash("[!] 50/50!!! DWA ŚMIECI WYKREŚLONE. DZIAŁA NA KAŻDE PYTANIE W LOCHU.");
   }, [fight, phase, consume, fiftyRemoved, setFiftyRemoved]);
 
   const useLos = useCallback(() => {
     if (phase !== "fight") return;
     if (!consume("losowanie-kola")) return;
     setBonusArmed(true);
-    setFlash("🍀 SZCZĘŚLIWE LOSOWANIE!!! +5 DO NASTĘPNEJ DOBREJ W LOCHU.");
+    setFlash("[+] SZCZĘŚLIWE LOSOWANIE!!! +5 DO NASTĘPNEJ DOBREJ W LOCHU.");
   }, [phase, consume, setBonusArmed]);
 
   const takeDogrywka = useCallback(() => {
@@ -179,7 +179,7 @@ function RoguePage() {
       run.advanceFloor();
       return;
     }
-    setFlash("🔁 DOGRYWKA!!! TO SAMO PIĘTRO, NOWE PYTANIE Z TEJ KATEGORII, PÓŁ NAGRODY.");
+    setFlash("[R] DOGRYWKA!!! TO SAMO PIĘTRO, NOWE PYTANIE Z TEJ KATEGORII, PÓŁ NAGRODY.");
     run.startDogrywka();
   }, [consume, run, setDogrywkaOffer]);
 
@@ -198,7 +198,7 @@ function RoguePage() {
         </h2>
         <p className="mt-2 max-w-[70ch] border-[3px] border-dashed border-casino-gold bg-white p-2 text-sm font-bold text-black">
           JEDEN RUN = JEDNA SESJA NAUKI. 3 HP, zła odpowiedź = −1 HP, zero HP = zgon.
-          Moby to 1 pytanie z teorii, elity 📦 to 2 pytania bez błędu, bossowie 👑 to 3 pytania bez błędu.
+          Moby to 1 pytanie z teorii, elity [P] to 2 pytania bez błędu, bossowie [K] to 3 pytania bez błędu.
           Kasa wpada do portfela RAZ na końcu (POŁOWA brutto) — F5 nic nie dubluje.
         </p>
         <div className="mt-2 flex flex-wrap gap-2">
@@ -206,10 +206,10 @@ function RoguePage() {
             <Link to="/" search={DEFAULT_SEARCH}>← ARKUSZE</Link>
           </Button>
           <Button variant="solar" size="sm" asChild>
-            <Link to="/teoria" search={DEFAULT_SEARCH}>🎡 TEORIA</Link>
+            <Link to="/teoria" search={DEFAULT_SEARCH}>[O] TEORIA</Link>
           </Button>
           <Button variant="slot" size="sm" asChild>
-            <Link to="/sklep" search={DEFAULT_SEARCH}>🕹️ SKLEP (50/50 • FREEZE • DOGRYWKA DZIAŁAJĄ W LOCHU)</Link>
+            <Link to="/sklep" search={DEFAULT_SEARCH}>{'[>>] SKLEP (50/50'} • FREEZE • DOGRYWKA DZIAŁAJĄ W LOCHU)</Link>
           </Button>
           <Badge variant="casino" className="p-2 text-xs">WEJŚCIE DARMOWE • 0 PKT WPISOWEGO</Badge>
         </div>
@@ -223,20 +223,20 @@ function RoguePage() {
 
       {phase === "lobby" && (
         <div className="mt-3.5 border-[6px] border-casino-gold bg-white p-4 text-center shadow-[8px_8px_0_#000] [border-style:ridge]">
-          <div className="font-display text-3xl font-black uppercase">🏚️ BRAMA LOCHU 🏚️</div>
+          <div className="font-display text-3xl font-black uppercase">[D] BRAMA LOCHU [D]</div>
           <p className="mx-auto mt-2 max-w-[60ch] text-sm font-bold">
-            Zaczynasz z 3 HP i zerem punktów. Od piętra 2 mutatory CKE (☣️ stemple na drzwiach i w HUD),
-            od 6 piętra potrafią wpaść DWA naraz. Elita 📦 to 2 pytania bez błędu, boss 👑 co 5 piętro
+            Zaczynasz z 3 HP i zerem punktów. Od piętra 2 mutatory CKE ([!!] stemple na drzwiach i w HUD),
+            od 6 piętra potrafią wpaść DWA naraz. Elita [P] to 2 pytania bez błędu, boss [K] co 5 piętro
             to 3 pytania bez błędu — czysty pokój leczy 1 HP. To JEDYNE leczenie w grze.
             Spin i niespodzianka w lochu NIE działają, reszta plecaka tak.
           </p>
           <div className="mt-3 flex flex-wrap justify-center gap-2">
-            <Button variant="slot" size="lg" onClick={() => { setFlash("🏚️ SCHODZISZ... PIĘTRO 1. POWODZENIA, ZDAWACZU!!!"); run.start(); }}>
-              ⚔️ ZEJDŹ DO LOCHU (3 HP) ⚔️
+            <Button variant="slot" size="lg" onClick={() => { setFlash("[D] SCHODZISZ... PIĘTRO 1. POWODZENIA, ZDAWACZU!!!"); run.start(); }}>
+              [X] ZEJDŹ DO LOCHU (3 HP) [X]
             </Button>
             {suspended && (
-              <Button variant="claim" size="lg" className="w-auto px-6" onClick={() => { setFlash(`📜 KONTYNUACJA: PIĘTRO ${suspended.floor}, ${suspended.hp} HP, ${suspended.history.length} POKOI ZA TOBĄ.`); run.continueRun(); }}>
-                📜 KONTYNUUJ (PIĘTRO {suspended.floor}, {suspended.hp} HP)
+              <Button variant="claim" size="lg" className="w-auto px-6" onClick={() => { setFlash(`[=] KONTYNUACJA: PIĘTRO ${suspended.floor}, ${suspended.hp} HP, ${suspended.history.length} POKOI ZA TOBĄ.`); run.continueRun(); }}>
+                [=] KONTYNUUJ (PIĘTRO {suspended.floor}, {suspended.hp} HP)
               </Button>
             )}
           </div>
@@ -246,7 +246,7 @@ function RoguePage() {
             </button>
           )}
           <div className="mx-auto mt-3 max-w-[560px] border-[3px] border-dashed border-black bg-black p-2 text-left font-mono text-[11px] font-black text-cke-green">
-            ☣️ MUTATORY: EGZAMINATOR (timer −10 s, ×2) • MGŁA (blur 5 s, ×1.5) • GRZYBNIA (miesza słowa, +5 s, ×1.5) • STRES CKE (chowa drzwi, ×2) • DOPING (+10 s, ×0.5)
+            [!!] MUTATORY: EGZAMINATOR (timer −10 s, ×2) • MGŁA (blur 5 s, ×1.5) • GRZYBNIA (miesza słowa, +5 s, ×1.5) • STRES CKE (chowa drzwi, ×2) • DOPING (+10 s, ×0.5)
           </div>
         </div>
       )}
@@ -268,10 +268,10 @@ function RoguePage() {
 
       {phase === "doors" && (
         <>
-          <RogueDoors doors={doors} stressed={stressed} onPick={(d) => { setFlash(d.kind === "boss" ? "👑 BOSS. 3 PYTANIA BEZ BŁĘDU, CIAŚNIEJSZY TIMER, ×3 I LECZENIE. NIE MRUGAJ." : d.kind === "elite" ? "📦 ELITA. 2 PYTANIA BEZ BŁĘDU, JEDEN BŁĄD = −1 HP." : `👹 MOB (${d.label}). POWODZENIA.`); timeoutGuard.current = null; run.chooseDoor(d); }} />
+          <RogueDoors doors={doors} stressed={stressed} onPick={(d) => { setFlash(d.kind === "boss" ? "[K] BOSS. 3 PYTANIA BEZ BŁĘDU, CIAŚNIEJSZY TIMER, ×3 I LECZENIE. NIE MRUGAJ." : d.kind === "elite" ? "[P] ELITA. 2 PYTANIA BEZ BŁĘDU, JEDEN BŁĄD = −1 HP." : `[MOB] MOB (${d.label}). POWODZENIA.`); timeoutGuard.current = null; run.chooseDoor(d); }} />
           <div className="mt-2.5 text-center">
             <Button variant="ghost" size="sm" onClick={run.escape}>
-              🏳️ UCIEKAJ Z LOCHU (wypłata połowy brutto)
+              {'[<<] UCIEKAJ Z LOCHU (wypłata połowy brutto)'}
             </Button>
           </div>
         </>
@@ -302,7 +302,7 @@ function RoguePage() {
           />
           {dogrywkaOffer && (
             <div className="mt-3.5 border-[5px] border-casino-gold bg-black p-3 text-center shadow-[5px_5px_0_#000] [border-style:ridge]">
-              <div className="font-display text-lg font-black uppercase text-casino-gold">🔁 DOGRYWKA ZA PÓŁ NAGRODY? 🔁</div>
+              <div className="font-display text-lg font-black uppercase text-casino-gold">[R] DOGRYWKA ZA PÓŁ NAGRODY? [R]</div>
               <div className="mt-1 font-mono text-[11px] font-black text-casino-goldsoft">
                 TO SAMO PIĘTRO, NOWE PYTANIE Z TEJ KATEGORII. W PLECAKU: {count("dogrywka")} SZT.
               </div>
@@ -331,7 +331,7 @@ function RoguePage() {
           bestFloor={settled.best.floor}
           bestPoints={settled.best.points}
           newBest={settled.newBest}
-          onRestart={() => { setFlash("🏚️ NOWY RUN. STARY TRUP JUŻ WYNIOSIONY."); run.start(); }}
+          onRestart={() => { setFlash("[D] NOWY RUN. STARY TRUP JUŻ WYNIOSIONY."); run.start(); }}
           onLobby={run.abandon}
         />
       )}

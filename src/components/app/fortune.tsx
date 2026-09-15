@@ -56,7 +56,7 @@ export function FortuneWheel({ onLanded }: { onLanded?: (category: TheoryCategor
       <CardContent className="p-0">
         <div className="flex flex-col items-center gap-4 md:flex-row md:gap-6">
           <div className="relative aspect-square w-full max-w-[340px] shrink-0 md:max-w-[360px]">
-            <div className="absolute -top-1 left-1/2 z-10 -translate-x-1/2 text-4xl drop-shadow-[2px_2px_0_#000]">🔻</div>
+            <div className="absolute -top-1 left-1/2 z-10 -translate-x-1/2 text-4xl drop-shadow-[2px_2px_0_#000]">[v]</div>
             <svg
               viewBox="0 0 300 300"
               className="size-full rounded-full border-[6px] border-casino-goldsoft shadow-[4px_4px_0_#000]"
@@ -118,21 +118,21 @@ export function FortuneWheel({ onLanded }: { onLanded?: (category: TheoryCategor
           </div>
           <div className="min-w-0 flex-1 text-center md:text-left">
             <div className="font-display text-xl tracking-[2px] text-casino-gold [text-shadow:0_0_10px_#ff0000,2px_2px_0_#000]">
-              🎡 KOŁO FORTUNY INF.04 🎡{" "}
+              [O] KOŁO FORTUNY INF.04 [O]{" "}
               <Badge variant="bonus" className="border-2 border-ugly-yellow bg-ugly-red align-middle text-[11px] text-ugly-yellow [border-style:ridge]">
-                630 PYTAŃ 🔥
+                630 PYTAŃ [!]
               </Badge>
             </div>
             <div className="mt-1.5 text-[11px] font-black uppercase text-white">
-              Zakręć kołem → wylosuj kategorię → pytanie otwiera się na CAŁĄ SZEROKOŚĆ poniżej ⬇️
+              Zakręć kołem → wylosuj kategorię → pytanie otwiera się na CAŁĄ SZEROKOŚĆ poniżej [v]
               <span className="text-casino-goldsoft"> (liczba na segmencie = pytań w kategorii)</span>
             </div>
             <Button variant="slot" size="lg" className="mt-3 w-full md:w-auto" onClick={spin} disabled={spinning}>
-              {spinning ? "KRĘCĘ... TRZYMAJ KCIUKI!!! 🍀" : "🎡 ZAKRĘĆ KOŁEM ZA DARMO 🎡"}
+              {spinning ? "KRĘCĘ... TRZYMAJ KCIUKI!!! [+]" : "[O] ZAKRĘĆ KOŁEM ZA DARMO [O]"}
             </Button>
             <div className="mt-2.5 min-h-[38px] border-[3px] border-dotted border-ugly-red bg-ugly-yellow p-2 text-xs font-black text-black">
-              {spinning && "LOSUJEMY KATEGORIĘ... KOŁO SZALEJE!!! 🌀🌀🌀"}
-              {!spinning && landed && `WYPADŁO: ${landed.label}!!! PYTANIE CZEKA NA DOLE ⬇️⬇️⬇️`}
+              {spinning && "LOSUJEMY KATEGORIĘ... KOŁO SZALEJE!!! [~][~][~]"}
+              {!spinning && landed && `WYPADŁO: ${landed.label}!!! PYTANIE CZEKA NA DOLE [v][v][v]`}
               {!spinning && !landed && "3... 2... 1... KRĘĆ!!! KATEGORIA CZEKA NA CIEBIE!!!"}
             </div>
           </div>
@@ -162,7 +162,7 @@ export interface TheoryQuestionCardProps {
 /** ZŁOTY DESZCZ ze sklepu: konfetti za dobrą odpowiedź (czysty CSS, znika samo). */
 export function ConfettiBurst() {
   const pieces = useMemo(() => {
-    const emoji = ["🎉", "💰", "⭐", "🪙", "💎", "🎰"];
+    const emoji = ["[!!!]", "[$]", "⭐", "[$]", "<>", "[=]"];
     return Array.from({ length: 36 }, (_, i) => ({
       id: i,
       left: Math.random() * 100,
@@ -213,7 +213,7 @@ export function TheoryQuestionCard({ question, onResult, total, nextAward, earne
     return (
       <div className="w-full border-[6px] border-dashed border-ugly-pink bg-white p-8 text-center shadow-[8px_8px_0_#000] sm:p-12">
         <div className="font-display text-2xl font-black uppercase tracking-wide sm:text-4xl">
-          🎰 Wylosuj pierwsze pytanie 🎰
+          [=] Wylosuj pierwsze pytanie [=]
         </div>
         <p className="mx-auto mt-3 max-w-[60ch] text-sm font-black sm:text-base">
           ZAKRĘĆ KOŁEM POWYŻEJ ALBO WALNIJ „LOSUJ BEZ KRĘCENIA” — PYTANIE ROZWINIE SIĘ NA CAŁĄ SZEROKOŚĆ STRONY!!!
@@ -239,7 +239,7 @@ export function TheoryQuestionCard({ question, onResult, total, nextAward, earne
           <span className="border-[3px] border-black bg-black px-2.5 py-1 font-display text-sm tracking-wider text-casino-gold [border-style:outset]">
             PYTANIE {question.id.replace("ee-", "")} / {total ?? THEORY_QUESTIONS.length}
           </span>
-          <Badge variant="casino" className="p-2 text-xs">🎲 {question.kat.toUpperCase()}</Badge>
+          <Badge variant="casino" className="p-2 text-xs">[+] {question.kat.toUpperCase()}</Badge>
           <span className="ml-auto font-mono text-[10px] font-black text-gray-600">{question.id} • ee-informatyk.pl</span>
         </div>
         <h3 className="mt-4 font-display text-2xl font-black uppercase leading-tight sm:text-3xl">{question.tresc}</h3>
@@ -257,7 +257,7 @@ export function TheoryQuestionCard({ question, onResult, total, nextAward, earne
         )}
         {question.img && !imgOk && (
           <div className="mt-4 border-[3px] border-dashed border-ugly-pink bg-white p-2 font-mono text-[10px] font-black text-gray-600">
-            🖼️ Grafika do pytania nie ładuje się (hotlink zablokowany) — otwórz oryginał na ee-informatyk.pl
+            [IMG] Grafika do pytania nie ładuje się (hotlink zablokowany) — otwórz oryginał na ee-informatyk.pl
           </div>
         )}
         <div className="mt-5 grid grid-cols-1 gap-3 md:grid-cols-2">
@@ -298,22 +298,22 @@ export function TheoryQuestionCard({ question, onResult, total, nextAward, earne
         </div>
         {!revealed && !hideAwards && (
           <div className="mt-3 text-center font-mono text-[11px] font-black">
-            💰 TA ODPOWIEDŹ WARTA <span className="border-2 border-black bg-ugly-yellow px-1.5 py-0.5">+{nextAward ?? "?"} PKT</span>
+            [$] TA ODPOWIEDŹ WARTA <span className="border-2 border-black bg-ugly-yellow px-1.5 py-0.5">+{nextAward ?? "?"} PKT</span>
           </div>
         )}
         {!revealed && (fiftyCount ?? 0) > 0 && onUse5050 && (
           <div className="mt-3 text-center">
             <Button variant="solar" size="sm" onClick={onUse5050}>
-              💡 UŻYJ 50/50 ({fiftyCount} W PLECAKU) 💡
+              [!] UŻYJ 50/50 ({fiftyCount} W PLECAKU) [!]
             </Button>
           </div>
         )}
         {revealed && (
           <div className={`mt-5 border-[4px] p-3 text-sm font-black sm:text-base ${correct ? "border-cke-green bg-green-100 text-black" : "border-ugly-red bg-ugly-yellow text-black"} [border-style:inset]`}>
             {correct
-              ? (hideAwards ? "🎉 DOBRZE!!! (wynik ukryty — tryb egzaminacyjny) 🎉" : `🎉 DOBRZE!!! +${earnedAward ?? nextAward ?? "?"} PKT WPADŁO DO SKLEPU ARCADE + STREAK ROŚNIE!!! 🎉`)
-              : (hideAwards ? "💸 PUDŁO. (tryb egzaminacyjny, bez podpowiedzi)" : "💸 PUDŁO!!! KASYNO ZABIERA PUNKTY, ALE NAUKA ZOSTAJE!!! 💸")}
-            {question.wyjasnienie && <div className="mt-2 border-t-2 border-dashed border-current pt-2 font-bold">💡 {question.wyjasnienie}</div>}
+              ? (hideAwards ? "[!!!] DOBRZE!!! (wynik ukryty — tryb egzaminacyjny) [!!!]" : `[!!!] DOBRZE!!! +${earnedAward ?? nextAward ?? "?"} PKT WPADŁO DO SKLEPU ARCADE + STREAK ROŚNIE!!! [!!!]`)
+              : (hideAwards ? "[$] PUDŁO. (tryb egzaminacyjny, bez podpowiedzi)" : "[$] PUDŁO!!! KASYNO ZABIERA PUNKTY, ALE NAUKA ZOSTAJE!!! [$]")}
+            {question.wyjasnienie && <div className="mt-2 border-t-2 border-dashed border-current pt-2 font-bold">[!] {question.wyjasnienie}</div>}
           </div>
         )}
       </CardContent>
@@ -325,9 +325,9 @@ export function ScoreBar({ score, streak, answered }: { score: number; streak: n
   const total = THEORY_QUESTIONS.length;
   return (
     <div className="flex flex-wrap items-center gap-2 border-[5px] border-casino-gold bg-black p-2.5 font-mono text-[11px] font-black text-casino-goldsoft shadow-[5px_5px_0_#000] [border-style:ridge]">
-      <span className="border-2 border-casino-gold bg-casino-felt px-2 py-1">💰 PORTFEL: {score} (SKLEP ARCADE)</span>
-      <span className="border-2 border-ugly-red bg-ugly-yellow px-2 py-1 text-black">🔥 STREAK: {streak}</span>
-      <span className="border-2 border-cke-green bg-white px-2 py-1 text-black">🎰 WYLUSOWANO: {answered}/{total} (baza)</span>
+      <span className="border-2 border-casino-gold bg-casino-felt px-2 py-1">[$] PORTFEL: {score} (SKLEP ARCADE)</span>
+      <span className="border-2 border-ugly-red bg-ugly-yellow px-2 py-1 text-black">[!] STREAK: {streak}</span>
+      <span className="border-2 border-cke-green bg-white px-2 py-1 text-black">[=] WYLUSOWANO: {answered}/{total} (baza)</span>
       <span className="text-[9px] text-win95">RTP 98.7%* (*wzrost zdawalności wraz z nauką)</span>
     </div>
   );

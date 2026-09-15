@@ -96,7 +96,7 @@ export interface MutatorDef {
 export const MUTATORS: MutatorDef[] = [
   { id: "egzaminator", name: "EGZAMINATOR", desc: "Timer −10 s, nagroda ×2. On się nie śpieszy. Ty tak.", mult: 2, timerDelta: -10 },
   { id: "mgla", name: "MGŁA", desc: "Odpowiedzi w blurze przez pierwsze 5 s. Nagroda ×1.5.", mult: 1.5, timerDelta: 0 },
-  { id: "grzybnia", name: "GRZYBNIA", desc: "Miesza słowa w opisie, +5 s. Nagroda ×1.5. 🍄", mult: 1.5, timerDelta: 5 },
+  { id: "grzybnia", name: "GRZYBNIA", desc: "Miesza słowa w opisie, +5 s. Nagroda ×1.5. [G]", mult: 1.5, timerDelta: 5 },
   { id: "stres", name: "STRES CKE", desc: "Chowa podgląd kolejnych drzwi. Nagroda ×2.", mult: 2, timerDelta: 0 },
   { id: "doping", name: "DOPING", desc: "+10 s, ale nagroda ×0.5. Spokój kosztuje.", mult: 0.5, timerDelta: 10 },
 ];
@@ -166,8 +166,8 @@ function eliteDoor(rng: Rng, floor: number, boss: boolean): DoorOption {
     id: `d-${floor}-${boss ? "boss" : "elite"}-${Math.floor(rng() * 1e6)}`,
     kind: boss ? "boss" : "elite",
     category: "mix",
-    label: boss ? "BOSS CKE 👑 — 3 PYTANIA BEZ BŁĘDU" : "ELITA 📦 — 2 PYTANIA BEZ BŁĘDU",
-    risk: boss ? "BOSS ×3 + LECZY 1 HP" : "ELITA ×2 📦",
+    label: boss ? "BOSS CKE [K] — 3 PYTANIA BEZ BŁĘDU" : "ELITA [P] — 2 PYTANIA BEZ BŁĘDU",
+    risk: boss ? "BOSS ×3 + LECZY 1 HP" : "ELITA ×2 [P]",
     mult: boss ? 3 : 2,
   };
 }

@@ -26,7 +26,7 @@ export function ExamCard({ exam, index, color, search }: ExamCardProps) {
       <CardStripe color={color} />
       {isHot && (
         <div className="absolute -right-[34px] top-3.5 z-[6] rotate-[35deg] animate-ugly-blink border-y-2 border-casino-gold bg-ugly-red px-9 py-1 font-display text-[10px] tracking-wider text-ugly-yellow shadow-[2px_2px_0_#000]">
-          🔥 HOT • JACKPOT 🔥
+          [!] HOT • JACKPOT [!]
         </div>
       )}
       {hasFungus && <FungusWhisper variant="corner" />}
@@ -52,18 +52,18 @@ export function ExamCard({ exam, index, color, search }: ExamCardProps) {
             {exam.tech.slice(0, 3).map((t) => (
               <Badge key={t} variant="tech">{t}</Badge>
             ))}
-            {exam.zipZalaczniki && <Badge variant="zip">⬇ ZIP</Badge>}
+            {exam.zipZalaczniki && <Badge variant="zip">[v] ZIP</Badge>}
             <Badge variant="rtp">RTP 98.{index % 9}%</Badge>
           </div>
           <div className="mt-2 border-2 border-dotted border-ugly-red bg-casino-goldsoft px-1.5 py-1 font-mono text-[10px] font-black text-casino-felt">
-            💸 {128 + index * 37} graczy obstawia ten arkusz • ostatnia wygrana: {30 + (index % 6)}/35!!!
+            [$] {128 + index * 37} graczy obstawia ten arkusz • ostatnia wygrana: {30 + (index % 6)}/35!!!
           </div>
         </CardHeader>
       </Link>
       <CardFooter>
         <Button variant="ink" size="sm" className="flex-1" asChild>
           <Link to="/egzamin/$examId" params={{ examId: exam.id }} search={search} style={{ textDecoration: "none" }}>
-            🎰 OBSTAW →
+            [=] OBSTAW →
           </Link>
         </Button>
         <Button

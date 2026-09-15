@@ -19,6 +19,7 @@ import { DEFAULT_SEARCH } from "../lib/search.js";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { Y2k } from "@/components/app/y2k-icons";
 
 const RARITY_STYLE: Record<ShopRarity, string> = {
   common: "border-win95 bg-gradient-to-b from-white to-win95",
@@ -44,7 +45,7 @@ function ItemCard({ item, onBuy, onOpenLoot }: { item: ShopItem; onBuy: (item: S
         <Badge variant="bonus" className="border-2 border-black bg-black text-[10px] text-ugly-yellow">
           {item.tag} • {SHOP_RARITY_LABEL[item.rarity]}
         </Badge>
-        <div className="mt-2 text-5xl">{item.icon}</div>
+        <div className="mt-2 flex justify-center"><Y2k code={item.icon} tone="gray" big /></div>
         <div className="mt-2 font-display text-base font-black uppercase leading-tight text-black">
           {item.name}
         </div>
@@ -65,7 +66,7 @@ function ItemCard({ item, onBuy, onOpenLoot }: { item: ShopItem; onBuy: (item: S
         <div className="mt-2 flex flex-col gap-1.5">
           {isLoot && stock > 0 && (
             <Button variant="slot" size="sm" className="w-full" onClick={onOpenLoot}>
-              ❓ OTWÓRZ ({stock}) ❓
+              [?] OTWÓRZ ({stock}) [?]
             </Button>
           )}
           {item.kind === "flaga" && owned ? (
@@ -80,7 +81,7 @@ function ItemCard({ item, onBuy, onOpenLoot }: { item: ShopItem; onBuy: (item: S
               disabled={!afford}
               onClick={() => onBuy(item)}
             >
-              {afford ? `🪙 KUPIJ ${item.kind === "sztuki" ? "+1 SZTUKĘ" : "NA ZAWSZE"} 🪙` : `🔒 BRAKUJE ${item.price - balance} PKT`}
+              {afford ? `[$] KUPIJ ${item.kind === "sztuki" ? "+1 SZTUKĘ" : "NA ZAWSZE"} [$]` : `[X] BRAKUJE ${item.price - balance} PKT`}
             </Button>
           )}
         </div>
@@ -99,14 +100,14 @@ function ShopPage() {
     const ok = spend(item.price, item.id, item.kind);
     setFlash(
       ok
-        ? `🛒 KUPIONO: ${item.name} ZA ${item.price} PKT!!! PARAGON W DRUKARCE* (*nie ma drukarki)`
-        : `💸 ZA DROGO!!! BRAKUJE ${item.price - balance} PKT — IDŹ POKRĘCIĆ KOŁEM FORTUNY!!!`,
+        ? `[KUP] KUPIONO: ${item.name} ZA ${item.price} PKT!!! PARAGON W DRUKARCE* (*nie ma drukarki)`
+        : `[$] ZA DROGO!!! BRAKUJE ${item.price - balance} PKT — IDŹ POKRĘCIĆ KOŁEM FORTUNY!!!`,
     );
   };
 
   const openLoot = () => {
     if (!consume("niespodzianka")) {
-      setFlash("💸 Pusty plecak — najpierw kup NIESPODZIANKĘ!!!");
+      setFlash("[$] Pusty plecak — najpierw kup NIESPODZIANKĘ!!!");
       return;
     }
     const drop = rollLoot(Math.random());
@@ -137,7 +138,7 @@ function ShopPage() {
           ★ INSERT COIN ★ BAZAR ★
         </span>
         <h2 className="m-0 mt-2 font-display text-[clamp(30px,5vw,56px)] font-black uppercase leading-[0.95] text-casino-gold [text-shadow:0_0_10px_#ff0000,2px_2px_0_#000]">
-          🕹️ Sklep arcade 🕹️
+          {'[>>] Sklep arcade [>>]'}
         </h2>
         <p className="mx-auto mt-2 max-w-[70ch] border-[3px] border-dashed border-casino-gold bg-black p-2 font-mono text-[11px] font-black text-casino-goldsoft">
           WYDAWAJ PUNKTY Z KOŁA FORTUNY NA BAJERY* (*bajery wirtualne, niewymienialne, bezwartościowe).
@@ -148,14 +149,14 @@ function ShopPage() {
             <Link to="/" search={DEFAULT_SEARCH}>← WRÓĆ DO ARKUSZY</Link>
           </Button>
           <Button variant="slot" size="sm" asChild>
-            <Link to="/teoria" search={DEFAULT_SEARCH}>🎡 ZARABIAJ NA KOLE 🎡</Link>
+            <Link to="/teoria" search={DEFAULT_SEARCH}>[O] ZARABIAJ NA KOLE [O]</Link>
           </Button>
         </div>
       </div>
 
       <div className="mt-3.5 flex flex-wrap items-center gap-2 border-[5px] border-casino-gold bg-black p-2.5 font-mono text-[11px] font-black text-casino-goldsoft shadow-[5px_5px_0_#000] [border-style:ridge]">
         <span className="animate-ugly-wiggle border-2 border-casino-gold bg-casino-felt px-2 py-1 text-sm">
-          💰 SALDO: {balance} PKT{activeTitle ? ` • ${activeTitle}` : ""}
+          [$] SALDO: {balance} PKT{activeTitle ? ` • ${activeTitle}` : ""}
         </span>
         <span className="border-2 border-cke-green bg-white px-2 py-1 text-black">ZAROBIONO: {wallet.earned}</span>
         <span className="border-2 border-ugly-red bg-ugly-yellow px-2 py-1 text-black">WYDANO: {wallet.spent}</span>
@@ -172,7 +173,7 @@ function ShopPage() {
 
       {tampered && (
         <div className="mt-3.5 animate-ugly-blink border-[5px] border-ugly-red bg-ugly-yellow p-3 text-center text-sm font-black uppercase text-black [border-style:ridge]">
-          ⚠️ WYKRYTO GRZEBANIE W PORTFELU!!! SUMA KONTROLNA SIĘ NIE ZGADZA — SALDO WYZEROWANE. NIE KOMBINUJ, KRĘĆ KOŁEM!!! ⚠️
+          [!] WYKRYTO GRZEBANIE W PORTFELU!!! SUMA KONTROLNA SIĘ NIE ZGADZA — SALDO WYZEROWANE. NIE KOMBINUJ, KRĘĆ KOŁEM!!! [!]
         </div>
       )}
 
@@ -184,14 +185,14 @@ function ShopPage() {
 
       {flagsOwned.length > 0 && (
         <div className="mt-3.5 border-[6px] border-ugly-pink bg-white p-3.5 shadow-[8px_8px_0_#000] [border-style:ridge]">
-          <h3 className="m-0 font-display text-2xl font-black uppercase">🚪 Szafa (Twoje flagi)</h3>
+          <h3 className="m-0 font-display text-2xl font-black uppercase">[D] Szafa (Twoje flagi)</h3>
           <p className="mt-1 text-xs font-bold">Kupione = Twoje na zawsze. Tu je włączasz i wyłączasz jak światła w piwnicy.</p>
           <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
-            {flagsOwned.map((item) => {
+              {flagsOwned.map((item) => {
               const on = flagActive(item.id);
               return (
                 <div key={item.id} className="flex items-center gap-2 border-[3px] border-win95 bg-gradient-to-b from-white to-win95 p-2 shadow-[3px_3px_0_#000] [border-style:outset]">
-                  <span className="text-2xl">{item.icon}</span>
+                  <Y2k code={item.icon} tone="gray" />
                   <span className="min-w-0 flex-1 text-[11px] font-black uppercase">{item.name}</span>
                   <button
                     onClick={() => setFlag(item.id, !on)}
@@ -205,7 +206,7 @@ function ShopPage() {
           </div>
           {titlesOwned.length > 0 && (
             <div className="mt-3 border-[3px] border-dashed border-black bg-ugly-yellow p-2">
-              <div className="font-mono text-[10px] font-black uppercase">🏆 Aktywny tytuł (jeden naraz):</div>
+              <div className="font-mono text-[10px] font-black uppercase">[M] Aktywny tytuł (jeden naraz):</div>
               <div className="mt-1.5 flex flex-wrap gap-1.5">
                 <button
                   onClick={() => setTitle(null)}
@@ -227,7 +228,7 @@ function ShopPage() {
           )}
           {shoutOn && (
             <div className="mt-3 border-[3px] border-dashed border-black bg-ugly-cyan p-2">
-              <div className="font-mono text-[10px] font-black uppercase">📢 Okrzyk tickera:</div>
+              <div className="font-mono text-[10px] font-black uppercase">[!] Okrzyk tickera:</div>
               <div className="mt-1.5 flex flex-wrap gap-1.5">
                 <button
                   onClick={() => setTicker(null)}
@@ -252,7 +253,7 @@ function ShopPage() {
 
       {statsOn ? (
         <div className="mt-3.5 border-[6px] border-cke-green bg-black p-3.5 shadow-[8px_8px_0_#000] [border-style:ridge]">
-          <h3 className="m-0 font-display text-2xl font-black uppercase text-cke-green">📊 Statystyki gracza</h3>
+          <h3 className="m-0 font-display text-2xl font-black uppercase text-cke-green">[=] Statystyki gracza</h3>
           <div className="mt-2 flex flex-wrap gap-2 font-mono text-[11px] font-black">
             <span className="border-2 border-cke-green bg-white px-2 py-1 text-black">
               ACCURACY: {accuracy !== null ? `${accuracy}%` : "—"} ({wallet.answersOk}/{totalAnswers})
@@ -267,12 +268,12 @@ function ShopPage() {
         </div>
       ) : (
         <div className="mt-3.5 border-[4px] border-dotted border-cke-green bg-white p-2 text-center text-xs font-bold">
-          📊 STATYSTYKI GRACZA schowane za flagą — kup przedmiot <b>STATYSTYKI GRACZA</b> (80 pkt) żeby je odblokować.
+          [=] STATYSTYKI GRACZA schowane za flagą — kup przedmiot <b>STATYSTYKI GRACZA</b> (80 pkt) żeby je odblokować.
         </div>
       )}
 
       <div className="mt-3.5 border-[4px] border-dotted border-black bg-white p-2.5 text-xs font-bold">
-        💸 <b>JAK ZARABIAĆ:</b> dobra odpowiedź na kole fortuny = <b>+{BASE_POINTS} pkt</b>, streak
+        [$] <b>JAK ZARABIAĆ:</b> dobra odpowiedź na kole fortuny = <b>+{BASE_POINTS} pkt</b>, streak
         dokłada <b>+{STREAK_STEP}/serię (max +{STREAK_BONUS_CAP})</b>, czyli max <b>+{MAX_AWARD} pkt</b> za pytanie.
         Wtopa = 0 pkt + koniec serii. Bez ujemnych punktów, kasyno nie winduje długów (na nauce).
       </div>
@@ -291,7 +292,7 @@ function ShopPage() {
       ))}
 
       <div className="mt-3.5 border-[3px] border-dotted border-ugly-pink bg-white p-2 text-center font-mono text-[10px] font-black text-gray-600">
-        🕹️ SKLEP v2: flagi działają od razu po kupnie (szafa powyżej), zużywalne lądują w plecaku (teoria/slot),
+        {"[>>] SKLEP v2: flagi działają od razu po kupnie (szafa powyżej), zużywalne lądują w plecaku (teoria/slot),"}
         lootbox losuje z tabeli {LOOT_TABLE.length} dropów. Przedmioty nigdy nie dotykają treści — arkusze i teoria free.
       </div>
     </>

@@ -11,9 +11,9 @@ const COLLAGE = [
 export function Hero({ count, totalPkt }: { count: number; totalPkt: number }) {
   const scrollToGrid = () => document.getElementById("grid")?.scrollIntoView({ behavior: "smooth" });
   return (
-    <section className="relative mt-3 grid grid-cols-1 items-center gap-4 border-[6px] border-ugly-red bg-gradient-to-br from-ugly-pink via-ugly-yellow via-ugly-lime to-ugly-cyan p-5 shadow-[8px_8px_0_#000,inset_0_0_30px_#fff] [border-style:ridge] lg:grid-cols-[1.15fr_0.85fr]">
+    <section className="hero-duo relative mt-3 grid grid-cols-1 items-center gap-4 border-[6px] border-ugly-red bg-gradient-to-br from-ugly-pink via-ugly-yellow via-ugly-lime to-ugly-cyan p-5 shadow-[8px_8px_0_#000,inset_0_0_30px_#fff] [border-style:ridge] lg:grid-cols-[1.15fr_0.85fr]">
       <div className="absolute -top-3.5 left-1/2 z-10 -translate-x-1/2 -rotate-1 animate-ugly-blink whitespace-nowrap border-[3px] border-white bg-ugly-red px-3 py-1 font-display text-xs tracking-[2px] text-ugly-yellow [border-style:outset]">
-        UNDER CONSTRUCTION 🚧 UNDER CONSTRUCTION 🚧
+        [!] UNDER CONSTRUCTION [!] UNDER CONSTRUCTION [!]
       </div>
       <div className="min-w-0">
         <span className="inline-flex -rotate-1 items-center gap-2 border-4 border-dotted border-black bg-ugly-cyan px-3 py-2 font-mono text-[11px] font-black uppercase tracking-wider text-black shadow-[4px_4px_0_#000]">

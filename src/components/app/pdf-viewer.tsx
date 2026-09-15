@@ -55,7 +55,7 @@ export function PdfViewer({ exam }: { exam: Exam }) {
         </span>
         <div className="flex flex-1 flex-wrap items-center justify-end gap-1.5">
           <Button variant="yellow" size="sm" asChild>
-            <a href={local} download>⬇ PDF</a>
+            <a href={local} download>[v] PDF</a>
           </Button>
           <Button variant="ghost" size="sm" asChild>
             <a href={remote} target="_blank" rel="noreferrer">
