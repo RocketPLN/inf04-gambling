@@ -7,6 +7,8 @@ import { Input } from "@/components/ui/input";
 import { Ticker } from "@/components/ui/ticker";
 import { Toast, Toaster, type ToastTone } from "@/components/ui/sonner";
 import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
+import { useWallet } from "@/hooks/use-wallet.js";
+import { TICKER_PRESETS } from "@/data/shop.js";
 import { FungusWhisper } from "@/components/app/fungus";
 
 const REELS = ["7️⃣", "🍒", "💰", "🎰", "⭐", "💎", "🎲"];
@@ -21,18 +23,32 @@ const FAKE_WINNERS = [
 
 export function JackpotBar({ totalPkt }: { totalPkt: number }) {
   const [jackpot, setJackpot] = useState(1337420);
+  // Flagi ze sklepu: JACKPOT OFF zwija pasek, HIGH-ROLLER pokazuje saldo ×1000.
+  const { balance, flagActive } = useWallet();
+  const compact = flagActive("jackpot-off");
+  const showoff = flagActive("high-roller");
   useEffect(() => {
     const t = setInterval(() => {
       setJackpot((j) => j + Math.floor(Math.random() * 777) + 13);
     }, 1800);
     return () => clearInterval(t);
   }, []);
+  if (compact) {
+    return (
+      <div className="hide-in-focus border-b-[3px] border-casino-gold bg-black px-2.5 py-1 text-center font-mono text-[10px] font-black text-casino-goldsoft [border-bottom-style:ridge]">
+        jackpot off (flaga ze sklepu) • {totalPkt} pkt w puli • pokora 💅
+      </div>
+    );
+  }
+  const shown = showoff ? balance * 1000 : jackpot;
   return (
-    <div className="flex flex-wrap items-center justify-center gap-2.5 border-y-[5px] border-casino-gold bg-gradient-to-b from-casino-feltdark via-casino-felt to-casino-feltdark px-2.5 py-2 text-center font-display tracking-[2px] text-casino-gold shadow-[inset_0_0_30px_#000,0_0_20px_#ffd700] [border-top-style:ridge] [border-bottom-style:ridge] [text-shadow:0_0_12px_#ff0000,2px_2px_0_#000]">
+    <div className="hide-in-focus flex flex-wrap items-center justify-center gap-2.5 border-y-[5px] border-casino-gold bg-gradient-to-b from-casino-feltdark via-casino-felt to-casino-feltdark px-2.5 py-2 text-center font-display tracking-[2px] text-casino-gold shadow-[inset_0_0_30px_#000,0_0_20px_#ffd700] [border-top-style:ridge] [border-bottom-style:ridge] [text-shadow:0_0_12px_#ff0000,2px_2px_0_#000]">
       <span className="animate-ugly-blink text-xl text-ugly-red [text-shadow:0_0_10px_#ff0000]">●</span>
       <span className="border-[3px] border-casino-goldsoft bg-casino-gold px-2 py-0.5 text-[13px] uppercase text-casino-felt [border-style:outset] [text-shadow:none]">★ MEGA JACKPOT CKE ★</span>
-      <span className="animate-ugly-wiggle border-[3px] border-casino-gold bg-black px-2.5 py-0.5 text-[22px] text-casino-goldsoft [border-style:ridge]">{jackpot.toLocaleString("pl-PL")} pkt</span>
-      <span className="font-mono text-[10px] font-black text-white [text-shadow:none]">RTP 98.7% • {totalPkt} pkt w puli • WYPŁACALNE OD RĘKI!!!</span>
+      <span className="animate-ugly-wiggle border-[3px] border-casino-gold bg-black px-2.5 py-0.5 text-[22px] text-casino-goldsoft [border-style:ridge]">{shown.toLocaleString("pl-PL")} pkt</span>
+      <span className="font-mono text-[10px] font-black text-white [text-shadow:none]">
+        {showoff ? "TWOJE SALDO ×1000 (HIGH-ROLLER, tylko wizualnie)" : `RTP 98.7% • ${totalPkt} pkt w puli • WYPŁACALNE OD RĘKI!!!`}
+      </span>
       <span className="animate-ugly-blink text-xl text-ugly-red [text-shadow:0_0_10px_#ff0000]">●</span>
     </div>
   );
@@ -40,16 +56,22 @@ export function JackpotBar({ totalPkt }: { totalPkt: number }) {
 
 export function FakeWinsTicker() {
   const [i, setI] = useState(0);
+  // Flaga OKRZYK-TICKERA: po wyborze presetu w szafie ticker krzyczy Twoje.
+  const { wallet, flagActive } = useWallet();
+  const preset = flagActive("okrzyk-tickera") && wallet.ticker
+    ? TICKER_PRESETS.find((p) => p.id === wallet.ticker)
+    : undefined;
+  const lines = preset ? preset.lines : FAKE_WINNERS;
   useEffect(() => {
-    const t = setInterval(() => setI((v) => (v + 1) % FAKE_WINNERS.length), 3000);
+    const t = setInterval(() => setI((v) => (v + 1) % lines.length), 3000);
     return () => clearInterval(t);
-  }, []);
+  }, [lines.length]);
   return (
-    <Ticker tone="terminal" speed="slow" className="mt-2.5 border-4 border-cke-green shadow-[4px_4px_0_#000] [border-style:ridge]">
+    <Ticker tone="terminal" speed="slow" className="hide-in-focus mt-2.5 border-4 border-cke-green shadow-[4px_4px_0_#000] [border-style:ridge]">
       <span className="inline-flex items-center gap-2.5 px-2.5 py-2">
         <span className="animate-ugly-blink border-2 border-white bg-ugly-red px-1.5 py-0.5 text-white [border-style:outset]">● LIVE</span>
-        <span>💸 {FAKE_WINNERS[i]}</span>
-        <span className="text-gray-500">✓ zweryfikowano przez CKE* (*nie)</span>
+        <span>💸 {lines[i % lines.length]}</span>
+        {!preset && <span className="text-gray-500">✓ zweryfikowano przez CKE* (*nie)</span>}
       </span>
     </Ticker>
   );
@@ -69,6 +91,18 @@ export function SlotScam() {
   const [msg, setMsg] = useState("3 DARMOWE SPINY NA START!!! Bez depozytu* (*depozyt to nauka)");
   const [toasts, setToasts] = useState<SlotToast[]>([]);
   const timer = useRef<number | undefined>(undefined);
+  // Zużywalne SPIN-SLOT ze sklepu: dokup kręcenie za punkty.
+  // SKIN CABINETU ze sklepu: niebieski cabinet w barwach CKE.
+  const { count, consume, flagActive } = useWallet();
+  const stockSpins = count("spin-slot");
+  const cabinet = flagActive("skin-cabinet");
+
+  const buySpin = () => {
+    if (consume("spin-slot")) {
+      setSpins((s) => s + 1);
+      setMsg("DOKUPIONO SPINA ZE SKLEPU!!! PORTFEL LŻEJSZY, NADZIEJA WIĘKSZA!!!");
+    }
+  };
 
   const pushToast = (tone: ToastTone, title: string, description: string) => {
     const id = Math.random().toString(36).slice(2);
@@ -116,11 +150,16 @@ export function SlotScam() {
   useEffect(() => () => clearInterval(timer.current), []);
 
   return (
-    <Card className="relative w-full min-w-0 overflow-hidden border-[6px] border-casino-gold bg-[radial-gradient(circle_at_50%_0%,#5a0a0a,#1a0505_70%)] p-3.5 text-center shadow-[8px_8px_0_#000,inset_0_0_40px_#000] [border-style:ridge]">
+    <Card className={`relative w-full min-w-0 overflow-hidden border-[6px] border-casino-gold bg-[radial-gradient(circle_at_50%_0%,#5a0a0a,#1a0505_70%)] p-3.5 text-center shadow-[8px_8px_0_#000,inset_0_0_40px_#000] [border-style:ridge] ${cabinet ? "cabinet-cke" : ""}`}>
       <CardContent className="w-full min-w-0 p-0">
         <div className="pointer-events-none absolute inset-x-0 top-1 text-[10px] tracking-[8px] text-casino-gold opacity-60">★★★ ★★★ ★★★</div>
         <div className="mt-2 font-display text-lg tracking-[2px] text-casino-gold [text-shadow:0_0_10px_#ff0000,2px_2px_0_#000]">
           🎰 INF.04 CASINO ROYALE 🎰{" "}
+          {cabinet && (
+            <Badge variant="tech" className="border-2 border-white align-middle text-[11px]">
+              CKE EDITION 👾
+            </Badge>
+          )}
           <Badge variant="bonus" className="border-2 border-ugly-yellow bg-ugly-red align-middle text-[11px] text-ugly-yellow [border-style:ridge]">
             HOT 🔥🔥🔥
           </Badge>
@@ -143,6 +182,13 @@ export function SlotScam() {
           </TooltipTrigger>
           <TooltipContent>Atrapa hazardu — jedyny pewny mnożnik to nauka</TooltipContent>
         </Tooltip>
+        {stockSpins > 0 && (
+          <div className="mt-2">
+            <Button variant="claim" size="sm" onClick={buySpin} disabled={spinning}>
+              🎰 DOKUP SPIN Z PLECAKA ({stockSpins}) 🎰
+            </Button>
+          </div>
+        )}
         <div className="mt-2.5 min-h-[38px] border-[3px] border-dotted border-ugly-red bg-ugly-yellow p-2 text-xs font-black text-black">{msg}</div>
         <div className="mt-2 font-mono text-[9px] leading-[1.4] text-win95">
           18+ • Graj odpowiedzialnie • Punkty wirtualne • Szansa na zdanie rośnie z nauką, nie ze spinami, lol • Regulamin napisany Comic Sansem
@@ -258,7 +304,7 @@ export function StickyBonusBar({ onSpin }: { onSpin: () => void }) {
     return () => clearInterval(t);
   }, []);
   return (
-    <div className="fixed inset-x-0 bottom-0 z-[9000] flex flex-wrap items-center justify-center gap-2.5 border-t-[5px] border-casino-gold bg-gradient-to-r from-casino-felt via-ugly-red to-casino-felt px-3 pb-[calc(10px+env(safe-area-inset-bottom))] pt-2.5 text-xs font-black text-casino-goldsoft shadow-[0_-6px_0_#000,0_0_30px_#ffd700] [border-top-style:ridge]">
+    <div className="hide-in-focus fixed inset-x-0 bottom-0 z-[9000] flex flex-wrap items-center justify-center gap-2.5 border-t-[5px] border-casino-gold bg-gradient-to-r from-casino-felt via-ugly-red to-casino-felt px-3 pb-[calc(10px+env(safe-area-inset-bottom))] pt-2.5 text-xs font-black text-casino-goldsoft shadow-[0_-6px_0_#000,0_0_30px_#ffd700] [border-top-style:ridge]">
       <span className="animate-ugly-wiggle text-lg">🔥</span>
       <span><b>TYLKO DZIŚ: 500% BONUSU</b> kod: <code className="border-2 border-cke-green bg-black px-1.5 py-px font-mono text-cke-green [border-style:outset]">ZDAJ100</code> • zostało <b>{left}/14</b> miejsc!!!</span>
       <button className="animate-ugly-blink cursor-pointer border-4 border-casino-goldsoft bg-casino-gold px-3.5 py-2 font-display tracking-wider text-casino-felt shadow-[3px_3px_0_#000] [border-style:outset]" onClick={onSpin}>

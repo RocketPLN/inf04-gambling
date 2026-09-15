@@ -606,3 +606,27 @@ html{ scrollbar-color: #ff00ff #00ffff }
   .collage{height:360px}
   .collage-card{width:190px}
 }
+/* ===== SKLEP ARCADE: flagi globalne ===== */
+/* STOP-KLATKA: zero animacji i tranzycji na całej stronie */
+body.no-anim *, body.no-anim *::before, body.no-anim *::after{ animation:none !important; transition:none !important }
+/* TRYB SKUPIENIA: na stronie arkusza chowa całe kasyno (elementy z .hide-in-focus) */
+body.focus-mode .hide-in-focus{ display:none !important }
+/* MOTYW CRT: nakładka kineskopowa + celownik zamiast kursora */
+body.fx-crt::after{
+  content:""; position:fixed; inset:0; z-index:9500; pointer-events:none;
+  background:repeating-linear-gradient(0deg, rgba(0,0,0,.22) 0 1px, transparent 1px 3px);
+}
+body.fx-crt, body.fx-crt a, body.fx-crt button{ cursor:crosshair !important }
+/* ZŁOTY DESZCZ: konfetti za dobrą odpowiedź */
+@keyframes arcade-confetti-fall{
+  0%{ transform:translateY(-10vh) rotate(0deg); opacity:1 }
+  100%{ transform:translateY(110vh) rotate(720deg); opacity:0 }
+}
+.arcade-confetti{ position:fixed; top:-5vh; z-index:9600; pointer-events:none; animation:arcade-confetti-fall 2.6s linear forwards }
+/* RAMKA NEONOWA: różowy neon wokół logo portalu */
+body.fx-neon .site-logo{
+  border-color:#ff9dff !important;
+  box-shadow:0 0 12px #ff00ff, 0 0 28px #ff00ff, 4px 4px 0 #000 !important;
+}
+/* SKIN CABINETU: niebieski cabinet w barwach CKE na slocie */
+.cabinet-cke{ border-color:#3b82f6 !important; background:radial-gradient(circle at 50% 0%, #1e3fae, #000814 70%) !important }

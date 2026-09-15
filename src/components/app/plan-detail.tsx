@@ -6,14 +6,24 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import { BetWidget } from "@/components/app/casino";
+import { ExamTimer, ExpertVerdict, MarkerPalette, Notepad, useMarkers } from "@/components/app/exam-gadgets";
 import { FungusWhisper } from "@/components/app/fungus";
 import { PdfViewer } from "@/components/app/pdf-viewer";
+import { useWallet } from "@/hooks/use-wallet.js";
 import type { Exam } from "@/data/exams.js";
 
 const ANCHOR_TONES = ["bg-ugly-yellow text-ugly-pink", "bg-ugly-pink text-ugly-yellow", "bg-cke-blue text-ugly-yellow", "bg-ugly-lime text-ugly-red"];
 
 export function PlanDetail({ exam, onBack }: { exam: Exam; onBack: () => void }) {
   const viewerRef = useRef<HTMLDivElement>(null);
+  // Gadżety ze SKLEPU ARCADE (treść arkusza zawsze free, to tylko otoczka).
+  const { flagActive } = useWallet();
+  const showTimer = flagActive("timer-egzamin");
+  const showMarker = flagActive("zaznaczacz");
+  const showNotes = flagActive("notatnik");
+  const showExpert = flagActive("ekspert-cke");
+  const focusMode = flagActive("tryb-skupienia");
+  const { activeColor, setActiveColor, marks, toggleMark, markedCount } = useMarkers(exam.id);
 
   const handleHighlight = () => {
     const el = viewerRef.current;
@@ -95,7 +105,18 @@ export function PlanDetail({ exam, onBack }: { exam: Exam; onBack: () => void })
             <Separator className="my-4" />
 
             <div className="mt-4">
-              <BetWidget max={total} />
+              {(showTimer || showNotes) && (
+                <div className="mb-3.5 grid gap-3.5 lg:grid-cols-2">
+                  {showTimer && <ExamTimer minutes={exam.czas} />}
+                  {showNotes && <Notepad examId={exam.id} />}
+                </div>
+              )}
+              {showMarker && (
+                <div className="mb-3.5">
+                  <MarkerPalette activeColor={activeColor} onPick={setActiveColor} />
+                </div>
+              )}
+              {!focusMode && <BetWidget max={total} />}
             </div>
 
             <div className="mt-4 grid gap-2.5 border-[5px] border-ugly-yellow bg-win95 p-3.5 shadow-[5px_5px_0_#000] [border-style:ridge]">
@@ -103,11 +124,28 @@ export function PlanDetail({ exam, onBack }: { exam: Exam; onBack: () => void })
                 Pliki i załączniki <FungusWhisper />
               </h3>
               <div className="flex flex-wrap gap-1.5">
-                {exam.plan.pliki.map((f) => (
-                  <span key={f} className="border-[3px] border-cke-green bg-black px-2.5 py-1.5 font-mono text-[11px] font-black text-cke-green [border-style:outset]">
-                    {f}
-                  </span>
-                ))}
+                {exam.plan.pliki.map((f) => {
+                  const key = `plik:${f}`;
+                  const marked = marks[key];
+                  return showMarker && activeColor ? (
+                    <button
+                      key={f}
+                      onClick={() => toggleMark(key)}
+                      className="cursor-pointer border-[3px] border-cke-green bg-black px-2.5 py-1.5 font-mono text-[11px] font-black text-cke-green [border-style:outset]"
+                      style={marked ? { background: marked, color: "#000" } : undefined}
+                    >
+                      {marked ? "★ " : ""}{f}
+                    </button>
+                  ) : (
+                    <span
+                      key={f}
+                      className="border-[3px] border-cke-green bg-black px-2.5 py-1.5 font-mono text-[11px] font-black text-cke-green [border-style:outset]"
+                      style={marked ? { background: marked, color: "#000" } : undefined}
+                    >
+                      {f}
+                    </span>
+                  );
+                })}
               </div>
               <div className="mt-2.5 flex flex-wrap items-center gap-1.5">
                 {exam.zipZalaczniki ? (
@@ -128,9 +166,32 @@ export function PlanDetail({ exam, onBack }: { exam: Exam; onBack: () => void })
                   <span className="border-2 border-dotted border-ugly-pink bg-ugly-yellow px-1.5 py-1 text-[11px] font-black text-black">Brak ZIP — wszystkie pliki w opisie</span>
                 )}
               </div>
-              <p className="mt-2.5 border-2 border-dotted border-ugly-pink bg-ugly-yellow px-1.5 py-1 text-[11px] font-black text-black">
-                Wymagania: {exam.plan.wymagania.join(" • ")}
-              </p>
+              <div className="mt-2.5 flex flex-wrap gap-1.5 border-2 border-dotted border-ugly-pink bg-ugly-yellow px-1.5 py-1 text-[11px] font-black text-black">
+                <span className="w-full">Wymagania:</span>
+                {exam.plan.wymagania.map((w, i) => {
+                  const key = `wym:${i}`;
+                  const marked = marks[key];
+                  return showMarker && activeColor ? (
+                    <button
+                      key={key}
+                      onClick={() => toggleMark(key)}
+                      className="cursor-pointer border border-black bg-white px-1"
+                      style={marked ? { background: marked } : undefined}
+                    >
+                      {marked ? "★ " : ""}{w}
+                    </button>
+                  ) : (
+                    <span key={key} className="border border-black bg-white px-1" style={marked ? { background: marked } : undefined}>
+                      {w}
+                    </span>
+                  );
+                })}
+              </div>
+              {showExpert && (
+                <div className="mt-2.5">
+                  <ExpertVerdict markedCount={markedCount} />
+                </div>
+              )}
             </div>
           </div>
         </div>

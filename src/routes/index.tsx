@@ -3,6 +3,8 @@ import { createFileRoute, Link, stripSearchParams, useNavigate } from "@tanstack
 import { exams } from "../data/exams.js";
 import { DEFAULT_SEARCH, cleanSearch, validateSearch, type ExamSearch } from "../lib/search.js";
 import { BonusOfferCard, FakeWinsTicker, SlotScam } from "../components/app/casino.jsx";
+import { TICKER_PRESETS } from "../data/shop.js";
+import { useWallet } from "../hooks/use-wallet.js";
 import { Hero } from "../components/app/hero.jsx";
 import { ExamCard } from "../components/app/exam-card.jsx";
 import { FiltersBar, SetupBlock, TechTags, ZipBlock } from "../components/app/filters.jsx";
@@ -37,6 +39,11 @@ function HomePage() {
   }, [q, year, session]);
 
   const totalPkt = exams.reduce((s, e) => s + e.scoring.reduce((a, g) => a + g.max, 0), 0);
+  // Flagi ze sklepu: adblock chowa ofertę i ticker, okrzyk podmienia jego tekst.
+  const { wallet, flagActive } = useWallet();
+  const shout = flagActive("okrzyk-tickera") && wallet.ticker
+    ? TICKER_PRESETS.find((p) => p.id === wallet.ticker)
+    : undefined;
 
   return (
     <>
@@ -46,11 +53,13 @@ function HomePage() {
         <div className="w-full min-w-0">
           <SlotScam />
         </div>
-        <div className="w-full min-w-0">
-          <BonusOfferCard />
-        </div>
+        {!flagActive("adblock-oferta") && (
+          <div className="w-full min-w-0">
+            <BonusOfferCard />
+          </div>
+        )}
       </div>
-      <FakeWinsTicker />
+      {!flagActive("cisza-kasyno") && <FakeWinsTicker />}
 
       <FiltersBar
         q={q}
@@ -66,8 +75,10 @@ function HomePage() {
       <UglyBanner>
         ★★★ UWAGA !!! WSZYSTKO JEST TERAZ BRZYDKIE !!! ★★★ KLIKAJ SZYBKO ZANIM SIĘ ROZSYPie ★★★
       </UglyBanner>
-      <Ticker tone="terminal" speed="fast" className="mt-2.5 border-4 border-cke-green p-1.5 text-xs shadow-none [border-style:ridge]">
-        &nbsp;✦ INF.04 UGLY EDITION ✦ COMIC SANS ONLY ✦ RAINBOW POWER ✦ NIE DOTYKAĆ EKRANU ✦ 800x600 OPTIMAL ✦ SHADCN INSIDE ✦ &nbsp;
+      <Ticker tone="terminal" speed="fast" className="hide-in-focus mt-2.5 border-4 border-cke-green p-1.5 text-xs shadow-none [border-style:ridge]">
+        {shout
+          ? <>&nbsp;✦ {shout.lines.join(" ✦ ")} ✦ &nbsp;</>
+          : <>&nbsp;✦ INF.04 UGLY EDITION ✦ COMIC SANS ONLY ✦ RAINBOW POWER ✦ NIE DOTYKAĆ EKRANU ✦ 800x600 OPTIMAL ✦ SHADCN INSIDE ✦ &nbsp;</>}
       </Ticker>
       <ResultsInfo>
         Znaleziono <b>{filtered.length}</b> arkuszy {year !== "all" || session !== "all" || q ? "(filtrowane)" : ""} · Kliknij kartę aby zobaczyć <b>podgląd PDF</b> z punktacją na boku —{" "}
@@ -101,7 +112,7 @@ export const Route = createFileRoute("/")({
   component: HomePage,
   validateSearch,
   head: () => ({
-    meta: [{ title: "INF.04 Portal – Arkusze, Plany HTML i Punktacja CKE" }],
+    meta: [{ title: "INF.04 Portal – Arkusze PDF i Punktacja CKE" }],
   }),
   search: {
     middlewares: [stripSearchParams(DEFAULT_SEARCH)],

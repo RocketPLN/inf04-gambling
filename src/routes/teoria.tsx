@@ -1,25 +1,43 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { FortuneWheel, ScoreBar, TheoryQuestionCard } from "../components/app/fortune.jsx";
+import { ConfettiBurst, FortuneWheel, ScoreBar, TheoryQuestionCard } from "../components/app/fortune.jsx";
 import { THEORY_CATEGORIES, THEORY_QUESTIONS, THEORY_SOURCES, type TheoryCategory, type TheoryQuestion } from "../data/theory.js";
 import { DEFAULT_SEARCH } from "../lib/search.js";
+import { calcAward } from "../lib/wallet.js";
+import { useWallet } from "../hooks/use-wallet.js";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+
+const EXAM_SECONDS = 10 * 60;
 
 function TheoryPage() {
   const [category, setCategory] = useState<TheoryCategory | null>(null);
   const [question, setQuestion] = useState<TheoryQuestion | null>(null);
   const [asked, setAsked] = useState<string[]>([]);
   const [drawn, setDrawn] = useState(0);
-  const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);
+  // Punkty trafiają do szyfrowanego portfela (localStorage),
+  // żeby dało się je wydać w SKLEPIE ARCADE. Streak żyje tylko na tej stronie.
+  const { balance, earn, consume, count, recordAnswer, flagActive } = useWallet();
+  // Zużywalne ze sklepu: 50/50, dogrywka (pół nagrody), szczęśliwe losowanie (+5).
+  const [removedOrig, setRemovedOrig] = useState<number[]>([]);
+  const [halfArmed, setHalfArmed] = useState(false);
+  const [bonusArmed, setBonusArmed] = useState(false);
+  const [dogrywkaOffer, setDogrywkaOffer] = useState(false);
+  const [flash, setFlash] = useState<string | null>(null);
+  const [confettiKey, setConfettiKey] = useState(0);
+  // Tryb egzaminacyjny (flaga ze sklepu): 10 minut, wynik ukryty.
+  const examModeOwned = flagActive("tryb-egzamin");
+  const [examLeft, setExamLeft] = useState<number | null>(null);
+  const [examEarned, setExamEarned] = useState(0);
+  const examRunning = examLeft !== null;
 
   const poolLabel = useMemo(() => {
     if (!category) return "wszystkie";
     return THEORY_CATEGORIES.find((c) => c.id === category.id)?.label ?? "wszystkie";
   }, [category]);
 
-  const handleLanded = (cat: TheoryCategory) => {
+  const drawQuestion = (cat: TheoryCategory) => {
     setCategory(cat);
     const pool = THEORY_QUESTIONS.filter((q) => q.kat === cat.id);
     const fresh = pool.filter((q) => !asked.includes(q.id));
@@ -30,25 +48,91 @@ function TheoryPage() {
     setQuestion(next);
     setAsked((a) => [...a, next.id].slice(-50));
     setDrawn((d) => d + 1);
+    setRemovedOrig([]);
+    setDogrywkaOffer(false);
     setTimeout(() => document.getElementById("pytanie")?.scrollIntoView({ behavior: "smooth", block: "start" }), 100);
   };
 
+  const handleLanded = (cat: TheoryCategory) => drawQuestion(cat);
+
   const handleResult = (ok: boolean) => {
+    recordAnswer(ok);
     if (ok) {
-      setScore((s) => s + 100 + streak * 25);
+      let award = calcAward(streak);
+      if (halfArmed) award = Math.max(1, Math.floor(award / 2));
+      if (bonusArmed) award += 5;
+      earn(award, streak + 1);
+      if (examRunning) setExamEarned((e) => e + award);
+      setHalfArmed(false);
+      setBonusArmed(false);
       setStreak((s) => s + 1);
+      if (flagActive("zloty-deszcz")) setConfettiKey((k) => k + 1);
     } else {
-      setStreak(0);
+      if (count("streak-freeze") > 0 && consume("streak-freeze")) {
+        setFlash("❄️ STREAK FREEZE ZADZIAŁAŁ!!! SERIA URATOWANA, 1 SZTUKA ZUŻYTA!!!");
+      } else {
+        setStreak(0);
+      }
+      if (count("dogrywka") > 0) setDogrywkaOffer(true);
+      setHalfArmed(false);
+      setBonusArmed(false);
     }
+  };
+
+  const use5050 = () => {
+    if (!question || !consume("podpowiedz-5050")) return;
+    const wrong = question.odpowiedzi
+      .map((_, i) => i)
+      .filter((i) => i !== question.poprawna && !removedOrig.includes(i));
+    for (let i = wrong.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [wrong[i], wrong[j]] = [wrong[j], wrong[i]];
+    }
+    setRemovedOrig((r) => [...r, ...wrong.slice(0, 2)]);
+  };
+
+  const takeDogrywka = () => {
+    if (!category || !consume("dogrywka")) return;
+    setDogrywkaOffer(false);
+    setHalfArmed(true);
+    setFlash("🔁 DOGRYWKA!!! Następne pytanie z tej kategorii za PÓŁ nagrody. Honor do uratowania!!!");
+    drawQuestion(category);
+  };
+
+  const luckyDraw = () => {
+    if (!consume("losowanie-kola")) return;
+    setBonusArmed(true);
+    setFlash("🍀 SZCZĘŚLIWE LOSOWANIE!!! +5 pkt do następnej dobrej odpowiedzi!!!");
+    const cat = THEORY_CATEGORIES[Math.floor(Math.random() * THEORY_CATEGORIES.length)];
+    drawQuestion(cat);
   };
 
   const surpriseMe = () => {
     const cat = THEORY_CATEGORIES[Math.floor(Math.random() * THEORY_CATEGORIES.length)];
-    handleLanded(cat);
+    drawQuestion(cat);
   };
+
+  useEffect(() => {
+    if (examLeft === null) return;
+    if (examLeft <= 0) {
+      setExamLeft(null);
+      setFlash(`⏱️ KONIEC EGZAMINU!!! Wynik sesji: +${examEarned} pkt w 10 minut. CKE kiwa głową (może).`);
+      setExamEarned(0);
+      return;
+    }
+    const t = setTimeout(() => setExamLeft((s) => (s !== null ? s - 1 : s)), 1000);
+    return () => clearTimeout(t);
+  }, [examLeft, examEarned]);
+
+  const examMm = examLeft !== null ? String(Math.floor(examLeft / 60)).padStart(2, "0") : "00";
+  const examSs = examLeft !== null ? String(examLeft % 60).padStart(2, "0") : "00";
+  const displayAward = (halfArmed ? Math.max(1, Math.floor(calcAward(streak) / 2)) : calcAward(streak)) + (bonusArmed ? 5 : 0);
+  const luckyCount = count("losowanie-kola");
+  const fiftyCount = count("podpowiedz-5050");
 
   return (
     <>
+      {flagActive("zloty-deszcz") && confettiKey > 0 && <ConfettiBurst key={confettiKey} />}
       <div className="mt-3.5 border-[6px] border-ugly-red bg-gradient-to-br from-ugly-pink via-ugly-yellow to-ugly-cyan p-4 shadow-[8px_8px_0_#000] [border-style:ridge]">
         <span className="inline-block -rotate-1 animate-ugly-blink border-[3px] border-white bg-ugly-red px-2 py-1 font-mono text-[11px] font-black uppercase text-ugly-yellow [border-style:outset]">
           ★ NOWOŚĆ ★ TEORIA ★ 630 PYTAŃ ★
@@ -67,23 +151,79 @@ function TheoryPage() {
           <Button variant="claim" size="sm" onClick={surpriseMe}>
             🎲 LOSUJ BEZ KRĘCENIA 🎲
           </Button>
+          {luckyCount > 0 && (
+            <Button variant="solar" size="sm" onClick={luckyDraw}>
+              🍀 SZCZĘŚLIWE LOSOWANIE ({luckyCount}) +5 PKT 🍀
+            </Button>
+          )}
+          {examModeOwned && !examRunning && (
+            <Button variant="slot" size="sm" onClick={() => { setExamLeft(EXAM_SECONDS); setExamEarned(0); setFlash("⏱️ EGZAMIN RUSZYŁ!!! 10 minut, wynik ukryty. Powodzenia, zdawaczu!!!"); }}>
+              ⏱️ START EGZAMINU (10:00) ⏱️
+            </Button>
+          )}
+          <Button variant="slot" size="sm" asChild>
+            <Link to="/sklep" search={DEFAULT_SEARCH}>🕹️ SKLEP ARCADE</Link>
+          </Button>
           <Badge variant="casino" className="p-2 text-xs">PULA: {poolLabel}</Badge>
         </div>
       </div>
 
+      {flash && (
+        <div className="mt-3.5 border-[4px] border-dotted border-ugly-red bg-ugly-yellow p-2 text-center text-xs font-black text-black">
+          {flash}
+        </div>
+      )}
+
       <div className="mt-3.5">
-        <ScoreBar score={score} streak={streak} answered={drawn} />
+        {examRunning ? (
+          <div className="flex flex-wrap items-center gap-2 border-[5px] border-ugly-red bg-black p-2.5 font-mono text-[11px] font-black text-ugly-yellow shadow-[5px_5px_0_#000] [border-style:ridge]">
+            <span className="animate-ugly-blink border-2 border-ugly-red bg-ugly-yellow px-2 py-1 text-sm text-black">
+              ⏱️ {examMm}:{examSs}
+            </span>
+            <span>TRYB EGZAMINACYJNY — WYNIK UKRYTY, STREAK TAJNY, STRES JAWNY</span>
+            <button
+              onClick={() => { setExamLeft(null); setExamEarned(0); setFlash("⏱️ Egzamin przerwany. CKE udaje, że nie widziało."); }}
+              className="ml-auto cursor-pointer border-[3px] border-white bg-ugly-red px-2 py-1 text-[10px] font-black uppercase text-white [border-style:outset]"
+            >
+              PRZERWIJ
+            </button>
+          </div>
+        ) : (
+          <ScoreBar score={balance} streak={streak} answered={drawn} />
+        )}
       </div>
 
       <div className="mt-3.5">
         <FortuneWheel onLanded={handleLanded} />
       </div>
 
+      {dogrywkaOffer && category && (
+        <div className="mt-3.5 border-[5px] border-casino-gold bg-black p-3 text-center shadow-[5px_5px_0_#000] [border-style:ridge]">
+          <div className="font-display text-lg font-black uppercase text-casino-gold">🔁 WTOPA... ALE JEST DOGRYWKA!!! 🔁</div>
+          <div className="mt-1 font-mono text-[11px] font-black text-casino-goldsoft">
+            Następne pytanie z kategorii {category.label} za PÓŁ nagrody. Bierzesz?
+          </div>
+          <div className="mt-2 flex flex-wrap justify-center gap-2">
+            <Button variant="claim" size="sm" onClick={takeDogrywka}>
+              BIORĘ DOGRYWKĘ ({count("dogrywka")} W PLECAKU)
+            </Button>
+            <Button variant="default" size="sm" onClick={() => setDogrywkaOffer(false)}>
+              NIE, CIERPIĘ W CISZY
+            </Button>
+          </div>
+        </div>
+      )}
+
       <div className="mt-3.5 w-full scroll-mt-24" id="pytanie">
         <TheoryQuestionCard
           question={question}
           onResult={handleResult}
           total={THEORY_QUESTIONS.length}
+          nextAward={displayAward}
+          removedOrig={removedOrig}
+          fiftyCount={fiftyCount}
+          onUse5050={use5050}
+          hideAwards={examRunning}
         />
       </div>
 

@@ -1,6 +1,4 @@
 import type { ReactNode } from "react";
-import { Badge } from "@/components/ui/badge";
-import { FungusWhisper } from "@/components/app/fungus";
 
 export function GuestStrip() {
   return (
@@ -18,11 +16,12 @@ export function GuestStrip() {
 
 export function Testimonials() {
   return (
-    <div className="mt-3.5 flex flex-wrap items-center gap-3.5 border-4 border-casino-gold bg-black p-2.5 text-[11px] font-bold text-casino-goldsoft shadow-[4px_4px_0_#000] [border-style:ridge]">
+    <div className="hide-in-focus mt-3.5 flex flex-wrap items-center gap-3.5 border-4 border-casino-gold bg-black p-2.5 text-[11px] font-bold text-casino-goldsoft shadow-[4px_4px_0_#000] [border-style:ridge]">
       <strong className="font-display tracking-wider text-casino-gold">⭐ OPINIE WYGRANYCH (100% prawdziwe*):</strong>
       <span>“Postawiłem wszystko na R2 i zdałem!!!” — Marek, Radom ⭐⭐⭐⭐⭐</span>
       <span>“Grzybnia? Nie widziałam. Bonus? Dostałam.” — Kasia ⭐⭐⭐⭐⭐</span>
       <span>“Kurs 4.41 na WPF siadł jak złoto” — Sebix ⭐⭐⭐⭐☆</span>
+      <span>“Myszka Miki, Kaczol Donald” — Pan Kryła ⭐⭐⭐⭐⭐</span>
     </div>
   );
 }
@@ -55,21 +54,6 @@ export function UglyBanner({ children }: { children: ReactNode }) {
   return (
     <div className="mt-3.5 animate-ugly-blink border-[5px] border-black bg-gradient-to-r from-ugly-red to-ugly-yellow p-2 text-center font-display text-sm tracking-[2px] text-black shadow-[6px_6px_0_#000] [border-style:ridge] [text-shadow:2px_2px_0_#fff]">
       {children}
-    </div>
-  );
-}
-
-export function FootHint() {
-  return (
-    <div className="mt-4 flex flex-wrap items-center gap-1">
-      <Badge variant="default">shardcn: Button</Badge>
-      <Badge variant="tech">Card</Badge>
-      <Badge variant="pkt">Badge</Badge>
-      <Badge variant="casino">Dialog</Badge>
-      <Badge variant="rtp">Accordion</Badge>
-      <span className="ml-1.5 border-2 border-dotted border-cke-green bg-black px-2 py-1 font-mono text-[10px] font-black uppercase text-cke-green">
-        theme: :root / .dark / .theme-casino — jedna klasa na &lt;html&gt; <FungusWhisper />
-      </span>
     </div>
   );
 }

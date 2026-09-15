@@ -5,6 +5,8 @@ import { DEFAULT_SEARCH, cleanSearch, validateSearch } from "../lib/search.js";
 import { PlanDetail } from "../components/app/plan-detail.jsx";
 import { Button } from "../components/ui/button.jsx";
 import { Alert, AlertDescription } from "../components/ui/alert.jsx";
+import { useWallet } from "../hooks/use-wallet.js";
+import { useBodyClass } from "../hooks/use-body-class.js";
 
 const examRouteApi = getRouteApi("/egzamin/$examId");
 
@@ -13,6 +15,10 @@ function ExamPage() {
   const search = examRouteApi.useSearch();
   const navigate = useNavigate();
   const exam = exams.find((e) => e.id === examId);
+
+  // TRYB SKUPIENIA ze sklepu: na stronie arkusza chowa całe kasyno (CSS).
+  const { flagActive } = useWallet();
+  useBodyClass("focus-mode", flagActive("tryb-skupienia"));
 
   useEffect(() => {
     window.scrollTo({ top: 0 });

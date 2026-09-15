@@ -4,6 +4,8 @@ import { exams } from "../data/exams.js";
 import { DEFAULT_SEARCH, validateSearch } from "../lib/search.js";
 import { JackpotBar, WinnerPopup, StickyBonusBar } from "../components/app/casino.jsx";
 import { SiteHeader } from "../components/app/site-header.jsx";
+import { useWallet } from "../hooks/use-wallet.js";
+import { useBodyClass } from "../hooks/use-body-class.js";
 import { GuestStrip, Testimonials, SiteFooter } from "../components/app/site-footer.jsx";
 import { Ticker } from "../components/ui/ticker.jsx";
 import "../index.css";
@@ -39,6 +41,10 @@ export const Route = createRootRoute({
 
 function RootDocument({ children }: { children: ReactNode }) {
   const totalPkt = exams.reduce((s, e) => s + e.scoring.reduce((a, g) => a + g.max, 0), 0);
+  // Flagi ADBLOCK / CISZA / STOP-KLATKA / CRT ze sklepu arcade.
+  const { flagActive } = useWallet();
+  useBodyClass("no-anim", flagActive("stop-klatka"));
+  useBodyClass("fx-crt", flagActive("motyw-crt"));
 
   return (
     <html lang="pl">
@@ -46,11 +52,13 @@ function RootDocument({ children }: { children: ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <Ticker tone="rainbow" speed="fast">
-          INF.04 • Technik programista • Arkusze PDF → HTML • Punktacja CKE live • 2021 — 2026 • styczeń / czerwiec •
-        </Ticker>
+        {!flagActive("cisza-kasyno") && (
+          <Ticker tone="rainbow" speed="fast" className="hide-in-focus">
+            INF.04 • Technik programista • Arkusze PDF • Punktacja CKE live • 2021 — 2026 • styczeń / czerwiec •
+          </Ticker>
+        )}
         <JackpotBar totalPkt={totalPkt} />
-        <WinnerPopup onClaim={() => {}} />
+        {!flagActive("adblock-popup") && <WinnerPopup onClaim={() => {}} />}
 
         <SiteHeader count={exams.length} />
 
@@ -61,7 +69,7 @@ function RootDocument({ children }: { children: ReactNode }) {
 
         <GuestStrip />
         <SiteFooter />
-        <StickyBonusBar onSpin={() => document.getElementById("grid")?.scrollIntoView({ behavior: "smooth" })} />
+        {!flagActive("adblock-sticky") && <StickyBonusBar onSpin={() => document.getElementById("grid")?.scrollIntoView({ behavior: "smooth" })} />}
         <Scripts />
       </body>
     </html>

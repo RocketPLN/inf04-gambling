@@ -146,9 +146,45 @@ export interface TheoryQuestionCardProps {
   question: TheoryQuestion | null;
   onResult?: (ok: boolean) => void;
   total?: number;
+  /** Nagroda za dobrą odpowiedź przy aktualnym streaku. */
+  nextAward?: number;
+  /** origIdx odpowiedzi wykreślonych przez 50/50. */
+  removedOrig?: number[];
+  /** Sztuki 50/50 w plecaku (do labelki przycisku). */
+  fiftyCount?: number;
+  onUse5050?: () => void;
+  /** Tryb egzaminacyjny: ukrywa nagrody i streak w tekstach. */
+  hideAwards?: boolean;
 }
 
-export function TheoryQuestionCard({ question, onResult, total }: TheoryQuestionCardProps) {
+/** ZŁOTY DESZCZ ze sklepu: konfetti za dobrą odpowiedź (czysty CSS, znika samo). */
+export function ConfettiBurst() {
+  const pieces = useMemo(() => {
+    const emoji = ["🎉", "💰", "⭐", "🪙", "💎", "🎰"];
+    return Array.from({ length: 36 }, (_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      delay: Math.random() * 0.7,
+      size: 14 + Math.random() * 18,
+      glyph: emoji[Math.floor(Math.random() * emoji.length)],
+    }));
+  }, []);
+  return (
+    <div aria-hidden>
+      {pieces.map((p) => (
+        <span
+          key={p.id}
+          className="arcade-confetti"
+          style={{ left: `${p.left}%`, fontSize: p.size, animationDelay: `${p.delay}s` }}
+        >
+          {p.glyph}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+export function TheoryQuestionCard({ question, onResult, total, nextAward, removedOrig, fiftyCount, onUse5050, hideAwards }: TheoryQuestionCardProps) {
   const [selected, setSelected] = useState<number | null>(null);
   const [revealed, setRevealed] = useState(false);
   const [imgOk, setImgOk] = useState(true);
@@ -227,9 +263,12 @@ export function TheoryQuestionCard({ question, onResult, total }: TheoryQuestion
             const o = question.odpowiedzi[origIdx];
             const isPick = selected === pos;
             const isGood = origIdx === question.poprawna;
+            const struck = (removedOrig ?? []).includes(origIdx);
             let cls = "border-win95 bg-white text-black hover:bg-ugly-yellow";
             let letterCls = "bg-black text-ugly-yellow";
-            if (revealed && isGood) {
+            if (struck && !revealed) {
+              cls = "border-win95 bg-win95 text-gray-500 line-through opacity-70";
+            } else if (revealed && isGood) {
               cls = "border-cke-green bg-cke-green text-white";
               letterCls = "bg-white text-cke-green";
             } else if (revealed && isPick && !correct) {
@@ -242,11 +281,11 @@ export function TheoryQuestionCard({ question, onResult, total }: TheoryQuestion
               <button
                 key={origIdx}
                 onClick={() => answer(pos)}
-                disabled={revealed}
+                disabled={revealed || struck}
                 className={`flex min-h-[64px] cursor-pointer items-center gap-3 border-[4px] p-3 text-left text-base font-black shadow-[4px_4px_0_#000] [border-style:outset] ${cls}`}
               >
                 <span className={`grid size-10 shrink-0 place-items-center border-2 border-current font-display text-xl ${letterCls}`}>
-                  {String.fromCharCode(65 + pos)}
+                  {struck && !revealed ? "✗" : String.fromCharCode(65 + pos)}
                 </span>
                 <span className="min-w-0 flex-1">{o}</span>
                 {revealed && isGood && <span className="shrink-0 text-2xl">★</span>}
@@ -255,9 +294,18 @@ export function TheoryQuestionCard({ question, onResult, total }: TheoryQuestion
             );
           })}
         </div>
+        {!revealed && (fiftyCount ?? 0) > 0 && onUse5050 && (
+          <div className="mt-3 text-center">
+            <Button variant="solar" size="sm" onClick={onUse5050}>
+              💡 UŻYJ 50/50 ({fiftyCount} W PLECAKU) 💡
+            </Button>
+          </div>
+        )}
         {revealed && (
           <div className={`mt-5 border-[4px] p-3 text-sm font-black sm:text-base ${correct ? "border-cke-green bg-green-100 text-black" : "border-ugly-red bg-ugly-yellow text-black"} [border-style:inset]`}>
-            {correct ? "🎉 DOBRZE!!! +100 PKT* (*wirtualnych) + STREAK ROŚNIE!!! 🎉" : "💸 PUDŁO!!! KASYNO ZABIERA PUNKTY, ALE NAUKA ZOSTAJE!!! 💸"}
+            {correct
+              ? (hideAwards ? "🎉 DOBRZE!!! (wynik ukryty — tryb egzaminacyjny) 🎉" : `🎉 DOBRZE!!! +${nextAward ?? "?"} PKT DO SKLEPU ARCADE + STREAK ROŚNIE!!! 🎉`)
+              : (hideAwards ? "💸 PUDŁO. (tryb egzaminacyjny, bez podpowiedzi)" : "💸 PUDŁO!!! KASYNO ZABIERA PUNKTY, ALE NAUKA ZOSTAJE!!! 💸")}
             {question.wyjasnienie && <div className="mt-2 border-t-2 border-dashed border-current pt-2 font-bold">💡 {question.wyjasnienie}</div>}
           </div>
         )}
@@ -270,7 +318,7 @@ export function ScoreBar({ score, streak, answered }: { score: number; streak: n
   const total = THEORY_QUESTIONS.length;
   return (
     <div className="flex flex-wrap items-center gap-2 border-[5px] border-casino-gold bg-black p-2.5 font-mono text-[11px] font-black text-casino-goldsoft shadow-[5px_5px_0_#000] [border-style:ridge]">
-      <span className="border-2 border-casino-gold bg-casino-felt px-2 py-1">💰 PUNKTY: {score}</span>
+      <span className="border-2 border-casino-gold bg-casino-felt px-2 py-1">💰 PORTFEL: {score} (SKLEP ARCADE)</span>
       <span className="border-2 border-ugly-red bg-ugly-yellow px-2 py-1 text-black">🔥 STREAK: {streak}</span>
       <span className="border-2 border-cke-green bg-white px-2 py-1 text-black">🎰 WYLUSOWANO: {answered}/{total} (baza)</span>
       <span className="text-[9px] text-win95">RTP 98.7%* (*wzrost zdawalności wraz z nauką)</span>
