@@ -247,7 +247,7 @@ export function TheoryQuestionCard({ question, onResult, total, nextAward, earne
           <div className="mt-4 border-[4px] border-black bg-win95 p-2 shadow-[4px_4px_0_#000] [border-style:inset]">
             <img
               src={question.img}
-              alt="Grafika do pytania (ee-informatyk.pl)"
+              alt="Grafika do pytania"
               loading="lazy"
               referrerPolicy="no-referrer"
               onError={() => setImgOk(false)}
@@ -257,7 +257,7 @@ export function TheoryQuestionCard({ question, onResult, total, nextAward, earne
         )}
         {question.img && !imgOk && (
           <div className="mt-4 border-[3px] border-dashed border-ugly-pink bg-white p-2 font-mono text-[10px] font-black text-gray-600">
-            [IMG] Grafika do pytania nie ładuje się (hotlink zablokowany) — otwórz oryginał na ee-informatyk.pl
+            [IMG] Grafika nie ładuje się z naszego CDN — otwórz oryginał na ee-informatyk.pl
           </div>
         )}
         <div className="mt-5 grid grid-cols-1 gap-3 md:grid-cols-2">

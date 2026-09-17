@@ -73,7 +73,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Która struktura danych może być zaimplementowana przy wykorzystaniu jedynie wymienionych metod?",
     odpowiedzi: ["stos", "tablica", "kolejka FIFO", "drzewo binarne"],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-3.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-3.jpg",
   },
   {
     id: "ee-4",
@@ -112,7 +112,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "sortującego napis od znaku o najniższym kodzie ASCII do znaku o najwyższym kodzie",
     ],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-6.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-6.jpg",
   },
   {
     id: "ee-7",
@@ -126,7 +126,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "podzielne przez wartość zmiennej check",
     ],
     poprawna: 1,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-7.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-7.jpg",
   },
   {
     id: "ee-8",
@@ -147,7 +147,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "GoldPoints, Name, Id, Age",
     ],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-9.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-9.jpg",
   },
   {
     id: "ee-10",
@@ -160,7 +160,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Pełnią funkcję konstruktorów w zależności od liczby parametrów",
     ],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-10.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-10.jpg",
   },
   {
     id: "ee-11",
@@ -174,7 +174,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "(Name), UseWaitCursor, BackgroundImage",
     ],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-11.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-11.jpg",
   },
   {
     id: "ee-12",
@@ -208,7 +208,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "&lt;Entry IsPassword= &quot;true&quot; /&gt;",
     ],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-14.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-14.jpg",
   },
   {
     id: "ee-15",
@@ -230,7 +230,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "obsługiwanie mechanizmu obietnic (promises) lub obserwatora (observable) w programowaniu asynchronicznym",
     ],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-16.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-16.jpg",
   },
   {
     id: "ee-17",
@@ -244,7 +244,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "x:TypeArguments=&quot;Thickness&quot;\r\niOS= &quot;0, 20, 0, 0&quot;\r\nAndroid= &quot;0, 0, 0, 0&quot;\r\nWinPhone= &quot;0, 0, 0, 0&quot;",
     ],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-17.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-17.jpg",
   },
   {
     id: "ee-18",
@@ -283,7 +283,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "jedynie przycisk i obsłużyć generowane nim zdarzenie click",
     ],
     poprawna: 1,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-20.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-20.jpg",
   },
   {
     id: "ee-21",
@@ -305,7 +305,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Przedstawione listingi zawierają implementację funkcji oraz zdefiniowany jeden test automatyczny sprawdzający\r\nzachowanie funkcji w przypadku, gdy argumentem jest wartość ujemna. W miejscu kropek należy wstawić drugi test\r\nsprawdzający działanie funkcji, gdy argumentem jest wartość dodatnia. Który z kodów odpowiada temu testowi?",
     odpowiedzi: ["A", "B", "C", "D"],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-22.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-22.jpg",
   },
   {
     id: "ee-23",
@@ -319,7 +319,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Właściwość value radio grupy przechowuje tekst podpisu dla każdego radio-button",
     ],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-23.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-23.jpg",
   },
   {
     id: "ee-24",
@@ -354,7 +354,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       'Na przedstawionych rysunkach znajduje się okno aplikacji w stanie początkowym oraz po wypełnieniu danych. Zakładając, że pole "Dostępne środki" jest przeznaczone do wprowadzania wartości typu rzeczywistego, wskaż składowe struktury, które optymalnie pasują do tych danych',
     odpowiedzi: ["Kod 1", "Kod 2", "Kod 3", "Kod 4"],
     poprawna: 1,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-26.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-26.jpg",
   },
   {
     id: "ee-27",
@@ -363,7 +363,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Na podstawie definicji przedstawionej w ramce wskaż, który rysunek przedstawia komponent Chip zdefiniowany w bibliotece Angular Material.",
     odpowiedzi: ["Rysunek 1", "Rysunek 2", "Rysunek 3", "Rysunek 4"],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-27.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-27.jpg",
   },
   {
     id: "ee-28",
@@ -405,7 +405,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Przedstawiony diagram Gantta dotyczy projektu informatycznego. Zakładając, że każdy członek zespołu ma wystarczające umiejętności, aby wykonać każde z zadań oraz do każdego z zadań można przydzielić tylko jedną osobę, która poświęca na zadanie cały dzień pracy, to minimalnie zespół musi liczyć:",
     odpowiedzi: ["5 osób", "4 osoby", "1 osobę", "2 osoby"],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-31.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-31.jpg",
   },
   {
     id: "ee-32",
@@ -427,7 +427,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       'W przedstawionym fragmencie kodu Java wskaż nazwę zmiennej, która będzie w stanie przechowywać wartość "T"',
     odpowiedzi: ["zm1", "zm2", "zm4", "zm3"],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-33.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-33.jpg",
   },
   {
     id: "ee-34",
@@ -473,7 +473,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "prawo cytatu",
     ],
     poprawna: 1,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-37.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-37.jpg",
   },
   {
     id: "ee-38",
@@ -537,7 +537,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "jedną zmienną typu napisowego, jedną typu rzeczywistego, jedną całkowitego, jedną znakowego i jedną logiczną",
     ],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-42.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-42.jpg",
   },
   {
     id: "ee-43",
@@ -550,7 +550,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "pole nie może być modyfikowane w kodzie klasy",
     ],
     poprawna: 1,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-43.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-43.jpg",
   },
   {
     id: "ee-44",
@@ -567,7 +567,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Zakładając, że przedstawiona hierarchia klas reprezentuje figury geometryczne została prawidłowo zaimplementowana funkcjonalnie, a każda z możliwych figur zawiera metodę liczenia pola, to sposób deklaracji metody liczPole() wskazuje, że znajduje się ona w klasie",
     odpowiedzi: ["figura", "trapez", "czworokąt", "trójkąt"],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-45.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-45.jpg",
   },
   {
     id: "ee-46",
@@ -576,7 +576,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Z przedstawionego fragmentu kodu można wywnioskować, że element o nazwie rysunek jest",
     odpowiedzi: ["konstruktorem", "polem klasy", "metodą klasy", "obiektem"],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-46.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-46.jpg",
   },
   {
     id: "ee-47",
@@ -585,7 +585,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "W aplikacji desktopowej zdefiniowano listę rozwijaną i przypisano cztery funkcje obsługujące zdarzenia tej kontrolki. Który komunikat zostanie wyświetlony w momencie wyboru w liście?",
     odpowiedzi: ["Zdarzenie 3", "Zdarzenie 4", "Zdarzenie 1", "Zdarzenie 2"],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-47.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-47.jpg",
   },
   {
     id: "ee-48",
@@ -594,7 +594,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Programista chce dobrać najszybciej działający algorytm przetwarzania danych w swojej aplikacji. Na podstawie przedstawionej w tabeli złożoności obliczeniowej, należy wybrać algorytm numer",
     odpowiedzi: ["2 lub 3", "3", "4", "1 lub 5"],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-48.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-48.jpg",
   },
   {
     id: "ee-49",
@@ -616,7 +616,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "listę",
     ],
     poprawna: 1,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-50.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-50.jpg",
   },
   {
     id: "ee-51",
@@ -625,7 +625,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Przedstawiony listing zawiera pola pewnej klasy. Które pole (pola) są dostępne z poziomu programu głównego poprzez wywołanie postaci nazwaObiektu.nazwaPola?",
     odpowiedzi: ["p1", "p3 i p4", "tylko p3", "tylko p3, p4, p5"],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-51.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-51.jpg",
   },
   {
     id: "ee-52",
@@ -652,7 +652,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "tylko jeden element o treści Harry Potter",
     ],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-53.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-53.jpg",
   },
   {
     id: "ee-54",
@@ -666,7 +666,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Clean Solution",
     ],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-54.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-54.jpg",
   },
   {
     id: "ee-55",
@@ -692,7 +692,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "&lt; ul class=&quot;navbar-nav&quot; &gt; ... &lt; /ul&gt;",
     ],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-56.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-56.jpg",
   },
   {
     id: "ee-57",
@@ -706,7 +706,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "zmiany pola edycyjnego",
     ],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-57.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-57.jpg",
   },
   {
     id: "ee-58",
@@ -744,7 +744,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "definicją funkcji strzałkowej",
     ],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-60.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-60.jpg",
   },
   {
     id: "ee-61",
@@ -766,7 +766,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "sumę wczytanych liczb",
     ],
     poprawna: 1,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-62.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-62.jpg",
   },
   {
     id: "ee-63",
@@ -775,7 +775,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Którego kodu może dotyczyć przedstawiona treść wygenerowana podczas uruchomienia programu Java>",
     odpowiedzi: ["Kodu 4", "Kodu 2", "Kodu 3", "Kodu 1"],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-63.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-63.jpg",
   },
   {
     id: "ee-64",
@@ -801,7 +801,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Dokumentacja 2",
     ],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-65.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-65.jpg",
   },
   {
     id: "ee-66",
@@ -809,7 +809,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
     tresc: "Przedstawiony zbiór operatorów należy do grupy operatorów",
     odpowiedzi: ["arytmetycznych", "przypisania", "logicznych", "porównania"],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-66.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-66.jpg",
   },
   {
     id: "ee-67",
@@ -822,7 +822,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "testy funkcjonalne",
     ],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-67.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-67.jpg",
   },
   {
     id: "ee-68",
@@ -831,7 +831,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Którą wartość zwróci funkcja zapisana językiem C++, jeżeli jej parametr wejściowym jest tablica utworzona w następujący sposób: int tablica[6] = {3,4,2,4,10,0);?",
     odpowiedzi: ["10", "0", "23", "20"],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-68.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-68.jpg",
   },
   {
     id: "ee-69",
@@ -855,7 +855,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Wskaż uproszczony kod XAML dla kontrolek w przedstawionym oknie dialogowym",
     odpowiedzi: ["Kod 3", "Kod 1", "Kod 2", "Kod 4"],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-71.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-71.jpg",
   },
   {
     id: "ee-72",
@@ -863,7 +863,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
     tresc: "Przedstawiony kod napisany w języku XML/XAML definiuje",
     odpowiedzi: ["stepper", "listę rozwijaną", "suwak", "przełącznik"],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-72.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-72.jpg",
   },
   {
     id: "ee-73",
@@ -871,7 +871,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
     tresc: "Przedstawiony opis licencji w ramce wskazuje, że jest to licencja",
     odpowiedzi: ["OEM", "Open Source", "Freeware", "Shareware"],
     poprawna: 1,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-73.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-73.jpg",
   },
   {
     id: "ee-74",
@@ -880,7 +880,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "W wyniku wykonania przedstawionego kodu w konsoli wyświetlona zostanie liczba",
     odpowiedzi: ["108", "115", "73", "0"],
     poprawna: 1,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-74.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-74.jpg",
   },
   {
     id: "ee-75",
@@ -900,7 +900,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "określony element (argument) jest wartością z zakresu od 0 do 4",
     ],
     poprawna: 1,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-76.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-76.jpg",
   },
   {
     id: "ee-77",
@@ -914,7 +914,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Deklaracji 4",
     ],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-77.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-77.jpg",
   },
   {
     id: "ee-78",
@@ -928,7 +928,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "zamien(m,n); //m,n - zmienne typu całkowitego",
     ],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-78.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-78.jpg",
   },
   {
     id: "ee-79",
@@ -950,7 +950,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "c jest większa niż bieżąca długość łańcucha",
     ],
     poprawna: 1,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-80.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-80.jpg",
   },
   {
     id: "ee-81",
@@ -964,7 +964,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "do tablicy liczby, na jej końcu, dodawane są kolejne wartości",
     ],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-81.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-81.jpg",
   },
   {
     id: "ee-82",
@@ -973,7 +973,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Na rysunku przedstawiony jest fragment schematu blokowego pewnego algorytmu. Ile razy zostanie sprawdzony warunek n&lt;7?",
     odpowiedzi: ["8", "5", "7", "6"],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-82.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-82.jpg",
   },
   {
     id: "ee-83",
@@ -994,7 +994,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "bąbelkowe",
     ],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-84.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-84.jpg",
   },
   {
     id: "ee-85",
@@ -1015,7 +1015,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
     tresc: "Który blok kodu zawiera przykład użycia rekurencji?",
     odpowiedzi: ["Blok 1", "Blok 3", "Blok 4", "Blok 2"],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-86.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-86.jpg",
   },
   {
     id: "ee-87",
@@ -1032,7 +1032,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "W wyniku wykonania przedstawionego kodu napisanego w języku C++ w konsoli zostanie wyświetlony ciąg liczb",
     odpowiedzi: ["1 2 3 4 5 6", "2 3 4 5 6 7", "1 2 3 4 5", "2 3 4 5 6"],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-88.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-88.jpg",
   },
   {
     id: "ee-89",
@@ -1053,7 +1053,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "TextBox - dla biblioteki WPF; JTextField - dla biblioteki Swing",
     ],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-90.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-90.jpg",
   },
   {
     id: "ee-91",
@@ -1067,7 +1067,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Bazowa. Bazowa.",
     ],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-91.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-91.jpg",
   },
   {
     id: "ee-92",
@@ -1076,7 +1076,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "W przedstawionym kodzie zostało zaprezentowane jedno z podstawowych założeń programowania obiektowego. Jest to",
     odpowiedzi: ["polimorfizm", "abstrakcja", "dziedziczenie", "hermetyzacja"],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-92.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-92.jpg",
   },
   {
     id: "ee-93",
@@ -1109,7 +1109,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "zapisanie tytułu okna do obiektu Tekst",
     ],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-95.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-95.jpg",
   },
   {
     id: "ee-96",
@@ -1123,7 +1123,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "nadany tytuł strony: &quot;Egzamin zawodowy&quot;",
     ],
     poprawna: 1,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-96.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-96.jpg",
   },
   {
     id: "ee-97",
@@ -1145,7 +1145,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "liczby z przedziału od 0 do 100",
     ],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-98.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-98.jpg",
   },
   {
     id: "ee-99",
@@ -1167,7 +1167,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "&quot;%s dodawania: %d + %.2f = %f&quot;, &quot;Wynik&quot;, 5, 5.12345, 10.123450",
     ],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-100.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-100.jpg",
   },
   {
     id: "ee-101",
@@ -1176,7 +1176,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Jaki ciąg tekstowy zostanie wyświetlony po wykonaniu jednego z przedstawionych kodów?",
     odpowiedzi: ["{{2+2}}", "{2+2}", "4", "{4}"],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-101.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-101.jpg",
   },
   {
     id: "ee-102",
@@ -1266,7 +1266,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Które logo przedstawia narzędzie, którego nie wykorzystuje się do tworzenia aplikacji mobilnych",
     odpowiedzi: ["4", "1", "3", "2"],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-110.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-110.jpg",
   },
   {
     id: "ee-111",
@@ -1303,7 +1303,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "wszystkie nieparzyste elementy tablicy",
     ],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-113.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-113.jpg",
   },
   {
     id: "ee-114",
@@ -1312,7 +1312,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "W firmie IT obowiązują przedstawione wytyczne dotyczące zarządzania projektami, Wynika z nich, że firma stosuje model zarządzania",
     odpowiedzi: ["prototypowy", "zwinny", "kaskadowy", "spiralny"],
     poprawna: 1,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-114.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-114.jpg",
   },
   {
     id: "ee-115",
@@ -1332,7 +1332,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "są w nich ustawione te same wartości domyślne",
     ],
     poprawna: 1,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-116.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-116.jpg",
   },
   {
     id: "ee-117",
@@ -1353,7 +1353,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "wygenerowania 8-znakowego losowego napisu składającego się z liter",
     ],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-118.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-118.jpg",
   },
   {
     id: "ee-119",
@@ -1408,7 +1408,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Za pomocą React.js i Angular zapisano funkcjonalnie równoważne kody źródłowe. Aby w metodzie handleSubmit można było wyświetlić zawartość kontrolki input w miejscu oznaczonym ??? należy odnieść się do atrybutu o nazwie",
     odpowiedzi: ["nazwa4", "nazwa2", "nazwa1", "nazwa3"],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-123.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-123.jpg",
   },
   {
     id: "ee-124",
@@ -1416,7 +1416,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
     tresc: "Który kod jest implementacją przedstawionego fragmentu algorytmu?",
     odpowiedzi: ["Kod 1", "Kod 2", "Kod 3", "Kod 4"],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-124.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-124.jpg",
   },
   {
     id: "ee-125",
@@ -1424,7 +1424,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
     tresc: "Dla podanego algorytmu złożoność obliczeniowa jest równa",
     odpowiedzi: ["O(n log n)", "O(n)", "O(1)", "O(n2)"],
     poprawna: 1,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-125.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-125.jpg",
   },
   {
     id: "ee-126",
@@ -1432,7 +1432,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
     tresc: "Wskaż kod funkcjonalnie równorzędny przedstawionemu",
     odpowiedzi: ["Kod 1", "Kod 2", "Kod 3", "Kod 4"],
     poprawna: 1,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-126.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-126.jpg",
   },
   {
     id: "ee-127",
@@ -1453,7 +1453,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "stanowisko zdalnego uwalniania",
     ],
     poprawna: 1,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-128.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-128.jpg",
   },
   {
     id: "ee-129",
@@ -1589,7 +1589,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "int tab2 = new MojaTablica();",
     ],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-140.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-140.jpg",
   },
   {
     id: "ee-141",
@@ -1598,7 +1598,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Dla podanego fragmentu kodu Java zostanie wygenerowany wyjątek, gdy zmienna index przyjmie wartość:",
     odpowiedzi: ["5", "0", "1", "7"],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-141.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-141.jpg",
   },
   {
     id: "ee-142",
@@ -1620,7 +1620,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "obraz jest po lewej stronie, a pozostałe elementy po prawej.",
     ],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-143.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-143.jpg",
   },
   {
     id: "ee-144",
@@ -1662,7 +1662,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Wewnątrz klasy pracownik zdefiniowano przedstawione metody. Do której z nich można zgodnie z jej przeznaczeniem dopisać element diagnostyczny o treści: cout &lt;&lt; &quot;Obiekt został usunięty&quot;;?",
     odpowiedzi: ["wypisz", "~pracownik", "pracownik", "operator=="],
     poprawna: 1,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-147.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-147.jpg",
   },
   {
     id: "ee-148",
@@ -1675,7 +1675,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "zadeklarować własną funkcję JavaScript o nazwie min.js.",
     ],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-148.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-148.jpg",
   },
   {
     id: "ee-149",
@@ -1689,7 +1689,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "pseudolosowa nie większa niż 999.",
     ],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-149.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-149.jpg",
   },
   {
     id: "ee-150",
@@ -1703,7 +1703,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Zmienna x powinna być inicjowana wartością wynoszącą 1 a nie O.",
     ],
     poprawna: 1,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-150.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-150.jpg",
   },
   {
     id: "ee-151",
@@ -1712,7 +1712,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Wskaż kod poprawny składniowo dla formatu JSON, służącego do wymiany danych pomiędzy częściami backend i frontend aplikacji.",
     odpowiedzi: ["Kod1", "Kod2", "Kod3", "Kod4"],
     poprawna: 1,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-151.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-151.jpg",
   },
   {
     id: "ee-152",
@@ -1726,7 +1726,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "nieprawidłowym warunku pętli, który sprawia, że pętla jest nieskończona",
     ],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-152.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-152.jpg",
   },
   {
     id: "ee-153",
@@ -1740,7 +1740,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Bezpieczeństwa",
     ],
     poprawna: 1,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-153.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-153.jpg",
   },
   {
     id: "ee-154",
@@ -1757,7 +1757,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "W ramce zaprezentowano fragment opisu metody compile języka Java stosowanej przy pracy z wyrażeniami regularnymi. Który znak należy zastosować, aby znaleźć dopasowanie na końcu napisu?",
     odpowiedzi: ["^", "|", "$", "."],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-155.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-155.jpg",
   },
   {
     id: "ee-156",
@@ -1773,7 +1773,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
     tresc: "Wskaż kod, który wygeneruje przedstawioną kontrolkę.",
     odpowiedzi: ["Kod1", "Kod2", "Kod3", "Kod4"],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-157.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-157.jpg",
   },
   {
     id: "ee-158",
@@ -1787,7 +1787,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "# wyswietlenie elementu tablicy",
     ],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-158.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-158.jpg",
   },
   {
     id: "ee-159",
@@ -1801,7 +1801,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "funkcję wypełniającą dane w formularzu podczas jego inicjacji.",
     ],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-159.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-159.jpg",
   },
   {
     id: "ee-160",
@@ -1822,7 +1822,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Programując przedstawioną na obrazie kontrolkę stepper w aplikacji mobilnej należy obsłużyć zmienną, która przechowuje zawsze jej aktualną wartość. Do uzyskania takiej funkcjonalności można skorzystać ze zdarzenia.",
     odpowiedzi: ["DescendantAdded", "ValueChanged", "Unfocused", "SizeChanged"],
     poprawna: 1,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-161.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-161.jpg",
   },
   {
     id: "ee-162",
@@ -1851,7 +1851,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "rozpoczęcie sesji z istniejącym repozytorium i pobranie kodu projektu do lokalnego folderu",
     ],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-164.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-164.jpg",
   },
   {
     id: "ee-165",
@@ -1865,7 +1865,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Największego Wspólnego Dzielnika",
     ],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-165.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-165.jpg",
   },
   {
     id: "ee-166",
@@ -1882,7 +1882,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Wskaż prawidłową definicję interfejsu (szablonu klasy) w języku Java.",
     odpowiedzi: ["Definicja 1", "Definicja 2", "Definicja 3", "Definicja 4"],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-167.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-167.jpg",
   },
   {
     id: "ee-168",
@@ -1890,7 +1890,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
     tresc: "Definicja dotyczy wzorca projektowego o nazwie",
     odpowiedzi: ["Fasada", "Prototyp", "Dekorator", "Kompozyt"],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-168.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-168.jpg",
   },
   {
     id: "ee-169",
@@ -1937,7 +1937,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Wskaż kod, który jest implementacją w języku C++ przedstawionego fragmentu algorytmu",
     odpowiedzi: ["kod 1", "kod 2", "kod 3", "kod 4"],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-172.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-172.jpg",
   },
   {
     id: "ee-173",
@@ -1958,7 +1958,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Wskaż kod za pomocą, którego zostanie wygenerowane okno dialogowe widoczne na obrazie. Dla uproszczenia kodu, pominięto atrybuty znaczników",
     odpowiedzi: ["kod 1", "kod 2", "kod 3", "kod 4"],
     poprawna: 1,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-174.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-174.jpg",
   },
   {
     id: "ee-175",
@@ -1987,7 +1987,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Frameworkiem CSS służącym do określenia wyglądu aplikacji internetowych, którego klasy zostały zastosowane na prezentowanym przykładzie jest",
     odpowiedzi: ["Yaml", "Angular", "Symfony", "Bootstrap"],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-177.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-177.jpg",
   },
   {
     id: "ee-178",
@@ -2009,7 +2009,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Po wykonaniu przedstawionego kodu wartość przechowywana w zmiennej b wynosi",
     odpowiedzi: ["5", "2", "11", "20"],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-179.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-179.jpg",
   },
   {
     id: "ee-180",
@@ -2018,7 +2018,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Na podstawie opisu umieszczonego w ramce, wskaż który rysunek przedstawia element odpowiadający klasie Badge zdefiniowanej w bibliotece Bootstrap",
     odpowiedzi: ["Rysunek 1", "Rysunek 2", "Rysunek 3", "Rysunek 4"],
     poprawna: 1,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-180.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-180.jpg",
   },
   {
     id: "ee-181",
@@ -2031,7 +2031,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "dziedziczy po Vehide",
     ],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-181.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-181.jpg",
   },
   {
     id: "ee-182",
@@ -2040,7 +2040,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Którą nazwę kontrolki należy zapisać w pierwszej linii kodu, w miejscu &lt;???, aby została ona wyrenderowana w przedstawiony sposób?",
     odpowiedzi: ["Switch", "SeekBar", "Spinner", "RatinoBar"],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-182.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-182.jpg",
   },
   {
     id: "ee-183",
@@ -2066,7 +2066,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "pod warunkiem udostępnienia go na tej samej licencji",
     ],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-184.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-184.jpg",
   },
   {
     id: "ee-185",
@@ -2093,7 +2093,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Może zawierał małe i wielkie litery oraz cyfry",
     ],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-186.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-186.jpg",
   },
   {
     id: "ee-187",
@@ -2107,7 +2107,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "wybrania daty",
     ],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-187.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-187.jpg",
   },
   {
     id: "ee-188",
@@ -2133,7 +2133,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "kubełkowego",
     ],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-189.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-189.jpg",
   },
   {
     id: "ee-190",
@@ -2150,7 +2150,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "W przedstawionym kodzie zdefiniowano abstrakcyjną klasę Figura i dziedziczącą po niej klasę prostokąta ze zdefiniowanymi polami i konstruktorami. Wskaż minimalną implementację sekcji /* metody klasy */ dla klasy Prostokąt",
     odpowiedzi: ["Kod 1", "Kod 2", "Kod 3", "Kod 4"],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-191.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-191.jpg",
   },
   {
     id: "ee-192",
@@ -2179,7 +2179,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "W tabeli przedstawiono doświadczenie zawodowe pracowników firmy IT. Do zbudowania aplikacji front-end powinien/powinna zostać przydzielony/a",
     odpowiedzi: ["Krzysztof", "Anna", "Patryk", "Ewa"],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-194.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-194.jpg",
   },
   {
     id: "ee-195",
@@ -2193,7 +2193,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "O, 1, 2, 3, 4, 5, 6, 7, 8, 9",
     ],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-195.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-195.jpg",
   },
   {
     id: "ee-196",
@@ -2222,7 +2222,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
     tresc: "Przedstawiony kod XAML zostanie wyrenderowany jako",
     odpowiedzi: ["Rysunek 1", "Rysunek 2", "Rysunek 3", "Rysunek 4"],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-198.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-198.jpg",
   },
   {
     id: "ee-199",
@@ -2235,7 +2235,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "tablicę asocjacyjną (słownik)",
     ],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-199.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-199.jpg",
   },
   {
     id: "ee-200",
@@ -2249,7 +2249,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "nie jest ona dostępna z poziomu klas, które są zaprzyjaźnione z klasą Kalkulator",
     ],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-200.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-200.jpg",
   },
   {
     id: "ee-201",
@@ -2271,7 +2271,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Przedstawiony algorytm może być zaimplementowany w języku Java w oparciu o instrukcję",
     odpowiedzi: ["if", "switch", "try", "while"],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-202.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-202.jpg",
   },
   {
     id: "ee-203",
@@ -2285,7 +2285,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "liczby całkowite",
     ],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-203.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-203.jpg",
   },
   {
     id: "ee-204",
@@ -2298,7 +2298,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "użyteczności",
     ],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-204.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-204.jpg",
   },
   {
     id: "ee-205",
@@ -2335,7 +2335,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Przedstawiony diagram Ganna dotyczy projektu informatycznego. Zakładając, że każdy członek zespołu ma wystarczające umiejętności, aby wykonać każde z zadań oraz do każdego z zadań można przydzielić tylko jedną osobę, która poświęca na zadanie cały dzień pracy, to minimalnie zespól musi liczyć",
     odpowiedzi: ["1 osobę", "5 osób", "4 osoby", "2 osoby"],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-208.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-208.jpg",
   },
   {
     id: "ee-209",
@@ -2373,7 +2373,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Na przedstawionych funkcjonalnie równoważnych sobie kodach źródłowych w wyniku wykonania operacji w zmiennej b zostanie zapisana wartość",
     odpowiedzi: ["6", "596", "5", "5.96"],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-212.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-212.jpg",
   },
   {
     id: "ee-213",
@@ -2434,7 +2434,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "szybki rozwój aplikacji",
     ],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-217.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-217.jpg",
   },
   {
     id: "ee-218",
@@ -6285,7 +6285,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Klasa Mieszkaniec zawiera pola: imie, nazwisko, ulica, nrDomu, rokUrodzenia. w klasie zdefiniowano przedstawione w punktach konstruktory (zapisano jedynie typy argumrntów). Do inicjowania obiektu konstruktorem kopiującym wykorzystany zostanie konstruktor przedstawiony w punkcie",
     odpowiedzi: ["1", "2", "3", "4"],
     poprawna: 1,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-554.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-554.jpg",
   },
   {
     id: "ee-555",
@@ -6312,7 +6312,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "jedynie stosując zapis pierwszy, zmienna a zostanie zwiększona o 1",
     ],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-556.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-556.jpg",
   },
   {
     id: "ee-557",
@@ -6339,7 +6339,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "trzy paragrafy, w każdym z nich napis o treści: {tag}",
     ],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-558.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-558.jpg",
   },
   {
     id: "ee-559",
@@ -6387,7 +6387,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "pole autor jest niedostępne z tego poziomu",
     ],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-562.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-562.jpg",
   },
   {
     id: "ee-563",
@@ -6414,7 +6414,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "usunięcia kontrolek z pamięci operacyjnej",
     ],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-564.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-564.jpg",
   },
   {
     id: "ee-565",
@@ -6428,7 +6428,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "zamienić w napisie wielkie litery na małe",
     ],
     poprawna: 1,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-565.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-565.jpg",
   },
   {
     id: "ee-566",
@@ -6441,7 +6441,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Klasa2 jest klasą bazową",
     ],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-566.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-566.jpg",
   },
   {
     id: "ee-567",
@@ -6513,7 +6513,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "zarządzanie wirtualnymi dyskami emulacji systemu android",
     ],
     poprawna: 1,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-572.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-572.jpg",
   },
   {
     id: "ee-573",
@@ -6526,7 +6526,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "cztery pola edycyjne, dwa pola opcji i dwa przyciski",
     ],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-573.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-573.jpg",
   },
   {
     id: "ee-574",
@@ -6540,7 +6540,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Instrukcja 3",
     ],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-574.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-574.jpg",
   },
   {
     id: "ee-575",
@@ -6592,7 +6592,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Funkcja zaprzyjaźniona, mimo że jest zdefiniowana na zewnątrz klasy ma dostęp do jej prywatnych elementów.",
     ],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-578.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-578.jpg",
   },
   {
     id: "ee-579",
@@ -6618,7 +6618,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "warunek nie ma sensu, środowisko uruchomieniowe samo sprawdzi argument dzielenia",
     ],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-580.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-580.jpg",
   },
   {
     id: "ee-581",
@@ -6639,7 +6639,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "bąbelkowego",
     ],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-582.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-582.jpg",
   },
   {
     id: "ee-583",
@@ -6678,7 +6678,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "zapisać kod bez pętli",
     ],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-585.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-585.jpg",
   },
   {
     id: "ee-586",
@@ -6692,7 +6692,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "wywołanie funkcji, aby zainicjować stronę w przeglądarce",
     ],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-586.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-586.jpg",
   },
   {
     id: "ee-587",
@@ -6718,7 +6718,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "średnia arytmetyczna elementów tablicy",
     ],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-588.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-588.jpg",
   },
   {
     id: "ee-589",
@@ -6739,7 +6739,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Przedstawiony format plików, służący, między innymi, do wymiany danych pomiędzy częścią back-end a front-end aplikacji internetowej, to",
     odpowiedzi: ["JSX", "XML", "YAML", "JSON"],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-590.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-590.jpg",
   },
   {
     id: "ee-591",
@@ -6926,7 +6926,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "Zależnością miękką.",
     ],
     poprawna: 3,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-610.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-610.jpg",
   },
   {
     id: "ee-611",
@@ -6966,7 +6966,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "diagram aktywności",
     ],
     poprawna: 2,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-614.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-614.jpg",
   },
   {
     id: "ee-615",
@@ -6994,7 +6994,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "jest odpowiednikiem przeciążonego operatora (type)",
     ],
     poprawna: 1,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-617.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-617.jpg",
   },
   {
     id: "ee-618",
@@ -7015,7 +7015,7 @@ export const THEORY_QUESTIONS: TheoryQuestion[] = [
       "wszystkie odpowiedzi są błędne",
     ],
     poprawna: 0,
-    img: "https://ee-informatyk.pl/src/img/quizy/inf04/inf04-619.jpg",
+    img: "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev/inf04-619.jpg",
   },
   {
     id: "ee-620",
