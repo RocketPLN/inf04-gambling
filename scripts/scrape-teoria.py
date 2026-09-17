@@ -4,9 +4,10 @@
 Pobiera strony /inf04/pytanie/<id> (poprawna odpowiedź oznaczona klasą
 --ready--correct wprost w HTML) i zapisuje /tmp/opencode/teoria-baza.json.
 
-Grafik NIE pobieramy (oszczędzamy CDN) — zapisujemy tylko zdalny URL
-https://ee-informatyk.pl/src/img/quizy/inf04/*.jpg, a UI ładuje go
-z fallbackiem gdy host zablokuje hotlink.
+Grafik NIE pobieramy przy każdym scrapie — zapisujemy zdalny URL
+https://ee-informatyk.pl/src/img/quizy/inf04/*.jpg, a build-teoria.py
+przepisuje go na mirror 1:1 na naszym R2 (klon question<N>.jpg z repo
+Marmo77/egzamin-programista, MIT). UI nie zależy od hotlinku.
 
 Uruchomienie:  python3 scripts/scrape-teoria.py [od] [do]
 Przykład:      python3 scripts/scrape-teoria.py 1 631

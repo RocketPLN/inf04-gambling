@@ -147,7 +147,7 @@ function TheoryPage() {
         </h2>
         <p className="mt-2 max-w-[70ch] border-[3px] border-dashed border-black bg-white p-2 text-sm font-bold">
           Kręcisz kołem → losuje się kategoria → dostajesz pytanie → odpowiadasz → kasyno sypie (wirtualnymi) punktami.
-          Poniżej pełna baza <b>630 pytań</b> ściągnięta z ee-informatyk.pl (odpowiedzi + grafiki linkowane zdalnie, zero miejsca na naszym CDN).
+          Poniżej pełna baza <b>630 pytań</b> ściągnięta z ee-informatyk.pl (pytania + grafiki mirrorowane na naszym R2).
         </p>
         <div className="mt-2 flex flex-wrap gap-2">
           <Button variant="default" size="sm" asChild>
@@ -241,7 +241,7 @@ function TheoryPage() {
         <p className="mt-1 text-sm font-bold">
           Baza 630 pytań jest już wpięta — ściągnięta z ee-informatyk.pl skryptem <code>scripts/scrape-teoria.py</code> do{" "}
           <code>src/data/theory.ts</code> (klasyfikacja do kategorii koła: <code>scripts/build-teoria.py</code>).
-          Odświeżenie: <code>npm run teoria</code>. Grafiki są hotlinkowane z ee-informatyk.pl — nic nie leży na naszym CDN.
+          Odświeżenie: <code>npm run teoria</code>. Grafiki leżą na naszym R2 (mirror 1:1, źródło: ee-informatyk.pl).
           Poniżej pozostałe sprawdzone źródła.
         </p>
         <div className="mt-3 grid grid-cols-1 gap-2.5 md:grid-cols-2">

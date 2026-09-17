@@ -264,7 +264,7 @@ export function RogueMobFight(props: MobFightProps) {
         <div className="mt-4 border-[4px] border-black bg-win95 p-2 shadow-[4px_4px_0_#000] [border-style:inset]">
           <img
             src={question.img}
-            alt="Grafika do pytania (ee-informatyk.pl)"
+            alt="Grafika do pytania"
             loading="lazy"
             referrerPolicy="no-referrer"
             onError={() => setImgOk(false)}
@@ -274,7 +274,7 @@ export function RogueMobFight(props: MobFightProps) {
       )}
       {question.img && !imgOk && (
         <div className="mt-4 border-[3px] border-dashed border-ugly-pink bg-white p-2 font-mono text-[10px] font-black text-gray-600">
-          [IMG] Grafika do pytania nie ładuje się (hotlink zablokowany) — BEZ NIEJ NIE ZGADNIESZ, UCIEKAJ ALBO STRZELAJ
+          [IMG] Grafika nie ładuje się z naszego CDN — BEZ NIEJ NIE ZGADNIESZ, UCIEKAJ ALBO STRZELAJ
         </div>
       )}
 

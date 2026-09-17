@@ -10,7 +10,18 @@ import re
 from collections import Counter
 
 SRC = "/tmp/opencode/teoria-baza.json"
-DST = "src/data/theory.js"
+DST = "src/data/theory.ts"
+
+# Grafiki mirrorujemy 1:1 na naszym R2 (klon question<N>.jpg z repo
+# Marmo77/egzamin-programista, MIT) — UI nie zależy od hotlinku ee-informatyk.
+R2_BASE = "https://pub-bf64d570b3ab4d7b8df0c4ffe64d014e.r2.dev"
+EE_IMG = "https://ee-informatyk.pl/src/img/quizy/inf04/"
+
+
+def mirror_img(url):
+    if url.startswith(EE_IMG):
+        return R2_BASE + "/" + url[len(EE_IMG):]
+    return url
 
 # Kolejność = priorytet (pierwsze trafienie wygrywa).
 RULES = [
@@ -76,12 +87,12 @@ def main():
             "tresc": q["tresc"],
             "odpowiedzi": q["odpowiedzi"],
             "poprawna": q["poprawna"],
-            **({"img": q["img"]} if q.get("img") else {}),
+            **({"img": mirror_img(q["img"])} if q.get("img") else {}),
         })
     print("ROZKŁAD:", dict(Counter(o["kat"] for o in out)))
     print("RAZEM:", len(out))
 
-    with open("src/data/theory.js", encoding="utf-8") as f:
+    with open("src/data/theory.ts", encoding="utf-8") as f:
         old = f.read()
     before, sep, after = old.partition("export const THEORY_QUESTIONS = ")
     tail = ""
