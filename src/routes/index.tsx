@@ -7,6 +7,7 @@ import { TICKER_PRESETS } from "../data/shop.js";
 import { useWallet } from "../hooks/use-wallet.js";
 import { Hero } from "../components/app/hero.jsx";
 import { ExamCard } from "../components/app/exam-card.jsx";
+import { ExamRandomizer } from "../components/app/exam-random.jsx";
 import { FiltersBar, SetupBlock, TechTags, ZipBlock } from "../components/app/filters.jsx";
 import { ResultsInfo, UglyBanner } from "../components/app/site-footer.jsx";
 import { Alert, AlertDescription } from "../components/ui/alert.jsx";
@@ -72,6 +73,8 @@ function HomePage() {
       />
 
       <TechTags active={q} onToggle={(t) => setSearch({ q: q === t ? "" : t })} />
+
+      <ExamRandomizer search={cleanSearch({ q, year, session })} />
 
       <div className="y2k-divider" aria-hidden="true" />
       <UglyBanner>
