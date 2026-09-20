@@ -19,7 +19,6 @@ const exams = [
   { id:"inf04-2023-czerwiec", pdf:"https://arkusze.pl/zawodowy/inf04-2023-czerwiec-egzamin-zawodowy-praktyczny.pdf", zasady:"https://arkusze.pl/zawodowy/inf04-2023-czerwiec-egzamin-zawodowy-praktyczny-zasady-oceniania.pdf", zip:"https://arkusze.pl/zawodowy/inf04-2023-czerwiec-egzamin-zawodowy-praktyczny-zalaczniki.zip" },
   { id:"inf04-2023-styczen", pdf:"https://arkusze.pl/zawodowy/inf04-2023-styczen-egzamin-zawodowy-praktyczny.pdf", zasady:"https://arkusze.pl/zawodowy/inf04-2023-styczen-egzamin-zawodowy-praktyczny-zasady-oceniania.pdf" },
   { id:"inf04-2022-czerwiec", pdf:"https://arkusze.pl/zawodowy/inf04-2022-czerwiec-egzamin-zawodowy-praktyczny.pdf", zasady:"https://arkusze.pl/zawodowy/inf04-2022-czerwiec-egzamin-zawodowy-praktyczny-zasady-oceniania.pdf", zip:"https://arkusze.pl/zawodowy/inf04-2022-czerwiec-egzamin-zawodowy-praktyczny-zalaczniki.zip" },
-  { id:"inf04-2022-styczen", pdf:"https://arkusze.pl/zawodowy/inf04-2022-styczen-egzamin-zawodowy-praktyczny.pdf", zasady:"https://arkusze.pl/zawodowy/inf04-2022-styczen-egzamin-zawodowy-praktyczny-zasady-oceniania.pdf" },
   { id:"inf04-2021-czerwiec", pdf:"https://arkusze.pl/zawodowy/inf04-2021-czerwiec-egzamin-zawodowy-praktyczny.pdf", zasady:"https://arkusze.pl/zawodowy/inf04-2021-czerwiec-egzamin-zawodowy-praktyczny-zasady-oceniania.pdf" },
 ];
 
