@@ -4,17 +4,18 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * INF.04 shadcn theme — style "sera" (brutalist, sharp, uppercase)
- * Sztuczka #1: wszystko jest zmienną CSS. Zmień :root, a każdy komponent
- * (Button, Card, Badge, Accordion...) zmienia wygląd bez dotykania JSX.
- * Sztuczka #2: custom tokeny --ugly-*, --casino-* zarejestrowane w @theme inline
- * dają utility: bg-ugly-pink, text-casino-gold, border-casino-felt itd.
- * Sztuczka #3: .theme-casino / .theme-ugly przełączają całą paletę jedną klasą
- * na <html> — ten sam mechanizm co dark mode, zero re-renderów.
- * Sztuczka #4: --animate-ugly-* mapuje stare keyframes na utility animate-ugly-blink itd.
+ * INF.04 — język wizualny "AKTA" (przeróbka z motywu kasyna na kancelarię akt).
+ *
+ * Zasada: portal zachowuje się jak biuro podawcze / archiwum arkuszy CKE.
+ * Papier, atrament, jedna pieczątka czerwona, urzędowy niebieski i zieleń
+ * "zdradzam sprawę"? nie — teza sprawozdania? — zielony kontrolny do seniora.
+ * Sztuczki są stare: zmieniasz :root, a cała strona (shadcn + strony) idzie za tym.
+ * Stare nazwy utility (--color-ugly-*, --color-casino-*, --color-cke-*, --color-win95-*)
+ * zostają jako aliasy na nowe barwy — stary JSX nie pęknie podczas przeróbki.
  */
 
 @theme inline {
+  /* --- semantyka shadcn --- */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -40,189 +41,156 @@
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
 
-  /* custom: brzydkie neony jako pełnoprawne utility */
-  --color-ugly-pink: var(--ugly1);
-  --color-ugly-lime: var(--ugly2);
-  --color-ugly-yellow: var(--ugly3);
-  --color-ugly-cyan: var(--ugly4);
-  --color-ugly-red: var(--ugly5);
-  --color-casino-gold: var(--casino-gold);
-  --color-casino-goldsoft: var(--casino-goldsoft);
-  --color-casino-felt: var(--casino-felt);
-  --color-casino-feltdark: var(--casino-feltdark);
-  --color-win95: var(--win95);
-  --color-win95dark: var(--win95dark);
-  --color-cke-blue: var(--cke-blue);
-  --color-cke-green: var(--cke-green);
+  /* --- AKTA: paleta dokumentu (pełne utility: bg-papier, text-pieczatka...) --- */
+  --color-papier: var(--papier);
+  --color-kartka: var(--kartka);
+  --color-atrament: var(--atrament);
+  --color-grafit: var(--grafit);
+  --color-linia: var(--linia);
+  --color-pieczatka: var(--pieczatka);
+  --color-pieczatka-tlo: var(--pieczatka-tlo);
+  --color-urzad: var(--urzad);
+  --color-urzad-tlo: var(--urzad-tlo);
+  --color-doba: var(--doba);
+  --color-doba-tlo: var(--doba-tlo);
+  --color-sygnal: var(--sygnal);
+  --color-sygnal-tlo: var(--sygnal-tlo);
 
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
+  /* --- aliasy starych names (kompatebilość podczas przeróbki) --- */
+  --color-ugly-pink: var(--pieczatka);
+  --color-ugly-lime: var(--doba);
+  --color-ugly-yellow: var(--sygnal);
+  --color-ugly-cyan: var(--urzad);
+  --color-ugly-red: var(--pieczatka);
+  --color-casino-gold: var(--sygnal);
+  --color-casino-goldsoft: var(--sygnal-tlo);
+  --color-casino-felt: var(--pieczatka);
+  --color-casino-feltdark: var(--atrament);
+  --color-win95: var(--kartka);
+  --color-win95dark: var(--grafit);
+  --color-cke-blue: var(--urzad);
+  --color-cke-green: var(--doba);
+
+  --radius-sm: calc(var(--radius) * 0.5);
+  --radius-md: var(--radius);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-xl: calc(var(--radius) * 1.5);
 
-  --font-display: var(--font-display);
+  --font-display: var(--font-sans);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
 
-  --animate-ugly-blink: ugly-blink 0.6s steps(1) infinite;
-  --animate-ugly-wiggle: ugly-wiggle 0.5s infinite;
-  --animate-ugly-rainbow: ugly-rainbow 2s linear infinite;
-  --animate-ugly-marquee: ugly-marquee 8s linear infinite;
-  --animate-ugly-shake: ugly-shake 0.3s infinite;
+  /* Stare klasy animacji zostają (componenty je muxują), ale zmęczone — to już nie kasyno */
+  --animate-ugly-blink: ugly-blink 1.1s steps(1) infinite;
+  --animate-ugly-wiggle: ugly-wiggle 0.5s ease-in-out infinite;
+  --animate-ugly-rainbow: ugly-rainbow 6s linear infinite;
+  --animate-ugly-marquee: ugly-marquee 16s linear infinite;
+  --animate-ugly-shake: ugly-shake 0.4s ease-in-out infinite;
 
-  @keyframes ugly-blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
-  @keyframes ugly-wiggle { 0% { transform: rotate(-1deg) scale(1); } 50% { transform: rotate(1deg) scale(1.02); } 100% { transform: rotate(-1deg) scale(1); } }
+  /* Nowe: pieczątka przybijana raz (przy lądowaniu) */
+  --animate-pieczatka: pieczatka-in 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.25) both;
+  --animate-pieczatka-hover: pieczatka-hover 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.25) both;
+
+  @keyframes ugly-blink { 0%, 55% { opacity: 1; } 56%, 100% { opacity: 0.25; } }
+  @keyframes ugly-wiggle { 0%, 100% { transform: rotate(-0.6deg); } 50% { transform: rotate(0.6deg); } }
   @keyframes ugly-rainbow { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }
   @keyframes ugly-marquee { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
-  @keyframes ugly-shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-3px) rotate(-1deg); } 75% { transform: translateX(3px) rotate(1deg); } }
+  @keyframes ugly-shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-2px) rotate(-0.4deg); }
+    75% { transform: translateX(2px) rotate(0.4deg); }
+  }
+  @keyframes pieczatka-in {
+    0% { opacity: 0; transform: rotate(-11deg) scale(1.7); }
+    55% { opacity: 1; transform: rotate(-2deg) scale(0.97); }
+    75% { transform: rotate(-3deg) scale(1.02); }
+    100% { opacity: 1; transform: rotate(-3deg) scale(1); }
+  }
+  @keyframes pieczatka-hover {
+    0% { opacity: 0; transform: rotate(-9deg) scale(1.35); }
+    100% { opacity: 1; transform: rotate(-3deg) scale(1); }
+  }
 }
 
 :root {
-  --radius: 0rem; /* sera/brutalist: ostro, zero zaokrągleń jak stary .card */
+  --radius: 0.5rem;
 
-  /* shadcn semantyka przemapowana na brzydką paletę strony */
-  --background: #ffffff;
-  --foreground: #000000;
-  --card: #ffffff;
-  --card-foreground: #000000;
-  --popover: #ffffff;
-  --popover-foreground: #000000;
-  --primary: #ff00ff;
-  --primary-foreground: #ffff00;
-  --secondary: #00ffff;
-  --secondary-foreground: #000000;
-  --muted: #c0c0c0;
-  --muted-foreground: #0000ff;
-  --accent: #ffff00;
-  --accent-foreground: #ff00ff;
-  --destructive: #ff0000;
-  --destructive-foreground: #ffff00;
-  --border: #ff00ff;
-  --input: #808080;
-  --ring: #ff00ff;
+  /* --- paleta ACE (akta) --- */
+  --papier: #f1f2f0;         /* teka (tło strony), chłodny papier */
+  --kartka: #ffffff;         /* kartka */
+  --atrament: #20242c;       /* atrament, ciepła czarno-zielona, żyjąca */
+  --grafit: #5c626b;         /* ołówek, zwykły tekst */
+  --linia: #d4d8dd;          /* dole / pastery formularza */
+  --pieczatka: #b0202c;      /* pieczątka urzędowa (czerwona) */
+  --pieczatka-tlo: #f7e6e6;  /* potargana pieczątka? nie — tło wilgoci */
+  --urzad: #2a5a9c;          /* urzędowy niebieski (formularz) */
+  --urzad-tlo: #e6edf6;      /* rzęsy niebieskiego (pola, taśma) */
+  --doba: #2e7d4f;           /* kontrolna zieleń (ZALICZONE) */
+  --doba-tlo: #e7f2ea;       /* tło zielonych pieczątek */
+  --sygnal: #a96f1b;         /* sygnatura żółta (ostrzeżenie, stare złoto akt) */
+  --sygnal-tlo: #f5ecd8;     /* tło żółtych kartoników (sygnatury) */
 
-  --chart-1: #ff00ff;
-  --chart-2: #00ffff;
-  --chart-3: #00ff00;
-  --chart-4: #ffff00;
-  --chart-5: #ff0000;
+  /* --- semantyka shadcn na dokumentach --- */
+  --background: var(--papier);
+  --foreground: var(--atrament);
+  --card: var(--kartka);
+  --card-foreground: var(--atrament);
+  --popover: var(--kartka);
+  --popover-foreground: var(--atrament);
+  --primary: var(--atrament);            /* przycisk default = pas czarny */
+  --primary-foreground: var(--kartka);
+  --secondary: var(--urzad-tlo);
+  --secondary-foreground: var(--urzad);
+  --muted: #e8eaec;                       /* podkasana szarość (nagłówki tabel) */
+  --muted-foreground: var(--grafit);
+  --accent: var(--urzad-tlo);
+  --accent-foreground: var(--urzad);
+  --destructive: var(--pieczatka);
+  --destructive-foreground: #ffffff;
+  --border: var(--linia);
+  --input: #aeb4b9;
+  --ring: var(--urzad);
 
-  /* stare zmienne + nowe tokeny kasyna */
-  --ink: #000000;
-  --paper: #ffff00;
-  --cream: #00ff00;
-  --solar: #ff00ff;
-  --pop: #00ffff;
-  --electric: #ff0000;
-  --text: #0000ff;
-  --muted-old: #ff00ff;
-  --ugly1: #ff00ff;
-  --ugly2: #00ff00;
-  --ugly3: #ffff00;
-  --ugly4: #00ffff;
-  --ugly5: #ff0000;
-  --casino-gold: #ffd700;
-  --casino-goldsoft: #fff59d;
-  --casino-felt: #7a1010;
-  --casino-feltdark: #1a0505;
-  --win95: #c0c0c0;
-  --win95dark: #808080;
-  --cke-blue: #0000ff;
-  --cke-green: #00ff00;
+  --chart-1: var(--urzad);
+  --chart-2: var(--doba);
+  --chart-3: var(--pieczatka);
+  --chart-4: var(--sygnal);
+  --chart-5: var(--grafit);
 
-  --mono: 'Courier New', monospace;
-  --sans: 'Comic Sans MS', 'Comic Neue', cursive;
-  --display: 'Impact', 'Arial Black', fantasy;
-  --font-display: 'Impact', 'Bricolage Grotesque', 'Arial Black', fantasy;
-  --font-sans: 'Comic Sans MS', 'DM Sans', 'Comic Neue', cursive;
-  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
-}
-
-.dark {
-  --background: #1a0505;
-  --foreground: #00ff00;
-  --card: #2a0a0a;
-  --card-foreground: #ffe27a;
-  --popover: #2a0a0a;
-  --popover-foreground: #ffe27a;
-  --primary: #ffd700;
-  --primary-foreground: #7a1010;
-  --secondary: #ff00ff;
-  --secondary-foreground: #ffff00;
-  --muted: #3a0a0a;
-  --muted-foreground: #c0c0c0;
-  --accent: #ff00ff;
-  --accent-foreground: #ffff00;
-  --border: #ffd700;
-  --input: #ffd700;
-  --ring: #ffd700;
-}
-
-/* Sztuczka #3 w akcji: cały portal przebierany jedną klasą na <html> */
-.theme-casino {
-  --background: #1a0505;
-  --foreground: #ffe27a;
-  --card: #3a0a0a;
-  --card-foreground: #ffe27a;
-  --primary: #ffd700;
-  --primary-foreground: #7a1010;
-  --secondary: #ff0000;
-  --secondary-foreground: #ffff00;
-  --accent: #ff0000;
-  --accent-foreground: #ffff00;
-  --border: #ffd700;
-  --ring: #ffd700;
-}
-.theme-ugly {
-  --background: #ffff00;
-  --foreground: #000000;
-  --card: #ffffff;
-  --card-foreground: #000000;
-  --primary: #ff00ff;
-  --primary-foreground: #ffff00;
-  --secondary: #00ffff;
-  --secondary-foreground: #000000;
-  --accent: #00ff00;
-  --accent-foreground: #ff0000;
-  --border: #ff00ff;
-  --ring: #00ffff;
+  /* czcionki: plex (sans dobie, mono do sygnatur) */
+  --font-sans: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  --font-display: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
 }
 
 @layer base {
-  * {
-    border-color: var(--border);
-  }
-  html {
-    scrollbar-color: #ff00ff #00ffff;
-  }
+  * { border-color: var(--border); }
+  html { -webkit-tap-highlight-color: transparent; }
   body {
     margin: 0;
     padding: 0;
-    background: repeating-linear-gradient(45deg, #ffff00 0 12px, #ff00ff 12px 24px, #00ffff 24px 36px, #00ff00 36px 48px) !important;
-    background-attachment: fixed !important;
-    color: var(--foreground);
-    font-family: 'Comic Sans MS', 'Comic Neue', cursive !important;
-    overflow-x: hidden;
+    background: var(--papier);
+    color: var(--atrament);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.55;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
   }
-  ::selection {
-    background: #ff0000;
-    color: #ffff00;
-    text-shadow: 2px 2px 0 #00ffff;
-  }
+  ::selection { background: var(--pieczatka); color: #fff; text-shadow: none; }
   :focus-visible {
-    outline: 4px dotted #ff00ff !important;
+    outline: 2px solid var(--urzad);
     outline-offset: 2px;
   }
-  ::-webkit-scrollbar { width: 18px; background: #00ffff; border: 3px ridge #ff00ff; }
-  ::-webkit-scrollbar-thumb { background: linear-gradient(#ff0000,#ffff00,#00ff00); border: 3px outset #fff; }
-}
+  html { scrollbar-color: var(--grafit) var(--papier); scrollbar-width: thin; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; background: var(--papier); }
+  ::-webkit-scrollbar-thumb { background: var(--grafit); border-radius: 4px; border: 2px solid var(--papier); }
+  ::-webkit-scrollbar-track { background: var(--papier); }
 
-#root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: repeating-conic-gradient(from 0deg at 50% 50%, #ffff00 0deg 30deg, #ff00ff 30deg 60deg, #00ffff 60deg 90deg, #00ff00 90deg 120deg);
-  border: 8px ridge #ff00ff;
-  filter: contrast(1.15) saturate(1.8);
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--papier);
+  }
 }
-

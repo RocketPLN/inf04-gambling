@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import { ExternalLink } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import type { Exam } from "@/data/exams.js";
 
@@ -10,7 +8,7 @@ function localPdf(examId: string): string {
 
 // Podgląd arkusza bez react-pdf: natywny viewer przeglądarki w <iframe>.
 // react-pdf bundlował własną kopię Reacta (invalid hook call na <Document>),
-// a iframe nie potrzebuje CORS ani workera pdf.js — działa i lokalnie, i z arkusze.pl.
+// a iframe nie potrzebuje CORS ani workera pdf.js — działa i lokalnie, i z R2.
 export function PdfViewer({ exam }: { exam: Exam }) {
   const local = localPdf(exam.id);
   const remote = exam.pdfArkusz;
@@ -48,34 +46,30 @@ export function PdfViewer({ exam }: { exam: Exam }) {
   }, [local, remote]);
 
   return (
-    <div className="overflow-hidden border-[5px] border-ugly-cyan bg-win95 shadow-[6px_6px_0_#000] [border-style:ridge]">
-      <div className="flex flex-wrap items-center gap-1.5 border-b-[5px] border-ugly-cyan bg-black p-2 [border-bottom-style:ridge]">
-        <span className="border-2 border-cke-green bg-black px-1.5 py-1 font-mono text-[11px] font-black text-cke-green [border-style:outset]">
-          ARKUSZ PDF
-        </span>
-        <div className="flex flex-1 flex-wrap items-center justify-end gap-1.5">
-          <Button variant="yellow" size="sm" asChild>
-            <a href={local} download>[v] PDF</a>
-          </Button>
-          <Button variant="ghost" size="sm" asChild>
-            <a href={remote} target="_blank" rel="noreferrer">
-              Oryginał <ExternalLink />
-            </a>
-          </Button>
+    <div className="overflow-hidden bg-kartka border border-linia rounded-lg shadow-[0_1px_2px_rgba(32,36,44,0.06),0_8px_24px_rgba(32,36,44,0.06)]">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-linia bg-muted/50 px-3.5 py-2">
+        <h2 className="m-0 text-[13.5px] font-semibold text-atrament">Podgląd arkusza</h2>
+        <div className="flex items-center gap-3">
+          <a href={local} download className="text-[12.5px] text-urzad underline underline-offset-2">
+            Pobierz PDF
+          </a>
+          <a href={remote} target="_blank" rel="noreferrer" className="text-[12.5px] text-urzad underline underline-offset-2">
+            Oryginał
+          </a>
         </div>
       </div>
 
       {isRemote && !checking && (
-        <p className="m-0 border-b-4 border-dotted border-ugly-pink bg-ugly-yellow px-2 py-1 text-center font-mono text-[10px] font-black text-black">
-          Brak lokalnej kopii — ładuję oryginał z arkusze.pl…
+        <p className="m-0 border-b border-linia bg-sygnal-tlo px-3.5 py-1.5 text-[12px] text-sygnal">
+          Nie znaleziono lokalnej kopii w /pdfs/, arkusz wczytano z magazynu zdalnego.
         </p>
       )}
 
-      <div className="relative bg-[#404040]">
+      <div className="relative bg-grafit">
         {(checking || !loaded) && (
           <div className="space-y-2 p-2 sm:p-3">
             <Skeleton className="h-[80vh] min-h-[540px] w-full" />
-            <p className="animate-ugly-blink text-center font-mono text-xs font-black text-white">Wczytywanie PDF…</p>
+            <p className="m-0 text-center font-mono text-[12px] text-kartka">Wczytywanie arkusza…</p>
           </div>
         )}
         {!checking && (
@@ -83,13 +77,14 @@ export function PdfViewer({ exam }: { exam: Exam }) {
             key={`${exam.id}-${src}`}
             title="Arkusz egzaminacyjny (PDF)"
             src={src}
-            className={`block h-[80vh] min-h-[540px] w-full border-0 bg-white ${(checking || !loaded) ? "pointer-events-none absolute inset-0 opacity-0" : ""}`}
+            className={`block h-[80vh] min-h-[540px] w-full border-0 bg-kartka ${(checking || !loaded) ? "pointer-events-none absolute inset-0 opacity-0" : ""}`}
             onLoad={() => setLoaded(true)}
           />
         )}
       </div>
-      <p className="m-0 border-t-4 border-ugly-cyan bg-black px-2 py-1.5 text-center font-mono text-[10px] font-black text-ugly-cyan">
-        zoom / strony / obrót / druk — wbudowane w przeglądarkę (ikony nad dokumentem) • nie ładuje się? kliknij „Oryginał”
+      <p className="m-0 border-t border-linia bg-muted/40 px-3.5 py-1.5 text-center text-[11.5px] text-grafit">
+        Podgląd otwiera przeglądarka (druk i powiększenie znajdziesz na pasku pliku). Jeśli się nie
+        wczytuje, użyj linku „Oryginał”.
       </p>
     </div>
   );

@@ -3,24 +3,27 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-/* shadcn Badge — stare .card-badge/.card-pkt/.pill/.chip/.plan-year jako warianty cva. */
+/*
+ * Badge AKTA — plomby i adnotacje w rogu kartki: tinty urzędowe,
+ * mono, bez beveli i bez migania (wyjątek: live, monit komisji).
+ */
 const badgeVariants = cva(
-  "inline-flex items-center gap-1 border px-2 py-1 font-mono text-[10px] font-black uppercase tracking-wider whitespace-nowrap select-none",
+  "inline-flex items-center gap-1 rounded-lg border px-1.5 py-0.5 font-mono text-[10px] font-medium uppercase tracking-[0.06em] whitespace-nowrap select-none",
   {
     variants: {
       variant: {
-        default: "border-win95 bg-win95 text-black [border-style:outset] shadow-[2px_2px_0_#000]",
-        year: "border-white bg-ugly-red text-ugly-yellow animate-ugly-blink [border-style:outset] shadow-[3px_3px_0_#000]",
-        pkt: "border-ugly-yellow bg-ugly-red font-display text-[11px] text-ugly-yellow animate-ugly-blink [border-style:ridge]",
-        odds: "border-casino-gold bg-black text-casino-gold [border-style:ridge]",
-        rtp: "border-cke-green bg-black text-cke-green animate-ugly-blink [border-style:outset]",
-        zip: "border-win95 bg-ugly-yellow text-ugly-red animate-ugly-blink [border-style:outset]",
-        tech: "border-win95 bg-ugly-cyan text-black [border-style:outset]",
-        live: "border-white bg-ugly-red font-mono text-ugly-yellow animate-ugly-blink [border-style:outset]",
-        bonus: "border-ugly-yellow bg-ugly-red text-ugly-yellow [border-style:ridge]",
-        casino: "border-casino-gold bg-casino-felt text-casino-gold [border-style:ridge] [text-shadow:0_0_8px_#ff0000]",
+        default: "border-linia bg-muted text-atrament",
+        year: "border-urzad/40 bg-urzad-tlo text-urzad",
+        pkt: "border-atrament bg-atrament text-kartka",
+        odds: "border-sygnal/50 bg-sygnal-tlo text-sygnal",
+        rtp: "border-sygnal/50 bg-sygnal-tlo text-sygnal",
+        zip: "border-grafit/30 bg-kartka text-grafit",
+        tech: "border-grafit bg-transparent text-grafit",
+        live: "border-pieczatka bg-pieczatka-tlo text-pieczatka",
+        bonus: "border-pieczatka/40 bg-pieczatka-tlo text-pieczatka",
+        casino: "border-atrament bg-atrament text-kartka",
         outline: "border-border bg-transparent text-foreground",
-        secondary: "border-white bg-secondary text-secondary-foreground [border-style:outset]",
+        secondary: "border-linia bg-urzad-tlo text-urzad",
       },
     },
     defaultVariants: { variant: "default" },
