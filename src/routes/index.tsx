@@ -20,7 +20,7 @@ function HomePage() {
 
   const setSearch = (patch: Partial<ExamSearch>) => {
     navigate({
-      search: (prev) => cleanSearch({ ...prev, ...patch }),
+      search: (prev: Partial<ExamSearch>) => cleanSearch({ ...prev, ...patch }),
     });
   };
 
