@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ConfettiBurst } from "@/components/app/fortune.jsx";
 import { LOOT_TABLE, type LootDrop } from "@/data/shop.js";
+import { useWallet } from "@/hooks/use-wallet.js";
 
 /*
- * NIESPODZIANKA — animowane otwieranie lootboxa.
- * Najpierw ~1.5 s mielenia możliwych dropów (jak bęben slotu),
- * potem REVEAL: wielki drop + złoty deszcz + lista szans.
- * Losowanie jest uczciwe (wagi z LOOT_TABLE), animacja to tylko show.
+ * NIESPODZIANKA → NAGRODA: karta wyniku lootboxa.
+ * Otwiera się od razu z wylosowaną zawartością (krótkie wejście slide),
+ * konfetti tylko, gdy działa dodatek Złoty deszcz. Szanse wypisane na dole.
+ * Kontrakt: rollLoot / grant flow / overlay / onAgain / onClose — bez zmian.
  */
 
 const TOTAL_WEIGHT = LOOT_TABLE.reduce((s, d) => s + d.weight, 0);
@@ -20,74 +21,45 @@ export interface LootboxRevealProps {
 }
 
 export function LootboxReveal({ drop, stock, onAgain, onClose }: LootboxRevealProps) {
-  const [shown, setShown] = useState<string>("[?][?][?]");
-  const [revealed, setRevealed] = useState(false);
+  const { flagActive } = useWallet();
   const [reveals, setReveals] = useState(0);
 
   useEffect(() => {
-    setRevealed(false);
-    setShown("[?][?][?]");
-    const iv = setInterval(() => {
-      const d = LOOT_TABLE[Math.floor(Math.random() * LOOT_TABLE.length)];
-      setShown(d.label);
-    }, 90);
-    const t = setTimeout(() => {
-      clearInterval(iv);
-      setShown(drop.label);
-      setRevealed(true);
-      setReveals((r) => r + 1);
-    }, 1500);
-    return () => {
-      clearInterval(iv);
-      clearTimeout(t);
-    };
+    setReveals((r) => r + 1);
   }, [drop]);
 
   return (
-    <div className="fixed inset-0 z-[9600] grid place-items-center bg-black/80 p-4">
-      {revealed && reveals > 0 && <ConfettiBurst key={reveals} />}
-      <div className="w-full max-w-[440px] border-[6px] border-casino-gold bg-[radial-gradient(circle_at_50%_0%,#5a0a0a,#1a0505_70%)] p-4 text-center shadow-[8px_8px_0_#000,inset_0_0_40px_#000] [border-style:ridge]">
-        <div className="font-display text-lg tracking-[2px] text-casino-gold [text-shadow:0_0_10px_#ff0000,2px_2px_0_#000]">
-          [?] NIESPODZIANKA [?]
+    <div role="dialog" aria-label="Nagroda za niespodziankę" className="fixed inset-0 grid place-items-center bg-atrament/60 p-4">
+      {reveals > 0 && flagActive("zloty-deszcz") && <ConfettiBurst key={reveals} />}
+      <div className="w-full max-w-[440px] rounded-lg border border-linia bg-kartka p-4 shadow-[0_2px_4px_rgba(32,36,44,0.1),0_16px_40px_rgba(32,36,44,0.12)] duration-300 animate-in fade-in slide-in-from-bottom-4">
+        <div className="flex items-center justify-between">
+          <h2 className="m-0 text-lg font-semibold tracking-tight text-atrament">Nagroda</h2>
+          <span className="font-mono text-xs text-grafit">szansa losowa</span>
         </div>
-        <div
-          className={`mx-auto mt-3 grid size-28 place-items-center border-[5px] border-white bg-gradient-to-b from-white to-win95 text-5xl shadow-[4px_4px_0_#000] [border-style:inset] ${revealed ? "" : "animate-ugly-shake"}`}
-        >
-          {revealed ? "[!!!]" : "[?]"}
+        <div className="mt-3 rounded-md border border-doba bg-doba-tlo px-3 py-4 text-center">
+          <div className="font-mono text-lg font-semibold text-atrament">{drop.label}</div>
         </div>
-        <div
-          className={`mx-auto mt-3 min-h-[52px] w-fit border-[4px] p-2 font-mono text-sm font-black ${revealed ? "animate-ugly-wiggle border-casino-gold bg-black text-casino-gold [border-style:ridge]" : "border-dotted border-ugly-red bg-ugly-yellow text-black"}`}
-        >
-          {revealed ? `TRAFIŁO SIĘ: ${shown}!!!` : shown}
-        </div>
-        {!revealed && (
-          <div className="mt-2 animate-ugly-blink font-mono text-[11px] font-black text-casino-goldsoft">
-            MIELIMY... TRZYMAJ KCIUKI!!! [+]
+        <div className="mt-3 rounded-md border border-linia bg-muted p-2.5">
+          <div className="text-center font-mono text-[11px] text-grafit">Szanse zawartości (wagi łącznie {TOTAL_WEIGHT})</div>
+          <div className="mt-1.5 font-mono text-[11px] leading-relaxed text-grafit">
+            {LOOT_TABLE.map((d) => (
+              <div key={d.label} className="flex justify-between gap-2 py-0.5">
+                <span>{d.label}</span>
+                <span className="tabular-nums">{Math.round((d.weight / TOTAL_WEIGHT) * 100)}%</span>
+              </div>
+            ))}
           </div>
-        )}
-        {revealed && (
-          <>
-            <div className="mx-auto mt-3 max-w-[320px] border-[3px] border-dashed border-casino-gold bg-black p-2 text-left font-mono text-[10px] font-black text-casino-goldsoft">
-              <div className="text-center text-ugly-yellow">[=] SZANSE DROPÓW (uczciwe, sprawdź):</div>
-              {LOOT_TABLE.map((d) => (
-                <div key={d.label} className="flex justify-between gap-2">
-                  <span>{d.label}</span>
-                  <span>{Math.round((d.weight / TOTAL_WEIGHT) * 100)}%</span>
-                </div>
-              ))}
-            </div>
-            <div className="mt-3 flex flex-wrap justify-center gap-2">
-              {stock > 0 && (
-                <Button variant="slot" size="sm" onClick={onAgain}>
-                  [?] JESZCZE JEDNA ({stock}) [?]
-                </Button>
-              )}
-              <Button variant="claim" size="sm" onClick={onClose}>
-                ZABIERAM ŁUP →
-              </Button>
-            </div>
-          </>
-        )}
+        </div>
+        <div className="mt-4 flex flex-wrap justify-center gap-2">
+          {stock > 0 && (
+            <Button variant="outline" size="sm" onClick={onAgain}>
+              Otwórz następną ({stock})
+            </Button>
+          )}
+          <Button variant="default" size="sm" onClick={onClose}>
+            Zamknij
+          </Button>
+        </div>
       </div>
     </div>
   );

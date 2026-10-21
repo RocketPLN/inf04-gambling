@@ -2,19 +2,17 @@ import { useMemo } from "react";
 import { createFileRoute, Link, stripSearchParams, useNavigate } from "@tanstack/react-router";
 import { exams } from "../data/exams.js";
 import { DEFAULT_SEARCH, cleanSearch, validateSearch, type ExamSearch } from "../lib/search.js";
-import { BonusOfferCard, FakeWinsTicker, SlotScam } from "../components/app/casino.jsx";
-import { TICKER_PRESETS } from "../data/shop.js";
-import { useWallet } from "../hooks/use-wallet.js";
 import { Hero } from "../components/app/hero.jsx";
 import { ExamCard } from "../components/app/exam-card.jsx";
 import { ExamRandomizer } from "../components/app/exam-random.jsx";
 import { FiltersBar, SetupBlock, TechTags, ZipBlock } from "../components/app/filters.jsx";
-import { ResultsInfo, UglyBanner } from "../components/app/site-footer.jsx";
-import { Alert, AlertDescription } from "../components/ui/alert.jsx";
-import { Ticker } from "../components/ui/ticker.jsx";
-import type { CardColor } from "../components/ui/card.jsx";
 
-const CARD_COLORS: CardColor[] = ["solar", "pop", "electric", "mint", "tangerine"];
+/* Liczebniki po polsku: 1 arkusz, 2–4 arkusze, 5+ arkuszy (z wyjątkami 12–14). */
+function pluralArkusze(n: number): string {
+  if (n === 1) return "arkusz";
+  if (n % 10 >= 2 && n % 10 <= 4 && !(n % 100 >= 12 && n % 100 <= 14)) return "arkusze";
+  return "arkuszy";
+}
 
 function HomePage() {
   const { q, year, session } = Route.useSearch();
@@ -22,7 +20,7 @@ function HomePage() {
 
   const setSearch = (patch: Partial<ExamSearch>) => {
     navigate({
-      search: (prev) => cleanSearch({ ...prev, ...patch }),
+      search: (prev: Partial<ExamSearch>) => cleanSearch({ ...prev, ...patch }),
     });
   };
 
@@ -40,28 +38,22 @@ function HomePage() {
   }, [q, year, session]);
 
   const totalPkt = exams.reduce((s, e) => s + e.scoring.reduce((a, g) => a + g.max, 0), 0);
-  // Flagi ze sklepu: adblock chowa ofertę i ticker, okrzyk podmienia jego tekst.
-  const { wallet, flagActive } = useWallet();
-  const shout = flagActive("okrzyk-tickera") && wallet.ticker
-    ? TICKER_PRESETS.find((p) => p.id === wallet.ticker)
-    : undefined;
+  const yearFrom = years.length > 0 ? years[years.length - 1] : 0;
+  const yearTo = years.length > 0 ? years[0] : 0;
+
+  const filtersNote: string[] = [];
+  if (year !== "all") filtersNote.push(`rok: ${year}`);
+  if (session !== "all") filtersNote.push(`sesja: ${session}`);
+  if (q) filtersNote.push(`szukane: „${q}”`);
 
   return (
     <>
-      <Hero count={exams.length} totalPkt={totalPkt} />
-
-      <div className="y2k-divider" aria-hidden="true" />
-      <div className="casino-duo mt-3.5 grid w-full grid-cols-1 items-stretch gap-3.5 lg:grid-cols-2">
-        <div className="w-full min-w-0">
-          <SlotScam />
-        </div>
-        {!flagActive("adblock-oferta") && (
-          <div className="w-full min-w-0">
-            <BonusOfferCard />
-          </div>
-        )}
-      </div>
-      {!flagActive("cisza-kasyno") && <FakeWinsTicker />}
+      <Hero
+        count={exams.length}
+        totalPkt={totalPkt}
+        yearFrom={yearFrom}
+        yearTo={yearTo}
+      />
 
       <FiltersBar
         q={q}
@@ -71,44 +63,51 @@ function HomePage() {
         onPatch={setSearch}
         onClear={() => navigate({ search: DEFAULT_SEARCH })}
       />
-
       <TechTags active={q} onToggle={(t) => setSearch({ q: q === t ? "" : t })} />
 
-      <ExamRandomizer search={cleanSearch({ q, year, session })} />
+      <div className="mt-5 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+        <p className="m-0 text-sm text-grafit">
+          Znaleziono: <span className="font-semibold text-atrament">{filtered.length}</span>{" "}
+          {pluralArkusze(filtered.length)}
+          {filtersNote.length > 0 && <> (filtry: {filtersNote.map((n) => n.replace(": ", " ")).join(", ")})</>}
+        </p>
+        {filtersNote.length > 0 && (
+          <button
+            onClick={() => navigate({ search: DEFAULT_SEARCH })}
+            className="cursor-pointer border-0 bg-transparent p-0 text-sm text-urzad underline underline-offset-2"
+          >
+            Wyczyść filtry
+          </button>
+        )}
+      </div>
 
-      <div className="y2k-divider" aria-hidden="true" />
-      <UglyBanner>
-        ★★★ UWAGA !!! WSZYSTKO JEST TERAZ BRZYDKIE !!! ★★★ KLIKAJ SZYBKO ZANIM SIĘ ROZSYPie ★★★
-      </UglyBanner>
-      <Ticker tone="terminal" speed="fast" className="hide-in-focus mt-2.5 border-4 border-cke-green p-1.5 text-xs shadow-none [border-style:ridge]">
-        {shout
-          ? <>&nbsp;✦ {shout.lines.join(" ✦ ")} ✦ &nbsp;</>
-          : <>&nbsp;✦ INF.04 UGLY EDITION ✦ COMIC SANS ONLY ✦ RAINBOW POWER ✦ NIE DOTYKAĆ EKRANU ✦ 800x600 OPTIMAL ✦ SHADCN INSIDE ✦ &nbsp;</>}
-      </Ticker>
-      <ResultsInfo>
-        Znaleziono <b>{filtered.length}</b> arkuszy {year !== "all" || session !== "all" || q ? "(filtrowane)" : ""} · Kliknij kartę aby zobaczyć <b>podgląd PDF</b> z punktacją na boku —{" "}
-        <span className="border-2 border-white bg-ugly-pink px-1.5 py-0.5 text-ugly-yellow [border-style:outset]">BRZYDKO ALE DZIAŁA!!!</span>
-      </ResultsInfo>
-
-      <div className="mt-3.5 grid grid-cols-1 gap-3.5 md:grid-cols-2 xl:grid-cols-3" id="grid">
+      <div className="mt-3 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3" id="grid">
         {filtered.map((e, idx) => (
-          <ExamCard key={e.id} exam={e} index={idx} color={CARD_COLORS[idx % CARD_COLORS.length]} search={cleanSearch({ q, year, session })} />
+          <ExamCard
+            key={e.id}
+            exam={e}
+            index={idx}
+            search={cleanSearch({ q, year, session })}
+          />
         ))}
       </div>
 
       {filtered.length === 0 && (
-        <Alert className="mt-3.5 justify-center text-center">
-          <AlertDescription className="font-display text-lg uppercase [text-shadow:2px_2px_0_#000]">
-            Brak wyników. Spróbuj wyczyścić filtry.{" "}
-            <Link to="/" search={DEFAULT_SEARCH} className="underline">
-              Wyczyść
+        <div className="mt-3 bg-kartka border border-linia rounded-lg shadow-[0_1px_2px_rgba(32,36,44,0.06),0_8px_24px_rgba(32,36,44,0.06)] px-4 py-8 text-center">
+          <p className="m-0 text-sm text-grafit">
+            Nic nie znaleziono dla wybranych filtrów. Sprawdź wpisane hasło albo wyczyść filtry.
+          </p>
+          <div className="mt-3">
+            <Link to="/" search={DEFAULT_SEARCH} className="text-sm text-urzad underline underline-offset-2">
+              Wyczyść filtry
             </Link>
-          </AlertDescription>
-        </Alert>
+          </div>
+        </div>
       )}
 
+      <ExamRandomizer search={cleanSearch({ q, year, session })} />
+
       <ZipBlock exams={exams} />
-      <div className="y2k-statusbar mt-3"><span className="cell">GOTOWE</span><span className="cell">{filtered.length} ARKUSZY</span><span className="cell">56K</span><span className="cell">BEST VIEWED 800x600</span></div>
       <SetupBlock />
     </>
   );
@@ -118,7 +117,14 @@ export const Route = createFileRoute("/")({
   component: HomePage,
   validateSearch,
   head: () => ({
-    meta: [{ title: "INF.04 Portal – Arkusze PDF i Punktacja CKE" }],
+    meta: [
+      { title: "Arkusze INF.04 — egzamin praktyczny technika programisty (2021–2026)" },
+      {
+        name: "description",
+        content:
+          "Spis arkuszy egzaminu zawodowego INF.04 (technik programista, część praktyczna) z lat 2021–2026. Podgląd PDF, załączniki i kryteria oceniania R1–R4.",
+      },
+    ],
   }),
   search: {
     middlewares: [stripSearchParams(DEFAULT_SEARCH)],

@@ -1,8 +1,10 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
+/* Skeleton AKTA — miejsce na dokument, którego jeszcze nie sporządzono. */
+
 function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
-  return <div data-slot="skeleton" className={cn("animate-pulse border-4 border-win95 bg-[repeating-linear-gradient(90deg,#c0c0c0_0_12px,#ffff00_12px_24px)] [border-style:ridge]", className)} {...props} />;
+  return <div data-slot="skeleton" className={cn("animate-pulse rounded-lg bg-muted", className)} {...props} />;
 }
 
 export { Skeleton };

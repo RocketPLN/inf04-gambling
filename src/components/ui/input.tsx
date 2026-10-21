@@ -1,13 +1,15 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
+/* Input AKTA — rubryka formularza: kartka, kreska pola, mono dla danych. */
+
 function Input({ className, type = "text", ...props }: React.ComponentProps<"input">) {
   return (
     <input
       type={type}
       data-slot="input"
       className={cn(
-        "w-full border-4 border-white bg-white px-3 py-2.5 font-mono text-[13px] font-black text-cke-blue shadow-[inset_3px_3px_0_#808080] outline-none [border-style:inset] placeholder:text-cke-blue/50 focus:bg-ugly-yellow focus:text-ugly-pink",
+        "w-full rounded-lg border border-input bg-kartka px-2.5 py-2 font-mono text-[13px] text-atrament outline-none placeholder:text-grafit/60 focus:border-urzad",
         className
       )}
       {...props}
