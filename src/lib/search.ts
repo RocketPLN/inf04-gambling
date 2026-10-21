@@ -16,8 +16,13 @@ export const DEFAULT_SEARCH: ExamSearch = {
 };
 
 export function validateSearch(search: Record<string, unknown>): ExamSearch {
-  const q = typeof search.q === "string" ? search.q : DEFAULT_SEARCH.q;
-  const year = typeof search.year === "string" ? search.year : DEFAULT_SEARCH.year;
+  // Parser search-paramów JSON-uje wartości liczbowe (year=2026 → 2026:number),
+  // więc poza stringami przyjmujemy też liczby i zwracamy je jako string.
+  const q = typeof search.q === "string" || typeof search.q === "number" ? String(search.q) : DEFAULT_SEARCH.q;
+  const year =
+    typeof search.year === "string" || typeof search.year === "number"
+      ? String(search.year)
+      : DEFAULT_SEARCH.year;
   const session =
     search.session === "styczeń" || search.session === "czerwiec"
       ? search.session

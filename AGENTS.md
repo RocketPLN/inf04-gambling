@@ -57,7 +57,7 @@ All route and component files are TypeScript (`.tsx`/`.ts`), imported with expli
 
 Routes are file-based. Adding `src/routes/foo.tsx` with `createFileRoute("/foo")` is enough, the Vite plugin regenerates `routeTree.gen.ts` on `dev` and `build`.
 
-Search params are the filter state, owned by `src/lib/search.ts` (`validateSearch` wired in `__root.tsx`: `q` string, `year` string or `"all"`, `session` `"styczeń"`, `"czerwiec"`, or `"all"`). `index.tsx` reads them with `Route.useSearch()` and writes with `setSearch` → `navigate({ search: cleanSearch({ ...prev, ...patch }) })`; clearing resets to `DEFAULT_SEARCH`. The exam page back button preserves filters. Keep `__root.tsx`, `index.tsx` and `lib/search.ts` in sync when you touch filters. Session strings contain Polish diacritics, match them exactly.
+Search params are the filter state, owned by `src/lib/search.ts` (`validateSearch` wired in `__root.tsx`: `q` string, `year` string or `"all"`, `session` `"styczeń"`, `"czerwiec"`, or `"all"`). `index.tsx` reads them with `Route.useSearch()` and writes with `setSearch` → `navigate({ search: cleanSearch({ ...prev, ...patch }) })`; clearing resets to `DEFAULT_SEARCH`. The exam page back button preserves filters. Keep `__root.tsx`, `index.tsx` and `lib/search.ts` in sync when you touch filters. Session strings contain Polish diacritics, match them exactly. Note: TanStack JSON-serializes numeric-looking search values, so direct URLs like `/?year=2026` get 307-redirected to the canonical `/?year=%222026%22` — accept that round-trip (validateSearch coerces numbers back to strings), don't "fix" it by encoding manually.
 
 ## Data model
 
