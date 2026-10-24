@@ -303,7 +303,7 @@ function TheoryPage() {
           ))}
         </div>
         <div className="mt-3 rounded-lg border border-linia bg-muted p-2.5 text-[12px] leading-relaxed text-grafit">
-          Odświeżanie bazy: <code className="font-mono">npm run teoria</code> (scraper ok. 3 minut + klasyfikacja do 8 kategorii).
+          Odświeżanie bazy: <code className="font-mono">npm run teoria</code> (scraper ok. 3 minut + klasyfikacja do 11 kategorii).
           Pytania pochodzą z treści CKE udostępnianych przez ee-informatyk.pl, serwis nie ma własnego API. Jeśli scraper
           przestanie działać, użyj źródeł powyżej, w tym repozytorium z bazą na Supabase.
         </div>

@@ -19,7 +19,10 @@ const CAT_TINT: Record<string, { fill: string; ink: string }> = {
   mobile: { fill: "#B0202C", ink: "#FFFFFF" },
   cpp: { fill: "#5C626B", ink: "#FFFFFF" },
   web: { fill: "#A96F1B", ink: "#FFFFFF" },
+  sieci: { fill: "#3E7698", ink: "#FFFFFF" },
+  sprzet: { fill: "#8A5A33", ink: "#FFFFFF" },
   bhp: { fill: "#2A5A9C", ink: "#FFFFFF" },
+  projekt: { fill: "#6E5C8E", ink: "#FFFFFF" },
 };
 const CAT_TINT_DEFAULT = { fill: "#5C626B", ink: "#FFFFFF" };
 
@@ -95,7 +98,7 @@ export function FortuneWheel({ onLanded }: { onLanded?: (category: TheoryCategor
               const start = i * seg;
               const end = start + seg;
               const midAngle = start + seg / 2;
-              const labelPos = polarToCartesian(150, 150, 104, midAngle);
+              const labelPos = polarToCartesian(150, 150, 110, midAngle);
               const countPos = polarToCartesian(150, 150, 62, midAngle);
               return (
                 <g key={c.id}>
@@ -106,7 +109,7 @@ export function FortuneWheel({ onLanded }: { onLanded?: (category: TheoryCategor
                     textAnchor="middle"
                     dominantBaseline="middle"
                     transform={`rotate(${midAngle}, ${labelPos.x}, ${labelPos.y})`}
-                    fontSize={c.label.length > 7 ? 12 : 14}
+                    fontSize={c.label.length > 8 ? 10 : c.label.length > 4 ? 12 : 13}
                     fontWeight="600"
                     fill={catTint(c.id).ink}
                     fontFamily="'IBM Plex Mono', monospace"
