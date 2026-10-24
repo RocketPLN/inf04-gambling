@@ -160,6 +160,41 @@ export function FortuneWheel({ onLanded }: { onLanded?: (category: TheoryCategor
   );
 }
 
+export interface CategoryPickerProps {
+  /** Aktualnie wybrana kategoria (null = cała baza). */
+  active: TheoryCategory | null;
+  onPick: (cat: TheoryCategory | null) => void;
+}
+
+/** Tryb normalny: ręczny wybór kategorii (albo całej bazy) bez kręcenia kołem. */
+export function CategoryPicker({ active, onPick }: CategoryPickerProps) {
+  const counts = useMemo(() => {
+    const c: Record<string, number> = {};
+    for (const q of THEORY_QUESTIONS) c[q.kat] = (c[q.kat] || 0) + 1;
+    return c;
+  }, []);
+  const activeId = active?.id ?? null;
+  return (
+    <div className="w-full rounded-lg border border-linia bg-kartka p-4 shadow-[0_1px_2px_rgba(32,36,44,0.06),0_8px_24px_rgba(32,36,44,0.06)] sm:p-5">
+      <h3 className="m-0 text-lg font-semibold tracking-tight text-atrament">Wybierz kategorię</h3>
+      <p className="mt-1 max-w-[52ch] text-sm text-grafit leading-relaxed">
+        Kliknij kategorię, aby losować pytania tylko z niej, albo bierz pytania z całej bazy na raz.
+      </p>
+      <div className="mt-3 flex flex-wrap gap-2">
+        <Button aria-pressed={activeId === null} variant={activeId === null ? "default" : "outline"} size="sm" onClick={() => onPick(null)}>
+          Wszystkie ({THEORY_QUESTIONS.length})
+        </Button>
+        {THEORY_CATEGORIES.map((c) => (
+          <Button key={c.id} aria-pressed={activeId === c.id} variant={activeId === c.id ? "default" : "outline"} size="sm" onClick={() => onPick(c)}>
+            <span aria-hidden="true" className="mr-1.5 inline-block size-2.5 rounded-full" style={{ background: catTint(c.id).fill }} />
+            {c.label} ({counts[c.id] ?? 0})
+          </Button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export interface TheoryQuestionCardProps {
   question: TheoryQuestion | null;
   onResult?: (ok: boolean) => void;
@@ -239,7 +274,7 @@ export function TheoryQuestionCard({ question, onResult, total, nextAward, earne
       <div className="w-full rounded-lg border border-dashed border-linia bg-kartka p-8 text-center shadow-[0_1px_2px_rgba(32,36,44,0.06)] sm:p-12">
         <div className="text-2xl font-semibold text-atrament sm:text-3xl">Wylosuj pierwsze pytanie</div>
         <p className="mx-auto mt-3 max-w-[60ch] text-sm text-grafit sm:text-base">
-          Zakręć kołem powyżej albo użyj przycisku „Losuj pytanie”.
+          Zakręć kołem, wybierz kategorię w trybie normalnym albo użyj przycisku „Losuj pytanie”.
         </p>
         <div className="mt-4 font-mono text-xs text-grafit">
           baza: 630 pytań teoretycznych / ee-informatyk.pl

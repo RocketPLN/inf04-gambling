@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ConfettiBurst, FortuneWheel, ScoreBar, TheoryQuestionCard } from "../components/app/fortune.jsx";
+import { CategoryPicker, ConfettiBurst, FortuneWheel, ScoreBar, TheoryQuestionCard } from "../components/app/fortune.jsx";
 import { THEORY_CATEGORIES, THEORY_QUESTIONS, THEORY_SOURCES, type TheoryCategory, type TheoryQuestion } from "../data/theory.js";
 import { DEFAULT_SEARCH } from "../lib/search.js";
 import { calcAward } from "../lib/wallet.js";
@@ -10,8 +10,9 @@ import { Button } from "@/components/ui/button";
 const EXAM_SECONDS = 10 * 60;
 
 /*
- * KOŁO FORTUNY (strona /teoria) — baza 630 pytań teoretycznych.
- * Spokojna strona: koło kategorii, pytanie ABCD, punkty do portfela.
+ * PYTANIA TEORETYCZNE (strona /teoria) — baza 630 pytań ABCD.
+ * Spokojna strona: dwa tryby — koło fortuny (losuje kategorię) albo
+ * tryb normalny (sam wybierasz kategorię lub bierzesz z całej bazy).
  * Ekonomia bez zmian: earn + recordAnswer, dogrywka / 50-50 /
  * szczęśliwe losowanie zużywają się jak w sklepie.
  */
@@ -35,6 +36,9 @@ function TheoryPage() {
   const [dogrywkaOffer, setDogrywkaOffer] = useState(false);
   const [flash, setFlash] = useState<string | null>(null);
   const [confettiKey, setConfettiKey] = useState(0);
+  // Tryb strony: "kolo" = koło fortuny losuje kategorię, "normal" = sam wybierasz kategorię
+  // (albo całą bazę) bez kręcenia kołem.
+  const [mode, setMode] = useState<"kolo" | "normal">("kolo");
   // Tryb egzaminacyjny (dodatek ze sklepu): 10 minut, wynik ukryty.
   const examModeOwned = flagActive("tryb-egzamin");
   const [examLeft, setExamLeft] = useState<number | null>(null);
@@ -46,9 +50,10 @@ function TheoryPage() {
     return THEORY_CATEGORIES.find((c) => c.id === category.id)?.label ?? "wszystkie";
   }, [category]);
 
-  const drawQuestion = (cat: TheoryCategory) => {
+  // cat = null oznacza "wszystkie kategorie" (cała baza).
+  const drawQuestion = (cat: TheoryCategory | null) => {
     setCategory(cat);
-    const pool = THEORY_QUESTIONS.filter((q) => q.kat === cat.id);
+    const pool = cat ? THEORY_QUESTIONS.filter((q) => q.kat === cat.id) : THEORY_QUESTIONS;
     const fresh = pool.filter((q) => !asked.includes(q.id));
     // Pula wyczerpana? Losuj z całości kategorii, ale nigdy 2x pod rząd tego samego.
     const fallback = pool.filter((q) => !question || q.id !== question.id);
@@ -103,10 +108,10 @@ function TheoryPage() {
   };
 
   const takeDogrywka = () => {
-    if (!category || !consume("dogrywka")) return;
+    if (!consume("dogrywka")) return;
     setDogrywkaOffer(false);
     setHalfArmed(true);
-    setFlash("Dogrywka użyta: następne pytanie z tej kategorii za pół nagrody.");
+    setFlash("Dogrywka użyta: następne pytanie z tej samej puli za pół nagrody.");
     drawQuestion(category);
   };
 
@@ -119,6 +124,12 @@ function TheoryPage() {
   };
 
   const surpriseMe = () => {
+    // W trybie normalnym losujemy z aktualnie wybranej puli (null = cała baza),
+    // na kole — jak dotychczas, losowa kategoria.
+    if (mode === "normal") {
+      drawQuestion(category);
+      return;
+    }
     const cat = THEORY_CATEGORIES[Math.floor(Math.random() * THEORY_CATEGORIES.length)];
     drawQuestion(cat);
   };
@@ -147,9 +158,9 @@ function TheoryPage() {
 
       {/* Nagłówek strony */}
       <div className="mt-3.5 w-full rounded-lg border border-linia bg-kartka p-4 shadow-[0_1px_2px_rgba(32,36,44,0.06),0_8px_24px_rgba(32,36,44,0.06)] sm:p-5">
-        <h2 className="m-0 text-xl font-semibold tracking-tight text-atrament sm:text-2xl">Koło fortuny</h2>
+        <h2 className="m-0 text-xl font-semibold tracking-tight text-atrament sm:text-2xl">Pytania teoretyczne</h2>
         <p className="mt-2 max-w-[70ch] text-sm text-grafit leading-relaxed">
-          Losujesz kategorię i odpowiadasz na pytanie ABCD. Baza liczy {THEORY_QUESTIONS.length} pytań.
+          Baza liczy {THEORY_QUESTIONS.length} pytań ABCD. Losujesz kategorię kołem fortuny albo wybierasz ją sam.
           Dobre odpowiedzi dodają punkty do konta, a kolejne trafienia w serii zwiększają stawkę.
         </p>
         <div className="mt-3 flex flex-wrap items-center gap-2">
@@ -205,8 +216,33 @@ function TheoryPage() {
         )}
       </div>
 
+      {/* Przełącznik trybu: koło albo wybór kategorii */}
+      <div className="mt-3.5 flex flex-wrap items-center gap-2 rounded-lg border border-linia bg-kartka px-3 py-2 shadow-[0_1px_2px_rgba(32,36,44,0.06)]">
+        <span className="text-xs font-semibold uppercase tracking-[0.08em] text-grafit">Tryb pytań</span>
+        <Button
+          aria-pressed={mode === "kolo"}
+          onClick={() => setMode("kolo")}
+          size="sm"
+          variant={mode === "kolo" ? "default" : "outline"}
+        >
+          Koło fortuny
+        </Button>
+        <Button
+          aria-pressed={mode === "normal"}
+          onClick={() => setMode("normal")}
+          size="sm"
+          variant={mode === "normal" ? "default" : "outline"}
+        >
+          Normalny (wybór kategorii)
+        </Button>
+      </div>
+
       <div className="mt-3.5">
-        <FortuneWheel onLanded={handleLanded} />
+        {mode === "kolo" ? (
+          <FortuneWheel onLanded={handleLanded} />
+        ) : (
+          <CategoryPicker active={category} onPick={drawQuestion} />
+        )}
       </div>
 
       {dogrywkaOffer && category && (
@@ -278,6 +314,6 @@ function TheoryPage() {
 export const Route = createFileRoute("/teoria")({
   component: TheoryPage,
   head: () => ({
-    meta: [{ title: "Koło fortuny INF.04 — pytania teoretyczne" }],
+    meta: [{ title: "Pytania teoretyczne INF.04 — koło fortuny i wybór kategorii" }],
   }),
 });
