@@ -210,6 +210,8 @@ export interface TheoryQuestionCardProps {
   onUse5050?: () => void;
   /** Tryb egzaminacyjny: ukrywa nagrody i streak w tekstach. */
   hideAwards?: boolean;
+  /** Przycisk „Dalej” po odsłonięciu wyniku — losuje następne pytanie z bieżącej puli. */
+  onNext?: () => void;
 }
 
 /** ZŁOTY DESZCZ ze sklepu: skrawki za dobrą odpowiedź (czysty CSS, gaśnie samo). */
@@ -246,7 +248,7 @@ function verdictStamp(ok: boolean) {
     : "inline-block animate-pieczatka -rotate-3 rounded-sm border-2 border-pieczatka bg-pieczatka-tlo px-2 py-0.5 text-[11px] font-semibold uppercase tracking-[0.1em] text-pieczatka";
 }
 
-export function TheoryQuestionCard({ question, onResult, total, nextAward, earnedAward, removedOrig, fiftyCount, onUse5050, hideAwards }: TheoryQuestionCardProps) {
+export function TheoryQuestionCard({ question, onResult, total, nextAward, earnedAward, removedOrig, fiftyCount, onUse5050, hideAwards, onNext }: TheoryQuestionCardProps) {
   const [selected, setSelected] = useState<number | null>(null);
   const [revealed, setRevealed] = useState(false);
   const [imgOk, setImgOk] = useState(true);
@@ -384,6 +386,11 @@ export function TheoryQuestionCard({ question, onResult, total, nextAward, earne
                 : (hideAwards ? "Błędna odpowiedź. W trybie egzaminacyjnym bez dalszych podpowiedzi." : "Błędna odpowiedź. Punkty przepadły, ale wiedza zostaje.")}
             </div>
             <span className={verdictStamp(correct)}>{correct ? "Zaliczone" : "Błędne"}</span>
+            {onNext && (
+              <Button variant="default" size="sm" onClick={onNext} autoFocus>
+                Dalej ▸
+              </Button>
+            )}
             {question.wyjasnienie && (
               <div className="w-full border-t border-dashed border-linia pt-2 text-sm text-grafit">{question.wyjasnienie}</div>
             )}

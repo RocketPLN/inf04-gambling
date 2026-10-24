@@ -275,6 +275,7 @@ function TheoryPage() {
           fiftyCount={fiftyCount}
           onUse5050={use5050}
           hideAwards={examRunning}
+          onNext={question ? () => drawQuestion(category) : undefined}
         />
       </div>
 
